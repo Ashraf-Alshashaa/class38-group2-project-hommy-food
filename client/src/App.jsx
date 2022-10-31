@@ -1,18 +1,20 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Nav from "./components/Nav";
+import Header from "./components/Header";
 import Home from "./pages/Home/Home";
-import CreateUser from "./pages/User/CreateUser";
-import UserList from "./pages/User/UserList";
 
 const App = () => {
   return (
     <>
-      <Nav />
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/user" element={<UserList />} />
-        <Route path="/user/create" element={<CreateUser />} />
+        <Route path="/login" element={<h1>login page</h1>} />
+        <Route path="/profile" element={<h1>profile page</h1>} />
+        <Route path="/favorites" element={<h1>favorites page</h1>} />
+        <Route path="/myOrders" element={<h1>my orders page</h1>} />
+        <Route path="/shoppingCart" element={<h1>shopping cart page</h1>} />
+        <Route path="/aboutUs" element={<h1>about us page</h1>} />
       </Routes>
     </>
   );

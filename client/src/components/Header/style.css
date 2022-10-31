@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,800;0,900;1,400&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", "sans-serif";
+}
+.cursor {
+  cursor: pointer;
+}
+.header {
+  padding-right: 5%;
+  padding-left: 5%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  top: 0;
+  background-color: #d8d8d8;
+}
+.logo-container {
+  width: 40%;
+  max-width: 150px;
+}
+.logo {
+  max-height: 40px;
+}
+.user-info-container-header {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+.user-img-header {
+  height: 30px;
+  margin-right: 5px;
+}
+.user-name-header {
+  color: #13753b;
+}
+i {
+  color: #13753b;
+}
+.nav-links-container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  position: absolute;
+  top: 50px;
+  right: 5%;
+  background-color: #13753b;
+  width: 150px;
+}
+.nav-links-hidden {
+  display: none;
+}
+.nav-links-visible {
+  display: block;
+  margin: 15px;
+  margin-left: 10px;
+  color: #ffffff;
+  text-decoration: none;
+}
+.nav-btn {
+  margin-left: 10px;
+}
+
+.login-header-btn {
+  width: 60px;
+  height: 25px;
+  border-radius: 0px;
+  border: none;
+  background-color: #13753b;
+  color: #ffffff;
+  margin-left: 10px;
+}
+@media screen and (min-width: 1024px) {
+  .header {
+    height: 75px;
+  }
+  .logo-container {
+    width: 40%;
+    max-width: 200px;
+  }
+  .logo {
+    max-height: 60px;
+  }
+  .user-info-container-header {
+    margin: 0;
+    margin-left: auto;
+    width: 200px;
+    justify-content: center;
+  }
+  .user-info-container-header h5 {
+    font-size: large;
+  }
+  .user-img-header {
+    margin-right: 10px;
+    height: 50px;
+  }
+  .nav-links-container {
+    right: 0;
+    list-style: none;
+    position: absolute;
+    top: 75px;
+    right: 14%;
+    background-color: #13753b;
+    width: 200px;
+  }
+  .login-header-btn {
+    width: 80px;
+    height: 30px;
+  }
+  .cart-fav-container {
+    width: 10%;
+    display: flex;
+    justify-content: flex-end;
+  }
+}

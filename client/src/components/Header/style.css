@@ -1,10 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,800;0,900;1,400&display=swap");
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: "Montserrat", "sans-serif";
-}
 .cursor {
   cursor: pointer;
 }
@@ -16,7 +9,7 @@
   align-items: center;
   position: relative;
   top: 0;
-  background-color: #d8d8d8;
+  background-color: var(--light-gray-color);
 }
 .logo-container {
   width: 40%;
@@ -35,19 +28,17 @@
   margin-right: 5px;
 }
 .user-name-header {
-  color: #13753b;
+  color: var(--primary-color);
 }
 i {
-  color: #13753b;
+  color: var(--primary-color);
 }
 .nav-links-container {
-  padding: 0;
-  margin: 0;
   list-style: none;
   position: absolute;
   top: 50px;
   right: 5%;
-  background-color: #13753b;
+  background-color: var(--primary-color);
   width: 150px;
 }
 .nav-links-hidden {
@@ -57,7 +48,7 @@ i {
   display: block;
   margin: 15px;
   margin-left: 10px;
-  color: #ffffff;
+  color: var(--light-gray-color);
   text-decoration: none;
 }
 .nav-btn {
@@ -69,8 +60,8 @@ i {
   height: 25px;
   border-radius: 0px;
   border: none;
-  background-color: #13753b;
-  color: #ffffff;
+  background-color: var(--primary-color);
+  color: var(--light-gray-color);
   margin-left: 10px;
 }
 @media screen and (min-width: 1024px) {
@@ -99,11 +90,8 @@ i {
   }
   .nav-links-container {
     right: 0;
-    list-style: none;
-    position: absolute;
     top: 75px;
     right: 14%;
-    background-color: #13753b;
     width: 200px;
   }
   .login-header-btn {

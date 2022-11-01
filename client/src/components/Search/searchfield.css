@@ -1,0 +1,64 @@
+/* search input */
+
+.input-group {
+  margin-left: 10px;
+}
+
+/* Search by Cuisine */
+
+.cuisine .btn {
+  margin: 0.8rem;
+  font-size: 1.3rem;
+  background-color: #f9a01b;
+  border: none;
+}
+.btn-primary:hover {
+  background-color: #13753b;
+}
+.cuisine {
+  margin-left: 6rem;
+}
+.btn-outline-warning {
+  color: black;
+}
+
+/* card */
+.card {
+  margin-bottom: 10px;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+/* dropdown menu */
+.menu {
+  position: relative;
+  display: inline-block;
+}
+.menu {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+@media only screen and (max-width: 600px) {
+  .cuisine {
+    display: none;
+  }
+  #dropdownMenuButton {
+    width: 75%;
+    margin: 5px;
+    position: relative;
+    left: 50px;
+  }
+  .container {
+    width: 75%;
+  }
+  .row {
+    padding-left: 50px;
+  }
+}

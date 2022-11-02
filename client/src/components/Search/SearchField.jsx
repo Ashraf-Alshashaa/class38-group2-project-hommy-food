@@ -9,7 +9,7 @@ const SearchField = () => {
         <div className="input-group from-container">
           <Input
             name={"Search"}
-            value={"Find meal"}
+            placeholder="Find your meal"
             type={"text"}
             onChange={(e) => e.target.value}
             className="form-control search-input"

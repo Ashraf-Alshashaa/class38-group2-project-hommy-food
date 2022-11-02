@@ -6,6 +6,9 @@
   background-color: var(--secondary-color);
   color: #fff;
 }
+.btn-search:hover {
+  background-color: var(--dark-gray-color) !important;
+}
 
 /* Search by Cuisine */
 .cuisine-buttons-container {
@@ -26,7 +29,7 @@
 }
 
 .btn-primary:hover {
-  background-color: var(--primary-color);
+  background-color: var(--primary-color) !important;
 }
 
 .menu-trigger button {
@@ -43,6 +46,7 @@
   background-color: var(--primary-color);
   width: 180px;
   border-radius: 5px;
+  color: var(--light-gray-color);
 }
 
 .active {
@@ -63,10 +67,11 @@
   padding: 5px 0;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
   list-style: none;
+  color: var(----light-gray-color);
 }
 .menu ul li:hover {
   cursor: pointer;
-  color: white;
+  color: var(--secondary-color);
 }
 .menu-container {
   z-index: 1;
@@ -99,15 +104,23 @@
   .menu-containerMobile {
     position: absolute;
     top: 15%;
-    left: 8%;
+    right: 12%;
+  }
+  .menuMobile {
+    margin-top: 10px;
+    margin-left: 40px;
+    background-color: var(--primary-color);
+    width: 180px;
+    border-radius: 5px;
+    color: var(--light-gray-color);
+  }
+  .dropdownItem {
+    padding: 5px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    list-style: none;
+    color: var(----light-gray-color);
   }
 
-  .menu-trigger button {
-    width: 420px;
-  }
-  .menu {
-    width: 420px;
-  }
   /* cards */
   .container {
     width: 75%;

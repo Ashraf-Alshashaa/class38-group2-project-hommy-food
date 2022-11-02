@@ -47,3 +47,30 @@ export const createUser = async (req, res) => {
       .json({ success: false, msg: "Unable to create user, try again later" });
   }
 };
+
+export const getUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findById(id);
+    res.status(200).json({ success: true, result: user });
+  } catch (error) {
+    logError(error);
+    res
+      .status(500)
+      .json({ success: false, msg: "Unable to get user, try again later" });
+  }
+};
+
+export const updateUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await User.findByIdAndUpdate(id, req.body);
+    const updatedUser = await User.findById(id);
+    res.status(200).json({ success: true, result: updatedUser });
+  } catch (error) {
+    logError(error);
+    res
+      .status(500)
+      .json({ success: false, msg: "Unable to update user, try again later" });
+  }
+};

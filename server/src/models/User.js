@@ -71,7 +71,22 @@ const User = mongoose.model("users", userSchema);
 
 export const validateUser = (userObject) => {
   const errorList = [];
-  const allowedKeys = ["name", "email"];
+  const allowedKeys = [
+    "userName",
+    "fullName",
+    "password",
+    "address",
+    "isChef",
+    "email",
+    "photo",
+    "phone",
+    "customerReviews",
+    "customerRates",
+    "orderToPrepare",
+    "orderHistory",
+    "cart",
+    "favoriteChefs",
+  ];
 
   const validatedKeysMessage = validateAllowedFields(userObject, allowedKeys);
 
@@ -79,12 +94,21 @@ export const validateUser = (userObject) => {
     errorList.push(validatedKeysMessage);
   }
 
-  if (userObject.name == null) {
-    errorList.push("name is a required field");
+  if (userObject.userName == null) {
+    errorList.push("userName is a required field");
   }
 
   if (userObject.email == null) {
     errorList.push("email is a required field");
+  }
+  if (userObject.fullName == null) {
+    errorList.push("fullName is a required field");
+  }
+  if (userObject.password == null) {
+    errorList.push("password is a required field");
+  }
+  if (userObject.isChef == null) {
+    errorList.push("isChef is a required field");
   }
 
   return errorList;

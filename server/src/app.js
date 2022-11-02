@@ -3,6 +3,7 @@ import cors from "cors";
 
 import userRouter from "./routes/user.js";
 import mealRouter from "./routes/meal.js";
+import categoryRouter from "./routes/category.js";
 
 // Create an express server
 const app = express();
@@ -19,5 +20,6 @@ app.use(cors());
  */
 app.use("/api/users", userRouter);
 app.use("/api/meals", mealRouter);
+app.use("/api/categories", categoryRouter);
 
 export default app;

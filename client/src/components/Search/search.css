@@ -1,0 +1,119 @@
+/* search input */
+.btn.btn-search {
+  border-radius: 0;
+  height: 50px;
+  width: 50px;
+  background-color: var(--secondary-color);
+  color: #fff;
+}
+
+/* Search by Cuisine */
+.cuisine-buttons-container {
+  display: flex;
+  margin-top: 40px;
+  gap: 15px;
+  justify-content: center;
+}
+.cuisine {
+  height: fit-content;
+}
+
+.btn {
+  margin-right: 5px;
+  font-size: 1.2rem;
+  background-color: var(--secondary-color);
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-color);
+}
+
+.menu-trigger button {
+  overflow: hidden;
+  cursor: pointer;
+  background-color: var(--dark-gray-color);
+  color: var(--secondary-color);
+  font-size: 1.2rem;
+  border: none;
+}
+
+.menu {
+  margin-top: 10px;
+  background-color: var(--primary-color);
+  width: 180px;
+  border-radius: 5px;
+}
+
+.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: 500ms ease;
+}
+
+.inactive {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: 500ms ease;
+}
+
+.menu ul li {
+  padding: 5px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  list-style: none;
+}
+.menu ul li:hover {
+  cursor: pointer;
+  color: white;
+}
+.menu-container {
+  z-index: 1;
+}
+
+/* card */
+.container {
+  position: absolute;
+  top: 25%;
+  left: 5%;
+}
+
+/* -------------------------- Max Scree 600px  ---------------------------*/
+
+@media only screen and (max-width: 600px) {
+  .cuisine-buttons-container {
+    display: none;
+  }
+
+  .row {
+    margin-left: 70px;
+  }
+  .search-box {
+    top: 5%;
+    left: 8%;
+    position: absolute;
+    transform: translate(-50% -50%);
+  }
+
+  .menu-containerMobile {
+    position: absolute;
+    top: 15%;
+    left: 8%;
+  }
+
+  .menu-trigger button {
+    width: 420px;
+  }
+  .menu {
+    width: 420px;
+  }
+  /* cards */
+  .container {
+    width: 75%;
+    z-index: -1;
+  }
+  .card {
+    margin-bottom: 10px;
+  }
+}

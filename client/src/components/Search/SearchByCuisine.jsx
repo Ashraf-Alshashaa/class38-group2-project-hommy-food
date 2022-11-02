@@ -1,73 +1,89 @@
 import React, { useState } from "react";
-import "./searchfield.css";
+import PropTypes from "prop-types";
+import "./search.css";
 import useWindowSize from "../../hooks/useWindowSize";
 
 const SearchByCuisine = () => {
   const [open, setOpen] = useState(false);
+  let cuisines = [
+    "Indian",
+    "Chinese",
+    "Italian",
+    "Spanish",
+    "Turkish",
+    "Greek",
+    "American",
+    "African",
+  ];
 
-  const handleOpen = () => {
-    setOpen(!open);
-  };
   const size = useWindowSize();
   return (
-    <div className="cuisine">
-      <button className="btn btn-primary"> Indian</button>
-      <button className="btn btn-primary"> Chinese</button>
-      <button className="btn btn-primary"> Italian</button>
-      <button className="btn btn-primary"> Spanish</button>
-      <button className="btn btn-primary"> Turkish</button>
-      <button className="btn btn-primary"> Greek</button>
-      <button className="btn btn-primary"> American</button>
-      <button className="btn btn-primary">African</button>
-
-      <div className="dropdown">
-        <button
-          className="btn btn-secondary dropdown-toggle"
-          type="button"
-          id="dropdownMenuButton"
-          data-toggle="dropdown"
-          onClick={handleOpen}
-        >
-          other Cuisine
-        </button>
-        {open ? (
-          <div className="dropdown-menu">
-            <a className="dropdown-item" href="#">
-              Action
-            </a>
-            <a className="dropdown-item" href="#">
-              Another action
-            </a>
-            <a className="dropdown-item" href="#">
-              Something else here
-            </a>
-          </div>
-        ) : null}
-
-        {size.width < 600 && (
-          <div className="dropdown">
-            <button
-              className="btn btn-secondary dropdown-toggle"
-              type="button"
-              id="dropdownMenuButton"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-              onClick={handleOpen}
-            >
-              cuisine
+    <>
+      <div className="cuisine-buttons-container">
+        <div className="cuisine">
+          {cuisines.map((cuisine) => (
+            <button key={cuisine} className="btn btn-primary">
+              {cuisine}
             </button>
-            {open ? (
-              <ul className="menu">
-                <li className="menu-item">indian</li>
-                <li className="menu-item">pakistani</li>
-              </ul>
-            ) : null}
+          ))}
+        </div>
+        <div className="menu-container">
+          <div className="menu-trigger">
+            <button
+              onClick={() => {
+                setOpen(!open);
+              }}
+              className="btn btn-primary"
+            >
+              Other Cuisines <i className="fa fa-caret-down" />
+            </button>
           </div>
-        )}
+
+          <div className={`menu ${open ? "active" : "inactive"}`}>
+            <ul>
+              <DropdownItem text={"Arabic"} />
+              <DropdownItem text={"Mexican"} />
+              <DropdownItem text={" Thai"} />
+              <DropdownItem text={"French"} />
+              <DropdownItem text={"Malaysian"} />
+              <DropdownItem text={"Korean"} />
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
+      {size.width < 600 && (
+        <div className="menu-containerMobile">
+          <div className="menu-trigger">
+            <button
+              onClick={() => {
+                setOpen(!open);
+              }}
+              className="btn btn-primary"
+            >
+              Cuisines
+              <i className="fa fa-caret-down" />
+            </button>
+          </div>
+          <div className={`menu ${open ? "active" : "inactive"}`}>
+            <ul>
+              {cuisines.map((cuisine) => (
+                <DropdownItem key={cuisine} text={cuisine} />
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
-
+const DropdownItem = (props) => {
+  return (
+    <li className="dropdownItem">
+      <a> {props.text} </a>
+    </li>
+  );
+};
+DropdownItem.propTypes = {
+  text: PropTypes.string.isRequired,
+};
 export default SearchByCuisine;

@@ -90,9 +90,9 @@ export const deleteMeal = async (req, res) => {
 };
 export const searchMeals = async (req, res) => {
   try {
-    const { search } = req.query;
+    const { query } = req.query;
     const meals = await Meal.find({
-      $or: [{ title: { $regex: search } }, { ingredients: { $regex: search } }],
+      $or: [{ title: { $regex: query } }, { ingredients: { $regex: query } }],
     }).exec();
     res.status(200).json({ success: true, result: meals });
   } catch (error) {
@@ -119,6 +119,19 @@ export const filterMeals = async (req, res) => {
       }).exec();
       res.status(200).json({ success: true, result: meals });
     }
+  } catch (error) {
+    logError(error);
+    res
+      .status(500)
+      .json({ success: false, msg: "Unable to get meals, try again later" });
+  }
+};
+
+export const getMealsByChefId = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const meals = await Meal.find({ chefId: id }).exec();
+    res.status(200).json({ success: true, result: meals });
   } catch (error) {
     logError(error);
     res

@@ -5,18 +5,19 @@ import {
   searchMeals,
   filterMeals,
   updateMeal,
-  deleteMeal,
   getMeal,
+  deleteMeal,
+  getMealsByChefId,
 } from "../controllers/meal.js";
 
 const mealRouter = express.Router();
 
 mealRouter.get("/", getMeals);
 mealRouter.post("/create", createMeal);
-mealRouter.patch("/:id", updateMeal);
-mealRouter.get("/:id", getMeal);
-mealRouter.delete("/:id", deleteMeal);
-mealRouter.get("/query", searchMeals); // meals/query?search=beef
+mealRouter.patch("/update/:id", updateMeal);
+mealRouter.get("/meal_detail/:id", getMeal);
+mealRouter.delete("/delete/:id", deleteMeal);
+mealRouter.get("/search", searchMeals); // meals/search?query=beef
 mealRouter.get("/filter", filterMeals); // meals/filter?cuisine=Turkish&category=Vegan
-
+mealRouter.get("/my_meals/:id", getMealsByChefId);
 export default mealRouter;

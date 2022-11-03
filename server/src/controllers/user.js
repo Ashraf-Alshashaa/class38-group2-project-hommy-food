@@ -100,3 +100,17 @@ export const login = async (req, res) => {
       .json({ success: false, msg: "Unable to login, try again later" });
   }
 };
+
+export const updateUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await User.findByIdAndUpdate(id, req.body);
+    const updatedUser = await User.findById(id);
+    res.status(200).json({ success: true, result: updatedUser });
+  } catch (error) {
+    logError(error);
+    res
+      .status(500)
+      .json({ success: false, msg: "Unable to update user, try again later" });
+  }
+};

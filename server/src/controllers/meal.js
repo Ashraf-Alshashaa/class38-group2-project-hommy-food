@@ -92,7 +92,10 @@ export const searchMeals = async (req, res) => {
   try {
     const { query } = req.query;
     const meals = await Meal.find({
-      $or: [{ title: { $regex: query } }, { ingredients: { $regex: query } }],
+      $or: [
+        { title: { $regex: query, $options: "i" } },
+        { ingredients: { $regex: query, $options: "i" } },
+      ],
     }).exec();
     res.status(200).json({ success: true, result: meals });
   } catch (error) {

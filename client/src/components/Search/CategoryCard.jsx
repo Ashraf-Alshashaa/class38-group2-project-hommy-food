@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const CategoryCard = ({ image, title }) => {
+const CategoryCard = ({ image, title, onClick }) => {
   return (
-    <div className="col-md-3">
+    <div className="col-md-3" onClick={onClick}>
       <div className="card">
         <img className="card-img-top" src={image} alt="Card image cap" />
         <div className="card-body">
@@ -17,6 +17,7 @@ const CategoryCard = ({ image, title }) => {
 CategoryCard.propTypes = {
   image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
 };
 
 export default CategoryCard;

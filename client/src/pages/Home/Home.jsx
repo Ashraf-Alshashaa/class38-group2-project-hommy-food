@@ -2,8 +2,8 @@ import React from "react";
 
 import TEST_ID from "./Home.testid";
 import SearchField from "../../components/Search/SearchField";
-import SearchByCuisine from "../../components/Search/SearchByCuisine";
-import SearchByCategory from "../../components/Search/SearchByCategory";
+import CuisineListButtons from "../../components/Search/CuisineListButtons";
+import CategoryListCards from "../../components/Search/CategoryListCards";
 import "./home.css";
 
 const Home = () => {
@@ -13,8 +13,8 @@ const Home = () => {
       <p>Good luck with the project!</p>
       <div className="searchDivision">
         <SearchField />
-        <SearchByCuisine />
-        <SearchByCategory />
+        <CuisineListButtons />
+        <CategoryListCards />
       </div>
     </div>
   );

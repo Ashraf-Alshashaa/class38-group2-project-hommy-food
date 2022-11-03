@@ -4,10 +4,10 @@ import "./search.css";
 import useWindowSize from "../../hooks/useWindowSize";
 import { Link } from "react-router-dom";
 
-const SearchByCuisine = () => {
+const CuisineListButtons = () => {
   const [open, setOpen] = useState(false);
   let cuisines = [
-    { href: "/cuisine/Indian", name: "Indian" },
+    { href: "result/cuisine/:id", name: "Indian" },
     { href: "/cuisine/Chinese", name: "Chinese" },
     { href: "/cuisine/Italian", name: "Italian" },
     { href: "/cuisine/Spanish", name: "Spanish" },
@@ -25,15 +25,11 @@ const SearchByCuisine = () => {
   const size = useWindowSize();
   return (
     <>
-      <div className="cuisine-buttons-container ">
+      <div className="cuisine-buttons-container">
         <div className="cuisine">
           {cuisineButton.map(({ href, name }) => (
-            <Link
-              to={href}
-              key={name}
-              className={!open ? "active" : "inactive"}
-            >
-              <button className="btn btn-primary col-md-1.5">{name}</button>
+            <Link to={href} key={name}>
+              <button className="btn btn-primary ">{name}</button>
             </Link>
           ))}
         </div>
@@ -94,4 +90,4 @@ const DropdownItem = (props) => {
 DropdownItem.propTypes = {
   text: PropTypes.string.isRequired,
 };
-export default SearchByCuisine;
+export default CuisineListButtons;

@@ -79,14 +79,23 @@
 
 /* card */
 .container {
-  position: absolute;
+  /* position: absolute;
   top: 25%;
-  left: 5%;
+  left: 5%; */
+  display: block;
+  margin: 0 auto;
+  width: 80%;
 }
 .row {
   row-gap: 10px;
 }
 
+.categories-Container {
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 /* -------------------------- Max Scree 600px  ---------------------------*/
 
 @media only screen and (max-width: 600px) {
@@ -126,10 +135,11 @@
 
   /* cards */
   .container {
-    width: 75%;
+    width: 90%;
     z-index: -1;
   }
   .card {
+    width: 100%;
     margin-bottom: 10px;
   }
 }

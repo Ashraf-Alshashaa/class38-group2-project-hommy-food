@@ -14,7 +14,7 @@
 .cuisine-buttons-container {
   display: flex;
   margin-top: 40px;
-  gap: 15px;
+  max-height: 0px;
   justify-content: center;
 }
 .cuisine {
@@ -22,8 +22,9 @@
 }
 
 .btn {
-  margin-right: 5px;
-  font-size: 1.2rem;
+  margin-right: 0.25vw;
+  width: 6.5vw;
+  font-size: 1vw;
   background-color: var(--secondary-color);
   border: none;
 }
@@ -37,14 +38,15 @@
   cursor: pointer;
   background-color: var(--dark-gray-color);
   color: var(--secondary-color);
-  font-size: 1.2rem;
+  font-size: 1;
   border: none;
+  width: 14vw;
 }
 
 .menu {
   margin-top: 10px;
   background-color: var(--primary-color);
-  width: 180px;
+  width: 215px;
   border-radius: 5px;
   color: var(--light-gray-color);
 }
@@ -73,18 +75,13 @@
   cursor: pointer;
   color: var(--secondary-color);
 }
-.menu-container {
-  z-index: 1;
-}
-
 /* card */
 .container {
-  /* position: absolute;
-  top: 25%;
-  left: 5%; */
-  display: block;
+  position: absolute;
+  top: 50%;
   margin: 0 auto;
   width: 80%;
+  z-index: -1;
 }
 .row {
   row-gap: 10px;
@@ -99,30 +96,18 @@
 /* -------------------------- Max Scree 600px  ---------------------------*/
 
 @media only screen and (max-width: 600px) {
+  .btn.btn-search {
+    font-size: 2.5vw;
+  }
+
   .cuisine-buttons-container {
     display: none;
   }
 
-  .row {
-    margin-left: 70px;
-  }
-  .search-box {
-    top: 5%;
-    left: 8%;
-    position: absolute;
-    transform: translate(-50% -50%);
-  }
-
-  .menu-containerMobile {
-    position: absolute;
-    top: 15%;
-    right: 12%;
-  }
   .menuMobile {
-    margin-top: 10px;
-    margin-left: 40px;
+    width: 80%;
+    margin-left: 10%;
     background-color: var(--primary-color);
-    width: 180px;
     border-radius: 5px;
     color: var(--light-gray-color);
   }
@@ -133,9 +118,28 @@
     color: var(----light-gray-color);
   }
 
+  /* .menu-trigger button {
+      font-size: 1;
+      border: none;
+      width: 700px;
+      background-color: red;
+    } */
+
+  .menu-triggerMobile button {
+    margin: 10px auto;
+    width: 90vw;
+    font-size: 2.5vw;
+  }
+
+  .menu-triggerMobile i {
+    float: right;
+  }
+
   /* cards */
   .container {
     width: 90%;
+    position: absolute;
+    top: 30%;
     z-index: -1;
   }
   .card {

@@ -57,8 +57,8 @@ const CuisineListButtons = () => {
         </div>
       </div>
       {size.width < 600 && (
-        <div className="menu-containerMobile row">
-          <div className="menu-triggerMobile d-grid gap-2">
+        <div className="menu-containerMobile">
+          <div className="menu-triggerMobile d-grid ">
             <button
               onClick={() => {
                 setOpen(!open);

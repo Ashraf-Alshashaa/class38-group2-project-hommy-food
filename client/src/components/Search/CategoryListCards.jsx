@@ -18,16 +18,18 @@ const CategoryListCards = () => {
   };
 
   return (
-    <div className="container">
-      <div className="row">
-        {categories?.result?.map((category) => (
-          <CategoryCard
-            key={category._id}
-            image={category.image}
-            title={category.title}
-            onClick={handleClick}
-          />
-        ))}
+    <div className="categories-Container">
+      <div className="container">
+        <div className="row">
+          {categories?.result?.map((category) => (
+            <CategoryCard
+              key={category._id}
+              image={category.image}
+              title={category.title}
+              onClick={handleClick}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

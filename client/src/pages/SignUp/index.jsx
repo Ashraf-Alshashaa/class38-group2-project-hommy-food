@@ -105,7 +105,7 @@ const SignUp = () => {
 
   const handleCheckBox = (e) => {
     // e.target.value === "chef" ? setIsChef(true) : setIsChef(false);
-    setIsChef(e.target.value)
+    setIsChef(e.target.value);
     // console.log(isChef);
     // console.log(e.target.value);
   };

@@ -3,11 +3,11 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import "./style.css";
 
-const SignUpForm = (props) => {
+const InputForm = (props) => {
   const [focus, setFocus] = useState(false);
   const { label, onChange, errorMessage, ...inputs } = props;
 
-  const handleFocus = () => {
+  const handleOnBlur = () => {
     setFocus(true);
   };
   return (
@@ -16,7 +16,7 @@ const SignUpForm = (props) => {
       <input
         {...inputs}
         onChange={onChange}
-        onBlur={handleFocus}
+        onBlur={handleOnBlur}
         focus={focus.toString()}
       />
       <span>
@@ -26,10 +26,10 @@ const SignUpForm = (props) => {
     </div>
   );
 };
-SignUpForm.propTypes = {
+InputForm.propTypes = {
   label: PropTypes.string.isRequired,
   errorMessage: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
 };
 
-export default SignUpForm;
+export default InputForm;

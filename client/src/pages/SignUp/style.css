@@ -68,18 +68,9 @@ button {
 }
 
 .submit-btn:hover {
-  /* background-color: #d68203;
-  border: 2px solid #d68203;
-  color: #d6d6d6; */
-  background-color: #014b1f;
-  border: 2px solid #014b1f;
-  color: white;
+  transform: scale(0.95);
 }
 
 .back-btn:hover {
-  /* background-color: #d6d6d6;
-  border: 2px solid #d68203; */
-  background-color: #014b1f;
-  border: 2px solid #014b1f;
-  color: white;
+  transform: scale(0.95);
 }

@@ -5,7 +5,7 @@ import "./style.css";
 import Logo from "../../../public/images/Login&SignUp-logo.png";
 
 const SignUp = () => {
-  const [userType, setUserType] = useState();
+  const [isChef, setIsChef] = useState(null);
   // const [data, setData] = useState(null);
   const [values, setValues] = useState({
     userName: "",
@@ -99,13 +99,15 @@ const SignUp = () => {
     //   fullName: { first: values.first, last: values.last },
     //   email: values.email,
     //   password: values.password,
-    //   isChef: userType,
+    //   isChef: values.isChef,
     // });
   };
 
   const handleCheckBox = (e) => {
-    setUserType(e.target.value);
-    // console.log(userType);
+    // e.target.value === "chef" ? setIsChef(true) : setIsChef(false);
+    setIsChef(e.target.value)
+    // console.log(isChef);
+    // console.log(e.target.value);
   };
 
   return (
@@ -126,9 +128,9 @@ const SignUp = () => {
             <input
               type="radio"
               id="chef"
-              name="chef"
-              value="false"
-              checked={userType === "false"}
+              name="users"
+              value={false}
+              checked={isChef === "false"}
               onChange={handleCheckBox}
             />
             <label htmlFor="chef" className="checker-label">
@@ -139,9 +141,9 @@ const SignUp = () => {
             <input
               type="radio"
               id="user"
-              name="user"
-              value="true"
-              checked={userType === "true"}
+              name="users"
+              value={true}
+              checked={isChef === "true"}
               onChange={handleCheckBox}
             />
             <label htmlFor="user" className="checker-label">

@@ -88,7 +88,6 @@ export const login = async (req, res) => {
         { email, password },
         process.env.ACCESS_TOKEN_SECRET
       );
-      console.log(accessToken);
       res
         .status(201)
         .json({ success: true, isChef: isChef, accessToken: accessToken });

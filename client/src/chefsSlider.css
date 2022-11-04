@@ -1,0 +1,13 @@
+.swiper-wrapper {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.chefs-slider-header {
+  background: #13753b;
+  color: #f9a01b;
+  border: 2px solid #13753b;
+  border-radius: 3px;
+  padding: 5px 10px;
+  text-transform: uppercase;
+}

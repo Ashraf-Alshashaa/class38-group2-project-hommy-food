@@ -1,26 +1,34 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+import PropTypes from "prop-types";
 import { Card, Button } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-const ChefCard = ({ chefImage, ratingImg }) => {
-  // let { imgSrc, chefName, cusine, rating } = props.data;
+const ChefCard = ({ chefImg, chefRatingImg }) => {
   return (
     <div>
       <Card className="p-0 overflow-hidden h-100 shadow">
         <div className="overflow-hidden rounded p-0 bg-light">
-          <Card.Img variant="top" src={chefImage} />
+          <Card.Img variant="top" src={chefImg} />
         </div>
         <Card.Body className="text-center">
           <Card.Title className="display-6">Name</Card.Title>
-          <Card.Title className="display-6">Country</Card.Title>
-          <Card.Img variant="Body" src={ratingImg} style={{ width: "100px" }} />
+          <Card.Title className="display-8">Country</Card.Title>
+          <Card.Img
+            variant="Body"
+            src={chefRatingImg}
+            style={{ width: "100px" }}
+          />
         </Card.Body>
         <Button className="w-100 rounded-0" variant="success">
-          Visit the chef's profile
+          Visit the chef profile
         </Button>
       </Card>
     </div>
   );
 };
 
+ChefCard.propTypes = {
+  chefImg: PropTypes.string.isRequired,
+  chefRatingImg: PropTypes.string.isRequired,
+};
 export default ChefCard;

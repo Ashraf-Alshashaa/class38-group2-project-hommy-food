@@ -6,35 +6,59 @@ import { Link } from "react-router-dom";
 
 const CuisineListButtons = () => {
   const [open, setOpen] = useState(false);
+  const { width } = useWindowSize();
+
   let cuisines = [
-    { href: "result/cuisine/:id", name: "Indian" },
-    { href: "/cuisine/Chinese", name: "Chinese" },
-    { href: "/cuisine/Italian", name: "Italian" },
-    { href: "/cuisine/Spanish", name: "Spanish" },
-    { href: "/cuisine/Turkish", name: "Turkish" },
-    { href: "/cuisine/Greek", name: "Greek" },
-    { href: "/cuisine/American", name: "American" },
-    { href: "/cuisine/MiddleEastern", name: "Middle Eastern" },
-    { href: "/cuisine/Thai", name: "Thai" },
-    { href: "/cuisine/French", name: "French" },
-    { href: "/cuisine/Malaysian", name: "Malaysian" },
-    { href: "/cuisine/African", name: "Korean" },
+    { id: "cuisine/:id", name: "Indian" },
+    { id: "Chinese", name: "Chinese" },
+    { id: "Italian", name: "Italian" },
+    { id: "Spanish", name: "Spanish" },
+    { id: "Turkish", name: "Turkish" },
+    { id: "Greek", name: "Greek" },
+    { id: "American", name: "American" },
+    { id: "MiddleEastern", name: "Middle Eastern" },
+    { id: "Thai", name: "Thai" },
+    { id: "French", name: "French" },
+    { id: "Malaysian", name: "Malaysian" },
+    { id: "African", name: "Korean" },
   ];
-  const cuisineButton = cuisines.slice(0, 7);
-  const dropDownCuisine = cuisines.slice(7, 12);
-  const size = useWindowSize();
+
+  const cuisineNavLinks = (screenWidth, isDropDownCuisine) => {
+    const numOfBtn = [];
+    if (screenWidth > 1024) numOfBtn.push(8);
+    if (screenWidth >= 820 && screenWidth < 1024) numOfBtn.push(6);
+    if (screenWidth < 820 && screenWidth > 600) numOfBtn.push(4);
+    if (screenWidth < 600) numOfBtn.push(0);
+    const numOfCuisines = cuisines.length;
+    const dropDownItems = cuisines.slice(numOfBtn[0], numOfCuisines);
+    const buttonItems = cuisines.slice(0, numOfBtn[0]);
+    return isDropDownCuisine
+      ? dropDownItems.map(({ id, name }) =>
+          mapCuisine(isDropDownCuisine, name, id)
+        )
+      : buttonItems.map(({ id, name }) =>
+          mapCuisine(isDropDownCuisine, name, id)
+        );
+  };
+
+  const mapCuisine = (isDropDownCuisine, name, id) => {
+    return (
+      <Link to={`/result/${id}`} key={name} className="dropdown-item-link">
+        {isDropDownCuisine ? (
+          <DropdownItem text={name} />
+        ) : (
+          <button className="btn btn-primary m-1 ">{name}</button>
+        )}
+      </Link>
+    );
+  };
+
   return (
     <>
-      <div className="cuisine-buttons-container">
-        <div className="cuisine">
-          {cuisineButton.map(({ href, name }) => (
-            <Link to={href} key={name}>
-              <button className="btn btn-primary ">{name}</button>
-            </Link>
-          ))}
-        </div>
-        <div className="menu-container">
-          <div className="menu-trigger">
+      <div className="cuisine-buttons-container d-flex justify-content-center mt-4 ">
+        <div className="cuisine">{cuisineNavLinks(width, false)}</div>
+        <div className="menu-container ">
+          <div className="menu-trigger m-1">
             <button
               onClick={() => {
                 setOpen(!open);
@@ -44,46 +68,15 @@ const CuisineListButtons = () => {
               Other Cuisines <i className="fa fa-caret-down" />
             </button>
           </div>
-
           <div className={`menu ${open ? "active" : "inactive"}`}>
-            <ul>
-              {dropDownCuisine.map(({ href, name }) => (
-                <Link to={href} key={name}>
-                  <DropdownItem text={name} />
-                </Link>
-              ))}
-            </ul>
+            <ul>{cuisineNavLinks(width, true)}</ul>
           </div>
         </div>
       </div>
-      {size.width < 600 && (
-        <div className="menu-containerMobile">
-          <div className="menu-triggerMobile d-grid ">
-            <button
-              onClick={() => {
-                setOpen(!open);
-              }}
-              type="button"
-              className="btn btn-primary "
-            >
-              Cuisines
-              <i className="fa fa-caret-down" />
-            </button>
-          </div>
-          <div className={`menuMobile ${open ? "active" : "inactive"}`}>
-            <ul>
-              {cuisines.map(({ href, name }) => (
-                <Link to={href} key={name}>
-                  <DropdownItem text={name} />
-                </Link>
-              ))}
-            </ul>
-          </div>
-        </div>
-      )}
     </>
   );
 };
+
 const DropdownItem = (props) => {
   return <li className="dropdownItem">{props.text}</li>;
 };

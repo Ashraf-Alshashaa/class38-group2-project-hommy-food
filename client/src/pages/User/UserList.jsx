@@ -7,7 +7,7 @@ import TEST_ID from "./UserList.testid";
 const UserList = () => {
   const [users, setUsers] = useState(null);
   const { isLoading, error, performFetch, cancelFetch } = useFetch(
-    "/user",
+    "/users",
     (response) => {
       setUsers(response.result);
     }

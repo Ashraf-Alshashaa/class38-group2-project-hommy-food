@@ -8,13 +8,14 @@ import { useNavigate } from "react-router-dom";
 
 const CuisineListButtons = () => {
   const [open, setOpen] = useState(false);
-  const [cuisines, setCuisines] = useState([]);
+  const [cuisines, setCuisines] = useState(null);
   const navigate = useNavigate();
-
   const { performFetch } = useFetch("/cuisines", setCuisines);
+
   useEffect(() => {
     performFetch();
   }, []);
+  console.log(cuisines);
   const cuisineButton = cuisines?.result.slice(0, 7);
   const dropDownCuisine = cuisines?.result.slice(7);
   const size = useWindowSize();

@@ -6,25 +6,14 @@
   background-color: var(--secondary-color);
   color: #fff;
 }
+
 .btn-search:hover {
   background-color: var(--dark-gray-color) !important;
 }
 
 /* Search by Cuisine */
-.cuisine-buttons-container {
-  display: flex;
-  margin-top: 40px;
-  max-height: 0px;
-  justify-content: center;
-}
-.cuisine {
-  height: fit-content;
-}
 
 .btn {
-  margin-right: 0.25vw;
-  width: 6.5vw;
-  font-size: 1vw;
   background-color: var(--secondary-color);
   border: none;
 }
@@ -37,31 +26,31 @@
   cursor: pointer;
   background-color: var(--dark-gray-color);
   color: var(--secondary-color);
-  font-size: 1;
   border: none;
-  width: 14vw;
 }
 
 .menu {
-  margin-top: 10px;
   background-color: var(--primary-color);
-  width: 215px;
   border-radius: 5px;
   color: var(--light-gray-color);
 }
-
-.active {
+*/ .active {
   opacity: 1;
-  visibility: visible;
+  display: block;
   transform: translateY(0);
   transition: 500ms ease;
 }
 
 .inactive {
   opacity: 0;
-  visibility: hidden;
+  display: none;
   transform: translateY(-10px);
   transition: 500ms ease;
+}
+
+.dropdown-item-link {
+  color: var(----light-gray-color);
+  text-decoration: none;
 }
 
 .menu ul li {
@@ -70,6 +59,7 @@
   list-style: none;
   color: var(----light-gray-color);
 }
+
 .menu ul li:hover {
   cursor: pointer;
   color: var(--secondary-color);
@@ -110,6 +100,7 @@
     border-radius: 5px;
     color: var(--light-gray-color);
   }
+
   .dropdownItem {
     padding: 5px 0;
     border-top: 1px solid rgba(0, 0, 0, 0.05);
@@ -117,21 +108,15 @@
     color: var(----light-gray-color);
   }
 
-  /* .menu-trigger button {
-      font-size: 1;
-      border: none;
-      width: 700px;
-      background-color: red;
-    } */
-
-  .menu-triggerMobile button {
+  .menu-trigger button {
     margin: 10px auto;
     width: 90vw;
     font-size: 2.5vw;
   }
 
-  .menu-triggerMobile i {
+  .menu-trigger i {
     float: right;
+    color: var(----light-gray-color);
   }
 
   /* cards */

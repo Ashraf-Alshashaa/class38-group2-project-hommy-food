@@ -46,7 +46,6 @@ const CuisineListButtons = () => {
               Other Cuisines <i className="fa fa-caret-down" />
             </button>
           </div>
-
           <div className={`menu ${open ? "active" : "inactive"}`}>
             <ul>
               {dropDownCuisine.map((cuisine) => (
@@ -98,6 +97,7 @@ const CuisineListButtons = () => {
     </>
   );
 };
+
 const DropdownItem = (props) => {
   return <li className="dropdownItem">{props.text}</li>;
 };

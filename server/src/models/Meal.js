@@ -6,7 +6,7 @@ const mealSchema = new mongoose.Schema({
   title: { type: String, required: true },
   ingredients: [String],
   image: String,
-  category: String /* { type: mongoose.ObjectId, ref: "Category" } */,
+  category: { type: mongoose.ObjectId, ref: "Category" },
   cuisine: { type: String, required: true },
   price: { type: Number, required: true },
   isAvailable: { type: Boolean, required: true, default: false },

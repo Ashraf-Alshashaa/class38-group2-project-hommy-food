@@ -13,10 +13,6 @@ const CategoryListCards = () => {
     performFetch();
   }, []);
 
-  const handleClick = () => {
-    navigate("/results");
-  };
-
   return (
     <div className="categories-Container">
       <div className="container">
@@ -26,7 +22,9 @@ const CategoryListCards = () => {
               key={category._id}
               image={category.image}
               title={category.title}
-              onClick={handleClick}
+              onClick={() => {
+                navigate(`/results?category=${category?._id}`);
+              }}
             />
           ))}
         </div>

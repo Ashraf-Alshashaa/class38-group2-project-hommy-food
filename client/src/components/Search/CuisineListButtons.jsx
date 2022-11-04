@@ -23,7 +23,7 @@ const CuisineListButtons = () => {
     <>
       <div className="cuisine-buttons-container">
         <div className="cuisine">
-          {cuisineButton.map((cuisine) => (
+          {cuisineButton?.map((cuisine) => (
             <button
               className="btn btn-primary "
               key={cuisine._id}
@@ -48,7 +48,7 @@ const CuisineListButtons = () => {
           </div>
           <div className={`menu ${open ? "active" : "inactive"}`}>
             <ul>
-              {dropDownCuisine.map((cuisine) => (
+              {dropDownCuisine?.map((cuisine) => (
                 <button
                   className="btn btn-primary "
                   key={cuisine._id}

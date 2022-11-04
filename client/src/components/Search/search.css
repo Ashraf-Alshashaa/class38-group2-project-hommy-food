@@ -6,14 +6,26 @@
   background-color: var(--secondary-color);
   color: #fff;
 }
+.search-box {
+  margin-top: 8% !important;
+}
 
 .btn-search:hover {
   background-color: var(--dark-gray-color) !important;
 }
 
 /* Search by Cuisine */
+.cuisine-buttons-container {
+  display: flex;
+  margin-top: 40px;
+  max-height: 0px;
+  justify-content: center;
+}
 
 .btn {
+  margin-right: 0.25vw;
+  width: 6.5vw;
+  font-size: 1vw;
   background-color: var(--secondary-color);
   border: none;
 }
@@ -27,16 +39,19 @@
   background-color: var(--dark-gray-color);
   color: var(--secondary-color);
   border: none;
+  width: 14vw;
 }
 
 .menu {
+  margin-top: 10px;
+  width: 215px;
   background-color: var(--primary-color);
   border-radius: 5px;
   color: var(--light-gray-color);
 }
-*/ .active {
+.active {
   opacity: 1;
-  display: block;
+  visibility: visible;
   transform: translateY(0);
   transition: 500ms ease;
 }
@@ -48,11 +63,6 @@
   transition: 500ms ease;
 }
 
-.dropdown-item-link {
-  color: var(----light-gray-color);
-  text-decoration: none;
-}
-
 .menu ul li {
   padding: 5px 0;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
@@ -62,7 +72,7 @@
 
 .menu ul li:hover {
   cursor: pointer;
-  color: var(--secondary-color);
+  /* color: var(--secondary-color); */
 }
 /* card */
 .container {
@@ -108,13 +118,13 @@
     color: var(----light-gray-color);
   }
 
-  .menu-trigger button {
+  .menu-triggerMobile button {
     margin: 10px auto;
     width: 90vw;
     font-size: 2.5vw;
   }
 
-  .menu-trigger i {
+  .menu-triggerMobile i {
     float: right;
     color: var(----light-gray-color);
   }

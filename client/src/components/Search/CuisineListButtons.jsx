@@ -1,36 +1,37 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import "./search.css";
 import useWindowSize from "../../hooks/useWindowSize";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import useFetch from "../../hooks/useFetch";
+import { useNavigate } from "react-router-dom";
 
 const CuisineListButtons = () => {
   const [open, setOpen] = useState(false);
-  let cuisines = [
-    { href: "result/cuisine/:id", name: "Indian" },
-    { href: "/cuisine/Chinese", name: "Chinese" },
-    { href: "/cuisine/Italian", name: "Italian" },
-    { href: "/cuisine/Spanish", name: "Spanish" },
-    { href: "/cuisine/Turkish", name: "Turkish" },
-    { href: "/cuisine/Greek", name: "Greek" },
-    { href: "/cuisine/American", name: "American" },
-    { href: "/cuisine/MiddleEastern", name: "Middle Eastern" },
-    { href: "/cuisine/Thai", name: "Thai" },
-    { href: "/cuisine/French", name: "French" },
-    { href: "/cuisine/Malaysian", name: "Malaysian" },
-    { href: "/cuisine/African", name: "Korean" },
-  ];
-  const cuisineButton = cuisines.slice(0, 7);
-  const dropDownCuisine = cuisines.slice(7, 12);
+  const [cuisines, setCuisines] = useState([]);
+  const navigate = useNavigate();
+
+  const { performFetch } = useFetch("/cuisines", setCuisines);
+  useEffect(() => {
+    performFetch();
+  }, []);
+  const cuisineButton = cuisines?.result.slice(0, 7);
+  const dropDownCuisine = cuisines?.result.slice(7);
   const size = useWindowSize();
   return (
     <>
       <div className="cuisine-buttons-container">
         <div className="cuisine">
-          {cuisineButton.map(({ href, name }) => (
-            <Link to={href} key={name}>
-              <button className="btn btn-primary ">{name}</button>
-            </Link>
+          {cuisineButton.map((cuisine) => (
+            <button
+              className="btn btn-primary "
+              key={cuisine._id}
+              onClick={() => {
+                navigate(`/results?cuisine=${cuisine?._id}`);
+              }}
+            >
+              {cuisine?.title}
+            </button>
           ))}
         </div>
         <div className="menu-container">
@@ -47,10 +48,16 @@ const CuisineListButtons = () => {
 
           <div className={`menu ${open ? "active" : "inactive"}`}>
             <ul>
-              {dropDownCuisine.map(({ href, name }) => (
-                <Link to={href} key={name}>
-                  <DropdownItem text={name} />
-                </Link>
+              {dropDownCuisine.map((cuisine) => (
+                <button
+                  className="btn btn-primary "
+                  key={cuisine._id}
+                  onClick={() => {
+                    navigate(`/results?cuisine=${cuisine?._id}`);
+                  }}
+                >
+                  {cuisine?.title}
+                </button>
               ))}
             </ul>
           </div>
@@ -72,10 +79,16 @@ const CuisineListButtons = () => {
           </div>
           <div className={`menuMobile ${open ? "active" : "inactive"}`}>
             <ul>
-              {cuisines.map(({ href, name }) => (
-                <Link to={href} key={name}>
-                  <DropdownItem text={name} />
-                </Link>
+              {cuisines?.result.map((cuisine) => (
+                <button
+                  className="btn btn-primary "
+                  key={cuisine._id}
+                  onClick={() => {
+                    navigate(`/results?cuisine=${cuisine?._id}`);
+                  }}
+                >
+                  {cuisine?.title}
+                </button>
               ))}
             </ul>
           </div>

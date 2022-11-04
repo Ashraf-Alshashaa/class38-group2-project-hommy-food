@@ -1,11 +1,13 @@
 import React from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import InputForm from "../../components/InputForm";
 import "./style.css";
 import Logo from "../../../public/images/Login&SignUp-logo.png";
 
 const SignUp = () => {
   const [isChef, setIsChef] = useState(null);
+  // const [isUser, setIsUser] = useState(true);
   // const [data, setData] = useState(null);
   const [values, setValues] = useState({
     userName: "",
@@ -99,15 +101,14 @@ const SignUp = () => {
     //   fullName: { first: values.first, last: values.last },
     //   email: values.email,
     //   password: values.password,
-    //   isChef: values.isChef,
+    //   isChef: isChef,
     // });
   };
 
   const handleCheckBox = (e) => {
-    // e.target.value === "chef" ? setIsChef(true) : setIsChef(false);
-    setIsChef(e.target.value);
+    e.target.value === "chef" ? setIsChef(false) : setIsChef(true);
     // console.log(isChef);
-    // console.log(e.target.value);
+    // console.log(data);
   };
 
   return (
@@ -129,7 +130,7 @@ const SignUp = () => {
               type="radio"
               id="chef"
               name="users"
-              value={false}
+              value="chef"
               checked={isChef === "false"}
               onChange={handleCheckBox}
             />
@@ -142,8 +143,8 @@ const SignUp = () => {
               type="radio"
               id="user"
               name="users"
-              value={true}
-              checked={isChef === "true"}
+              value="user"
+              checked={!isChef === "true"}
               onChange={handleCheckBox}
             />
             <label htmlFor="user" className="checker-label">
@@ -152,7 +153,9 @@ const SignUp = () => {
           </div>
         </div>
         <button className="submit-btn">Submit</button>
-        <button className="back-btn">Back</button>
+        <Link className="link-btn" to="/login">
+          <button className="back-btn">Back</button>
+        </Link>
       </form>
     </div>
   );

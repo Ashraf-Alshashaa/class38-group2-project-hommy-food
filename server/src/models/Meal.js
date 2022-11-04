@@ -7,7 +7,7 @@ const mealSchema = new mongoose.Schema({
   ingredients: [String],
   image: String,
   category: { type: mongoose.ObjectId, ref: "Category" },
-  cuisine: { type: String, required: true },
+  cuisine: { type: mongoose.ObjectId, ref: "Cuisine" },
   price: { type: Number, required: true },
   isAvailable: { type: Boolean, required: true, default: false },
   quantity: Number,

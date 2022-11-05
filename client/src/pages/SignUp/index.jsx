@@ -10,13 +10,12 @@ const SignUp = () => {
   const [data, setData] = useState(null);
   const [values, setValues] = useState({
     userName: "",
-    first: "",
-    last: "",
     email: "",
     password: "",
     confirmPassword: "",
     isChef: "user",
   });
+  const [result, setResult] = useState("");
 
   // Creating an array of input
   const inputs = [
@@ -33,28 +32,6 @@ const SignUp = () => {
     },
     {
       id: 2,
-      name: "first",
-      type: "text",
-      placeholder: "first name",
-      errorMessage:
-        "Last name should be 3-10 characters and shouldn't include any special character!",
-      label: "First name",
-      pattern: "^[A-Za-z0-9]{3,10}$",
-      required: true,
-    },
-    {
-      id: 3,
-      name: "last",
-      type: "text",
-      placeholder: "last name",
-      errorMessage:
-        "Last name should be 3-10 characters and shouldn't include any special character!",
-      label: "Last name",
-      pattern: "^[A-Za-z0-9]{3,10}$",
-      required: true,
-    },
-    {
-      id: 4,
       name: "email",
       type: "email",
       placeholder: "email@example.com",
@@ -63,7 +40,7 @@ const SignUp = () => {
       required: true,
     },
     {
-      id: 5,
+      id: 3,
       name: "password",
       type: "password",
       placeholder: "Password",
@@ -75,7 +52,7 @@ const SignUp = () => {
       required: true,
     },
     {
-      id: 6,
+      id: 4,
       name: "confirmPassword",
       type: "password",
       placeholder: "Confirm password",
@@ -100,7 +77,9 @@ const SignUp = () => {
           body: JSON.stringify(data),
         }
       );
-      await response.json();
+      const result = await response.json();
+      setResult(result);
+      // console.log(result);
     } catch (error) {
       alert("error");
     }
@@ -115,7 +94,6 @@ const SignUp = () => {
   useEffect(() => {
     setData({
       userName: values.userName,
-      fullName: { first: values.first, last: values.last },
       email: values.email,
       password: values.password,
       isChef: values.isChef === "chef",
@@ -124,6 +102,7 @@ const SignUp = () => {
 
   return (
     <div className="signUp-page">
+      {result.success === false && alert(result.msg)}
       <form onSubmit={handleSubmit}>
         <img src={Logo} width="200px" alt="logo" />
         <h1>Register</h1>

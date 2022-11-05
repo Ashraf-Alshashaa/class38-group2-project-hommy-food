@@ -1,7 +1,7 @@
 import React from "react";
-import "./style.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import "./style.css";
 
 const SearchField = () => {
   const [query, setQuery] = useState("");
@@ -11,26 +11,24 @@ const SearchField = () => {
   };
   return (
     <>
-      <div className=" col-md-6 col-lg-6 col-11 mx-auto my-auto search-box">
-        <div className="input-group from-container">
-          <input
-            name={"Search"}
-            placeholder="Find your meal"
-            type={"text"}
-            onChange={handleChange}
-            className="form-control search-input"
-          />
-          <span className="input-group-btn">
-            <button
-              className="btn btn-search"
-              type="button"
-              onClick={() => navigate(`/results?search=${query}`)}
-            >
-              <i className="fa fa-search" />
-            </button>
-          </span>
-        </div>
-      </div>
+      {/* <div className=" col-md-6 col-lg-6 col-11 mx-auto my-auto search-box"> */}
+      <form className="search-container">
+        <input
+          name={"Search"}
+          placeholder={"Find your meal..."}
+          type={"text"}
+          onChange={handleChange}
+          className="search-control"
+        />
+        <button
+          type="submit"
+          id="search-btn"
+          onClick={() => navigate(`/results?search=${query}`)}
+        >
+          <i className="fas fa-search"></i>
+        </button>
+      </form>
+      {/* </div> */}
     </>
   );
 };

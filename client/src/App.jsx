@@ -5,7 +5,6 @@ import Home from "./pages/Home/Home";
 import ResultPage from "./pages/resultPage";
 import Footer from "./components/Footer";
 import Login from "./pages/Login";
-
 import "./App.css";
 
 const App = () => {

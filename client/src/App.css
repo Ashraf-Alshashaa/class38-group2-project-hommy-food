@@ -3,6 +3,7 @@
 :root {
   --primary-color: #13753b;
   --secondary-color: #f9a01b;
+  --darker-gray-color: #868686;
   --dark-gray-color: #cccccb;
   --light-gray-color: #d8d8d8;
 }
@@ -22,4 +23,3 @@ body {
   justify-content: center;
   align-items: center;
 }
-

@@ -6,7 +6,7 @@
 }
 
 .btn {
-  margin-right: 0.25vw;
+  margin-right: 1vw;
   width: 6.5vw;
   font-size: 1vw;
   background-color: var(--secondary-color);
@@ -20,7 +20,7 @@
 .menu-trigger button {
   overflow: hidden;
   cursor: pointer;
-  background-color: var(--dark-gray-color);
+  background-color: var(--primary-color);
   color: var(--secondary-color);
   border: none;
   width: 14vw;
@@ -28,7 +28,7 @@
 
 .menu {
   margin-top: 10px;
-  width: 215px;
+  width: 14vw;
   background-color: var(--primary-color);
   border-radius: 5px;
   color: var(--light-gray-color);
@@ -49,15 +49,29 @@
 }
 
 .menu ul li {
-  padding: 5px 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 10px 0;
   list-style: none;
   color: var(----light-gray-color);
 }
 
+.menu ul {
+  padding: 0;
+}
+
 .menu ul li:hover {
   cursor: pointer;
-  /* color: var(--secondary-color); */
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.drop-down-menu {
+  display: flex;
+  justify-content: center;
+  border: none;
+  padding: 10px 0;
+  overflow: hidden;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
 }
 
 @media only screen and (max-width: 600px) {
@@ -65,23 +79,43 @@
     display: none;
   }
   .menuMobile {
-    width: 80%;
-    margin-left: 10%;
-    background-color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    width: 85vw;
+    margin: 0 auto;
+    background-color: var(--secondary-color);
     border-radius: 5px;
     color: var(--light-gray-color);
   }
 
-  .dropdownItem {
-    padding: 5px 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
+  .btn {
+    width: 100%;
+    margin: 0;
+    font-size: 14px;
+  }
+
+  .menuMobile ul li .btn-primary {
+    background-color: var(--primary-color);
+    padding: 8px 0;
     list-style: none;
     color: var(----light-gray-color);
+    z-index: 10;
+  }
+
+  .menuMobile ul {
+    padding: 0;
+    margin: 0;
+  }
+
+  .menuMobile ul li .btn-primary:hover {
+    cursor: pointer;
+    background-color: var(--secondary-color);
+    color: white;
   }
 
   .menu-triggerMobile button {
     margin: 10px auto;
-    width: 90vw;
+    width: 85vw;
     font-size: 2.5vw;
   }
 

@@ -5,14 +5,19 @@ import SearchField from "../../components/SearchField";
 import CuisineListButtons from "../../components/CuisineListButtons/index";
 import CategoryListCards from "../../components/CategoryListCards/index";
 import Banner from "../../components/Banner";
+import "./style.css";
 
 const Home = () => {
   return (
     <div data-testid={TEST_ID.container}>
-      <Banner />
-      <SearchField />
-      <CuisineListButtons />
-      <CategoryListCards />
+      <div className="home-main-container">
+        <Banner />
+        <div className="home-search-container">
+          <SearchField />
+          <CuisineListButtons />
+          <CategoryListCards />
+        </div>
+      </div>
     </div>
   );
 };

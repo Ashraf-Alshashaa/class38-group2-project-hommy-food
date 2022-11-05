@@ -49,15 +49,15 @@ const CuisineListButtons = () => {
           <div className={`menu ${open ? "active" : "inactive"}`}>
             <ul>
               {dropDownCuisine?.map((cuisine) => (
-                <button
-                  className="btn btn-primary "
+                <li
+                  className="drop-down-menu "
                   key={cuisine._id}
                   onClick={() => {
                     navigate(`/results?cuisine=${cuisine?._id}`);
                   }}
                 >
                   {cuisine?.title}
-                </button>
+                </li>
               ))}
             </ul>
           </div>
@@ -80,7 +80,7 @@ const CuisineListButtons = () => {
           <div className={`menuMobile ${open ? "active" : "inactive"}`}>
             <ul>
               {cuisines?.result.map((cuisine) => (
-                <button
+                <li
                   className="btn btn-primary "
                   key={cuisine._id}
                   onClick={() => {
@@ -88,7 +88,7 @@ const CuisineListButtons = () => {
                   }}
                 >
                   {cuisine?.title}
-                </button>
+                </li>
               ))}
             </ul>
           </div>

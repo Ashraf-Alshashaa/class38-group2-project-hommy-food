@@ -8,11 +8,14 @@ import "./style.css";
 const CategoryListCards = () => {
   const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
-
   const { performFetch } = useFetch("/categories", setCategories);
   useEffect(() => {
     performFetch();
   }, []);
+
+  const handleClick = (id) => {
+    navigate(`/results?category=${id}`);
+  };
 
   return (
     <div className="categories-Container">
@@ -24,7 +27,7 @@ const CategoryListCards = () => {
               image={category.image}
               title={category.title}
               onClick={() => {
-                navigate(`/results?category=${category?._id}`);
+                handleClick(category?._id);
               }}
             />
           ))}

@@ -3,6 +3,7 @@
 }
 
 .chefs-slider-header {
+  font-size: 15px;
   background: #13753b;
   color: #f9a01b;
   border: 2px solid #13753b;
@@ -12,5 +13,21 @@
 }
 
 .container {
-  width: 50%;
+  width: 60%;
+}
+
+.slider-chef-name {
+  font-size: 15px;
+}
+
+.slider-chef-country {
+  font-size: 10px;
+}
+
+.visit-chef-btn {
+  max-height: 5vh;
+}
+
+.visit-chef-text {
+  font-size: 10px;
 }

@@ -11,16 +11,20 @@ const ChefCard = ({ chefName, chefCountry, chefImg, chefRatingImg }) => {
           <Card.Img variant="top" src={chefImg} />
         </div>
         <Card.Body className="text-center">
-          <Card.Title className="display-8">{chefName}</Card.Title>
-          <Card.Title className="display-10">{chefCountry}</Card.Title>
+          <Card.Title className="slider-chef-name display-14">
+            {chefName}
+          </Card.Title>
+          <Card.Title className="slider-chef-country display-16">
+            {chefCountry}
+          </Card.Title>
           <Card.Img
             variant="Body"
             src={chefRatingImg}
-            style={{ width: "100px" }}
+            style={{ width: "50px" }}
           />
         </Card.Body>
-        <Button className="w-100 rounded-0" variant="success">
-          Visit the chef profile
+        <Button className="visit-chef-btn w-100 rounded-0" variant="success">
+          <p className="visit-chef-text">Visit the chef profile</p>
         </Button>
       </Card>
     </div>

@@ -25,7 +25,7 @@ const ChefsSlider = () => {
   });
   return (
     <div className="container py-4 px-4 justify-content-center ">
-      <h3 className="chefs-slider-header text-center">Top 10 rating chefs</h3>
+      <h5 className="chefs-slider-header text-center">Top 10 rating chefs</h5>
       <Swiper
         freeMode={true}
         grabCursor={true}

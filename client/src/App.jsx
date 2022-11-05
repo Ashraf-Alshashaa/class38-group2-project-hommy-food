@@ -5,7 +5,7 @@ import Home from "./pages/Home/Home";
 import Footer from "./components/Footer";
 import Login from "./pages/Login";
 import "./App.css";
-import SignUp from "./pages/Signup";
+import SignUp from "./pages/SignUp";
 
 const App = () => {
   return (

@@ -7,6 +7,7 @@ const InputForm = (props) => {
   const [focus, setFocus] = useState(false);
   const { label, onChange, errorMessage, ...inputs } = props;
 
+  // handel the field focus
   const handleOnBlur = () => {
     setFocus(true);
   };

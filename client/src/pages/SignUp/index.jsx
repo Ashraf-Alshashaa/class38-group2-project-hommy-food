@@ -6,8 +6,7 @@ import "./style.css";
 import Logo from "../../../public/images/Login&SignUp-logo.png";
 
 const SignUp = () => {
-  const [isChef, setIsChef] = useState(null);
-  // const [isUser, setIsUser] = useState(true);
+  const [isChef, setIsChef] = useState(true);
   // const [data, setData] = useState(null);
   const [values, setValues] = useState({
     userName: "",
@@ -16,7 +15,7 @@ const SignUp = () => {
     email: "",
     password: "",
     confirmPassword: "",
-    isChef: "",
+    userType: "",
   });
 
   // Creating an array of input
@@ -95,6 +94,7 @@ const SignUp = () => {
 
   // Updating the input value
   const onChange = (e) => {
+    e.target.value === "chef" ? setIsChef(false) : setIsChef(true);
     setValues({ ...values, [e.target.name]: e.target.value });
     // setData({
     //   userName: values.userName,
@@ -104,13 +104,6 @@ const SignUp = () => {
     //   isChef: isChef,
     // });
   };
-
-  const handleCheckBox = (e) => {
-    e.target.value === "chef" ? setIsChef(false) : setIsChef(true);
-    // console.log(isChef);
-    // console.log(data);
-  };
-
   return (
     <div className="signUp-page">
       <form onSubmit={handleSubmit}>
@@ -129,10 +122,10 @@ const SignUp = () => {
             <input
               type="radio"
               id="chef"
-              name="users"
+              name="user-type"
               value="chef"
-              checked={isChef === "false"}
-              onChange={handleCheckBox}
+              checked={isChef == false}
+              onChange={onChange}
             />
             <label htmlFor="chef" className="checker-label">
               Chef
@@ -142,10 +135,10 @@ const SignUp = () => {
             <input
               type="radio"
               id="user"
-              name="users"
+              name="user-type"
               value="user"
-              checked={!isChef === "true"}
-              onChange={handleCheckBox}
+              checked={isChef == true}
+              onChange={onChange}
             />
             <label htmlFor="user" className="checker-label">
               User

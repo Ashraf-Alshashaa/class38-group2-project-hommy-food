@@ -2,15 +2,27 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination } from "swiper";
 import ChefCard from "./ChefCard";
-import chefImg from "../../../public/images/img_avatar.png";
-import chefRatingImg from "../../../public/images/rating.jpg";
+import chefsSliderData from "./ChefsSliderData";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../../chefsSlider.css";
+import "./chefsSlider.css";
 
 const ChefsSlider = () => {
+  const chefsData = chefsSliderData.map((data) => {
+    return (
+      <SwiperSlide key={data.key}>
+        <ChefCard
+          key={data.key}
+          chefName={data.name}
+          chefCountry={data.country}
+          chefImg={data.chefImg}
+          chefRatingImg={data.chefRatingImg}
+        />
+      </SwiperSlide>
+    );
+  });
   return (
     <div className="container py-4 px-4 justify-content-center ">
       <h2 className="chefs-slider-header text-center">Top 10 rating chefs</h2>
@@ -45,36 +57,7 @@ const ChefsSlider = () => {
           },
         }}
       >
-        <SwiperSlide>
-          <ChefCard chefImg={chefImg} chefRatingImg={chefRatingImg} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <ChefCard chefImg={chefImg} chefRatingImg={chefRatingImg} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <ChefCard chefImg={chefImg} chefRatingImg={chefRatingImg} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <ChefCard chefImg={chefImg} chefRatingImg={chefRatingImg} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <ChefCard chefImg={chefImg} chefRatingImg={chefRatingImg} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <ChefCard chefImg={chefImg} chefRatingImg={chefRatingImg} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <ChefCard chefImg={chefImg} chefRatingImg={chefRatingImg} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <ChefCard chefImg={chefImg} chefRatingImg={chefRatingImg} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <ChefCard chefImg={chefImg} chefRatingImg={chefRatingImg} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <ChefCard chefImg={chefImg} chefRatingImg={chefRatingImg} />
-        </SwiperSlide>
+        {chefsData}
       </Swiper>
     </div>
   );

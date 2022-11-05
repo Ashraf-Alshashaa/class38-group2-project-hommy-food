@@ -1,6 +1,5 @@
 import React from "react";
 import Banner from "../../components/Banner";
-
 import TEST_ID from "./Home.testid";
 
 const Home = () => {

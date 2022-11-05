@@ -2,6 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home/Home";
+import Footer from "./components/Footer";
 import Login from "./pages/Login";
 import "./App.css";
 
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/aboutUs" element={<h1>about us page</h1>} />
         <Route path="/register" element={<h1>register page</h1>} />
       </Routes>
+      <Footer />
     </>
   );
 };

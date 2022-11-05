@@ -1,0 +1,33 @@
+.container {
+  position: absolute;
+  top: 50%;
+  margin: 0 auto;
+  width: 80%;
+  z-index: -1;
+}
+
+.row {
+  row-gap: 10px;
+}
+
+.categories-Container {
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (max-width: 600px) {
+  /* cards */
+  .container {
+    width: 90%;
+    position: absolute;
+    top: 30%;
+    z-index: -1;
+  }
+
+  .card {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./search.css";
+import "./style.css";
 import useWindowSize from "../../hooks/useWindowSize";
 import { useState, useEffect } from "react";
 import useFetch from "../../hooks/useFetch";

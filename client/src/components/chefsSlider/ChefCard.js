@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Card, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const ChefCard = ({ chefImg, chefRatingImg }) => {
+const ChefCard = ({ chefName, chefCountry, chefImg, chefRatingImg }) => {
   return (
     <div>
       <Card className="p-0 overflow-hidden h-100 shadow">
@@ -11,8 +11,8 @@ const ChefCard = ({ chefImg, chefRatingImg }) => {
           <Card.Img variant="top" src={chefImg} />
         </div>
         <Card.Body className="text-center">
-          <Card.Title className="display-6">Name</Card.Title>
-          <Card.Title className="display-8">Country</Card.Title>
+          <Card.Title className="display-8">{chefName}</Card.Title>
+          <Card.Title className="display-10">{chefCountry}</Card.Title>
           <Card.Img
             variant="Body"
             src={chefRatingImg}
@@ -28,6 +28,8 @@ const ChefCard = ({ chefImg, chefRatingImg }) => {
 };
 
 ChefCard.propTypes = {
+  chefName: PropTypes.string.isRequired,
+  chefCountry: PropTypes.string.isRequired,
   chefImg: PropTypes.string.isRequired,
   chefRatingImg: PropTypes.string.isRequired,
 };

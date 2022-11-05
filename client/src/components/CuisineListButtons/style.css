@@ -14,7 +14,7 @@
 }
 
 .btn-primary:hover {
-  background-color: var(--primary-color);
+  background-color: var(--primary-color) !important;
 }
 
 .menu-trigger button {

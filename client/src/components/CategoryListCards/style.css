@@ -8,6 +8,10 @@
   row-gap: 10px;
 }
 
+.card {
+  cursor: pointer;
+}
+
 .categories-Container {
   min-width: 100%;
   display: flex;

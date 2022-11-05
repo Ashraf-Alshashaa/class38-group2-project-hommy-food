@@ -6,7 +6,9 @@ import { logError } from "./util/logging.js";
 import validationErrorMessage from "./util/validationErrorMessage.js";
 
 const testRouter = express.Router();
-
+testRouter.get("/", (req, res) => {
+  res.send("hello");
+});
 testRouter.post("/seed", async (req, res) => {
   if (!process.env.MONGODB_URL.includes("cypressDatabase")) {
     const msg =
@@ -14,7 +16,7 @@ testRouter.post("/seed", async (req, res) => {
     logError(msg);
 
     res.status(400).json({
-      sucess: false,
+      success: false,
       msg,
     });
   } else {

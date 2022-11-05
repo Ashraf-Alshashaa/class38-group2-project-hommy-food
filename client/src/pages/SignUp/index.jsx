@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import InputForm from "../../components/InputForm";
 import "./style.css";
 import Logo from "../../../public/images/Login&SignUp-logo.png";
+import { useEffect } from "react";
 
 const SignUp = () => {
-  const [isChef, setIsChef] = useState(true);
-  // const [data, setData] = useState(null);
+  const [data, setData] = useState(null);
   const [values, setValues] = useState({
     userName: "",
     first: "",
@@ -15,7 +15,7 @@ const SignUp = () => {
     email: "",
     password: "",
     confirmPassword: "",
-    userType: "",
+    isChef: "user",
   });
 
   // Creating an array of input
@@ -39,7 +39,7 @@ const SignUp = () => {
       errorMessage:
         "Last name should be 3-10 characters and shouldn't include any special character!",
       label: "First name",
-      // pattern: "^[A-Za-z0-9]{3,10}$",
+      pattern: "^[A-Za-z0-9]{3,10}$",
       required: true,
     },
     {
@@ -50,7 +50,7 @@ const SignUp = () => {
       errorMessage:
         "Last name should be 3-10 characters and shouldn't include any special character!",
       label: "Last name",
-      // pattern: "^[A-Za-z0-9]{3,10}$",
+      pattern: "^[A-Za-z0-9]{3,10}$",
       required: true,
     },
     {
@@ -70,8 +70,8 @@ const SignUp = () => {
       errorMessage:
         "Password should be 8-20 characters and include at lest 1 letter, 1 number and 1 special character!",
       label: "Password",
-      // pattern:
-      //   "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
+      pattern:
+        "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
       required: true,
     },
     {
@@ -87,23 +87,41 @@ const SignUp = () => {
   ];
 
   // Handling the submit form
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log(data);
+    try {
+      const response = await fetch(
+        `${process.env.BASE_SERVER_URL}/api/user/create`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
+      await response.json();
+    } catch (error) {
+      alert("error");
+    }
   };
 
-  // Updating the input value
+  // Getting the input value
   const onChange = (e) => {
-    e.target.value === "chef" ? setIsChef(false) : setIsChef(true);
     setValues({ ...values, [e.target.name]: e.target.value });
-    // setData({
-    //   userName: values.userName,
-    //   fullName: { first: values.first, last: values.last },
-    //   email: values.email,
-    //   password: values.password,
-    //   isChef: isChef,
-    // });
   };
+
+  // update data for server
+  useEffect(() => {
+    setData({
+      userName: values.userName,
+      fullName: { first: values.first, last: values.last },
+      email: values.email,
+      password: values.password,
+      isChef: values.isChef === "chef",
+    });
+  }, [values]);
+
   return (
     <div className="signUp-page">
       <form onSubmit={handleSubmit}>
@@ -122,9 +140,9 @@ const SignUp = () => {
             <input
               type="radio"
               id="chef"
-              name="user-type"
+              name="isChef"
               value="chef"
-              checked={isChef == false}
+              checked={values.isChef == "chef"}
               onChange={onChange}
             />
             <label htmlFor="chef" className="checker-label">
@@ -135,9 +153,9 @@ const SignUp = () => {
             <input
               type="radio"
               id="user"
-              name="user-type"
+              name="isChef"
               value="user"
-              checked={isChef == true}
+              checked={values.isChef == "user"}
               onChange={onChange}
             />
             <label htmlFor="user" className="checker-label">

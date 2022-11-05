@@ -83,14 +83,13 @@ export const login = async (req, res) => {
         .status(401)
         .json({ success: false, msg: "email or password is incorrect" });
     } else {
-      const { isChef } = user;
       const accessToken = jwt.sign(
         { email, password },
         process.env.ACCESS_TOKEN_SECRET
       );
       res
         .status(201)
-        .json({ success: true, isChef: isChef, accessToken: accessToken });
+        .json({ success: true, user: user, accessToken: accessToken });
     }
   } catch (error) {
     logError(error);

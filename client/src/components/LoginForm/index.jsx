@@ -1,44 +1,42 @@
-import React, { useState } from "react";
-import { useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import loginLogo from "../../../public/images/login-logo.png";
 import { AuthContext } from "../../contexts/authentication";
 import "./style.css";
-const LoginForm = () => {
-  const navigate = useNavigate();
-  const { setIsLogin } = useContext(AuthContext);
+import postLoginInfo from "../../hooks/postLoginInfo";
 
+const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [msg, setMsg] = useState("");
+  const [onClick, setOnClick] = useState(false);
 
+  const navigate = useNavigate();
+  const { setUser } = useContext(AuthContext);
   const loginInfo = { email: email, password: password };
-
   const url = `${process.env.BASE_SERVER_URL}/api/user/login`;
-  const postLoginInfo = async () => {
-    try {
-      const response = await fetch(url, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(loginInfo),
-      });
-      const data = await response.json();
-      if (response.ok) {
-        const { isChef, accessToken } = data;
-        localStorage.setItem("accessToken", `${accessToken}`);
-        setIsLogin(true);
-        isChef && navigate("/chefs/my-meals", { replace: true });
-        !isChef && navigate("/", { replace: true });
-        window.location.reload(false);
-        return;
+
+  useEffect(() => {
+    (async () => {
+      if (onClick) {
+        try {
+          const response = await postLoginInfo(url, loginInfo);
+          if (response.success) {
+            const { user, accessToken } = response;
+            localStorage.setItem("accessToken", `${accessToken}`);
+            setUser(user);
+            user.isChef && navigate("/chefs/my-meals", { replace: true });
+            !user.isChef && navigate("/", { replace: true });
+          } else {
+            setMsg(response.msg);
+          }
+        } catch (error) {
+          setMsg("something went wrong");
+        }
       }
-      setMsg(data.msg);
-    } catch (error) {
-      setMsg("something went wrong");
-    }
-  };
+    })();
+    setOnClick(false);
+  }, [onClick]);
 
   return (
     <section className="login-container">
@@ -46,7 +44,7 @@ const LoginForm = () => {
       <form className="login-form">
         <label>
           <input
-            type="text"
+            type="email"
             value={email}
             placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
@@ -54,7 +52,7 @@ const LoginForm = () => {
         </label>
         <label>
           <input
-            type="text"
+            type="password"
             value={password}
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
@@ -64,7 +62,7 @@ const LoginForm = () => {
       <div className="msg-container">
         <p>{msg}</p>
       </div>
-      <button onClick={async () => await postLoginInfo()} className="login-btn">
+      <button onClick={() => setOnClick(true)} className="login-btn">
         Login
       </button>
       <div className="register-link-container center-children">

@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import defaultUserImg from "../../../public/images/user.png";
+import logo from "../../../public/images/logo.png";
+
 import "./style.css";
+import { AuthContext } from "../../contexts/authentication";
+import { useContext } from "react";
 
 const Header = () => {
+  const { logout, user } = useContext(AuthContext);
   const navigate = useNavigate();
-  const isLogin = true;
   const [displayNav, setDisplayNav] = useState(false);
   const desktop = window.innerWidth > 1024;
   const mobile = window.innerWidth < 1024;
@@ -23,7 +28,6 @@ const Header = () => {
       icon: <i className="fa-solid fa-cart-shopping fa-xl"></i>,
     },
     { href: "/aboutUs", name: "About us" },
-    { href: "/Logout", name: "Logout" },
   ];
 
   useEffect(() => {
@@ -78,42 +82,49 @@ const Header = () => {
     </button>
   );
 
+  const logOutBtn = (
+    <button
+      onClick={() => logout()}
+      className={
+        !displayNav
+          ? "nav-links-hidden"
+          : "nav-links-visible logout-header-btn cursor"
+      }
+    >
+      Logout
+    </button>
+  );
   return (
     <header className="header">
       <Link className="logo-container" to="/">
-        <img className="logo" src="/images/logo.png" alt="Hommy food" />
+        <img className="logo" src={logo} alt="Hommy food" />
       </Link>
       <div
-        onClick={() => isLogin && desktop && setDisplayNav(!displayNav)}
-        className={`user-info-container-header ${isLogin && "cursor"}`}
+        onClick={() => user && desktop && setDisplayNav(!displayNav)}
+        className={`user-info-container-header ${user && "cursor"}`}
       >
         <img
-          // todo user.photo
-          src={isLogin ? "/images/user.png" : "/images/user.png"}
+          src={user && user?.photo ? user.photo : defaultUserImg}
           alt="user"
           className="user-img-header"
         />
 
-        <h5
-          // todo user.username.last
-          className="user-name-header"
-        >
-          Hello {isLogin ? "Ashraf" : "user"}
-        </h5>
+        <h5 className="user-name-header">Hello {user?.userName || "user"}</h5>
       </div>
-      {mobile && isLogin && (
+      {mobile && user && (
         <i
           className="fa-solid fa-bars fa-xl nav-btn"
           onClick={() => setDisplayNav(!displayNav)}
         ></i>
       )}
-      {mobile && !isLogin && loginBtn}
+      {mobile && !user && loginBtn}
       <ul className="nav-links-container">
         {desktop ? navLinksItemsDesktop : navLinksItemsMobile}
+        {logOutBtn}
       </ul>
       {desktop && (
         <ul className="cart-fav-container">
-          {isLogin ? favoritesAndCart : loginBtn}
+          {user ? favoritesAndCart : loginBtn}
         </ul>
       )}
     </header>

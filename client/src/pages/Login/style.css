@@ -1,0 +1,5 @@
+.login-page-container {
+  width: 100%;
+  height: 95vh;
+  background-color: var(--primary-color);
+}

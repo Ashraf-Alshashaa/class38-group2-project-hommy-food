@@ -1,0 +1,15 @@
+.home-search-container {
+  width: 100%;
+  position: absolute;
+  top: 40%;
+}
+
+@media only screen and (max-width: 600px) {
+  .home-search-container {
+    top: 48%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+}

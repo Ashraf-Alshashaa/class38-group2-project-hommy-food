@@ -33,6 +33,7 @@
   left: -5px;
   top: 18px;
   font-size: 75px;
+  font-weight: 700;
   color: var(--secondary-color);
 }
 
@@ -41,6 +42,7 @@
   left: 0;
   top: 65px;
   font-size: 26px;
+  font-weight: 700;
   color: white;
   text-shadow: 1px 1px var(--secondary-color);
 }
@@ -50,6 +52,7 @@
   left: 35%;
   top: 65px;
   font-size: 26px;
+  font-weight: 700;
   color: white;
   text-shadow: 1px 1px var(--secondary-color);
 }

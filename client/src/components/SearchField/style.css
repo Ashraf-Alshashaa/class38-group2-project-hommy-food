@@ -2,6 +2,7 @@
 
 .search-container {
   display: flex;
+  flex-direction: row;
   margin: 15px 0 50px 0;
   align-items: stretch;
   transform: translate(50%);
@@ -12,6 +13,7 @@
 .search-control,
 .search-btn {
   width: 100%;
+  margin: 0;
 }
 
 .search-control {
@@ -22,6 +24,8 @@
   border: 1px solid var(--light-gray-color);
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
 }
 
 #search-btn {
@@ -32,7 +36,10 @@
   border: none;
   transition: all 0.3s linear;
   border-top-right-radius: 10px;
+  border-top-left-radius: 0;
   border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 0;
+  margin: 0;
 }
 
 i {

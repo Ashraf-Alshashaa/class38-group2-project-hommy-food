@@ -1,24 +1,37 @@
 .login-container {
-  width: 80%;
-  max-width: 500px;
-  text-align: center;
-}
-
-.login-logo {
+  display: flex;
   width: 50%;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .login-form {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  text-align: center;
+  width: 60%;
+  margin-top: 40px;
+  padding: 0;
 }
 
-.login-form label {
+.logIn-input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   width: 100%;
-  margin-top: 15px;
-  height: 40px;
+}
+
+.logIn-input {
+  outline: 0;
+  padding: 6px;
+  width: 100%;
+}
+
+label {
+  color: white;
+  padding: 5px 0px 3px 0px;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .login-form label input {
@@ -29,29 +42,40 @@
 }
 
 .msg-container {
-  margin-top: 10px;
+  margin: 5px 0 15px 0;
+  text-transform: capitalize;
+  font-size: 12px;
+  font-weight: 600;
   height: 20px;
-  color: var(--light-gray-color);
+  color: var(--secondary-color);
 }
 
 .login-btn {
-  width: 100%;
-  margin-top: 10px;
-  height: 40px;
   background-color: var(--secondary-color);
-  color: var(--light-gray-color);
-  font-size: larger;
-  border: none;
+  border: 2px solid var(--secondary-color);
+  font-weight: 700;
+  font-size: 16px;
+  color: #f2f2f2;
+  width: 60%;
 }
 
 .register-link-container {
-  min-width: 100%;
-  margin-top: 15px;
-  height: 40px;
-  background-color: var(--light-gray-color);
+  background-color: #f2f2f2;
+  border: 2px solid var(--secondary-color);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--secondary-color);
+  width: 60%;
 }
 
 .register-link {
   text-decoration: none;
-  color: var(--secondary-color);
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.register-link-container:hover,
+.login-btn:hover {
+  transform: scale(0.95);
 }

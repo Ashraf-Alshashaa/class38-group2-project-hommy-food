@@ -50,7 +50,7 @@ const CuisineListButtons = () => {
             <ul>
               {dropDownCuisine?.map((cuisine) => (
                 <li
-                  className="drop-down-menu "
+                  className="drop-down-menu"
                   key={cuisine._id}
                   onClick={() => {
                     navigate(`/results?cuisine=${cuisine?._id}`);

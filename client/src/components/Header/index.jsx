@@ -108,7 +108,6 @@ const Header = () => {
           alt="user"
           className="user-img-header"
         />
-
         <h5 className="user-name-header">Hello {user?.userName || "user"}</h5>
       </div>
       {mobile && user && (

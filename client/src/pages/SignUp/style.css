@@ -15,6 +15,11 @@ form {
   align-items: center;
 }
 
+.signUp-input {
+  outline: 0;
+  padding: 6px;
+}
+
 img {
   padding-bottom: 20px;
 }
@@ -74,10 +79,7 @@ button {
   color: var(--secondary-color);
 }
 
-.submit-btn:hover {
-  transform: scale(0.95);
-}
-
+.submit-btn:hover,
 .back-btn:hover {
   transform: scale(0.95);
 }

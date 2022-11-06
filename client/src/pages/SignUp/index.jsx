@@ -79,7 +79,6 @@ const SignUp = () => {
       );
       const result = await response.json();
       setResult(result);
-      // console.log(result);
     } catch (error) {
       alert("error");
     }
@@ -112,6 +111,7 @@ const SignUp = () => {
             {...input}
             value={values[input.name]}
             onChange={onChange}
+            className="signUp-input"
           />
         ))}
         <div className="check-container">

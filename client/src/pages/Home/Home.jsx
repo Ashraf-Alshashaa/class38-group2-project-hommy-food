@@ -19,7 +19,6 @@ const Home = () => {
           <ChefsSlider />
         </div>
       </div>
-     
     </div>
   );
 };

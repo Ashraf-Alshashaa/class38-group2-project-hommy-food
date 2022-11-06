@@ -14,7 +14,7 @@ testRouter.post("/seed", async (req, res) => {
     logError(msg);
 
     res.status(400).json({
-      sucess: false,
+      success: false,
       msg,
     });
   } else {

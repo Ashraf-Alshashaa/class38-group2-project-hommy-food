@@ -5,12 +5,9 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
 export const getUser = async (req, res) => {
-  const { email, password } = req.user;
+  const { email } = req.user;
   try {
-    const user = await User.findOne(
-      { email: email, password: password },
-      "userName"
-    );
+    const user = await User.findOne({ email: email }, { password: false });
     res.status(200).json({ success: true, user: user });
   } catch (error) {
     logError(error);
@@ -42,9 +39,10 @@ export const createUser = async (req, res) => {
         .status(400)
         .json({ success: false, msg: validationErrorMessage(errorList) });
     } else {
-      const { email, password, isChef } = user;
+      const { userName, email, password, isChef } = user;
       const hashedPassword = await bcrypt.hash(password, 10);
       const userInfo = {
+        userName: userName,
         email: email,
         password: hashedPassword,
         isChef: isChef,
@@ -54,10 +52,19 @@ export const createUser = async (req, res) => {
       res.status(201).json({ success: true, user: newUser });
     }
   } catch (error) {
-    logError(error);
-    res
-      .status(500)
-      .json({ success: false, msg: "Unable to create user, try again later" });
+    if (error.code === 11000) {
+      return res.status(400).send({
+        success: false,
+        msg: `${Object.keys(error.keyPattern)} is already exists`,
+      });
+    } else {
+      logError(error);
+      res.status(500).json({
+        success: false,
+        error: error,
+        msg: "Unable to create user, try again later",
+      });
+    }
   }
 };
 
@@ -87,20 +94,31 @@ export const login = async (req, res) => {
   }
 
   try {
-    const user = await User.findOne({ email: email, password: password });
-
+    const user = await User.findOne({ email: email });
     if (user === null) {
-      res
-        .status(401)
-        .json({ success: false, msg: "email or password is incorrect" });
+      res.status(401).json({ success: false, msg: "email is incorrect" });
     } else {
-      const accessToken = jwt.sign(
-        { email, password },
-        process.env.ACCESS_TOKEN_SECRET
-      );
-      res
-        .status(201)
-        .json({ success: true, user: user, accessToken: accessToken });
+      bcrypt.compare(password, user.password, async (err, result) => {
+        if (err) {
+          res
+            .status(401)
+            .json({ success: false, msg: "Unable to login, try again later" });
+        }
+        if (result == true) {
+          const accessToken = jwt.sign(email, process.env.ACCESS_TOKEN_SECRET);
+          const userData = await User.findOne(
+            { email: email },
+            { password: false }
+          );
+          res
+            .status(201)
+            .json({ success: true, user: userData, accessToken: accessToken });
+        } else {
+          res
+            .status(401)
+            .json({ success: false, msg: "password is incorrect" });
+        }
+      });
     }
   } catch (error) {
     logError(error);

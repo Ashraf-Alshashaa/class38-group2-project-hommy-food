@@ -1,0 +1,83 @@
+.signUp-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-color: var(--primary-color);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  padding: 60px;
+  width: 50%;
+  align-items: center;
+}
+
+img {
+  padding-bottom: 20px;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--secondary-color);
+  width: 80%;
+  padding: 5px;
+  margin: 20px;
+}
+
+.check-container {
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+  margin: 15px 0 15px 0;
+}
+
+.checker-label {
+  font-weight: 600;
+  margin-left: 5px;
+  color: var(--secondary-color);
+  color: white;
+}
+
+.link-btn {
+  text-decoration: none;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+button {
+  width: 80%;
+  padding: 5px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.submit-btn {
+  background-color: var(--secondary-color);
+  border: 2px solid var(--secondary-color);
+  font-weight: 700;
+  font-size: 16px;
+  color: #f2f2f2;
+}
+
+.back-btn {
+  background-color: #f2f2f2;
+  border: 2px solid var(--secondary-color);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--secondary-color);
+}
+
+.submit-btn:hover {
+  transform: scale(0.95);
+}
+
+.back-btn:hover {
+  transform: scale(0.95);
+}

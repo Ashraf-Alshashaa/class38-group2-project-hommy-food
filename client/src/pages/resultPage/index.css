@@ -1,0 +1,14 @@
+.result-page {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10%;
+  gap: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .result-page {
+    width: 70%;
+    margin: 15%;
+  }
+}

@@ -1,0 +1,126 @@
+.cuisine-buttons-container {
+  display: flex;
+  margin-top: 40px;
+  max-height: 0px;
+  justify-content: center;
+}
+
+.btn {
+  margin-right: 1vw;
+  width: 6.5vw;
+  font-size: 1vw;
+  background-color: var(--secondary-color);
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-color) !important;
+}
+
+.menu-trigger button {
+  overflow: hidden;
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border: none;
+  width: 14vw;
+}
+
+.menu {
+  margin-top: 10px;
+  width: 14vw;
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  color: var(--light-gray-color);
+}
+
+.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: 500ms ease;
+}
+
+.inactive {
+  opacity: 0;
+  display: none;
+  transform: translateY(-10px);
+  transition: 500ms ease;
+}
+
+.menu ul li {
+  padding: 10px 0;
+  list-style: none;
+  color: var(----light-gray-color);
+}
+
+.menu ul {
+  padding: 0;
+}
+
+.menu ul li:hover {
+  cursor: pointer;
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.drop-down-menu {
+  display: flex;
+  justify-content: center;
+  border: none;
+  padding: 10px 0;
+  overflow: hidden;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+
+@media only screen and (max-width: 600px) {
+  .cuisine-buttons-container {
+    display: none;
+  }
+  .menuMobile {
+    display: flex;
+    flex-direction: column;
+    width: 85vw;
+    margin: 0 auto;
+    background-color: var(--secondary-color);
+    border-radius: 5px;
+    color: var(--light-gray-color);
+  }
+
+  .btn {
+    width: 100%;
+    margin: 0;
+    font-size: 14px;
+  }
+
+  .menuMobile ul li .btn-primary {
+    background-color: var(--primary-color);
+    padding: 8px 0;
+    list-style: none;
+    color: var(----light-gray-color);
+    z-index: 10;
+  }
+
+  .menuMobile ul {
+    padding: 0;
+    margin: 0;
+  }
+
+  .menuMobile ul li .btn-primary:hover {
+    cursor: pointer;
+    background-color: var(--secondary-color);
+    color: white;
+  }
+
+  .menu-triggerMobile button {
+    margin: 10px auto;
+    width: 85vw;
+    font-size: 2.5vw;
+  }
+
+  .menu-triggerMobile i {
+    float: right;
+    color: var(----light-gray-color);
+  }
+}

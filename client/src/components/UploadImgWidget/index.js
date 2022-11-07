@@ -13,6 +13,23 @@ export default function UploadImgWidget({ setImgUrl }) {
         showAdvancedOptions: false,
         multiple: false,
         defaultSource: "local",
+        styles: {
+          palette: {
+            window: "#CCCCCB",
+            windowBorder: "#13753B",
+            tabIcon: "#F9A01B",
+            menuIcons: "#5A616A",
+            textDark: "#13753B",
+            textLight: "#F9A01B",
+            link: "#F9A01B",
+            action: "#FF620C",
+            inactiveTabIcon: "#13753B",
+            error: "#F44235",
+            inProgress: "#0078FF",
+            complete: "#20B832",
+            sourceBg: "#D8D8D8",
+          },
+        },
       },
       (error, result) => {
         if (!error && result && result.event === "success") {

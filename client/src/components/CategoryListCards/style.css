@@ -23,8 +23,8 @@
   /* cards */
   .container {
     width: 90%;
-    position: absolute;
-    top: 30%;
+    position: relative;
+    margin-top: 30px;
   }
 
   .card {

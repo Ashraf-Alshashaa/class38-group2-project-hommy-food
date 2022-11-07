@@ -97,13 +97,13 @@
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
+  .banner-img {
+    min-width: 100%;
+    height: auto;
+  }
   .slogan-section {
     top: 16%;
     left: 15%;
-  }
-  .banner-img {
-    width: auto;
-    height: 100%;
   }
   .slogan {
     font-size: 27px;

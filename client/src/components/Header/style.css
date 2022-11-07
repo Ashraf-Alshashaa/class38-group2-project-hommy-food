@@ -1,38 +1,54 @@
+/* header */
+
 .cursor {
   cursor: pointer;
 }
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 500;
+}
 
 .header {
-  padding-right: 5%;
-  padding-left: 5%;
-  height: 50px;
+  padding-right: 2%;
+  padding-left: 2%;
+  height: 40px;
   display: flex;
   align-items: center;
-  position: relative;
-  background-color: var(--light-gray-color);
+  position: sticky;
+  background-color: var(--dark-gray-color);
+  box-shadow: 1px 1px 12px var(--secondary-color);
 }
 
 .logo-container {
-  width: 40%;
-  max-width: 150px;
+  display: flex;
+  height: 40px;
+  align-items: center;
 }
 
 .logo {
-  max-height: 40px;
+  height: 40px;
+  padding: 0 0 0 5px;
 }
 
 .user-info-container-header {
   display: flex;
+  height: 40px;
   align-items: center;
   margin-left: auto;
 }
 
 .user-img-header {
-  height: 30px;
-  margin-right: 5px;
+  height: 25px;
+  margin-right: 10px;
+  padding: 0;
 }
 
 .user-name-header {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0;
   color: var(--primary-color);
 }
 
@@ -41,12 +57,16 @@ i {
 }
 
 .nav-links-container {
-  list-style: none;
   position: absolute;
   top: 50px;
   right: 5%;
   background-color: var(--primary-color);
   width: 150px;
+}
+
+.nav-links-container ul {
+  list-style: none;
+  margin: 0;
 }
 
 .nav-links-hidden {
@@ -65,32 +85,46 @@ i {
   margin-left: 10px;
 }
 
+.cart-fav-container {
+  padding: 0;
+  margin: 0;
+}
+
 .login-header-btn {
-  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 700;
+  width: 50px;
   height: 25px;
-  border-radius: 0px;
+  border-radius: 5px;
   border: none;
   background-color: var(--primary-color);
-  color: var(--light-gray-color);
-  margin-left: 10px;
+  color: var(--secondary-color);
 }
 
 .logout-header-btn {
   background-color: var(--primary-color);
   border: none;
-  font-size: large;
+  font-size: 14px;
+}
+
+.login-header-btn:hover,
+.logout-header-btn:hover {
+  transform: scale(0.9);
 }
 
 @media screen and (min-width: 1024px) {
   .header {
-    height: 75px;
+    height: 60px;
   }
   .logo-container {
     width: 40%;
     max-width: 200px;
   }
   .logo {
-    max-height: 60px;
+    height: 55px;
   }
   .user-info-container-header {
     margin: 0;
@@ -102,8 +136,8 @@ i {
     font-size: large;
   }
   .user-img-header {
-    margin-right: 10px;
-    height: 50px;
+    margin-right: 20px;
+    height: 40px;
   }
   .nav-links-container {
     right: 0;
@@ -116,8 +150,9 @@ i {
     height: 30px;
   }
   .cart-fav-container {
-    width: 10%;
     display: flex;
     justify-content: flex-end;
+    margin: 0;
+    padding: 0;
   }
 }

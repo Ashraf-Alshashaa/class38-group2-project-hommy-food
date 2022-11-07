@@ -3,7 +3,7 @@
 .search-container {
   display: flex;
   flex-direction: row;
-  margin: 15px 0 50px 0;
+  margin: 0;
   align-items: stretch;
   transform: translate(50%);
   width: 50%;
@@ -55,8 +55,10 @@ i {
 
 @media only screen and (max-width: 600px) {
   .search-container {
-    width: 75%;
+    width: 100%;
     transform: translate(0);
+    margin-bottom: -20px;
+    margin-top: -60px;
   }
   .btn.btn-search {
     font-size: 2.5vw;

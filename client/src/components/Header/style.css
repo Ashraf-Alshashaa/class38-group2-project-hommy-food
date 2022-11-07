@@ -1,38 +1,46 @@
 .cursor {
   cursor: pointer;
 }
+
 .header {
   padding-right: 5%;
   padding-left: 5%;
   height: 50px;
   display: flex;
   align-items: center;
-  position: relative;
+  position: static;
   top: 0;
   background-color: var(--light-gray-color);
 }
+
 .logo-container {
   width: 40%;
   max-width: 150px;
 }
+
 .logo {
   max-height: 40px;
 }
+
 .user-info-container-header {
   display: flex;
   align-items: center;
   margin-left: auto;
 }
+
 .user-img-header {
   height: 30px;
   margin-right: 5px;
 }
+
 .user-name-header {
   color: var(--primary-color);
 }
+
 i {
   color: var(--primary-color);
 }
+
 .nav-links-container {
   list-style: none;
   position: absolute;
@@ -41,9 +49,11 @@ i {
   background-color: var(--primary-color);
   width: 150px;
 }
+
 .nav-links-hidden {
   display: none;
 }
+
 .nav-links-visible {
   display: block;
   margin: 15px;
@@ -51,6 +61,7 @@ i {
   color: var(--light-gray-color);
   text-decoration: none;
 }
+
 .nav-btn {
   margin-left: 10px;
 }

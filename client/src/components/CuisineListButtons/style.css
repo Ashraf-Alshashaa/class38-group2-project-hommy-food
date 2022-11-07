@@ -38,7 +38,10 @@
   visibility: visible;
   transform: translateY(0);
   transition: 500ms ease;
-  width: auto;
+  width: 14vw;
+  position: absolute;
+  z-index: 4;
+  margin-left: 10px;
 }
 
 .inactive {

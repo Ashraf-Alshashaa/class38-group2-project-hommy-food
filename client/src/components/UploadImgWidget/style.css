@@ -1,0 +1,9 @@
+.upload-img-button {
+  width: 80px;
+  padding: 5px;
+  height: 40px;
+  background-color: var(--secondary-color);
+  color: var(--light-gray-color);
+  font-size: larger;
+  border: none;
+}

@@ -6,10 +6,10 @@ export default function UploadImgWidget({ setImgUrl }) {
   const uploadImageWidget = () => {
     let myWidget = openUploadWidget(
       {
-        cloudName: "dmykyluyo",
-        uploadPreset: "xDacvQs",
+        cloudName: process.env.CLOUD_NAME,
+        uploadPreset: process.env.UPLOAD_PRESET,
         sources: ["local", "url", "camera", "google_drive", "facebook"],
-        //googleApiKey: "<image_search_google_api_key>",
+        googleApiKey: "<image_search_google_api_key>",
         showAdvancedOptions: false,
         multiple: false,
         defaultSource: "local",

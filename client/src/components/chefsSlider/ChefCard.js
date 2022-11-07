@@ -10,7 +10,7 @@ const ChefCard = ({ chefName, chefCountry, chefImg, chefRatingImg }) => {
         <div className="overflow-hidden rounded p-0 bg-light">
           <Card.Img variant="top" src={chefImg} />
         </div>
-        <Card.Body className="text-center">
+        <Card.Body className="top-chef-card-body-container text-center">
           <Card.Title className="slider-chef-name display-14">
             {chefName}
           </Card.Title>

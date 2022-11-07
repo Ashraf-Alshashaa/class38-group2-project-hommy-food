@@ -1,3 +1,6 @@
+.swiper {
+  width: 70%;
+}
 .swiper-wrapper {
   padding-bottom: 30px;
 }
@@ -10,12 +13,22 @@
   border-radius: 3px;
   padding: 5px 10px;
   text-transform: uppercase;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
 }
 
 .container {
-  width: 60%;
+  /* width: 80%; */
 }
 
+.top-chef-card-body-container {
+  padding-bottom: 0;
+}
+
+.card-img-top {
+  padding-bottom: 0;
+}
 .slider-chef-name {
   font-size: 15px;
 }
@@ -24,10 +37,15 @@
   font-size: 10px;
 }
 
+.card-img-Body {
+  padding-bottom: 0;
+}
+
 .visit-chef-btn {
-  max-height: 5vh;
+  height: 25px;
+  margin: 0;
 }
 
 .visit-chef-text {
-  font-size: 10px;
+  font-size: 8px;
 }

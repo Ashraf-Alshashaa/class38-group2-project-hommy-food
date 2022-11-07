@@ -2,11 +2,15 @@ import User, { validateUser } from "../models/User.js";
 import { logError } from "../util/logging.js";
 import validationErrorMessage from "../util/validationErrorMessage.js";
 import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
 
 export const getUser = async (req, res) => {
   const { email, password } = req.user;
   try {
-    const user = await User.findOne({ email: email, password: password });
+    const user = await User.findOne(
+      { email: email, password: password },
+      "userName"
+    );
     res.status(200).json({ success: true, user: user });
   } catch (error) {
     logError(error);
@@ -38,7 +42,14 @@ export const createUser = async (req, res) => {
         .status(400)
         .json({ success: false, msg: validationErrorMessage(errorList) });
     } else {
-      const newUser = await User.create(user);
+      const { email, password, isChef } = user;
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const userInfo = {
+        email: email,
+        password: hashedPassword,
+        isChef: isChef,
+      };
+      const newUser = await User.create(userInfo);
 
       res.status(201).json({ success: true, user: newUser });
     }

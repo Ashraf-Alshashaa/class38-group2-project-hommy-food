@@ -5,7 +5,24 @@
   margin-top: 10%;
   gap: 10px;
 }
-
+.meals-notFound{
+margin-top: -10% ;
+}
+.meals-notFound img{
+ position: relative;
+ left:18%;
+}
+.meals-notFound h1 {
+font-size: 1.5VW; 
+padding: 0%;
+}
+.meals-notFound h5 {
+color: var(--darker-gray-color);
+  
+}
+.loading-gif{
+ margin-left: 30%;
+}
 @media only screen and (max-width: 600px) {
   .result-page {
     width: 70%;

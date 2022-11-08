@@ -1,12 +1,13 @@
 import React from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import InputForm from "../../components/InputForm";
 import "./style.css";
 import Logo from "../../../public/images/Login&SignUp-logo.png";
 import { useEffect } from "react";
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [data, setData] = useState(null);
   const [values, setValues] = useState({
     userName: "",
@@ -15,7 +16,7 @@ const SignUp = () => {
     confirmPassword: "",
     isChef: "user",
   });
-  const [result, setResult] = useState("");
+  const [msg, setMsg] = useState("");
 
   // Creating an array of input
   const inputs = [
@@ -78,9 +79,13 @@ const SignUp = () => {
         }
       );
       const result = await response.json();
-      setResult(result);
+      if (result.success) {
+        navigate("/login", { replace: true });
+      } else {
+        setMsg(result.msg);
+      }
     } catch (error) {
-      alert("error");
+      setMsg("sorry something went wrong");
     }
   };
 
@@ -101,7 +106,6 @@ const SignUp = () => {
 
   return (
     <div className="signUp-page">
-      {result.success === false && alert(result.msg)}
       <form onSubmit={handleSubmit}>
         <img src={Logo} width="200px" alt="logo" />
         <h1>Register</h1>
@@ -142,6 +146,7 @@ const SignUp = () => {
             </label>
           </div>
         </div>
+        <p>{msg}</p>
         <button className="submit-btn">Submit</button>
         <Link className="link-btn" to="/login">
           <button className="back-btn">Back</button>

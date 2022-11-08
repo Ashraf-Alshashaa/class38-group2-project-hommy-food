@@ -3,10 +3,10 @@ import mongoose from "mongoose";
 import validateAllowedFields from "../util/validateAllowedFields.js";
 
 const userSchema = new mongoose.Schema({
-  userName: { type: String, required: true, unique: true },
+  userName: { type: String, required: true },
   fullName: {
-    first: { type: String, required: true },
-    last: { type: String, required: true },
+    first: String,
+    last: String,
   },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
@@ -101,9 +101,7 @@ export const validateUser = (userObject) => {
   if (userObject.email == null) {
     errorList.push("email is a required field");
   }
-  if (userObject.fullName == null) {
-    errorList.push("fullName is a required field");
-  }
+
   if (userObject.password == null) {
     errorList.push("password is a required field");
   }

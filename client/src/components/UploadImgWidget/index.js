@@ -2,12 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import { openUploadWidget } from "../../util/Cloudinary/CloudinaryService";
 
-export default function UploadImgWidget({ setImgUrl }) {
+export default function UploadImgWidget({ setImgUrl, folderName }) {
   const uploadImageWidget = () => {
     let myWidget = openUploadWidget(
       {
         cloudName: process.env.CLOUD_NAME,
         uploadPreset: process.env.UPLOAD_PRESET,
+        folder: `${folderName}`,
         sources: ["local", "url", "camera", "google_drive", "facebook"],
         googleApiKey: "<image_search_google_api_key>",
         showAdvancedOptions: false,
@@ -48,4 +49,5 @@ export default function UploadImgWidget({ setImgUrl }) {
 }
 UploadImgWidget.propTypes = {
   setImgUrl: PropTypes.func.isRequired,
+  folderName: PropTypes.string.isRequired,
 };

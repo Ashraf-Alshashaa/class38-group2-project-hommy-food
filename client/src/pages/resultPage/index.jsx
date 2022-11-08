@@ -4,8 +4,9 @@ import CategoryCard from "../../components/CategoryListCards/CategoryCard";
 import useFetch from "../../hooks/useFetch";
 import "./index.css";
 import sadChef from "./sadChef.jpg";
-import loader from "./orange_circles.gif";
+// import loader from "./orange_circles.gif";
 import somethingWentWrong from "./something-went-wrong.png";
+import PulseLoader from "react-spinners/PulseLoader";
 export default function ResultPage() {
   const [searchParams] = useSearchParams();
   const [data, setData] = useState([]);
@@ -35,9 +36,14 @@ export default function ResultPage() {
   }, []);
 
   return isLoadingSearch || isLoadingCuisine || isLoadingCategory ? (
-    <>
-      <img className="loading-gif" src={loader} alt="loader" />
-    </>
+    <div className="loading-gif">
+      <PulseLoader
+        color="#f9a01b"
+        size={70}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
+    </div>
   ) : errorSearch || errorCategory || errorCuisine ? (
     <>
       <div className="error">

@@ -1,9 +1,10 @@
 import React from "react";
+import ChefsSlider from "../../components/chefsSlider/ChefsSlider";
+import Banner from "../../components/Banner";
 import TEST_ID from "./Home.testid";
 import SearchField from "../../components/SearchField";
 import CuisineListButtons from "../../components/CuisineListButtons/index";
 import CategoryListCards from "../../components/CategoryListCards/index";
-import Banner from "../../components/Banner";
 import "./style.css";
 
 const Home = () => {
@@ -13,9 +14,10 @@ const Home = () => {
         <Banner />
         <div className="home-search-container">
           <SearchField />
-        </div>
-        <CuisineListButtons />
-        <CategoryListCards />
+         </div>
+          <CuisineListButtons />
+          <CategoryListCards />
+          <ChefsSlider />
       </div>
     </div>
   );

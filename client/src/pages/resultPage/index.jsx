@@ -5,6 +5,7 @@ import useFetch from "../../hooks/useFetch";
 import "./index.css";
 import sadChef from "./sadChef.jpg";
 import loader from "./orange_circles.gif";
+import somethingWentWrong from "./something-went-wrong.png";
 export default function ResultPage() {
   const [searchParams] = useSearchParams();
   const [data, setData] = useState([]);
@@ -39,9 +40,11 @@ export default function ResultPage() {
     </>
   ) : errorSearch || errorCategory || errorCuisine ? (
     <>
-      <h5>
-        {errorSearch.message || errorCategory.message || errorCuisine.message}
-      </h5>
+      <div className="error">
+        <img src={somethingWentWrong} alt="something went wrong" />
+        <h1>Oops!</h1>
+        <h5>Something went wrong try again or refresh page</h5>
+      </div>
     </>
   ) : (
     <>

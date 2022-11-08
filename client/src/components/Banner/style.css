@@ -12,7 +12,16 @@
 }
 
 .banner-img {
+  position: relative;
   width: 100%;
+  height: 40%;
+}
+
+.dishes-img {
+  position: absolute;
+  height: 90%;
+  right: 3%;
+  top: 5%;
 }
 
 .slogan-section {
@@ -62,6 +71,9 @@
     width: auto;
     height: 100%;
   }
+  .dishes-img {
+    height: 80%;
+  }
   .slogan-section {
     top: 8%;
     left: 8%;
@@ -98,12 +110,15 @@
 
 @media (min-width: 768px) and (max-width: 1024px) {
   .banner-img {
+    height: auto !important;
     min-width: 100%;
-    height: auto;
+  }
+  .dishes-img {
+    height: 80%;
   }
   .slogan-section {
     top: 16%;
-    left: 15%;
+    left: 5%;
   }
   .slogan {
     font-size: 27px;
@@ -210,8 +225,20 @@
   }
 }
 @media (max-width: 425px) {
-}
-.banner-img {
-  width: auto;
-  height: 100%;
+  .banner-img {
+    width: auto;
+    height: 100%;
+  }
+  .dishes-img {
+    height: 60%;
+    top: 20%;
+  }
+  .slogan-light {
+    left: 0;
+    top: 50px;
+  }
+  .slogan-tasty {
+    left: 0;
+    top: 40px;
+  }
 }

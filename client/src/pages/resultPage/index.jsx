@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import CategoryCard from "../../components/CategoryListCards/CategoryCard";
+import MealCard from "../../components/mealCard";
 import useFetch from "../../hooks/useFetch";
 import "./index.css";
 import sadChef from "./sadChef.jpg";
-// import loader from "./orange_circles.gif";
 import somethingWentWrong from "./something-went-wrong.png";
 import PulseLoader from "react-spinners/PulseLoader";
 export default function ResultPage() {
@@ -34,7 +33,6 @@ export default function ResultPage() {
     category && performFilterCategoryFetch();
     cuisine && performFilterCuisineFetch();
   }, []);
-
   return isLoadingSearch || isLoadingCuisine || isLoadingCategory ? (
     <div className="loading-gif">
       <PulseLoader
@@ -65,7 +63,14 @@ export default function ResultPage() {
           </div>
         )}
         {data?.result?.map((meal) => (
-          <CategoryCard key={meal._id} image={meal.image} title={meal.title} />
+          <MealCard
+            key={meal._id}
+            image={meal.image}
+            title={meal.title}
+            isAvailable={meal.isAvailable}
+            quantity={meal.quantity}
+            ingredients={meal.ingredients}
+          />
         ))}
       </div>
     </>

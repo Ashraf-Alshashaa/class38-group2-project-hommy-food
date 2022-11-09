@@ -1,0 +1,48 @@
+.resultMeal img {
+  width: 100%;
+  height: 50%;
+}
+.links {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+}
+
+.links i {
+  font-size: 0.8rem;
+}
+.links i:hover {
+  color: var(--primary-color);
+}
+
+.meal-info {
+  display: flex;
+  justify-content: space-evenly;
+  color: var(--darker-gray-color);
+  font-size: 0.8rem;
+  word-spacing: 5px;
+}
+
+.meal-info p {
+  padding: 0.5vw;
+  margin: 0;
+}
+.red {
+  color: red;
+}
+.green {
+  color: green;
+}
+.title {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--dark-gray-color);
+  font-size: 0.5rem !important;
+}
+.resultMeal .title h6 {
+  color: var(--secondary-color) !important;
+}
+p:first-word {
+  font-weight: bold;
+  color: black;
+}

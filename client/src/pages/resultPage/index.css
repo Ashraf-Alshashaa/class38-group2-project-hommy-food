@@ -2,12 +2,12 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 10%;
+  margin-top: 2%;
   gap: 10px;
+  flex-direction: row;
+  align-items: stretch;
 }
-.meals-notFound {
-  margin-top: -10%;
-}
+
 .meals-notFound img {
   position: relative;
   left: 18%;

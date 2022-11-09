@@ -23,7 +23,7 @@ const PersonalInfo = () => {
           )}
         </div>
         <Link className="image-icon" to={"/"}>
-          <i className="fa-solid fa-camera" /> <h3>Add image</h3>
+          <i className="fa-solid fa-plus"></i> <h3>Add image</h3>
         </Link>
       </div>
       {user && (

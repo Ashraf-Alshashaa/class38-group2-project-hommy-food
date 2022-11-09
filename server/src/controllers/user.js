@@ -106,6 +106,7 @@ export const login = async (req, res) => {
           { email: email },
           { password: false }
         );
+        console.log(userData, "user data");
         res
           .status(201)
           .json({ success: true, user: userData, accessToken: accessToken });

@@ -8,6 +8,7 @@ import { useEffect } from "react";
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const [msg, setMsg] = useState("");
   const [data, setData] = useState(null);
   const [values, setValues] = useState({
     userName: "",
@@ -16,7 +17,6 @@ const SignUp = () => {
     confirmPassword: "",
     isChef: "user",
   });
-  const [msg, setMsg] = useState("");
 
   // Creating an array of input
   const inputs = [

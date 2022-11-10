@@ -9,6 +9,7 @@ const ProfileHeader = () => {
   const { user } = useContext(AuthContext);
   const [msg, setMsg] = useState("");
   const [deliveryType, setDeliveryType] = useState("pickup");
+  // console.log(user);
   // console.log(deliveryType, "main");
 
   const onChange = async (e) => {
@@ -16,7 +17,7 @@ const ProfileHeader = () => {
     try {
       const response = await fetch(
         // to do need the end point for the delivery type
-        // `${process.env.BASE_SERVER_URL}/api/user/chef/:${id}`,
+        `${process.env.BASE_SERVER_URL}/api/user/chef/${id}`,
         {
           method: "GET",
           headers: {

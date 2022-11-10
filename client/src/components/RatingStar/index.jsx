@@ -23,28 +23,26 @@ const RateStar = () => {
     setHoverValue(undefined);
   };
 
-  const url = `${process.env.BASE_SERVER_URL}/api/user/rate`;
+  const url = `${process.env.BASE_SERVER_URL}/api/rate`;
 
   useEffect(() => {
     (async () => {
-      // const token = localStorage.getItem("accessToken");
+      const token = localStorage.getItem("accessToken");
       try {
         const response = await fetch(url, {
           method: "POST",
           headers: {
             "content-type": "application/json",
-            // Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({
             rate: currentValue,
-            id,
-            customerId: user._id,
+            chefId: id,
           }),
         });
         if (response.ok) {
-          // const res =
           await response.json();
-          // console.log(res, "asdasdasd");
+          // console.log(res, "aaaaaaa");
           return;
         }
         throw new Error("Http Error");

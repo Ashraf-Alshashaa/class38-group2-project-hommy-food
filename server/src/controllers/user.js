@@ -4,8 +4,9 @@ import validationErrorMessage from "../util/validationErrorMessage.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
-export const getUser = async (req, res) => {
+export const getProfile = async (req, res) => {
   const email = req.user;
+
   try {
     const user = await User.findOne({ email: email }, { password: false });
     res.status(200).json({ success: true, user: user });
@@ -14,6 +15,27 @@ export const getUser = async (req, res) => {
     res
       .status(500)
       .json({ success: false, msg: "Unable to get user, try again later" });
+  }
+};
+
+export const getChef = async (req, res) => {
+  const { id } = req.params;
+  const notAllow = {
+    password: false,
+    orderToPrepare: false,
+    orderHistory: false,
+    cart: false,
+    favoriteChefs: false,
+  };
+
+  try {
+    const user = await User.findById(id, notAllow);
+    res.status(200).json({ success: true, result: user });
+  } catch (error) {
+    logError(error);
+    res
+      .status(500)
+      .json({ success: false, msg: "Unable to get chef, try again later" });
   }
 };
 

@@ -1,21 +1,19 @@
-import React, { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../contexts/authentication";
+import React, { useEffect, useState } from "react";
+// import { useParams } from "react-router-dom";
 import "./style.css";
 
 const RatedStar = () => {
   const [rate, setRate] = useState(0);
-  const { id } = useContext(AuthContext);
   const [msg, setMsg] = useState("");
-
+  // const { id } = useParams();
+  const id = "636cfa4b279773035cd02f73";
   useEffect(() => {
-    const url = `${process.env.BASE_SERVER_URL}/api/rate:${id}`;
+    const url = `${process.env.BASE_SERVER_URL}/api/rate/${id}`;
     (async () => {
       try {
         const response = await fetch(url);
-        await response.json();
-        // const result = await response.json();
-        // console.log(result);
-        setRate(5);
+        const data = await response.json();
+        setRate(data.result);
       } catch (error) {
         setMsg("something went wrong");
       }

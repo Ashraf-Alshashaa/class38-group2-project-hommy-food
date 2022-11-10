@@ -1,21 +1,19 @@
 import express from "express";
 import {
   createUser,
-  getUser,
+  getProfile,
   login,
   authenticateToken,
   updateUser,
-  getUserInfo,
-  rateChef,
+  getChef,
 } from "../controllers/user.js";
 
 const userRouter = express.Router();
 
-userRouter.get("/", authenticateToken, getUser);
-userRouter.get("/:id", getUserInfo);
+userRouter.get("/", authenticateToken, getProfile);
+userRouter.get("/chef/:id", getChef);
 userRouter.post("/create", createUser);
 userRouter.post("/login", login);
-userRouter.post("/rate", rateChef);
 userRouter.patch("/:id", updateUser);
 
 export default userRouter;

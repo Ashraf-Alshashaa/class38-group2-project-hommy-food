@@ -5,7 +5,7 @@ import "./style.css";
 
 const InputForm = (props) => {
   const [focus, setFocus] = useState(false);
-  const { label, onChange, errorMessage, ...inputs } = props;
+  const { onChange, errorMessage, ...inputs } = props;
 
   // handel the field focus
   const handleOnBlur = () => {
@@ -13,7 +13,6 @@ const InputForm = (props) => {
   };
   return (
     <div className="signUp-form">
-      <label>{label}</label>
       <input
         {...inputs}
         onChange={onChange}
@@ -28,7 +27,6 @@ const InputForm = (props) => {
   );
 };
 InputForm.propTypes = {
-  label: PropTypes.string.isRequired,
   errorMessage: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
 };

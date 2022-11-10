@@ -30,10 +30,8 @@ const ProfileHeader = () => {
       setMsg("sorry something went wrong");
     }
     setDeliveryType(e.target.value);
-    // console.log(e.target.value);
   };
 
-  console.log(id, "id");
   return (
     <>
       {user?.isChef && user?._id === id ? (

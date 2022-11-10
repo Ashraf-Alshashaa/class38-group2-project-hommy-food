@@ -33,19 +33,16 @@
   display: flex;
   text-decoration: none;
   bottom: -15px;
-  right: -25px;
+  right: -45px;
   z-index: 2;
 }
 
-.image-icon h3 {
-  font-size: 12px;
+.upload-profile-image {
+  font-size: 12px !important;
+  color: blue !important;
+  font-weight: 600 !important;
   padding-left: 5px;
   padding-top: 2px;
-}
-
-.fa-plus {
-  color: blue;
-  font-size: 16px;
 }
 
 .rated-star-comp {
@@ -61,7 +58,7 @@
 }
 
 .info-container h2 {
-  font-weight: 700;
+  font-weight: 500;
   color: var(--primary-color);
   padding-bottom: 10px;
 }
@@ -72,13 +69,15 @@
   font-size: 12px;
 }
 
-.edit-info {
+.edit-profile-info {
   text-decoration: none;
   display: flex;
   flex-direction: row;
   margin-top: 30px;
 }
 
-.edit-info h3 {
+.edit-profile-info h3 {
   font-size: 12px;
+  text-decoration: underline;
+  color: blue;
 }

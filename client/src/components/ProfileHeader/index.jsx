@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 import { AuthContext } from "../../contexts/authentication";
 import "./style.css";
 
 const ProfileHeader = () => {
+  const { id } = useParams();
   const { user } = useContext(AuthContext);
   const [msg, setMsg] = useState("");
   const [deliveryType, setDeliveryType] = useState("pickup");
@@ -31,11 +33,10 @@ const ProfileHeader = () => {
     // console.log(e.target.value);
   };
 
+  console.log(id, "id");
   return (
     <>
-      {user?.isChef && user?._id === "636cf3b7279773035cd02f4c" ? (
-        // <></>
-        // {user?._id === id ? (
+      {user?.isChef && user?._id === id ? (
         <div className="profile-header-container">
           <section className="delivery-type-section">
             <h3>Select your delivery type</h3>
@@ -89,11 +90,6 @@ const ProfileHeader = () => {
           </section>
         </div>
       )}
-      {/* <div className="profile-header-container">
-        <section className="delivery-type-section">
-          <h3>Delivery type: {user?.userName}</h3>
-        </section>
-      </div> */}
     </>
   );
 };

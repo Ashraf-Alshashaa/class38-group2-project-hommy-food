@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useEffect } from "react";
-// import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { AuthContext } from "../../contexts/authentication";
 import "./style.css";
 
@@ -9,7 +9,7 @@ const RateStar = () => {
   const [hoverValue, setHoverValue] = useState(undefined);
   const [msg, setMsg] = useState("");
   const { user } = useContext(AuthContext);
-  // const { id } = useParams();
+  const { id } = useParams();
 
   const handleClick = (value) => {
     setCurrentValue(value);
@@ -23,24 +23,29 @@ const RateStar = () => {
     setHoverValue(undefined);
   };
 
-  const url = `${process.env.BASE_SERVER_URL}/api/rate`;
+  const url = `${process.env.BASE_SERVER_URL}/api/user/rate`;
 
   useEffect(() => {
     (async () => {
-      const token = localStorage.getItem("accessToken");
+      // const token = localStorage.getItem("accessToken");
       try {
         const response = await fetch(url, {
           method: "POST",
           headers: {
             "content-type": "application/json",
-            Authorization: `Bearer ${token}`,
+            // Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({
             rate: currentValue,
-            chefId: "636cf3b7279773035cd02f4c",
+            id,
+            customerId: user._id,
           }),
         });
-        if (response.ok) return response.json();
+        if (response.ok) {
+          const res = await response.json();
+          console.log(res, "asdasdasd");
+          return;
+        }
         throw new Error("Http Error");
       } catch (error) {
         setMsg("something went wrong");
@@ -51,8 +56,7 @@ const RateStar = () => {
   const stars = Array(5).fill(0);
   return (
     <>
-      {(user?.isChef && user?._id === "636cf3b7279773035cd02f4c") ||
-      user?._id === undefined ? (
+      {(user?.isChef && user?._id === id) || user?._id === undefined ? (
         <></>
       ) : (
         <div className="star-container">

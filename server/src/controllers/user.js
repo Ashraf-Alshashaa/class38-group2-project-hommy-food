@@ -6,7 +6,6 @@ import bcrypt from "bcrypt";
 
 export const getProfile = async (req, res) => {
   const email = req.user;
-
   try {
     const user = await User.findOne({ email: email }, { password: false });
     res.status(200).json({ success: true, user: user });

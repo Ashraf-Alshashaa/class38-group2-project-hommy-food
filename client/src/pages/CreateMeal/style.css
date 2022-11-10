@@ -1,0 +1,145 @@
+.create-meal-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 1280px;
+  margin: 10px auto;
+}
+.create-meal-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.meal-input {
+  width: 100%;
+}
+.upload-img-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  height: 100%;
+}
+.img-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 70%;
+}
+.buttons-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 40%;
+  margin-bottom: 20px;
+}
+.img-container img {
+  width: 100%;
+}
+.meal-information-section {
+  padding: 50px;
+  width: 40%;
+  background-color: var(--primary-color);
+}
+.category-select-box {
+  min-height: 20px;
+  font-family: "Montserrat", "sans-serif";
+}
+#isAvailable {
+  margin: 10px;
+  width: 20px;
+}
+label {
+  color: white;
+  padding: 5px 0px 3px 0px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.submit-btn {
+  background-color: var(--secondary-color);
+  border: 2px solid var(--secondary-color);
+  font-weight: 700;
+  font-size: 16px;
+  color: #f2f2f2;
+}
+.link-btn {
+  text-decoration: none;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.back-btn {
+  background-color: #f2f2f2;
+  border: 2px solid var(--secondary-color);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--secondary-color);
+}
+
+.submit-btn:hover {
+  transform: scale(0.95);
+}
+
+.back-btn:hover {
+  transform: scale(0.95);
+}
+
+.toggle[type="checkbox"] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+.toggle-label {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 4rem;
+  height: 2rem;
+  background: var(--dark-gray-color);
+  display: block;
+  border-radius: 50px;
+  position: relative;
+}
+
+.toggle-label:after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 1.5rem;
+  height: 1.4rem;
+  background: #fff;
+  border-radius: 90px;
+  transition: 0.3s;
+}
+
+.toggle:checked + .toggle-label {
+  background: var(--secondary-color);
+}
+
+.toggle:checked + .toggle-label:after {
+  left: calc(100% - 5px);
+  transform: translateX(-100%);
+}
+
+.toggle-label:active:after {
+  width: 70%;
+}
+
+@media only screen and (max-width: 600px) {
+  .create-meal-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .upload-img-section {
+    width: 90%;
+  }
+  .meal-information-section {
+    width: 90%;
+  }
+}

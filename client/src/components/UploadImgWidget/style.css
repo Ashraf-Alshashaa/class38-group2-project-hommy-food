@@ -1,9 +1,10 @@
-.upload-img-button {
-  width: 80px;
-  padding: 5px;
-  height: 40px;
-  background-color: var(--secondary-color);
-  color: var(--light-gray-color);
-  font-size: larger;
-  border: none;
+.upload-img {
+  /* background-color: #f2f2f2; */
+  /* border: 2px solid var(--secondary-color); */
+  font-weight: 700;
+  text-decoration: underline;
+  text-align: center;
+  font-size: 16px;
+  color: var(--secondary-color);
+  cursor: pointer;
 }

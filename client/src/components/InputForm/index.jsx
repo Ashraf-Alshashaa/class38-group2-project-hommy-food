@@ -5,14 +5,14 @@ import "./style.css";
 
 const InputForm = (props) => {
   const [focus, setFocus] = useState(false);
-  const { label, onChange, errorMessage, ...inputs } = props;
+  const { label, onChange, errorMessage, className, ...inputs } = props;
 
   // handel the field focus
   const handleOnBlur = () => {
     setFocus(true);
   };
   return (
-    <div className="signUp-form">
+    <div className={`signUp-form ${className}`}>
       <label>{label}</label>
       <input
         {...inputs}
@@ -31,6 +31,7 @@ InputForm.propTypes = {
   label: PropTypes.string.isRequired,
   errorMessage: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  className: PropTypes.string,
 };
 
 export default InputForm;

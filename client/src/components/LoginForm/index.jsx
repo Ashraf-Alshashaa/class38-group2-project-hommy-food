@@ -43,7 +43,6 @@ const LoginForm = () => {
       <img src={loginLogo} alt="logo" className="login-logo" width="200px" />
       <form className="login-form">
         <div className="logIn-input-container">
-          <label>Email</label>
           <input
             type="email"
             value={email}
@@ -51,9 +50,6 @@ const LoginForm = () => {
             onChange={(e) => setEmail(e.target.value)}
             className="logIn-input"
           />
-        </div>
-        <div className="logIn-input-container">
-          <label> Password </label>
           <input
             type="password"
             value={password}
@@ -66,12 +62,14 @@ const LoginForm = () => {
       <div className="msg-container">
         <p>{msg}</p>
       </div>
-      <button onClick={() => setOnClick(true)} className="login-btn">
-        Login
-      </button>
-      <Link to={"/register"} className="register-link">
-        <button className="register-link-container">Register</button>
-      </Link>
+      <div className="btn-login-page-container">
+        <button onClick={() => setOnClick(true)} className="btn-login-page ">
+          Login
+        </button>
+        <Link to={"/register"} className="register-link center-children">
+          Register
+        </Link>
+      </div>
     </section>
   );
 };

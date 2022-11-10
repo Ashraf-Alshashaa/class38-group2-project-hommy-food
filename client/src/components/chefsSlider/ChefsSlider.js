@@ -10,11 +10,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./chefsSlider.css";
 
 const ChefsSlider = () => {
-  const chefsData = chefsSliderData.map((data) => {
+  const chefsData = chefsSliderData.map((data, idx) => {
     return (
-      <SwiperSlide key={data.key}>
+      <SwiperSlide key={data.id}>
         <ChefCard
-          key={data.key}
+          key={`${data.id}_${idx}`}
           chefName={data.name}
           chefCountry={data.country}
           chefImg={data.chefImg}

@@ -37,7 +37,7 @@ export default function ResultPage() {
     <div className="loading-gif">
       <PulseLoader
         color="#f9a01b"
-        size={70}
+        size={60}
         aria-label="Loading Spinner"
         data-testid="loader"
       />

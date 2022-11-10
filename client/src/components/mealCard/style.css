@@ -17,10 +17,11 @@
 
 .meal-info {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   color: var(--darker-gray-color);
   font-size: 0.8rem;
   word-spacing: 5px;
+  align-items: center;
 }
 
 .meal-info p {

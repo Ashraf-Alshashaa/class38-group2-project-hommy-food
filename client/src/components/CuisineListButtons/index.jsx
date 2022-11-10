@@ -15,6 +15,16 @@ const CuisineListButtons = () => {
   useEffect(() => {
     performFetch();
   }, []);
+
+  useEffect(() => {
+    const closeDropDownCuisine = () => open && setOpen(false);
+
+    window.addEventListener("click", closeDropDownCuisine);
+
+    return () => {
+      window.removeEventListener("click", closeDropDownCuisine);
+    };
+  }, [open]);
   const cuisineButton = cuisines?.result.slice(0, 7);
   const dropDownCuisine = cuisines?.result.slice(7);
   const size = useWindowSize();

@@ -48,6 +48,13 @@
   font-size: 16px;
 }
 
+.rated-star-comp {
+  position: absolute;
+  left: 50%;
+  bottom: -20%;
+  transform: translate(-50%);
+}
+
 .info-container h3 {
   font-size: 14px;
   font-weight: 600;

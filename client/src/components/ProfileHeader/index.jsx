@@ -14,9 +14,9 @@ const ProfileHeader = () => {
     try {
       const response = await fetch(
         // to do need the end point for the delivery type
-        // `${process.env.BASE_SERVER_URL}/api/user`,
+        // `${process.env.BASE_SERVER_URL}/api/user/chef/:${id}`,
         {
-          method: "POST",
+          method: "GET",
           headers: {
             "Content-Type": "application/json",
           },
@@ -33,7 +33,9 @@ const ProfileHeader = () => {
 
   return (
     <>
-      {user?.isChef ? (
+      {user?.isChef && user?._id === "636cf3b7279773035cd02f4c" ? (
+        // <></>
+        // {user?._id === id ? (
         <div className="profile-header-container">
           <section className="delivery-type-section">
             <h3>Select your delivery type</h3>
@@ -71,16 +73,27 @@ const ProfileHeader = () => {
               <p>{msg}</p>
             </div>
           </section>
-          <section className="profile-favorite-section">
-            <div className="profile-favorite-container">
-              <h3>Add to favorite</h3>
-              <i className="fa-solid fa-heart profile-fa-heart"></i>
-            </div>
-          </section>
         </div>
       ) : (
-        <div className="profile-header-container"></div>
+        <div className="profile-header-container">
+          <section className="delivery-type-section">
+            <h3>Delivery type: {user?.userName}</h3>
+          </section>
+          <section className="profile-favorite-section">
+            {user?._id !== undefined && (
+              <div className="profile-favorite-container">
+                <h3>Add to favorite</h3>
+                <i className="fa-solid fa-heart profile-fa-heart"></i>
+              </div>
+            )}
+          </section>
+        </div>
       )}
+      {/* <div className="profile-header-container">
+        <section className="delivery-type-section">
+          <h3>Delivery type: {user?.userName}</h3>
+        </section>
+      </div> */}
     </>
   );
 };

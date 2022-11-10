@@ -34,16 +34,14 @@
 }
 
 .profile-fa-heart:hover {
-  color: var(--primary-color);
+  color: var(--secondary-color);
 }
 
-/*---------------*/
 .error-message {
   font-size: 14px;
   font-weight: 600;
   color: red;
 }
-/*---------------*/
 
 .delivery-type-section {
   display: flex;

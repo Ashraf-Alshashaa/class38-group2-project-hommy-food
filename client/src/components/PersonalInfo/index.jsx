@@ -3,50 +3,58 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/authentication";
 import avatar from "../../../public/images/img_avatar.png";
 import "./style.css";
+import RatedStar from "../RatedStar";
 
 const PersonalInfo = () => {
   const { user } = useContext(AuthContext);
   // console.log(user);
 
-  return (
-    <div className="personal-ino-container">
-      <div className="image-container">
-        <div className="profile-image">
-          {user?.image ? (
-            <img
-              src={user?.image}
-              alt="user image"
-              className="user-profile-img"
-            />
-          ) : (
-            <img src={avatar} alt="user image" className="user-profile-img" />
+  if (user || user === null) {
+    return (
+      <div className="personal-ino-container">
+        <div className="image-container">
+          <div className="profile-image">
+            {user?.image ? (
+              <img
+                src={user?.image}
+                alt="user image"
+                className="user-profile-img"
+              />
+            ) : (
+              <img src={avatar} alt="user image" className="user-profile-img" />
+            )}
+          </div>
+          {user?._id === "636cf3b7279773035cd02f4c" && (
+            <Link className="image-icon" to={"/"}>
+              <i className="fa-solid fa-plus"></i> <h3>Add image</h3>
+            </Link>
           )}
+          <div className="rated-star-comp">
+            <RatedStar />
+          </div>
         </div>
-        <Link className="image-icon" to={"/"}>
-          <i className="fa-solid fa-plus"></i> <h3>Add image</h3>
-        </Link>
-      </div>
-      {user && (
         <div className="info-container">
           <h2>Personal info</h2>
           <h3>User name: {user?.userName}</h3>
-          {user.fullName ? (
+          {user?.fullName ? (
             <h3>
-              Full name: {user?.fullName.first} {user?.fullName.last}{" "}
+              Full name: {user?.fullName.first} {user?.fullName.last}
             </h3>
           ) : (
             <h3>Full name:</h3>
           )}
           <h3>E-mail: {user?.email}</h3>
           <h3>Address: {user?.address}</h3>
-          {user.phone ? <h3>Phone: {user?.phone}</h3> : <h3>Phone:</h3>}
-          <Link className="edit-info" to={"/"}>
-            <i className="fa-solid fa-pen" /> <h3>Edit profile</h3>
-          </Link>
+          <h3>Phone: {user?.phone}</h3>
+          {user?._id === "636cf3b7279773035cd02f4c" && (
+            <Link className="edit-info" to={"/"}>
+              <i className="fa-solid fa-pen" /> <h3>Edit profile</h3>
+            </Link>
+          )}
         </div>
-      )}
-    </div>
-  );
+      </div>
+    );
+  }
 };
 
 export default PersonalInfo;

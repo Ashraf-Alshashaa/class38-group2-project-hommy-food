@@ -24,5 +24,5 @@ app.use("/api/user", userRouter);
 app.use("/api/rate", rateRouter);
 app.use("/api/meals", mealRouter);
 app.use("/api/categories", categoryRouter);
-app.use("/api/rate", cuisineRouter);
+app.use("/api/cuisines", cuisineRouter);
 export default app;

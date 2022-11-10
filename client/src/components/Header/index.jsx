@@ -47,7 +47,11 @@ const Header = () => {
         <Link
           to={href}
           key={name}
-          className={!displayNav ? "nav-links-hidden" : "nav-links-visible"}
+          className={
+            !displayNav
+              ? "nav-links-hidden"
+              : "nav-links-visible center-children"
+          }
         >
           <li>{name}</li>
         </Link>
@@ -58,7 +62,9 @@ const Header = () => {
     <Link
       to={href}
       key={name}
-      className={!displayNav ? "nav-links-hidden" : "nav-links-visible"}
+      className={
+        !displayNav ? "nav-links-hidden" : "nav-links-visible center-children"
+      }
     >
       <li>{name}</li>
     </Link>
@@ -67,7 +73,11 @@ const Header = () => {
   const favoritesAndCart = navLinks.map(
     ({ href, name, icon }) =>
       (name === "My Favorite" || name === "Shopping Cart") && (
-        <Link to={href} key={name} className="nav-links-visible">
+        <Link
+          to={href}
+          key={name}
+          className="nav-links-visible center-children "
+        >
           {icon}
         </Link>
       )
@@ -83,16 +93,16 @@ const Header = () => {
   );
 
   const logOutBtn = (
-    <button
+    <li
       onClick={() => logout()}
       className={
         !displayNav
           ? "nav-links-hidden"
-          : "nav-links-visible logout-header-btn cursor"
+          : "nav-links-visible logout-header-btn cursor center-children"
       }
     >
       Logout
-    </button>
+    </li>
   );
   return (
     <header className="header">

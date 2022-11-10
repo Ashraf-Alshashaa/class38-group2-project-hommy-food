@@ -1,15 +1,17 @@
 import express from "express";
 import {
   createUser,
-  getUser,
+  getProfile,
   login,
   authenticateToken,
   updateUser,
+  getChef,
 } from "../controllers/user.js";
 
 const userRouter = express.Router();
 
-userRouter.get("/", authenticateToken, getUser);
+userRouter.get("/", authenticateToken, getProfile);
+userRouter.get("/:id", getChef);
 userRouter.post("/create", createUser);
 userRouter.post("/login", login);
 userRouter.patch("/:id", updateUser);

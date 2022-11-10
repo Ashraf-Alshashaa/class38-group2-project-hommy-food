@@ -38,7 +38,6 @@
   width: 14vw;
   position: absolute;
   z-index: 4;
-  margin-left: 10px;
   transition: 500ms ease;
 }
 
@@ -52,6 +51,7 @@
   padding: 10px 0;
   list-style: none;
   color: var(----light-gray-color);
+  color: white;
 }
 
 .menu ul {

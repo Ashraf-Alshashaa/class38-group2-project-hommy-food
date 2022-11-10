@@ -52,7 +52,7 @@ const CuisineListButtons = () => {
               }}
               className="btn btn-primary"
             >
-              Other Cuisines <i className="fa fa-caret-down" />
+              Other Cuisines <i className="fa fa-caret-down dropdown-icon" />
             </button>
           </div>
           <div className={`menu ${open ? "active" : "inactive"}`}>

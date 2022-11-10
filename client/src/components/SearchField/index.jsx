@@ -24,7 +24,7 @@ const SearchField = () => {
           id="search-btn"
           onClick={() => navigate(`/results?search=${query}`)}
         >
-          <i className="fas fa-search"></i>
+          <i className="fas fa-search search-btn-icon"></i>
         </button>
       </form>
     </>

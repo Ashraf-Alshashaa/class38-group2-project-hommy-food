@@ -11,13 +11,13 @@ const PersonalInfo = () => {
   const { id } = useParams();
   const { user } = useContext(AuthContext);
   // const id = "636cfa4b279773035cd02f73"
+  // console.log(user);
 
   const [imgUrl, setImgUrl] = useState("");
   const [userInfo, setUserInfo] = useState(user);
 
   const url = `${process.env.BASE_SERVER_URL}/api/user/chef/${id}`;
   useEffect(() => {
-    // if (!user || (user && user._id !== id)) {
     (async () => {
       try {
         const response = await fetch(url);
@@ -33,10 +33,8 @@ const PersonalInfo = () => {
         // setMsg("something went wrong");
       }
     })();
-    // }
   }, []);
 
-  // if (userInfo || userInfo === null) {
   return (
     <div className="personal-ino-container">
       <div className="image-container">
@@ -82,6 +80,5 @@ const PersonalInfo = () => {
     </div>
   );
 };
-// };
 
 export default PersonalInfo;

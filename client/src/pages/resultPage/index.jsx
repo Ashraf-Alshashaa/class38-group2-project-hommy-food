@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import CategoryCard from "../../components/CategoryListCards/CategoryCard";
 import useFetch from "../../hooks/useFetch";
-import "./index.css";
+import "./style.css";
 export default function ResultPage() {
   const [searchParams] = useSearchParams();
   const [data, setData] = useState([]);

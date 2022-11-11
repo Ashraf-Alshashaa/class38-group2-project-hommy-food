@@ -47,7 +47,11 @@ const Header = () => {
         <Link
           to={href}
           key={name}
-          className={!displayNav ? "nav-links-hidden" : "nav-links-visible"}
+          className={
+            !displayNav
+              ? "nav-links-hidden"
+              : "nav-links-visible center-children"
+          }
         >
           <li>{name}</li>
         </Link>
@@ -58,7 +62,9 @@ const Header = () => {
     <Link
       to={href}
       key={name}
-      className={!displayNav ? "nav-links-hidden" : "nav-links-visible"}
+      className={
+        !displayNav ? "nav-links-hidden" : "nav-links-visible center-children"
+      }
     >
       <li>{name}</li>
     </Link>
@@ -67,7 +73,11 @@ const Header = () => {
   const favoritesAndCart = navLinks.map(
     ({ href, name, icon }) =>
       (name === "My Favorite" || name === "Shopping Cart") && (
-        <Link to={href} key={name} className="nav-links-visible">
+        <Link
+          to={href}
+          key={name}
+          className="nav-links-visible center-children "
+        >
           {icon}
         </Link>
       )
@@ -75,7 +85,7 @@ const Header = () => {
 
   const loginBtn = (
     <button
-      className="login-header-btn cursor"
+      className="login-header-btn cursor center-children"
       onClick={() => navigate("/login", { replace: true })}
     >
       Login
@@ -83,34 +93,35 @@ const Header = () => {
   );
 
   const logOutBtn = (
-    <button
+    <li
       onClick={() => logout()}
       className={
         !displayNav
           ? "nav-links-hidden"
-          : "nav-links-visible logout-header-btn cursor"
+          : "nav-links-visible logout-header-btn cursor center-children"
       }
     >
       Logout
-    </button>
+    </li>
   );
   return (
     <header className="header">
       <Link className="logo-container" to="/">
         <img className="logo" src={logo} alt="Hommy food" />
       </Link>
-      <div
-        onClick={() => user && desktop && setDisplayNav(!displayNav)}
-        className={`user-info-container-header ${user && "cursor"}`}
-      >
-        <img
-          src={user && user?.photo ? user.photo : defaultUserImg}
-          alt="user"
-          className="user-img-header"
-        />
-
-        <h5 className="user-name-header">Hello {user?.userName || "user"}</h5>
-      </div>
+      {user && (
+        <div
+          onClick={() => desktop && setDisplayNav(!displayNav)}
+          className={`user-info-container-header ${user && "cursor"}`}
+        >
+          <img
+            src={user && user?.photo ? user.photo : defaultUserImg}
+            alt="user"
+            className="user-img-header"
+          />
+          <h5 className="user-name-header">Hello {user?.userName || "user"}</h5>
+        </div>
+      )}
       {mobile && user && (
         <i
           className="fa-solid fa-bars fa-xl nav-btn"

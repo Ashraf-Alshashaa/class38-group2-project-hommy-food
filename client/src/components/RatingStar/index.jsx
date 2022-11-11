@@ -42,7 +42,6 @@ const RateStar = () => {
         });
         if (response.ok) {
           await response.json();
-          // console.log(res, "aaaaaaa");
           return;
         }
         throw new Error("Http Error");

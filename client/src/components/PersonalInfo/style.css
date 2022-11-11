@@ -1,14 +1,23 @@
 .personal-ino-container {
+  position: relative;
   display: flex;
   flex-direction: row;
-  width: 90%;
+  width: 85%;
+  height: 20%;
+  border: 2px solid lightgray;
+  padding: 5% 0;
+  border-radius: 20px;
   justify-content: space-around;
   align-items: center;
-  margin: 100px auto;
+  margin: 5% auto;
 }
 
 .image-container {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
 }
 
 .profile-image {
@@ -28,33 +37,29 @@
   border-radius: 50%;
 }
 
-.image-icon {
-  position: absolute;
-  display: flex;
-  text-decoration: none;
-  bottom: -15px;
-  right: -45px;
-  z-index: 2;
-}
-
 .upload-profile-image {
   font-size: 12px !important;
   color: blue !important;
-  font-weight: 600 !important;
+  font-weight: 500 !important;
   padding-left: 5px;
   padding-top: 2px;
 }
 
 .rated-star-comp {
+  padding-top: 10px;
+}
+
+.profile-info-title {
   position: absolute;
-  left: 50%;
-  bottom: -20%;
-  transform: translate(-50%);
+  top: -20px;
+  right: 4%;
+  padding: 0 2%;
+  background-color: #f0f0f0;
 }
 
 .info-container h3 {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .info-container h2 {

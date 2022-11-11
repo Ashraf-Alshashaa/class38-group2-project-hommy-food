@@ -24,8 +24,8 @@ const RatedStar = () => {
 
   const stars = Array(5).fill(0);
   return (
-    <div className="star-container">
-      <div className="star">
+    <div className="rated-star-container">
+      <div className="rated-star">
         {stars.map((_, index) => (
           <i
             key={index}

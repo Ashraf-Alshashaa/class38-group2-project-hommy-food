@@ -10,8 +10,6 @@ import { useEffect } from "react";
 const PersonalInfo = () => {
   const { id } = useParams();
   const { user } = useContext(AuthContext);
-  // const id = "636cfa4b279773035cd02f73"
-  // console.log(user);
 
   const [imgUrl, setImgUrl] = useState("");
   const [userInfo, setUserInfo] = useState(user);
@@ -23,7 +21,6 @@ const PersonalInfo = () => {
         const response = await fetch(url);
         if (response.ok) {
           const data = await response.json();
-          // console.log(data);
           setUserInfo(data.result);
           return;
         }
@@ -46,27 +43,33 @@ const PersonalInfo = () => {
           )}
         </div>
         {user?._id === id && (
-          <div className="image-icon">
+          <>
             <UploadImgWidget
               folderName="profilePicture"
               setImgUrl={setImgUrl}
               className="upload-profile-image"
             />
-          </div>
+          </>
         )}
         <div className="rated-star-comp">
           <RatedStar />
         </div>
       </div>
       <div className="info-container">
-        <h2>Personal information</h2>
+        <div className="profile-info-title">
+          <h2>Personal information</h2>
+        </div>
         <h3>User name: {userInfo?.userName}</h3>
         {userInfo?.fullName ? (
-          <h3>
-            Full name: {userInfo?.fullName.first} {userInfo?.fullName.last}
-          </h3>
+          <>
+            <h3>First name: {userInfo?.fullName.first}</h3>
+            <h3>Last name: {userInfo?.fullName.last}</h3>
+          </>
         ) : (
-          <h3>Full name:</h3>
+          <>
+            <h3>First name:</h3>
+            <h3>Last name:</h3>
+          </>
         )}
         <h3>e-mail: {userInfo?.email}</h3>
         <h3>Address: {userInfo?.address}</h3>

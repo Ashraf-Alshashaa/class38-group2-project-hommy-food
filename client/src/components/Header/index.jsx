@@ -85,7 +85,7 @@ const Header = () => {
 
   const loginBtn = (
     <button
-      className="login-header-btn cursor"
+      className="login-header-btn cursor center-children"
       onClick={() => navigate("/login", { replace: true })}
     >
       Login
@@ -109,17 +109,19 @@ const Header = () => {
       <Link className="logo-container" to="/">
         <img className="logo" src={logo} alt="Hommy food" />
       </Link>
-      <div
-        onClick={() => user && desktop && setDisplayNav(!displayNav)}
-        className={`user-info-container-header ${user && "cursor"}`}
-      >
-        <img
-          src={user && user?.photo ? user.photo : defaultUserImg}
-          alt="user"
-          className="user-img-header"
-        />
-        <h5 className="user-name-header">Hello {user?.userName || "user"}</h5>
-      </div>
+      {user && (
+        <div
+          onClick={() => desktop && setDisplayNav(!displayNav)}
+          className={`user-info-container-header ${user && "cursor"}`}
+        >
+          <img
+            src={user && user?.photo ? user.photo : defaultUserImg}
+            alt="user"
+            className="user-img-header"
+          />
+          <h5 className="user-name-header">Hello {user?.userName || "user"}</h5>
+        </div>
+      )}
       {mobile && user && (
         <i
           className="fa-solid fa-bars fa-xl nav-btn"

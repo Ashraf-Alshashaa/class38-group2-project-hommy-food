@@ -26,6 +26,7 @@
   display: flex;
   height: 40px;
   align-items: center;
+  margin-right: auto;
 }
 
 .logo {
@@ -37,7 +38,6 @@
   display: flex;
   height: 40px;
   align-items: center;
-  margin-left: auto;
 }
 
 .user-img-header {
@@ -47,7 +47,7 @@
 }
 
 .user-name-header {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 700;
   margin: 0;
   color: var(--primary-color);
@@ -96,25 +96,19 @@ i {
 }
 
 .login-header-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-size: 14px;
-  font-weight: 700;
   width: 50px;
   height: 25px;
-  border-radius: 5px;
+  border-radius: 2px;
   border: none;
   background-color: var(--primary-color);
   color: var(--secondary-color);
-}
-
-.logout-header-btn {
-  margin: 2px 0;
+  margin-left: auto;
+  transition: calc(0.7s);
 }
 
 .login-header-btn:hover {
-  transform: scale(0.9);
+  transform: scale(0.97);
 }
 
 @media screen and (min-width: 1024px) {
@@ -153,21 +147,9 @@ i {
   .cart-fav-container {
     display: flex;
     justify-content: space-evenly;
-    align-items: center !important;
-    width: 10%;
-    margin: 0;
-    padding: 0;
-  }
-  .cart-fav-container {
-    display: flex;
-    justify-content: space-evenly;
     align-items: center;
     width: 10%;
     margin: 0;
     padding: 0;
-  }
-  .logout-header-btn:hover,
-  .nav-links-visible:hover {
-    background-color: var(--secondary-color);
   }
 }

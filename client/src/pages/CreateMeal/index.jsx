@@ -11,7 +11,7 @@ export default function CreateMeal() {
   const { user } = useContext(AuthContext);
   const [isAvailable, setIsAvailable] = useState(false);
   const [imgUrl, setImgUrl] = useState(
-    "https://res.cloudinary.com/dmykyluyo/image/upload/v1668174548/meal_photos/b1ixh0dyxf8p7y58ewjw.jpg"
+    "https://res.cloudinary.com/dmykyluyo/image/upload/v1668194264/meal_photos/nezxr8lcizgsnr48y5mi.png"
   );
   const [data, setData] = useState({});
   const [categories, setCategories] = useState([]);

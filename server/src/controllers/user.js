@@ -1,5 +1,5 @@
 import User, { validateUser } from "../models/User.js";
-import { logError } from "../util/logging.js";
+import { logError, logInfo } from "../util/logging.js";
 import validationErrorMessage from "../util/validationErrorMessage.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
@@ -142,9 +142,14 @@ export const login = async (req, res) => {
 
 export const updateUser = async (req, res) => {
   try {
-    const { id } = req.params;
-    await User.findByIdAndUpdate(id, req.body);
-    const updatedUser = await User.findById(id);
+    await User.removeIndex({ userName: 1 });
+    logInfo(req.body);
+    const email = req.user;
+    const userData = await User.findOne({ email: email });
+    const userId = userData._id.toString();
+    logInfo(userId);
+    await User.findByIdAndUpdate(userId, req.body);
+    const updatedUser = await User.find({ email: email });
     res.status(200).json({ success: true, result: updatedUser });
   } catch (error) {
     logError(error);

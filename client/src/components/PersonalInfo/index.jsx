@@ -10,7 +10,6 @@ import { useEffect } from "react";
 const PersonalInfo = () => {
   const { id } = useParams();
   const { user } = useContext(AuthContext);
-
   const [imgUrl, setImgUrl] = useState("");
   const [userInfo, setUserInfo] = useState(user);
 
@@ -30,7 +29,7 @@ const PersonalInfo = () => {
         // setMsg("something went wrong");
       }
     })();
-  }, []);
+  }, [user, imgUrl]);
 
   return (
     <div className="personal-ino-container">

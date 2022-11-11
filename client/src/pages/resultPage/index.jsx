@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import MealCard from "../../components/mealCard";
 import useFetch from "../../hooks/useFetch";
-import "./index.css";
 import sadChef from "./sadChef.jpg";
 import somethingWentWrong from "./something-went-wrong.png";
 import PulseLoader from "react-spinners/PulseLoader";
+import "./style.css";
+
 export default function ResultPage() {
   const [searchParams] = useSearchParams();
   const [data, setData] = useState([]);
@@ -33,46 +34,56 @@ export default function ResultPage() {
     category && performFilterCategoryFetch();
     cuisine && performFilterCuisineFetch();
   }, []);
-  return isLoadingSearch || isLoadingCuisine || isLoadingCategory ? (
-    <div className="loading-gif">
-      <PulseLoader
-        color="#f9a01b"
-        size={60}
-        aria-label="Loading Spinner"
-        data-testid="loader"
-      />
-    </div>
-  ) : errorSearch || errorCategory || errorCuisine ? (
-    <>
+  const isLoading = isLoadingSearch || isLoadingCuisine || isLoadingCategory;
+  const error = errorSearch || errorCategory || errorCuisine;
+
+  if (isLoading) {
+    return (
+      <div className="loading-gif">
+        <PulseLoader
+          color="#f9a01b"
+          size={60}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
       <div className="error">
         <img src={somethingWentWrong} alt="something went wrong" />
         <h1>Oops!</h1>
         <h5>Something went wrong try again or refresh page</h5>
       </div>
-    </>
-  ) : (
-    <>
-      <div className="result-page">
-        {!data?.result?.length > 0 && (
-          <div className="meals-notFound">
-            <img src={sadChef} alt="sad chef" />
-            <h1>Oops!</h1>
-            <h5>
-              Sorry no meals found go back to <Link to="/">HomePage</Link>
-            </h5>
-          </div>
-        )}
-        {data?.result?.map((meal) => (
-          <MealCard
-            key={meal._id}
-            image={meal.image}
-            title={meal.title}
-            isAvailable={meal.isAvailable}
-            quantity={meal.quantity}
-            ingredients={meal.ingredients}
-          />
-        ))}
-      </div>
-    </>
+    );
+  }
+
+  return (
+    <div className="result-page">
+      {!data?.result?.length > 0 && (
+        <div className="meals-not-found">
+          <img src={sadChef} alt="sad chef" />
+          <h1>Oops!</h1>
+          <h5>
+            Sorry no meals found go back to <Link to="/">HomePage</Link>
+          </h5>
+        </div>
+      )}
+      {data?.result?.map((meal) => (
+        <MealCard
+          key={meal._id}
+          image={meal.image}
+          title={meal.title}
+          quantity={meal.quantity}
+          ingredients={meal.ingredients}
+          category={meal.category.title}
+          cuisine={meal.cuisine.title}
+          description={meal.description}
+          price={meal.price}
+        />
+      ))}
+    </div>
   );
 }

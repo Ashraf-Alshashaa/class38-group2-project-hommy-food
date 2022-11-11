@@ -11,9 +11,10 @@ const InputForm = (props) => {
   const handleOnBlur = () => {
     setFocus(true);
   };
+
   return (
     <div className="signUp-form">
-      <label>{label}</label>
+      {label && <label>{label}</label>}
       <input
         {...inputs}
         onChange={onChange}
@@ -28,9 +29,9 @@ const InputForm = (props) => {
   );
 };
 InputForm.propTypes = {
-  label: PropTypes.string.isRequired,
   errorMessage: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  label: PropTypes.string,
 };
 
 export default InputForm;

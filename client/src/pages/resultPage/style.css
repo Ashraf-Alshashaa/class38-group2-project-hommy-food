@@ -1,32 +1,34 @@
 .result-page {
-  display: flex;
+  display: flex !important;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 2%;
+  margin-top: 3%;
+  min-height: 95vh;
   gap: 10px;
-  flex-direction: row;
   align-items: stretch;
+  flex-direction: row;
 }
 
-.meals-notFound img {
-  position: relative;
-  left: 18%;
+.meals-not-found img {
+  margin-left: 26%;
 }
-.meals-notFound h1 {
+.meals-not-found h1 {
   font-size: 1.5vw;
   padding: 0%;
 }
-.meals-notFound h5 {
+.meals-not-found h5 {
   color: var(--darker-gray-color);
 }
 .loading-gif {
   margin-left: 40%;
   margin-top: 10%;
+  height: 65vh;
 }
 .error {
   width: 35%;
   margin-top: 8%;
   margin-left: 35%;
+  height: 65vh;
 }
 .error img {
   margin-left: 40%;

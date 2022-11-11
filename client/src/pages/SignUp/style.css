@@ -2,20 +2,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  min-height: 95vh;
   background-color: var(--primary-color);
 }
 
-form {
+.signUp-page-form {
+  padding: 0% !important;
   display: flex;
   flex-direction: column;
   border-radius: 20px;
-  padding: 60px;
-  width: 50%;
+  width: 30%;
   align-items: center;
 }
 
-img {
+.signUp-input {
+  outline: 0;
+  padding: 6px;
+  height: 40px;
+  margin-top: 10px;
+}
+
+.signUp-page-logo {
   padding-bottom: 20px;
 }
 
@@ -50,34 +57,59 @@ h1 {
   justify-content: center;
 }
 
-button {
+.submit-btn,
+.link-btn {
   width: 80%;
-  padding: 5px;
-  margin: 10px;
-  cursor: pointer;
+  height: 40px;
   border-radius: 5px;
 }
 
 .submit-btn {
   background-color: var(--secondary-color);
-  border: 2px solid var(--secondary-color);
+  border: none;
   font-weight: 700;
   font-size: 16px;
   color: #f2f2f2;
+  margin-bottom: 10px;
+  transition: calc(0.7s);
 }
 
 .back-btn {
   background-color: #f2f2f2;
-  border: 2px solid var(--secondary-color);
+  border: none;
   font-weight: 700;
   font-size: 16px;
   color: var(--secondary-color);
+  width: 100%;
+  border-radius: 5px;
 }
 
-.submit-btn:hover {
-  transform: scale(0.95);
-}
-
+.submit-btn:hover,
 .back-btn:hover {
-  transform: scale(0.95);
+  transform: scale(0.98);
+  border-radius: 5px;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 820px) {
+  .signUp-page-form {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .signUp-page-form {
+    width: 90%;
+    padding: auto !important;
+  }
+  .signUp-form {
+    width: 100%;
+  }
+  .signUp-page {
+    padding: 0;
+  }
+  .submit-btn,
+  .link-btn {
+    width: 100%;
+  }
 }

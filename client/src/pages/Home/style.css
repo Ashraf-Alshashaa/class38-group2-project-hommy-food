@@ -4,9 +4,17 @@
   top: 40%;
 }
 
+@media only screen and (max-width: 820px) {
+  .home-search-container {
+    top: 35%;
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .home-search-container {
-    top: 48%;
+    top: 45%;
+    width: 90%;
+    margin-left: 5%;
     display: flex;
     justify-content: center;
     flex-direction: column;

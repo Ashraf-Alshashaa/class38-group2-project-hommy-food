@@ -11,7 +11,6 @@ const SearchField = () => {
   };
   return (
     <>
-      {/* <div className=" col-md-6 col-lg-6 col-11 mx-auto my-auto search-box"> */}
       <form className="search-container">
         <input
           name={"Search"}
@@ -25,10 +24,9 @@ const SearchField = () => {
           id="search-btn"
           onClick={() => navigate(`/results?search=${query}`)}
         >
-          <i className="fas fa-search"></i>
+          <i className="fas fa-search search-btn-icon"></i>
         </button>
       </form>
-      {/* </div> */}
     </>
   );
 };

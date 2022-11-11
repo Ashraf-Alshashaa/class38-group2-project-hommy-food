@@ -11,10 +11,13 @@ const CustomerEdit = ({ trigger, userId, setTrigger }) => {
   const [data, setData] = useState(null);
   const [values, setValues] = useState({
     userName: "",
+    firstName: "",
+    lastName: "",
+    address: "",
     email: "",
     password: "",
     confirmPassword: "",
-    isChef: "user",
+    phoneNumber: "",
   });
   const [msg, setMsg] = useState("");
 
@@ -66,6 +69,7 @@ const CustomerEdit = ({ trigger, userId, setTrigger }) => {
       placeholder: "email@example.com",
       errorMessage: "It should be a valid email address!",
       label: "Email",
+      pattern: "[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$",
       required: true,
     },
     {
@@ -107,7 +111,7 @@ const CustomerEdit = ({ trigger, userId, setTrigger }) => {
       const response = await fetch(
         `${process.env.BASE_SERVER_URL}/api/user/:${userId}`,
         {
-          method: "get",
+          method: "patch",
           headers: {
             "Content-Type": "application/json",
           },
@@ -157,10 +161,11 @@ const CustomerEdit = ({ trigger, userId, setTrigger }) => {
           ))}
           <p>{msg}</p>
           <button
-            className="customer-profile-edit-btn"
+            className="submit-btn"
+            type="submit"
             onClick={() => setTrigger(false)}
           >
-            Update
+            Submit
           </button>
           <div className="customer-profile-link-btn" to="/profile">
             <button className="back-btn" onClick={() => setTrigger(false)}>

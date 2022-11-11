@@ -122,7 +122,6 @@ export const login = async (req, res) => {
 export const updateUser = async (req, res) => {
   try {
     const { id } = req.params;
-    console.log(id);
     await User.findByIdAndUpdate(id, req.body);
     const updatedUser = await User.findById(id);
     res.status(200).json({ success: true, result: updatedUser });

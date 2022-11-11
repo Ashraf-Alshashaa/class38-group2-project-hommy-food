@@ -26,9 +26,6 @@ const CustomerInfoBox = () => {
             </div>
             <div className="customer-info-container">
               <div>
-                <p>User Id: {userId}</p>
-              </div>
-              <div>
                 <p>User name: {user?.userName}</p>
               </div>
               <div>

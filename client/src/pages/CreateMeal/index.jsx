@@ -90,8 +90,8 @@ export default function CreateMeal() {
           {window.innerWidth > 600 && (
             <>
               <div className="buttons-container">
-                <Link className="link-btn" to="/">
-                  <button className="back-btn">Cancel</button>
+                <Link className="link-cancel-btn" to="/">
+                  <button className="cancel-btn">Cancel</button>
                 </Link>
                 <button
                   className="submit-btn"
@@ -199,8 +199,8 @@ export default function CreateMeal() {
       {window.innerWidth < 600 && (
         <>
           <div className="buttons-container">
-            <Link className="link-btn" to="/">
-              <button className="back-btn">Cancel</button>
+            <Link className="link-cancel-btn" to="/">
+              <button className="cancel-btn">Cancel</button>
             </Link>
             <button
               className="submit-btn"

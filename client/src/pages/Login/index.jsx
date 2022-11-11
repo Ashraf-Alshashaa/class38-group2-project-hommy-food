@@ -4,7 +4,7 @@ import LoginForm from "../../components/LoginForm";
 
 const Login = () => {
   return (
-    <main className="login-page-container center-children">
+    <main className="login-page-container">
       <LoginForm />
     </main>
   );

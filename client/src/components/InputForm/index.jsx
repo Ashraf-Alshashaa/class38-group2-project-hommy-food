@@ -11,9 +11,11 @@ const InputForm = (props) => {
   const handleOnBlur = () => {
     setFocus(true);
   };
+
   return (
     <div className={`signUp-form ${className}`}>
-      <label>{label}</label>
+      {label && <label>{label}</label>}
+
       <input
         {...inputs}
         onChange={onChange}

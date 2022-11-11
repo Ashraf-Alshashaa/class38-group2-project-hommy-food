@@ -14,10 +14,10 @@ const Home = () => {
         <Banner />
         <div className="home-search-container">
           <SearchField />
-          <CuisineListButtons />
-          <CategoryListCards />
-          <ChefsSlider />
         </div>
+        <CuisineListButtons />
+        <CategoryListCards />
+        <ChefsSlider />
       </div>
     </div>
   );

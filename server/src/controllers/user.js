@@ -141,10 +141,10 @@ export const login = async (req, res) => {
 };
 
 export const updateUser = async (req, res) => {
+  const email = req.user;
   try {
-    const { id } = req.params;
-    await User.findByIdAndUpdate(id, req.body);
-    const updatedUser = await User.findById(id);
+    await User.findOneAndUpdate({ email: email }, req.body);
+    const updatedUser = await User.find({ email: email });
     res.status(200).json({ success: true, result: updatedUser });
   } catch (error) {
     logError(error);

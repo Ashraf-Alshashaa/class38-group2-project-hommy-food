@@ -28,8 +28,8 @@ const InputForm = (props) => {
   );
 };
 InputForm.propTypes = {
-  label: PropTypes.string.isRequired,
-  errorMessage: PropTypes.string.isRequired,
+  label: PropTypes.string,
+  errorMessage: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   className: PropTypes.string,
 };

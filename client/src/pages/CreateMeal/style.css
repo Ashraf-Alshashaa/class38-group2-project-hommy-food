@@ -3,58 +3,71 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 1280px;
   margin: 10px auto;
 }
 .create-meal-container {
   display: flex;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: space-evenly;
+  min-width: 80%;
 }
-.meal-input {
-  width: 100%;
-}
-.upload-img-section {
+
+.create-meal-page-left-side {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 40%;
-  height: 100%;
+  justify-content: space-around;
+  width: 30%;
 }
-.img-container {
+.create-meal-page-right-side {
+  padding: 30px;
+  width: 50%;
+  background-color: var(--primary-color);
+  border-radius: 10px;
+}
+.img-upload-page {
+  width: 100%;
+}
+.meal-img-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 70%;
+  width: 100%;
+}
+.meal-img-container img {
+  width: 100%;
+}
+.meal-description {
+  border: 2px solid var(--secondary-color);
+  resize: none;
+  overflow: auto;
+  padding: 5px;
+  color: var(--secondary-color);
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 20px;
 }
 .buttons-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 40%;
-  margin-bottom: 20px;
+  width: 50%;
+  margin-bottom: 25px;
 }
-.img-container img {
+
+.meal-input {
   width: 100%;
 }
-.meal-information-section {
-  padding: 50px;
-  width: 40%;
-  background-color: var(--primary-color);
-}
+
 .category-select-box {
   min-height: 20px;
   font-family: "Montserrat", "sans-serif";
 }
-#isAvailable {
-  margin: 10px;
-  width: 20px;
-}
-label {
-  color: white;
+
+.create-meal-container label {
+  color: var(--secondary-color);
   padding: 5px 0px 3px 0px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
 }
 
@@ -82,6 +95,9 @@ label {
 
 .submit-btn:hover {
   transform: scale(0.95);
+}
+.submit-btn:disabled {
+  opacity: 0.5;
 }
 
 .back-btn:hover {
@@ -134,12 +150,13 @@ label {
   .create-meal-container {
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    width: 100%;
   }
-  .upload-img-section {
+  .create-meal-page-left-side {
     width: 90%;
   }
-  .meal-information-section {
+  .create-meal-page-right-side {
     width: 90%;
   }
 }

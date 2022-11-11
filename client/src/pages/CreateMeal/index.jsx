@@ -9,22 +9,15 @@ import "./style.css";
 
 export default function CreateMeal() {
   const { user } = useContext(AuthContext);
+  const [isAvailable, setIsAvailable] = useState(false);
   const [imgUrl, setImgUrl] = useState(
-    "https://res.cloudinary.com/dmykyluyo/image/upload/v1666906324/cld-sample-4.jpg"
+    "https://res.cloudinary.com/dmykyluyo/image/upload/v1668174548/meal_photos/b1ixh0dyxf8p7y58ewjw.jpg"
   );
-  const [data, setData] = useState({
-    title: "",
-    ingredients: [],
-    image: "",
-    category: "",
-    cuisine: "",
-    price: "",
-    isAvailable: false,
-    quantity: "",
-  });
+  const [data, setData] = useState({});
   const [categories, setCategories] = useState([]);
   const [cuisines, setCuisines] = useState(null);
   const navigate = useNavigate();
+  const [msg, setMsg] = useState("");
   const { performFetch: performFetchCuisines } = useFetch(
     "/cuisines",
     setCuisines
@@ -38,79 +31,156 @@ export default function CreateMeal() {
     performFetchCategories();
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const id = user?._id;
-    navigate(`/${id}/my_meals`);
-    //console.log({ ...data, chefId: user?._id });
+    try {
+      const response = await fetch(
+        `${process.env.BASE_SERVER_URL}/api/meals/create`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            ...data,
+            chefId: user?._id,
+            image: imgUrl,
+            isAvailable,
+          }),
+        }
+      );
+      const result = await response.json();
+      if (result.success) {
+        navigate(`/${user._id}/my_meals`);
+      } else {
+        setMsg(result.msg);
+      }
+    } catch (error) {
+      setMsg("sorry something went wrong");
+    }
   };
   const handleChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
-    setData({ ...data, [name]: value, image: imgUrl });
+    setData({ ...data, [name]: value });
   };
-  useEffect(() => {
-    setData({ ...data, isAvailable: data.isAvailable });
-  }, [data.isAvailable]);
-
+  //console.log(msg);
   return (
     <div className="create-meal-page">
       <h1>Create Your Meal</h1>
       <div className="create-meal-container">
-        <div className="upload-img-section">
-          <div className="img-container">
-            <img src={imgUrl} alt="meal image" />
+        <div className="create-meal-page-left-side">
+          <div className="img-upload-page">
+            <div className="meal-img-container">
+              <img src={imgUrl} alt="meal image" />
+            </div>
+            <UploadImgWidget setImgUrl={setImgUrl} folderName="meal_photos" />
           </div>
-          <UploadImgWidget setImgUrl={setImgUrl} folderName="meal_photos" />
+          <label htmlFor="description">Meal Description*</label>
+          <textarea
+            className="meal-description"
+            rows={5}
+            placeholder="Write something about your meal..."
+            name="description"
+            value={data["description"]}
+            onChange={handleChange}
+            required
+          />
+
+          {window.innerWidth > 600 && (
+            <>
+              <div className="buttons-container">
+                <Link className="link-btn" to="/">
+                  <button className="back-btn">Cancel</button>
+                </Link>
+                <button
+                  className="submit-btn"
+                  onClick={handleSubmit}
+                  disabled={
+                    !(
+                      data?.description &&
+                      data?.title &&
+                      data?.cuisine &&
+                      data?.category &&
+                      data?.price
+                    )
+                  }
+                >
+                  Submit
+                </button>
+              </div>
+              <div className="submit-msg">
+                <p>{msg}</p>
+              </div>
+            </>
+          )}
         </div>
-        <div className="meal-information-section">
+
+        <div className="create-meal-page-right-side">
           <InputForm
             className="meal-input"
-            label="Title"
+            label="Title*"
             type="text"
             placeholder="Title of the meal"
-            errorMessage="Please enter minimum 3 character"
             name="title"
+            errorMessage="Title is required field!"
             value={data["title"]}
             onChange={handleChange}
+            required
           />
           <InputForm
             className="meal-input"
-            label="Price"
+            label="Price*"
             type="number"
             placeholder="Price of the meal"
-            errorMessage="Please enter minimum 3 character"
             name="price"
             value={data["price"]}
+            errorMessage="Price is required field!"
             onChange={handleChange}
+            required
           />
-          <label>Category</label>
+          <label>Category*</label>
           <Dropdown
             data={categories?.result}
-            displayText={data.category ? data.category : "Select a category"}
+            displayText={
+              data.category
+                ? (categories?.result.filter(
+                    (elm) => elm._id === data.category
+                  ))[0].title
+                : "Select a category"
+            }
             onClick={(e) => setData({ ...data, category: e.target.id })}
           />
-          <label>Cuisine</label>
+          <label>Cuisine*</label>
           <Dropdown
             data={cuisines?.result}
-            displayText={data.cuisine ? data.cuisine : "Select a cuisine"}
+            displayText={
+              data.cuisine
+                ? (cuisines?.result.filter(
+                    (elm) => elm._id === data.cuisine
+                  ))[0].title
+                : "Select a cuisine"
+            }
             onClick={(e) => setData({ ...data, cuisine: e.target.id })}
           />
-          {/* <input
-            id="isAvailable"
-            type="checkbox"
-            value={true}
-            name="isAvailable"
+          <InputForm
+            className="meal-input"
+            label="Ingredients"
+            placeholder="tomato,cheese.."
+            type="text"
+            name="ingredients"
+            value={data["ingredients"]}
             onChange={handleChange}
           />
-          <label htmlFor="isAvailable">Meal is available for today.</label> */}
+
           <label htmlFor="isAvailable">Meal is available for today?</label>
           <input
             className="toggle"
             type="checkbox"
             id="isAvailable"
             name="isAvailable"
-            onChange={handleChange}
+            value={isAvailable}
+            onChange={() => setIsAvailable(!isAvailable)}
           />
 
           <label className="toggle-label" htmlFor="isAvailable"></label>
@@ -120,21 +190,39 @@ export default function CreateMeal() {
             label="Quantity"
             type="number"
             placeholder="Available quantity of portions for today"
-            errorMessage="Please enter minimum 3 character"
             name="quantity"
             value={data["quantity"]}
             onChange={handleChange}
           />
         </div>
       </div>
-      <div className="buttons-container">
-        <Link className="link-btn" to="/">
-          <button className="back-btn">Cancel</button>
-        </Link>
-        <button className="submit-btn" onClick={handleSubmit}>
-          Submit
-        </button>
-      </div>
+      {window.innerWidth < 600 && (
+        <>
+          <div className="buttons-container">
+            <Link className="link-btn" to="/">
+              <button className="back-btn">Cancel</button>
+            </Link>
+            <button
+              className="submit-btn"
+              onClick={handleSubmit}
+              disabled={
+                !(
+                  data?.description &&
+                  data?.title &&
+                  data?.cuisine &&
+                  data?.category &&
+                  data?.price
+                )
+              }
+            >
+              Submit
+            </button>
+          </div>
+          <div className="submit-msg">
+            <p>{msg}</p>
+          </div>
+        </>
+      )}
     </div>
   );
 }

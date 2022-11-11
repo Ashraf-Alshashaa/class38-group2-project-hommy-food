@@ -31,7 +31,7 @@ const Dropdown = ({ data, displayText, onClick }) => {
             <li
               className="dropdown-options"
               key={elm._id}
-              id={elm.title}
+              id={elm._id}
               onClick={onClick}
             >
               {elm.title}

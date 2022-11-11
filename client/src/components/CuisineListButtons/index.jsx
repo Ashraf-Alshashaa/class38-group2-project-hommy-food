@@ -15,7 +15,6 @@ const CuisineListButtons = () => {
   useEffect(() => {
     performFetch();
   }, []);
-
   const cuisineButton = cuisines?.result.slice(0, 7);
   const dropDownCuisine = cuisines?.result.slice(7);
   const size = useWindowSize();

@@ -5,6 +5,7 @@
   justify-content: center;
   max-width: 1200px;
   margin: 10px auto;
+  min-height: 90vh;
 }
 .create-meal-container {
   display: flex;

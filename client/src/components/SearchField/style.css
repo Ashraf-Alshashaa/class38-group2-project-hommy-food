@@ -2,7 +2,8 @@
 
 .search-container {
   display: flex;
-  margin: 15px 0 50px 0;
+  flex-direction: row;
+  margin: 0;
   align-items: stretch;
   transform: translate(50%);
   width: 50%;
@@ -12,6 +13,7 @@
 .search-control,
 .search-btn {
   width: 100%;
+  margin: 0;
 }
 
 .search-control {
@@ -22,6 +24,8 @@
   border: 1px solid var(--light-gray-color);
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
 }
 
 #search-btn {
@@ -32,7 +36,10 @@
   border: none;
   transition: all 0.3s linear;
   border-top-right-radius: 10px;
+  border-top-left-radius: 0;
   border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 0;
+  margin: 0;
 }
 
 i {
@@ -48,8 +55,10 @@ i {
 
 @media only screen and (max-width: 600px) {
   .search-container {
-    width: 75%;
+    width: 100%;
     transform: translate(0);
+    margin-bottom: -20px;
+    margin-top: -60px;
   }
   .btn.btn-search {
     font-size: 2.5vw;

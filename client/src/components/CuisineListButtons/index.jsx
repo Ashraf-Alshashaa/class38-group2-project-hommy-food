@@ -16,6 +16,15 @@ const CuisineListButtons = () => {
     performFetch();
   }, []);
 
+  useEffect(() => {
+    const closeDropDownCuisine = () => open && setOpen(false);
+
+    window.addEventListener("click", closeDropDownCuisine);
+
+    return () => {
+      window.removeEventListener("click", closeDropDownCuisine);
+    };
+  }, [open]);
   const cuisineButton = cuisines?.result.slice(0, 7);
   const dropDownCuisine = cuisines?.result.slice(7);
   const size = useWindowSize();
@@ -43,14 +52,14 @@ const CuisineListButtons = () => {
               }}
               className="btn btn-primary"
             >
-              Other Cuisines <i className="fa fa-caret-down" />
+              Other Cuisines <i className="fa fa-caret-down dropdown-icon" />
             </button>
           </div>
           <div className={`menu ${open ? "active" : "inactive"}`}>
             <ul>
               {dropDownCuisine?.map((cuisine) => (
                 <li
-                  className="drop-down-menu "
+                  className="drop-down-menu"
                   key={cuisine._id}
                   onClick={() => {
                     navigate(`/results?cuisine=${cuisine?._id}`);

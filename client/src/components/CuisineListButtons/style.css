@@ -1,8 +1,8 @@
 .cuisine-buttons-container {
   display: flex;
-  margin-top: 40px;
   max-height: 0px;
   justify-content: center;
+  margin-top: 50px;
 }
 
 .btn {
@@ -27,7 +27,6 @@
 }
 
 .menu {
-  margin-top: 10px;
   width: 14vw;
   background-color: var(--primary-color);
   border-radius: 5px;
@@ -37,21 +36,24 @@
 .active {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  width: 14vw;
+  position: absolute;
+  z-index: 4;
   transition: 500ms ease;
+  margin-top: 5px;
 }
 
 .inactive {
   opacity: 0;
   display: none;
-  transform: translateY(-10px);
-  transition: 500ms ease;
+  position: absolute;
 }
 
 .menu ul li {
   padding: 10px 0;
   list-style: none;
   color: var(----light-gray-color);
+  color: white;
 }
 
 .menu ul {
@@ -78,6 +80,9 @@
   .cuisine-buttons-container {
     display: none;
   }
+  .menu-containerMobile {
+    margin-top: 20px;
+  }
   .menuMobile {
     display: flex;
     flex-direction: column;
@@ -86,6 +91,16 @@
     background-color: var(--secondary-color);
     border-radius: 5px;
     color: var(--light-gray-color);
+  }
+
+  .active {
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+
+  .card {
+    margin-top: 20px;
   }
 
   .btn {
@@ -99,7 +114,6 @@
     padding: 8px 0;
     list-style: none;
     color: var(----light-gray-color);
-    z-index: 10;
   }
 
   .menuMobile ul {
@@ -116,7 +130,7 @@
   .menu-triggerMobile button {
     margin: 10px auto;
     width: 85vw;
-    font-size: 2.5vw;
+    font-size: 3.5vw;
   }
 
   .menu-triggerMobile i {

@@ -65,6 +65,13 @@ const userSchema = new mongoose.Schema({
     { mealId: { type: mongoose.ObjectId, ref: "Meal" }, quantity: Number },
   ],
   favoriteChefs: [String],
+  deliveryType: {
+    type: String,
+    enum: ["pickup", "delivery"],
+    default: "pickup",
+  },
+  videoUrl: String,
+  aboutMe: String,
 });
 
 const User = mongoose.model("users", userSchema);

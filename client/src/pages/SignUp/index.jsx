@@ -27,7 +27,6 @@ const SignUp = () => {
       placeholder: "User name",
       errorMessage:
         "First name should be 3-10 characters and shouldn't include any special character!",
-      label: "User name",
       pattern: "^[A-Za-z0-9]{3,10}$",
       required: true,
     },
@@ -37,7 +36,7 @@ const SignUp = () => {
       type: "email",
       placeholder: "email@example.com",
       errorMessage: "It should be a valid email address!",
-      label: "Email",
+
       required: true,
     },
     {
@@ -47,7 +46,6 @@ const SignUp = () => {
       placeholder: "Password",
       errorMessage:
         "Password should be 8-20 characters and include at lest 1 letter, 1 number and 1 special character!",
-      label: "Password",
       pattern:
         "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
       required: true,
@@ -58,7 +56,6 @@ const SignUp = () => {
       type: "password",
       placeholder: "Confirm password",
       errorMessage: "Passwords don't match!",
-      label: "Confirm Password",
       pattern: values.password,
       required: true,
     },
@@ -106,15 +103,15 @@ const SignUp = () => {
 
   return (
     <div className="signUp-page">
-      <form onSubmit={handleSubmit}>
-        <img src={Logo} width="200px" alt="logo" />
-        <h1>Register</h1>
+      <form onSubmit={handleSubmit} className="signUp-page-form">
+        <img src={Logo} width="200px" alt="logo" className="signUp-page-logo" />
         {inputs.map((input) => (
           <InputForm
             key={input.id}
             {...input}
             value={values[input.name]}
             onChange={onChange}
+            className="signUp-input"
           />
         ))}
         <div className="check-container">

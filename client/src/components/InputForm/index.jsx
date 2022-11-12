@@ -11,9 +11,11 @@ const InputForm = (props) => {
   const handleOnBlur = () => {
     setFocus(true);
   };
+
   return (
     <div className={`input-component ${className}`}>
-      <label>{label}</label>
+      {label && <label>{label}</label>}
+
       <input
         {...inputs}
         onChange={onChange}
@@ -30,8 +32,8 @@ const InputForm = (props) => {
 InputForm.propTypes = {
   label: PropTypes.string,
   errorMessage: PropTypes.string,
-  className: PropTypes.string,
   onChange: PropTypes.func.isRequired,
+  className: PropTypes.string,
 };
 
 export default InputForm;

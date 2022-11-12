@@ -2,51 +2,35 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import "./style.css";
-const MealCard = ({
-  image,
-  title,
-  quantity,
-  cuisine,
-  ingredients,
-  price,
-  category,
-  description,
-}) => {
+const MealCard = ({ id, image, title, quantity, chefName, price }) => {
   return (
-    <div className=" result-meal card">
-      <div className="image-Container">
-        {" "}
-        <img src={image} className="card-img-top" alt={title} />
-      </div>
-      <div className="title">
-        <h5>{title}</h5>
-      </div>
-      <div className="meal-info">
-        <p>Quantity {quantity}</p>
-        <p>cuisine indian{cuisine}</p>
-        <p>category non-veg{category}</p>
-      </div>
-      <div className="card-text">
-        <p style={{ fontSize: "0.7rem" }}>
-          any of various flour-and-egg food preparations of Italian origin, made
-          of thin, unleavened dough and produced in a variety of forms, usually
-          served with a sauce and sometimes stuffed.{description}
-        </p>
-      </div>
-      <div className="meal-ingredients">
-        <p style={{ fontSize: "0.7rem" }}>
-          <strong>Ingredients:</strong> {ingredients.join(", ")}{" "}
-        </p>
-      </div>
-      <p className="badge rounded-pill text-bg-danger">price: {price}</p>
-      <div className="links">
-        <Link to="/chefProfile">chefName here</Link>
-        <Link to="/">
+    <>
+      <div className=" result-meal card m-1">
+        <Link className="image-Container" to={`/mealDetail/${id}`}>
           {" "}
-          <i className="fa-solid fa-cart-shopping"></i>
+          <img
+            src={image}
+            className="card-img-top"
+            alt={title}
+            // onClick={() => navigate("/mealDetail", { replace: true })}
+          />
         </Link>
-      </div>{" "}
-    </div>
+        <div className="title">
+          <h5>{title}</h5>
+          <h6>{quantity} Left</h6>
+        </div>
+        <div className="links">
+          <Link to="/chefProfile">Chef: {chefName}</Link>
+          <div className="meal-price-container">
+            <p className="meal-price ">€{price}</p>
+          </div>
+          <Link to="/">
+            {" "}
+            <i className="fa-solid fa-cart-shopping"></i>
+          </Link>
+        </div>{" "}
+      </div>
+    </>
   );
 };
 MealCard.propTypes = {
@@ -59,5 +43,6 @@ MealCard.propTypes = {
   category: PropTypes.string,
   price: PropTypes.number,
   description: PropTypes.string,
+  id: PropTypes.string.isRequired,
 };
 export default MealCard;

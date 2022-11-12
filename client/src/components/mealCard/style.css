@@ -1,12 +1,13 @@
 .result-meal {
   display: flex;
-  height: 30rem;
-  width: 20rem;
+  height: 14rem;
+  width: 14rem;
   padding: 5px;
   gap: 5px;
+  position: relative;
 }
 .image-Container {
-  height: 35%;
+  height: 60%;
 }
 .result-meal img {
   width: 100%;
@@ -16,7 +17,6 @@
   display: flex;
   justify-content: space-between;
   font-size: 0.8rem;
-  height: 10%;
 }
 
 .links i {
@@ -26,21 +26,6 @@
   color: var(--primary-color);
 }
 
-.meal-info {
-  display: flex;
-  justify-content: space-between;
-  color: var(--darker-gray-color);
-  font-size: 0.8rem;
-  word-spacing: 6px;
-  align-items: center;
-  height: "4%";
-}
-
-.meal-info p {
-  padding: 0.8vw;
-  margin: 0;
-  text-align: center;
-}
 .red {
   color: red;
 }
@@ -48,16 +33,10 @@
   color: green;
 }
 .title {
-  border-bottom: 1px solid var(--dark-gray-color);
   font-size: 0.5rem !important;
   height: "7.5%";
-}
-.resultMeal .title h6 {
-  color: var(--secondary-color) !important;
-}
-p:first-word {
-  font-weight: bold;
-  color: black;
+  display: flex;
+  justify-content: space-between;
 }
 .card-text {
   height: 25%;
@@ -69,6 +48,11 @@ p:first-word {
   height: 10%;
   font-size: 0.6rem;
 }
-.badge {
-  width: 5rem !important;
+.meal-price {
+  color: var(--primary-color);
+  font-size: 12px;
+}
+.meal-price-container {
+  margin-left: auto;
+  margin-right: 5px;
 }

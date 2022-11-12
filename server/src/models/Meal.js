@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import validateAllowedFields from "../util/validateAllowedFields.js";
 
 const mealSchema = new mongoose.Schema({
-  chefId: { type: mongoose.ObjectId, ref: "User", required: true },
+  chefId: { type: mongoose.ObjectId, ref: "users", required: true },
   title: { type: String, required: true },
   ingredients: [String],
   image: String,

@@ -39,51 +39,56 @@ export default function ResultPage() {
 
   if (isLoading) {
     return (
-      <div className="loading-gif">
-        <PulseLoader
-          color="#f9a01b"
-          size={60}
-          aria-label="Loading Spinner"
-          data-testid="loader"
-        />
+      <div className="result-page-container">
+        <div className="loading-gif">
+          <PulseLoader
+            color="#f9a01b"
+            size={60}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        </div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="error">
-        <img src={somethingWentWrong} alt="something went wrong" />
-        <h1>Oops!</h1>
-        <h5>Something went wrong try again or refresh page</h5>
+      <div className="result-page-container">
+        <div className="error">
+          <img src={somethingWentWrong} alt="something went wrong" />
+          <h1>Oops!</h1>
+          <h5>Something went wrong try again or refresh page</h5>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="result-page">
-      {!data?.result?.length > 0 && (
-        <div className="meals-not-found">
-          <img src={sadChef} alt="sad chef" />
-          <h1>Oops!</h1>
-          <h5>
-            Sorry no meals found go back to <Link to="/">HomePage</Link>
-          </h5>
-        </div>
-      )}
-      {data?.result?.map((meal) => (
-        <MealCard
-          key={meal._id}
-          image={meal.image}
-          title={meal.title}
-          quantity={meal.quantity}
-          ingredients={meal.ingredients}
-          category={meal.category.title}
-          cuisine={meal.cuisine.title}
-          description={meal.description}
-          price={meal.price}
-        />
-      ))}
+    <div className="result-page-container">
+      <div className="result-page">
+        {!data?.result?.length > 0 && (
+          <div className="meals-not-found">
+            <img src={sadChef} alt="sad chef" />
+            <h1>Oops!</h1>
+            <h5>
+              Sorry no meals found go back to <Link to="/">HomePage</Link>
+            </h5>
+          </div>
+        )}
+        {data?.result?.map((meal) => (
+          <MealCard
+            key={meal._id}
+            image={meal.image}
+            title={meal.title}
+            quantity={meal.quantity}
+            description={meal.description}
+            price={meal.price}
+            chefName={meal?.chefId?.userName}
+            id={meal._id}
+          />
+        ))}
+      </div>
     </div>
   );
 }

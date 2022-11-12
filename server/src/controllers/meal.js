@@ -4,7 +4,11 @@ import validationErrorMessage from "../util/validationErrorMessage.js";
 
 export const getMeals = async (req, res) => {
   try {
-    const meals = await Meal.find();
+    const meals = await Meal.find()
+      .populate({ path: "cuisine", select: "title" })
+      .populate({ path: "category", select: "title" })
+      .populate({ path: "chefId", select: "userName" })
+      .exec();
     res.status(200).json({ success: true, result: meals });
   } catch (error) {
     logError(error);
@@ -50,7 +54,11 @@ export const createMeal = async (req, res) => {
 export const getMeal = async (req, res) => {
   try {
     const { id } = req.params;
-    const meal = await Meal.findById(id);
+    const meal = await Meal.findById(id)
+      .populate({ path: "cuisine", select: "title" })
+      .populate({ path: "category", select: "title" })
+      .populate({ path: "chefId", select: "userName" })
+      .exec();
     res.status(200).json({ success: true, result: meal });
   } catch (error) {
     logError(error);
@@ -96,7 +104,11 @@ export const searchMeals = async (req, res) => {
         { title: { $regex: query, $options: "i" } },
         { ingredients: { $regex: query, $options: "i" } },
       ],
-    }).exec();
+    })
+      .populate({ path: "cuisine", select: "title" })
+      .populate({ path: "category", select: "title" })
+      .populate({ path: "chefId", select: "userName" })
+      .exec();
     res.status(200).json({ success: true, result: meals });
   } catch (error) {
     logError(error);
@@ -113,13 +125,21 @@ export const filterMeals = async (req, res) => {
     if (category) {
       const meals = await Meal.find({
         category: category,
-      }).exec();
+      })
+        .populate({ path: "cuisine", select: "title" })
+        .populate({ path: "category", select: "title" })
+        .populate({ path: "chefId", select: "userName" })
+        .exec();
       res.status(200).json({ success: true, result: meals });
     }
     if (cuisine) {
       const meals = await Meal.find({
         cuisine: cuisine,
-      }).exec();
+      })
+        .populate({ path: "cuisine", select: "title" })
+        .populate({ path: "category", select: "title" })
+        .populate({ path: "chefId", select: "userName" })
+        .exec();
       res.status(200).json({ success: true, result: meals });
     }
   } catch (error) {

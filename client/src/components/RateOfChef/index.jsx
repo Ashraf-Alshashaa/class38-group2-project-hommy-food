@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import PropTypes from "prop-types";
 import "./style.css";
 
-const RatedStar = () => {
+const RateOfChef = ({ id }) => {
   const [rate, setRate] = useState();
   const [msg, setMsg] = useState("");
-  const { id } = useParams();
 
   useEffect(() => {
     const url = `${process.env.BASE_SERVER_URL}/api/rate/${id}`;
@@ -40,4 +39,8 @@ const RatedStar = () => {
   );
 };
 
-export default RatedStar;
+RateOfChef.propTypes = {
+  id: PropTypes.string.isRequired,
+};
+
+export default RateOfChef;

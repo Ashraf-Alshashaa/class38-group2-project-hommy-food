@@ -1,17 +1,17 @@
 import React, { useContext, useState } from "react";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import { AuthContext } from "../../contexts/authentication";
+import PropTypes from "prop-types";
 import avatar from "../../../public/images/img_avatar.png";
 import "./style.css";
-import RatedStar from "../RatedStar";
+import RateOfChef from "../RateOfChef";
 import EditFromPopUp from "../EditFromPopUp";
 import UploadImgWidget from "../UploadImgWidget";
 import { useEffect } from "react";
 
-const PersonalInfo = () => {
+const PersonalInfo = ({ id }) => {
   const [openModal, setOpenModal] = useState(false);
   const [msg, setMsg] = useState("");
-  const { id } = useParams();
   const { user } = useContext(AuthContext);
   const [imgUrl, setImgUrl] = useState("");
   const [chefInfo, setChefInfo] = useState(user);
@@ -85,7 +85,7 @@ const PersonalInfo = () => {
             </>
           )}
           <div className="rated-star-comp">
-            <RatedStar />
+            <RateOfChef id={id} />
           </div>
         </div>
         <div className="info-container">
@@ -129,6 +129,10 @@ const PersonalInfo = () => {
       ) : null}
     </>
   );
+};
+
+PersonalInfo.propTypes = {
+  id: PropTypes.string.isRequired,
 };
 
 export default PersonalInfo;

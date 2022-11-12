@@ -40,7 +40,7 @@ const EditFromPopUp = ({ setOpenModal, setChefInfo }) => {
   };
 
   useEffect(() => {
-    if (fullName.first || fullName.last) {
+    if (fullName?.first || fullName?.last) {
       setData({
         ...values,
         fullName,

@@ -31,7 +31,7 @@ const LoginForm = () => {
             setMsg(response.msg);
           }
         } catch (error) {
-          setMsg("something went wrong");
+          setMsg("Something went wrong");
         }
       }
     })();

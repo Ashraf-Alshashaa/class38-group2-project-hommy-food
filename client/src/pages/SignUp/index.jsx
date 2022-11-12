@@ -86,7 +86,7 @@ const SignUp = () => {
     }
   };
 
-  // Getting the input value
+  // Getting the input value.
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };

@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import InputForm from "../InputForm";
 import "./style.css";
 
-const EditFromPopUp = ({ setOpenModal }) => {
+const EditFromPopUp = ({ setOpenModal, setChefInfo }) => {
   const { user } = useContext(AuthContext);
   const [data, setData] = useState(null);
   const [fullName, setFullName] = useState(user?.fullName);
@@ -29,6 +29,7 @@ const EditFromPopUp = ({ setOpenModal }) => {
       });
       const result = await response.json();
       if (result.success) {
+        setChefInfo(result?.result[0]);
         setMsg("Your personal information was successfully updated");
       } else {
         setMsg(result.msg);
@@ -139,6 +140,7 @@ const EditFromPopUp = ({ setOpenModal }) => {
 
 EditFromPopUp.propTypes = {
   setOpenModal: PropTypes.func.isRequired,
+  setChefInfo: PropTypes.func.isRequired,
 };
 
 export default EditFromPopUp;

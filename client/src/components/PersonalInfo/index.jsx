@@ -10,12 +10,11 @@ import { useEffect } from "react";
 
 const PersonalInfo = () => {
   const [openModal, setOpenModal] = useState(false);
+  const [msg, setMsg] = useState("");
   const { id } = useParams();
   const { user } = useContext(AuthContext);
   const [imgUrl, setImgUrl] = useState("");
-  const [userInfo, setUserInfo] = useState(user);
-
-  // console.log(user);
+  const [chefInfo, setChefInfo] = useState(user);
 
   const url = `${process.env.BASE_SERVER_URL}/api/user/chef/${id}`;
   useEffect(() => {
@@ -24,7 +23,7 @@ const PersonalInfo = () => {
         const response = await fetch(url);
         if (response.ok) {
           const data = await response.json();
-          setUserInfo(data.result);
+          setChefInfo(data.result);
           return;
         }
         throw new Error("Http Error");
@@ -33,17 +32,46 @@ const PersonalInfo = () => {
         // setMsg("something went wrong");
       }
     })();
-  }, [user, imgUrl]);
+  }, [user]);
+
+  useEffect(() => {
+    if (imgUrl) {
+      (async () => {
+        const token = localStorage.getItem("accessToken");
+        try {
+          const response = await fetch(
+            `${process.env.BASE_SERVER_URL}/api/user`,
+            {
+              method: "PATCH",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+              body: JSON.stringify({ photo: imgUrl }),
+            }
+          );
+          const res = await response.json();
+          setChefInfo(res?.result[0]);
+        } catch (error) {
+          setMsg("sorry something went wrong");
+        }
+      })();
+    }
+  }, [imgUrl]);
 
   return (
     <>
       <div className="personal-info-container">
         <div className="image-container">
           <div className="profile-image">
-            {userInfo?.image ? (
-              <img src={avatar} alt="user image" className="user-profile-img" />
+            {chefInfo?.photo ? (
+              <img
+                src={chefInfo?.photo}
+                alt="user image"
+                className="user-profile-img"
+              />
             ) : (
-              <img src={imgUrl} alt="user image" className="user-profile-img" />
+              <img src={avatar} alt="user image" className="user-profile-img" />
             )}
           </div>
           {user?._id === id && (
@@ -53,6 +81,7 @@ const PersonalInfo = () => {
                 setImgUrl={setImgUrl}
                 className="upload-profile-image"
               />
+              <p>{msg}</p>
             </>
           )}
           <div className="rated-star-comp">
@@ -63,11 +92,11 @@ const PersonalInfo = () => {
           <div className="profile-info-title">
             <h2>Personal information</h2>
           </div>
-          <h3>User name: {userInfo?.userName}</h3>
-          {userInfo?.fullName ? (
+          <h3>User name: {chefInfo?.userName}</h3>
+          {chefInfo?.fullName ? (
             <>
-              <h3>First name: {userInfo?.fullName.first}</h3>
-              <h3>Last name: {userInfo?.fullName.last}</h3>
+              <h3>First name: {chefInfo?.fullName.first}</h3>
+              <h3>Last name: {chefInfo?.fullName.last}</h3>
             </>
           ) : (
             <>
@@ -75,9 +104,9 @@ const PersonalInfo = () => {
               <h3>Last name:</h3>
             </>
           )}
-          <h3>e-mail: {userInfo?.email}</h3>
-          <h3>Address: {userInfo?.address}</h3>
-          <h3>Phone number: {userInfo?.phone}</h3>
+          <h3>e-mail: {chefInfo?.email}</h3>
+          <h3>Address: {chefInfo?.address}</h3>
+          <h3>Phone number: {chefInfo?.phone}</h3>
           {user?._id === id && (
             <>
               <button
@@ -92,7 +121,10 @@ const PersonalInfo = () => {
       </div>
       {openModal ? (
         <div className="update-profile-popup-container">
-          <EditFromPopUp setOpenModal={setOpenModal} />
+          <EditFromPopUp
+            setOpenModal={setOpenModal}
+            setChefInfo={setChefInfo}
+          />
         </div>
       ) : null}
     </>

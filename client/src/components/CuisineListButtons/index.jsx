@@ -50,12 +50,16 @@ const CuisineListButtons = () => {
               onClick={() => {
                 setOpen(!open);
               }}
-              className="btn btn-primary"
+              className="btn btn-primary d-flex justify-content-evenly align-items-center"
             >
               Other Cuisines <i className="fa fa-caret-down dropdown-icon" />
             </button>
           </div>
-          <div className={`menu ${open ? "active" : "inactive"}`}>
+          <div
+            className={`menu ${
+              open ? "categories-active" : "categories-inactive"
+            }`}
+          >
             <ul>
               {dropDownCuisine?.map((cuisine) => (
                 <li
@@ -86,7 +90,11 @@ const CuisineListButtons = () => {
               <i className="fa fa-caret-down" />
             </button>
           </div>
-          <div className={`menuMobile ${open ? "active" : "inactive"}`}>
+          <div
+            className={`menuMobile ${
+              open ? "categories-active" : "categories-inactive"
+            }`}
+          >
             <ul>
               {cuisines?.result.map((cuisine) => (
                 <li

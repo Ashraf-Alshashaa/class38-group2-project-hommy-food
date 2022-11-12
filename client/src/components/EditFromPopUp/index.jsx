@@ -60,7 +60,7 @@ const EditFromPopUp = ({ setOpenModal, setChefInfo }) => {
               className="popup-close-icon-btn"
               onClick={() => setOpenModal(false)}
             >
-              <i id="exp-close-x" className="fa-solid fa-x"></i>
+              <i id="popup-close-x" className="fa-solid fa-x"></i>
             </button>
           </div>
         </div>

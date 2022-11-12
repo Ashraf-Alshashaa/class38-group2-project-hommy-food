@@ -58,15 +58,15 @@
   background: none;
   width: 0;
   border: none;
-  margin-right: 2%;
+  margin-right: 3%;
 }
 
-#exp-close-x {
+#popup-close-x {
   color: white;
   font-size: 16px;
 }
 
-#exp-close-x:hover {
+#popup-close-x:hover {
   transform: scale(0.8);
   cursor: pointer;
 }

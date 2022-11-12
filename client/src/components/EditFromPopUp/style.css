@@ -146,15 +146,15 @@
   display: block;
   text-align: center;
   width: 30%;
-  background-color: var(--secondary-color);
-  border: none;
-  color: white;
+  background-color: var(--light-gray-color);
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
   border-radius: 5px;
   margin: 20px 0 0 0;
 }
 
 #popup-close-btn:hover,
 #popup-back-btn:hover {
-  transform: scale(0.9);
+  transform: scale(0.96);
   cursor: pointer;
 }

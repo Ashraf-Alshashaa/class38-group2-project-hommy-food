@@ -43,6 +43,8 @@ module.exports = {
     new webpack.EnvironmentPlugin({
       // Default is '' because on our heroku servers we want to have it default to our current URL
       BASE_SERVER_URL: "",
+      CLOUD_NAME: "",
+      UPLOAD_PRESET: "",
     }),
   ],
   // To tell the dev server that everything should go back to index.html

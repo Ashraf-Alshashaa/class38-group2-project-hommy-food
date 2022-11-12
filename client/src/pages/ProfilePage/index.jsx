@@ -6,7 +6,7 @@ import RateStar from "../../components/RatingStar";
 const ProfilePage = () => {
   const isLoading = false;
   return (
-    <>
+    <div className="chef-profile-page">
       {isLoading ? (
         <p>Loading...</p>
       ) : (
@@ -16,7 +16,7 @@ const ProfilePage = () => {
           <RateStar />
         </>
       )}
-    </>
+    </div>
   );
 };
 

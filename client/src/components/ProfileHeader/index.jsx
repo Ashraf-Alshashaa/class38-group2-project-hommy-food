@@ -7,45 +7,48 @@ const ProfileHeader = () => {
   const { id } = useParams();
   const { user } = useContext(AuthContext);
   const [msg, setMsg] = useState("");
-  // const [deliveryType, setDeliveryType] = useState("pickup");
   const [userInfo, setUserInfo] = useState(user);
 
-  // const onChange = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const response = await fetch(
-  //       `${process.env.BASE_SERVER_URL}/api/user/chef/${id}`,
-  //       {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify(deliveryType),
-  //       }
-  //     );
-  //     const res = await response.json();
-  //     console.log(res, "res");
-  //   } catch (error) {
-  //     setMsg("sorry something went wrong");
-  //   }
-  //   setDeliveryType(e.target.value);
-  // };
+  const onChange = async (e) => {
+    (async () => {
+      const token = localStorage.getItem("accessToken");
+      try {
+        const response = await fetch(
+          `${process.env.BASE_SERVER_URL}/api/user`,
+          {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({ deliveryType: e.target.value }),
+          }
+        );
+        const res = await response.json();
+        setUserInfo(res.result[0]);
+      } catch (error) {
+        setMsg("sorry something went wrong");
+      }
+    })();
+  };
 
   const url = `${process.env.BASE_SERVER_URL}/api/user/chef/${id}`;
   useEffect(() => {
-    (async () => {
-      try {
-        const response = await fetch(url);
-        if (response.ok) {
-          const data = await response.json();
-          setUserInfo(data.result);
-          return;
+    if (!user || user?.id !== id) {
+      (async () => {
+        try {
+          const response = await fetch(url);
+          if (response.ok) {
+            const data = await response.json();
+            setUserInfo(data.result);
+            return;
+          }
+          throw new Error("Http Error");
+        } catch (error) {
+          setMsg("something went wrong");
         }
-        throw new Error("Http Error");
-      } catch (error) {
-        setMsg("something went wrong");
-      }
-    })();
+      })();
+    }
   }, [user]);
 
   return (
@@ -62,23 +65,23 @@ const ProfileHeader = () => {
                     id="pickup"
                     name="delivery-type"
                     value="pickup"
-                    // checked={deliveryType == "pickup"}
-                    // onChange={onChange}
+                    checked={userInfo?.deliveryType == "pickup"}
+                    onChange={onChange}
                   />
-                  <label htmlFor="pickup" className="delivery-label">
+                  <label htmlFor="pickup" className="delivery-type-label">
                     PickUp
                   </label>
                 </div>
-                <div className="delivery">
+                <div className="delivery-type">
                   <input
                     type="radio"
                     id="delivery"
                     name="delivery-type"
                     value="delivery"
-                    // checked={deliveryType == "delivery"}
-                    // onChange={onChange}
+                    checked={userInfo?.deliveryType == "delivery"}
+                    onChange={onChange}
                   />
-                  <label htmlFor="delivery" className="delivery-label">
+                  <label htmlFor="delivery" className="delivery-type-label">
                     Delivery
                   </label>
                 </div>
@@ -92,7 +95,9 @@ const ProfileHeader = () => {
       ) : (
         <div className="profile-header-container">
           <section className="delivery-type-section">
-            <h3>Delivery type: {userInfo?.deliveryType === true}</h3>
+            <h3>
+              Delivery type: <span> {userInfo?.deliveryType} </span>
+            </h3>
           </section>
           <section className="profile-favorite-section">
             {user?._id !== undefined && (

@@ -16,6 +16,7 @@ const PersonalInfo = () => {
   const [userInfo, setUserInfo] = useState(user);
 
   // console.log(user);
+
   const url = `${process.env.BASE_SERVER_URL}/api/user/chef/${id}`;
   useEffect(() => {
     (async () => {

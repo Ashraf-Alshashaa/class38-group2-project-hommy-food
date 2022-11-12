@@ -7,64 +7,9 @@ import "./style.css";
 const EditFromPopUp = ({ setOpenModal }) => {
   const { user } = useContext(AuthContext);
   const [data, setData] = useState(null);
+  const [fullName, setFullName] = useState(user?.fullName);
   const [msg, setMsg] = useState("");
-  const id = user._id;
-  const [values, setValues] = useState({
-    userName: "",
-    fullName: "",
-    email: "",
-    address: "",
-    phone: "",
-  });
-
-  const inputs = [
-    {
-      id: 1,
-      name: "userName",
-      type: "text",
-      placeholder: "User name",
-      errorMessage:
-        "First name should be 3-10 characters and shouldn't include any special character!",
-      label: "User name",
-      pattern: "^[A-Za-z0-9]{3,10}$",
-      required: true,
-    },
-    {
-      id: 2,
-      name: "firstName",
-      type: "text",
-      placeholder: "First name",
-      label: "First name",
-    },
-    {
-      id: 3,
-      name: "lastName",
-      type: "text",
-      placeholder: "Last Name",
-      label: "Last Name",
-    },
-    {
-      id: 4,
-      name: "password",
-      type: "password",
-      placeholder: "Password",
-      label: "Password",
-    },
-    {
-      id: 5,
-      name: "address",
-      type: "text",
-      placeholder: "Address",
-      label: "Address",
-    },
-    {
-      id: 6,
-      name: "phone",
-      type: "text",
-      placeholder: "Phone number",
-      label: "Phone number",
-    },
-  ];
+  const [values, setValues] = useState({});
 
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -72,17 +17,16 @@ const EditFromPopUp = ({ setOpenModal }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const token = localStorage.getItem("accessToken");
     try {
-      const response = await fetch(
-        `${process.env.BASE_SERVER_URL}/api/user/${id}`,
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }
-      );
+      const response = await fetch(`${process.env.BASE_SERVER_URL}/api/user`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(data),
+      });
       const result = await response.json();
       if (result.success) {
         setMsg("Your personal information was successfully updated");
@@ -95,14 +39,15 @@ const EditFromPopUp = ({ setOpenModal }) => {
   };
 
   useEffect(() => {
-    setData({
-      userName: values.userName,
-      fullName: { first: values.firstName, last: values.lastName },
-      password: values.password,
-      address: values.address,
-      phone: values.phone,
-    });
-  }, [values]);
+    if (fullName.first || fullName.last) {
+      setData({
+        ...values,
+        fullName,
+      });
+    } else {
+      setData(values);
+    }
+  }, [values, fullName]);
 
   return (
     <div className="profile-popup-container">
@@ -119,15 +64,63 @@ const EditFromPopUp = ({ setOpenModal }) => {
           </div>
         </div>
         <form className="popup-input-field" onSubmit={handleSubmit}>
-          {inputs.map((input) => (
-            <InputForm
-              className="update-input-container"
-              key={input.id}
-              {...input}
-              value={user[input.name]}
-              onChange={onChange}
-            />
-          ))}
+          <InputForm
+            className="update-input-container"
+            name="userName"
+            type="text"
+            placeholder={user.userName}
+            label="User name"
+            pattern="^[A-Za-z0-9]{3,10}$"
+            value={values["userName"]}
+            onChange={onChange}
+          />
+          <InputForm
+            className="update-input-container"
+            name="first"
+            type="text"
+            placeholder={user?.fullName?.first ? user?.fullName?.first : ""}
+            label="First name"
+            value={values["first"]}
+            onChange={(e) =>
+              setFullName({ ...fullName, first: e.target.value })
+            }
+          />
+          <InputForm
+            className="update-input-container"
+            name="last"
+            type="text"
+            placeholder={user?.fullName?.last ? user?.fullName?.last : ""}
+            label="Last Name"
+            value={values["last"]}
+            onChange={(e) => setFullName({ ...fullName, last: e.target.value })}
+          />
+          <InputForm
+            className="update-input-container"
+            name="password"
+            type="password"
+            placeholder={user.password}
+            label="Password"
+            value={values["password"]}
+            onChange={onChange}
+          />
+          <InputForm
+            className="update-input-container"
+            name="address"
+            type="text"
+            placeholder={user.address}
+            label="Address"
+            value={values["address"]}
+            onChange={onChange}
+          />
+          <InputForm
+            className="update-input-container"
+            name="phone"
+            type="text"
+            placeholder={user.phone}
+            label="Phone number"
+            value={values["phone"]}
+            onChange={onChange}
+          />
           <div className="popup-update-message">
             <p>{msg}</p>
           </div>

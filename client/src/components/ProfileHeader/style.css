@@ -49,6 +49,11 @@
   align-items: center;
 }
 
+.delivery-type-section span {
+  color: var(--secondary-color);
+  padding-left: 10px;
+}
+
 .profile-favorite-container {
   display: flex;
   flex-direction: column;
@@ -64,12 +69,13 @@
   display: flex;
 }
 
-.delivery {
+.delivery-type {
   margin-left: 25px;
 }
 
-.delivery-label {
+.delivery-type-label {
   font-weight: 600;
+  font-size: 14px;
   margin-left: 5px;
   color: var(--primary-color);
 }

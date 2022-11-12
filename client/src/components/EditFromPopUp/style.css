@@ -100,8 +100,9 @@
 
 .update-input-container input::placeholder {
   font-weight: 400;
-  font-size: 12px;
-  opacity: 0.5;
+  font-size: 14px;
+  opacity: 0.8;
+  color: var(--secondary-color);
 }
 
 .submit-update-container {

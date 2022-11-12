@@ -92,7 +92,7 @@ const ProfileHeader = () => {
       ) : (
         <div className="profile-header-container">
           <section className="delivery-type-section">
-            <h3>Delivery type: {userInfo?.userName}</h3>
+            <h3>Delivery type: {userInfo?.deliveryType === true}</h3>
           </section>
           <section className="profile-favorite-section">
             {user?._id !== undefined && (

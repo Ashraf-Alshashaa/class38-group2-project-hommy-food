@@ -5,11 +5,13 @@ import { AuthContext } from "../../contexts/authentication";
 import "./style.css";
 
 const RateStar = () => {
-  const [currentValue, setCurrentValue] = useState();
+  const [currentValue, setCurrentValue] = useState(0);
   const [hoverValue, setHoverValue] = useState(undefined);
   const [msg, setMsg] = useState("");
   const { user } = useContext(AuthContext);
   const { id } = useParams();
+
+  // console.log(id);
 
   const handleClick = (value) => {
     setCurrentValue(value);

@@ -4,11 +4,18 @@ import ProfileHeader from "../../components/ProfileHeader";
 import RateStar from "../../components/RatingStar";
 
 const ProfilePage = () => {
+  const isLoading = false;
   return (
     <>
-      <ProfileHeader />
-      <PersonalInfo />
-      <RateStar />
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <>
+          <ProfileHeader />
+          <PersonalInfo />
+          <RateStar />
+        </>
+      )}
     </>
   );
 };

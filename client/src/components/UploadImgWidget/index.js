@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { openUploadWidget } from "../../util/Cloudinary/CloudinaryService";
+import "./style.css";
 
 export default function UploadImgWidget({ setImgUrl, folderName }) {
   const uploadImageWidget = () => {
@@ -9,8 +10,8 @@ export default function UploadImgWidget({ setImgUrl, folderName }) {
         cloudName: process.env.CLOUD_NAME,
         uploadPreset: process.env.UPLOAD_PRESET,
         folder: `${folderName}`,
+        cropping: true,
         sources: ["local", "url", "camera", "google_drive", "facebook"],
-        googleApiKey: "<image_search_google_api_key>",
         showAdvancedOptions: false,
         multiple: false,
         defaultSource: "local",
@@ -42,9 +43,9 @@ export default function UploadImgWidget({ setImgUrl, folderName }) {
   };
 
   return (
-    <button className="upload-img-button" onClick={uploadImageWidget}>
+    <p className="upload-img" onClick={uploadImageWidget}>
       Upload Photo
-    </button>
+    </p>
   );
 }
 UploadImgWidget.propTypes = {

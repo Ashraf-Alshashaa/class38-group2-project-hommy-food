@@ -31,6 +31,9 @@ const EditFromPopUp = ({ setOpenModal, setChefInfo }) => {
       if (result.success) {
         setChefInfo(result?.result[0]);
         setMsg("Your personal information was successfully updated");
+        setTimeout(() => {
+          setOpenModal(false);
+        }, "1500");
       } else {
         setMsg(result.msg);
       }
@@ -123,7 +126,7 @@ const EditFromPopUp = ({ setOpenModal, setChefInfo }) => {
             onChange={onChange}
           />
           <div className="popup-update-message">
-            <p>{msg}</p>
+            <p className="chef-profile-error-msg">{msg}</p>
           </div>
           <div className="submit-update-container">
             <button id="popup-back-btn" onClick={() => setOpenModal(false)}>
@@ -136,7 +139,6 @@ const EditFromPopUp = ({ setOpenModal, setChefInfo }) => {
     </div>
   );
 };
-// };
 
 EditFromPopUp.propTypes = {
   setOpenModal: PropTypes.func.isRequired,

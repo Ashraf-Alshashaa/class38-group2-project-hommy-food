@@ -142,7 +142,7 @@ const SignUp = () => {
             </label>
           </div>
         </div>
-        <p>{msg}</p>
+        <p className="chef-profile-error-msg">{msg}</p>
         <button className="submit-btn">Submit</button>
         <Link className="link-btn" to="/login">
           <button className="back-btn">Back</button>

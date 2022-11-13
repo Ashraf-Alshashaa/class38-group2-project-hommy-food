@@ -15,7 +15,7 @@ const ProfilePage = () => {
         <>
           <ProfileHeader />
           <PersonalInfo id={id} />
-          <RateStar />
+          <RateStar id={id} />
         </>
       )}
     </div>

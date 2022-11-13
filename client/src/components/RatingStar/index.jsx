@@ -1,18 +1,19 @@
 import React, { useContext, useState } from "react";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import PropTypes from "prop-types";
 import { AuthContext } from "../../contexts/authentication";
 import "./style.css";
 
-const RateStar = () => {
-  const [currentValue, setCurrentValue] = useState(0);
+const RateStar = ({ id }) => {
+  const [currentRateValue, setCurrentRateValue] = useState(0);
+  const [previousRate, setPreviousRate] = useState(0);
   const [hoverValue, setHoverValue] = useState(undefined);
   const [msg, setMsg] = useState("");
   const { user } = useContext(AuthContext);
-  const { id } = useParams();
 
   const handleClick = (value) => {
-    setCurrentValue(value);
+    setPreviousRate(currentRateValue);
+    setCurrentRateValue(value);
   };
 
   const handleMouseOver = (value) => {
@@ -23,24 +24,25 @@ const RateStar = () => {
     setHoverValue(undefined);
   };
 
-  const url = `${process.env.BASE_SERVER_URL}/api/rate`;
-
   useEffect(() => {
-    if (currentValue) {
+    if (currentRateValue) {
       (async () => {
         const token = localStorage.getItem("accessToken");
         try {
-          const response = await fetch(url, {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-            body: JSON.stringify({
-              rate: currentValue,
-              chefId: id,
-            }),
-          });
+          const response = await fetch(
+            `${process.env.BASE_SERVER_URL}/api/rate`,
+            {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+              body: JSON.stringify({
+                rate: currentRateValue,
+                chefId: id,
+              }),
+            }
+          );
           if (response.ok) {
             await response.json();
             return;
@@ -51,7 +53,32 @@ const RateStar = () => {
         }
       })();
     }
-  }, [currentValue]);
+  }, [currentRateValue]);
+
+  useEffect(() => {
+    if (!user || user?.id !== id) {
+      (async () => {
+        try {
+          const response = await fetch(
+            `${process.env.BASE_SERVER_URL}/api/user/chef/${id}`
+          );
+          if (response.ok) {
+            const data = await response.json();
+            const filterCustomer = data.result.customerRates;
+            const resultRate = filterCustomer.filter(
+              (element) => element.customerId === user?._id
+            );
+            const filtered = resultRate.map((element) => element.rate);
+            setPreviousRate(filtered[0]);
+            return;
+          }
+          throw new Error("Http Error");
+        } catch (error) {
+          setMsg("something went wrong");
+        }
+      })();
+    }
+  }, [user, currentRateValue, previousRate]);
 
   const stars = Array(5).fill(0);
   return (
@@ -66,7 +93,7 @@ const RateStar = () => {
               <i
                 key={index}
                 className={`fa-solid fa-star ${
-                  (hoverValue || currentValue) > index
+                  (hoverValue || currentRateValue || previousRate) > index
                     ? "mouse-in"
                     : "mouse-out"
                 }`}
@@ -81,6 +108,10 @@ const RateStar = () => {
       )}
     </>
   );
+};
+
+RateStar.propTypes = {
+  id: PropTypes.string.isRequired,
 };
 
 export default RateStar;

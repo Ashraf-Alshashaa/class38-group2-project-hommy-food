@@ -69,7 +69,7 @@ i {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   border-radius: 0 0 10px 10px;
 }
 
@@ -105,6 +105,11 @@ i {
   color: var(--secondary-color);
   margin-left: auto;
   transition: calc(0.7s);
+  border: none;
+}
+
+.logout-header-btn {
+  margin-bottom: 15px;
 }
 
 .login-header-btn:hover {
@@ -137,8 +142,12 @@ i {
   }
   .nav-links-container {
     right: 11%;
-    top: 60px;
+    top: 65px;
     width: 200px;
+  }
+  .nav-links-visible:hover {
+    background-color: var(--secondary-color);
+    color: white;
   }
   .login-header-btn {
     width: 80px;

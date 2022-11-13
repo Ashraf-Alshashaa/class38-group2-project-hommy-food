@@ -95,3 +95,7 @@
   text-decoration: underline;
   color: blue;
 }
+
+.chef-profile-error-msg {
+  color: red;
+}

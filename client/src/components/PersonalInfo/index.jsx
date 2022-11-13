@@ -28,8 +28,7 @@ const PersonalInfo = ({ id }) => {
         }
         throw new Error("Http Error");
       } catch (error) {
-        // console.log(error);
-        // setMsg("something went wrong");
+        setMsg("something went wrong");
       }
     })();
   }, [user]);
@@ -81,7 +80,7 @@ const PersonalInfo = ({ id }) => {
                 setImgUrl={setImgUrl}
                 className="upload-profile-image"
               />
-              <p>{msg}</p>
+              <p className="chef-profile-error-msg">{msg}</p>
             </>
           )}
           <div className="rated-star-comp">
@@ -115,6 +114,7 @@ const PersonalInfo = ({ id }) => {
               >
                 <i className="fa-solid fa-pen" /> <h3>Edit profile</h3>
               </button>
+              <p className="chef-profile-error-msg">{msg}</p>
             </>
           )}
         </div>

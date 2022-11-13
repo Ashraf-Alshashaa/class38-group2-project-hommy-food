@@ -49,7 +49,7 @@ const RateStar = ({ id }) => {
           }
           throw new Error("Http Error");
         } catch (error) {
-          setMsg("something went wrong");
+          setMsg("sorry something went wrong");
         }
       })();
     }
@@ -74,7 +74,7 @@ const RateStar = ({ id }) => {
           }
           throw new Error("Http Error");
         } catch (error) {
-          setMsg("something went wrong");
+          setMsg("sorry something went wrong");
         }
       })();
     }
@@ -102,8 +102,8 @@ const RateStar = ({ id }) => {
                 onMouseLeave={handleMouseLeave}
               />
             ))}
-            <span>{msg}</span>
           </div>
+          <p className="chef-profile-error-msg">{msg}</p>
         </div>
       )}
     </>

@@ -88,7 +88,7 @@ const ProfileHeader = () => {
               </div>
             </div>
             <div className="error-message">
-              <p>{msg}</p>
+              <p className="chef-profile-error-msg">{msg}</p>
             </div>
           </section>
         </div>
@@ -98,6 +98,7 @@ const ProfileHeader = () => {
             <h3>
               Delivery type: <span> {userInfo?.deliveryType} </span>
             </h3>
+            <p className="chef-profile-error-msg">{msg}</p>
           </section>
           <section className="profile-favorite-section">
             {user?._id !== undefined && (

@@ -16,7 +16,7 @@ const RateOfChef = ({ id }) => {
           setRate(data.result);
         }
       } catch (error) {
-        setMsg("something went wrong");
+        setMsg("sorry something went wrong");
       }
     })();
   }, [rate]);
@@ -33,8 +33,8 @@ const RateOfChef = ({ id }) => {
             }`}
           />
         ))}
-        <span>{msg}</span>
       </div>
+      <p className="chef-profile-error-msg">{msg}</p>
     </div>
   );
 };

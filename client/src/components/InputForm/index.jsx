@@ -5,7 +5,8 @@ import "./style.css";
 
 const InputForm = (props) => {
   const [focus, setFocus] = useState(false);
-  const { label, onChange, errorMessage, className, ...inputs } = props;
+  const { defaultValue, label, onChange, errorMessage, className, ...inputs } =
+    props;
 
   // handel the field focus
   const handleOnBlur = () => {
@@ -21,6 +22,7 @@ const InputForm = (props) => {
         onChange={onChange}
         onBlur={handleOnBlur}
         focus={focus.toString()}
+        defaultValue={defaultValue}
       />
       <span>
         <i className="fa-solid fa-triangle-exclamation"></i>
@@ -34,6 +36,7 @@ InputForm.propTypes = {
   errorMessage: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   className: PropTypes.string,
+  defaultValue: PropTypes.any,
 };
 
 export default InputForm;

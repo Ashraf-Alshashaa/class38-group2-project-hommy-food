@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import "./App.css";
 import SignUp from "./pages/SignUp";
 import CreateMeal from "./pages/CreateMeal";
+import EditMeal from "./pages/EditMeal";
 
 const App = () => {
   return (
@@ -25,7 +26,8 @@ const App = () => {
         <Route path="/mealDetail/:id" element={<h1>Meal Detail page</h1>} />
         <Route path="/:chefId/my_meals" element={<h1>My meals</h1>} />
         <Route path="/results" element={<ResultPage />} />
-        <Route path="/create_meal" element={<CreateMeal />} />
+        <Route path="/create-meal" element={<CreateMeal />} />
+        <Route path="/edit-meal/:id" element={<EditMeal />} />
       </Routes>
       <Footer />
     </>

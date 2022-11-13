@@ -99,3 +99,29 @@
 .chef-profile-error-msg {
   color: red;
 }
+
+@media only screen and (max-width: 820px) {
+  .profile-image {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .personal-info-container {
+    flex-direction: column;
+  }
+  .profile-info-title h2 {
+    font-size: 18px;
+    padding: 0;
+  }
+  .profile-info-title {
+    display: flex;
+    width: fit-content;
+    top: -2.5%;
+    right: 0;
+    padding: 0 3%;
+    left: 5%;
+    background-color: #f0f0f0;
+  }
+}

@@ -33,7 +33,7 @@
   color: var(--light-gray-color);
 }
 
-.active {
+.categories-active {
   opacity: 1;
   visibility: visible;
   width: 14vw;
@@ -43,7 +43,7 @@
   margin-top: 5px;
 }
 
-.inactive {
+.categories-inactive {
   opacity: 0;
   display: none;
   position: absolute;
@@ -87,7 +87,7 @@
     display: flex;
     flex-direction: column;
     width: 85vw;
-    margin: 0 auto;
+    margin: 0 7vw;
     background-color: var(--secondary-color);
     border-radius: 5px;
     color: var(--light-gray-color);

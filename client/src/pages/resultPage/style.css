@@ -1,12 +1,47 @@
+.result-page-container {
+  width: 100%;
+  min-height: 90vh;
+}
 .result-page {
-  display: flex;
+  display: flex !important;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 10%;
-  min-height: 95vh;
-  gap: 10px;
+  margin-top: 3%;
 }
 
+.meals-not-found img {
+  margin-left: 26%;
+}
+.meals-not-found h1 {
+  font-size: 1.5vw;
+  padding: 0%;
+}
+.meals-not-found h5 {
+  color: var(--darker-gray-color);
+}
+.loading-gif {
+  margin-left: 40%;
+  margin-top: 10%;
+}
+.error {
+  width: 35%;
+  margin-top: 8%;
+  margin-left: 35%;
+}
+.error img {
+  margin-left: 40%;
+}
+
+.error h1 {
+  font-size: 1.5vw;
+  margin-left: 12%;
+}
+
+.error h5 {
+  color: var(--darker-gray-color);
+  font-size: 1.3vw;
+  text-align: center;
+}
 @media only screen and (max-width: 600px) {
   .result-page {
     width: 70%;

@@ -2,15 +2,16 @@ import mongoose from "mongoose";
 import validateAllowedFields from "../util/validateAllowedFields.js";
 
 const mealSchema = new mongoose.Schema({
-  chefId: { type: mongoose.ObjectId, ref: "User", required: true },
+  chefId: { type: mongoose.ObjectId, ref: "users", required: true },
   title: { type: String, required: true },
-  ingredients: [String],
+  ingredients: String,
   image: String,
   category: { type: mongoose.ObjectId, ref: "Category" },
   cuisine: { type: mongoose.ObjectId, ref: "Cuisine" },
   price: { type: Number, required: true },
   isAvailable: { type: Boolean, required: true, default: false },
   quantity: Number,
+  description: String,
 });
 
 const Meal = new mongoose.model("meals", mealSchema);
@@ -27,6 +28,7 @@ export const validateMeal = (mealObject) => {
     "isAvailable",
     "quantity",
     "chefId",
+    "description",
   ];
 
   const validatedKeysMessage = validateAllowedFields(mealObject, allowedKeys);
@@ -48,8 +50,11 @@ export const validateMeal = (mealObject) => {
   if (mealObject.price == null) {
     errorList.push("price is a required field");
   }
-  if (mealObject.isAvailable == null) {
-    errorList.push("isAvailable is a required field");
+  if (mealObject.category == null) {
+    errorList.push("category is a required field");
+  }
+  if (mealObject.description == null) {
+    errorList.push("description is a required field");
   }
 
   return errorList;

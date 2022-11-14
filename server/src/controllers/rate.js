@@ -64,7 +64,8 @@ export const postRate = async (req, res) => {
         }
       );
     }
-    res.status(200).json({ success: true, result: newRate });
+    const updatedChef = await User.findById(chefId);
+    res.status(200).json({ success: true, result: updatedChef });
   } catch (error) {
     logError(error);
     res

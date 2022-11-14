@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from "react";
 import fetchUserData from "../hooks/useFetchUser";
 import PropTypes from "prop-types";
+// import useFetch from "../hooks/useFetch";
 
 export const AuthContext = createContext();
 
@@ -10,6 +11,10 @@ export const AuthProvider = ({ children }) => {
     const token = localStorage.getItem("accessToken");
     return token;
   });
+
+  // const { performFetch } = useFetch("user", setUser, token);
+  // const { data } = fetchUserData(token, url);
+  // console.log(data, "data");
 
   const url = `${process.env.BASE_SERVER_URL}/api/user`;
 
@@ -24,6 +29,12 @@ export const AuthProvider = ({ children }) => {
       }
     })();
   }, []);
+
+  // useEffect(() => {
+  //   performFetch();
+  // }, []);
+
+  // console.log(user, "user");
 
   const logout = () => {
     setToken(null);

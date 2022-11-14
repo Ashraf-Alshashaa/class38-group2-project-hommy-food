@@ -3,13 +3,16 @@ import { useEffect } from "react";
 import PropTypes from "prop-types";
 import { AuthContext } from "../../contexts/authentication";
 import "./style.css";
+import useFetch from "../../hooks/useFetch";
 
 const RateStar = ({ id }) => {
   const [currentRateValue, setCurrentRateValue] = useState(0);
   const [previousRate, setPreviousRate] = useState(0);
   const [hoverValue, setHoverValue] = useState(undefined);
+  const [chefData, setChefData] = useState(null);
   const [msg, setMsg] = useState("");
   const { user } = useContext(AuthContext);
+  const { performFetch } = useFetch(`/user/chef/${id}`, setChefData);
 
   const handleClick = (value) => {
     setPreviousRate(currentRateValue);
@@ -55,30 +58,23 @@ const RateStar = ({ id }) => {
     }
   }, [currentRateValue]);
 
+  // Get chef data
   useEffect(() => {
     if (!user || user?.id !== id) {
-      (async () => {
-        try {
-          const response = await fetch(
-            `${process.env.BASE_SERVER_URL}/api/user/chef/${id}`
-          );
-          if (response.ok) {
-            const data = await response.json();
-            const filterCustomer = data.result.customerRates;
-            const resultRate = filterCustomer.filter(
-              (element) => element.customerId === user?._id
-            );
-            const filtered = resultRate.map((element) => element.rate);
-            setPreviousRate(filtered[0]);
-            return;
-          }
-          throw new Error("Http Error");
-        } catch (error) {
-          setMsg("sorry something went wrong");
-        }
-      })();
+      performFetch();
     }
-  }, [user, currentRateValue, previousRate]);
+  }, [currentRateValue]);
+
+  useEffect(() => {
+    if (chefData) {
+      const filterCustomer = chefData?.result?.customerRates;
+      const resultRate = filterCustomer.filter(
+        (element) => element.customerId === user?._id
+      );
+      const filtered = resultRate.map((element) => element.rate);
+      setPreviousRate(filtered[0]);
+    }
+  }, [chefData]);
 
   const stars = Array(5).fill(0);
   return (

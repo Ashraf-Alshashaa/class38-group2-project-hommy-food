@@ -77,6 +77,11 @@ export const getHighRatedTenChefs = async (req, res) => {
   try {
     const highRatedTenChefs = await User.aggregate([
       {
+        $match: {
+          isChef: true,
+        },
+      },
+      {
         $project: {
           _id: 1,
           AvgCustomerRates: {

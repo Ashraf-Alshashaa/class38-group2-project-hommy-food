@@ -65,7 +65,7 @@ const PersonalInfo = ({ id, chefData, setChefData }) => {
             </>
           )}
           <div className="rated-star-comp">
-            <RateOfChef chefData={chefData} />
+            <RateOfChef chefData={chefData?.AvgCustomerRates} />
           </div>
         </div>
         <div className="info-container">

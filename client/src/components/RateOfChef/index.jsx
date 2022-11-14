@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./style.css";
 
-const RateOfChef = ({ chefData }) => {
+const RateOfChef = ({ number }) => {
   const stars = Array(5).fill(0);
   return (
     <div className="rated-star-container">
@@ -11,7 +11,7 @@ const RateOfChef = ({ chefData }) => {
           <i
             key={index}
             className={`fa-solid fa-star ${
-              chefData?.AvgCustomerRates > index ? "mouse-in" : "mouse-out"
+              number > index ? "mouse-in" : "mouse-out"
             }`}
           />
         ))}
@@ -21,7 +21,7 @@ const RateOfChef = ({ chefData }) => {
 };
 
 RateOfChef.propTypes = {
-  chefData: PropTypes.object,
+  number: PropTypes.number,
 };
 
 export default RateOfChef;

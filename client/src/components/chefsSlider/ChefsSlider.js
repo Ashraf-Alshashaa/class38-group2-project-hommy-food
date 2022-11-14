@@ -1,28 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination } from "swiper";
 import ChefCard from "./ChefCard";
-import chefsSliderData from "./ChefsSliderData";
+import chefImg from "../../../public/images/img_avatar.png";
+import useFetch from "../../hooks/useFetch";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./chefsSlider.css";
+import "./style.css";
 
 const ChefsSlider = () => {
-  const chefsData = chefsSliderData.map((data, idx) => {
-    return (
-      <SwiperSlide key={data.id}>
-        <ChefCard
-          key={`${data.id}_${idx}`}
-          chefName={data.name}
-          chefCountry={data.country}
-          chefImg={data.chefImg}
-          chefRatingImg={data.chefRatingImg}
-        />
-      </SwiperSlide>
-    );
-  });
+  const [highTenRatedChefs, setHighTenRatedChefs] = useState();
+
+  const { performFetch } = useFetch(
+    "/rate/chefs/high-rated",
+    setHighTenRatedChefs
+  );
+
+  useEffect(() => {
+    performFetch();
+  }, []);
   return (
     <div className="container py-4 px-4 justify-content-center ">
       <h5 className="chefs-slider-header text-center">Top 10 rating chefs</h5>
@@ -57,7 +55,21 @@ const ChefsSlider = () => {
           },
         }}
       >
-        {chefsData}
+        {highTenRatedChefs?.result.map(
+          ({ _id, userName, photo, AvgCustomerRates }, idx) => {
+            return (
+              <SwiperSlide key={_id}>
+                <ChefCard
+                  key={`${_id}_${idx}`}
+                  chefName={userName}
+                  chefImg={photo ? photo : chefImg}
+                  id={_id}
+                  chefRating={AvgCustomerRates?.toFixed()}
+                />
+              </SwiperSlide>
+            );
+          }
+        )}
       </Swiper>
     </div>
   );

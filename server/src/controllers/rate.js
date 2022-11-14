@@ -56,7 +56,7 @@ export const postRate = async (req, res) => {
       });
     } else {
       await User.updateOne(
-        { _id: chefId, "customerRates.customerId": `${userId}` },
+        { _id: chefId, "customerRates.customerId": `${Object(userId)}` },
         {
           $set: {
             "customerRates.$.rate": `${rate}`,
@@ -70,5 +70,37 @@ export const postRate = async (req, res) => {
     res
       .status(500)
       .json({ success: false, msg: "Unable to rate chef, try again later" });
+  }
+};
+
+export const getHighRatedTenChefs = async (req, res) => {
+  try {
+    const highRatedTenChefs = await User.aggregate([
+      {
+        $project: {
+          _id: 1,
+          AvgCustomerRates: {
+            $avg: "$customerRates.rate",
+          },
+          photo: 1,
+          userName: 1,
+        },
+      },
+      {
+        $sort: {
+          AvgCustomerRates: -1,
+        },
+      },
+      {
+        $limit: 10,
+      },
+    ]);
+    res.status(200).json({ success: true, result: highRatedTenChefs });
+  } catch (error) {
+    logError(error);
+    res.status(500).json({
+      success: false,
+      msg: "Unable to get hi chef rate, try again later",
+    });
   }
 };

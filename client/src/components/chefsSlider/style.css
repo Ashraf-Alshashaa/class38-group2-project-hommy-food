@@ -18,10 +18,6 @@
   width: 70%;
 }
 
-.container {
-  /* width: 80%; */
-}
-
 .top-chef-card-body-container {
   padding-bottom: 0;
 }
@@ -44,8 +40,12 @@
 .visit-chef-btn {
   height: 25px;
   margin: 0;
+  padding: 0%;
 }
 
 .visit-chef-text {
   font-size: 8px;
+  text-decoration: auto;
+  min-width: 100%;
+  min-height: 100%;
 }

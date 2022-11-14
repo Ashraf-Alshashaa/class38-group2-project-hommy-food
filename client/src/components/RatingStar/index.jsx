@@ -6,13 +6,11 @@ import "./style.css";
 
 const RateStar = ({ id, chefData, setChefData }) => {
   const [currentRateValue, setCurrentRateValue] = useState(0);
-  const [previousRate, setPreviousRate] = useState(0);
   const [hoverValue, setHoverValue] = useState(undefined);
   const [msg, setMsg] = useState("");
   const { user } = useContext(AuthContext);
 
   const handleClick = (value) => {
-    setPreviousRate(currentRateValue);
     setCurrentRateValue(value);
   };
 
@@ -46,7 +44,7 @@ const RateStar = ({ id, chefData, setChefData }) => {
           );
           if (response.ok) {
             const data = await response.json();
-            setChefData(data?.result);
+            setChefData(data.result);
             return;
           }
           throw new Error("Http Error");
@@ -59,14 +57,14 @@ const RateStar = ({ id, chefData, setChefData }) => {
 
   // Getting the previous user rate for the current chef
   useEffect(() => {
-    if (chefData) {
+    if (user) {
       const resultRate = chefData?.customerRates.filter(
         (element) => element.customerId === user?._id
       );
       const filtered = resultRate.map((element) => element.rate);
-      setPreviousRate(filtered[0]);
+      setCurrentRateValue(filtered[0]);
     }
-  }, [chefData]);
+  }, [user]);
 
   const stars = Array(5).fill(0);
   return (
@@ -81,7 +79,7 @@ const RateStar = ({ id, chefData, setChefData }) => {
               <i
                 key={index}
                 className={`fa-solid fa-star ${
-                  (hoverValue || currentRateValue || previousRate) > index
+                  (hoverValue || currentRateValue) > index
                     ? "mouse-in"
                     : "mouse-out"
                 }`}

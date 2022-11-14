@@ -15,18 +15,11 @@ const ProfilePage = () => {
   useEffect(() => {
     performFetch();
   }, []);
-  const isLoading = false;
   return (
     <div className="chef-profile-page">
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <>
-          <ProfileHeader chefData={chefData} setChefData={setChefData} />
-          <PersonalInfo id={id} chefData={chefData} setChefData={setChefData} />
-          <RateStar id={id} chefData={chefData} setChefData={setChefData} />
-        </>
-      )}
+      <ProfileHeader chefData={chefData} setChefData={setChefData} />
+      <PersonalInfo id={id} chefData={chefData} setChefData={setChefData} />
+      <RateStar id={id} chefData={chefData} setChefData={setChefData} />
     </div>
   );
 };

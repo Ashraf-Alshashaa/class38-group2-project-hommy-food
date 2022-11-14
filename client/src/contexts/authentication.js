@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from "react";
 import fetchUserData from "../hooks/useFetchUser";
 import PropTypes from "prop-types";
+
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {

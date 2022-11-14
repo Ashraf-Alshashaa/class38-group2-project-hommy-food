@@ -29,7 +29,7 @@ const EditFromPopUp = ({ setOpenModal, setChefInfo }) => {
       });
       const result = await response.json();
       if (result.success) {
-        setChefInfo(result?.result[0]);
+        setChefInfo(result?.result);
         setMsg("Your personal information was successfully updated");
         setTimeout(() => {
           setOpenModal(false);

@@ -75,7 +75,7 @@ const EditFromPopUp = ({ setOpenModal, setChefInfo }) => {
             placeholder={user.userName}
             label="User name"
             pattern="^[A-Za-z0-9]{3,10}$"
-            value={values["userName"]}
+            value={values["userName"] || ""}
             onChange={onChange}
           />
           <InputForm
@@ -97,15 +97,6 @@ const EditFromPopUp = ({ setOpenModal, setChefInfo }) => {
             label="Last Name"
             value={values["last"]}
             onChange={(e) => setFullName({ ...fullName, last: e.target.value })}
-          />
-          <InputForm
-            className="update-input-container"
-            name="password"
-            type="password"
-            placeholder={user.password}
-            label="Password"
-            value={values["password"]}
-            onChange={onChange}
           />
           <InputForm
             className="update-input-container"

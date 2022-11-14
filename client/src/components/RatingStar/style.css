@@ -31,6 +31,31 @@
 
 .loading-gif {
   width: fit-content;
+  margin: 0 auto 20px auto;
+}
+
+.profile-error {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  width: fit-content;
   margin: auto;
-  transform: translate(50%);
+}
+
+.profile-error img {
+  width: 60px;
+}
+
+.profile-error h1 {
+  color: red;
+  font-size: 20px;
+  font-weight: 700;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.profile-error h5 {
+  color: red;
+  font-size: 15px;
+  text-align: center;
 }

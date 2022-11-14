@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-// import { useParams } from "react-router-dom";
 import { AuthContext } from "../../contexts/authentication";
 import PropTypes from "prop-types";
 import avatar from "../../../public/images/img_avatar.png";
@@ -9,29 +8,11 @@ import EditFromPopUp from "../EditFromPopUp";
 import UploadImgWidget from "../UploadImgWidget";
 import { useEffect } from "react";
 
-const PersonalInfo = ({ id }) => {
+const PersonalInfo = ({ id, chefData, setChefData }) => {
   const [openModal, setOpenModal] = useState(false);
   const [msg, setMsg] = useState("");
   const { user } = useContext(AuthContext);
   const [imgUrl, setImgUrl] = useState("");
-  const [chefInfo, setChefInfo] = useState(user);
-
-  const url = `${process.env.BASE_SERVER_URL}/api/user/chef/${id}`;
-  useEffect(() => {
-    (async () => {
-      try {
-        const response = await fetch(url);
-        if (response.ok) {
-          const data = await response.json();
-          setChefInfo(data.result);
-          return;
-        }
-        throw new Error("Http Error");
-      } catch (error) {
-        setMsg("something went wrong");
-      }
-    })();
-  }, [user]);
 
   useEffect(() => {
     if (imgUrl) {
@@ -50,7 +31,7 @@ const PersonalInfo = ({ id }) => {
             }
           );
           const res = await response.json();
-          setChefInfo(res?.result[0]);
+          setChefData(res?.result[0]);
         } catch (error) {
           setMsg("sorry something went wrong");
         }
@@ -63,9 +44,9 @@ const PersonalInfo = ({ id }) => {
       <div className="personal-info-container">
         <div className="image-container">
           <div className="profile-image">
-            {chefInfo?.photo ? (
+            {chefData?.photo ? (
               <img
-                src={chefInfo?.photo}
+                src={chefData?.photo}
                 alt="user image"
                 className="user-profile-img"
               />
@@ -84,18 +65,18 @@ const PersonalInfo = ({ id }) => {
             </>
           )}
           <div className="rated-star-comp">
-            <RateOfChef id={id} />
+            <RateOfChef chefData={chefData} />
           </div>
         </div>
         <div className="info-container">
           <div className="profile-info-title">
             <h2>Personal information</h2>
           </div>
-          <h3>User name: {chefInfo?.userName}</h3>
-          {chefInfo?.fullName ? (
+          <h3>User name: {chefData?.userName}</h3>
+          {chefData?.fullName ? (
             <>
-              <h3>First name: {chefInfo?.fullName.first}</h3>
-              <h3>Last name: {chefInfo?.fullName.last}</h3>
+              <h3>First name: {chefData?.fullName.first}</h3>
+              <h3>Last name: {chefData?.fullName.last}</h3>
             </>
           ) : (
             <>
@@ -103,9 +84,9 @@ const PersonalInfo = ({ id }) => {
               <h3>Last name:</h3>
             </>
           )}
-          <h3>e-mail: {chefInfo?.email}</h3>
-          <h3>Address: {chefInfo?.address}</h3>
-          <h3>Phone number: {chefInfo?.phone}</h3>
+          <h3>e-mail: {chefData?.email}</h3>
+          <h3>Address: {chefData?.address}</h3>
+          <h3>Phone number: {chefData?.phone}</h3>
           {user?._id === id && (
             <>
               <button
@@ -123,7 +104,7 @@ const PersonalInfo = ({ id }) => {
         <div className="update-profile-popup-container">
           <EditFromPopUp
             setOpenModal={setOpenModal}
-            setChefInfo={setChefInfo}
+            setChefInfo={setChefData}
           />
         </div>
       ) : null}
@@ -133,6 +114,8 @@ const PersonalInfo = ({ id }) => {
 
 PersonalInfo.propTypes = {
   id: PropTypes.string.isRequired,
+  setChefData: PropTypes.func.isRequired,
+  chefData: PropTypes.object,
 };
 
 export default PersonalInfo;

@@ -1,59 +1,30 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useContext } from "react";
+import PropTypes from "prop-types";
 import { AuthContext } from "../../contexts/authentication";
 import "./style.css";
+import useFetch from "../../hooks/useFetch";
 
-const ProfileHeader = () => {
-  const { id } = useParams();
+const ProfileHeader = ({ chefData, setChefData }) => {
   const { user } = useContext(AuthContext);
-  const [msg, setMsg] = useState("");
-  const [userInfo, setUserInfo] = useState(user);
+  const { performFetch } = useFetch("/user", (data) =>
+    setChefData(data?.result)
+  );
 
   const onChange = async (e) => {
-    (async () => {
-      const token = localStorage.getItem("accessToken");
-      try {
-        const response = await fetch(
-          `${process.env.BASE_SERVER_URL}/api/user`,
-          {
-            method: "PATCH",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-            body: JSON.stringify({ deliveryType: e.target.value }),
-          }
-        );
-        const res = await response.json();
-        setUserInfo(res.result[0]);
-      } catch (error) {
-        setMsg("sorry something went wrong");
-      }
-    })();
+    const token = localStorage.getItem("accessToken");
+    performFetch({
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ deliveryType: e.target.value }),
+    });
   };
-
-  const url = `${process.env.BASE_SERVER_URL}/api/user/chef/${id}`;
-  useEffect(() => {
-    if (!user || user?.id !== id) {
-      (async () => {
-        try {
-          const response = await fetch(url);
-          if (response.ok) {
-            const data = await response.json();
-            setUserInfo(data.result);
-            return;
-          }
-          throw new Error("Http Error");
-        } catch (error) {
-          setMsg("something went wrong");
-        }
-      })();
-    }
-  }, [user]);
 
   return (
     <>
-      {user?.isChef && user?._id === id ? (
+      {user?.isChef && user?._id === chefData?._id ? (
         <div className="profile-header-container">
           <section className="delivery-type-section">
             <h3>Select your delivery type</h3>
@@ -65,7 +36,7 @@ const ProfileHeader = () => {
                     id="pickup"
                     name="delivery-type"
                     value="pickup"
-                    checked={userInfo?.deliveryType == "pickup"}
+                    checked={chefData?.deliveryType == "pickup"}
                     onChange={onChange}
                   />
                   <label htmlFor="pickup" className="delivery-type-label">
@@ -78,7 +49,7 @@ const ProfileHeader = () => {
                     id="delivery"
                     name="delivery-type"
                     value="delivery"
-                    checked={userInfo?.deliveryType == "delivery"}
+                    checked={chefData?.deliveryType == "delivery"}
                     onChange={onChange}
                   />
                   <label htmlFor="delivery" className="delivery-type-label">
@@ -87,18 +58,15 @@ const ProfileHeader = () => {
                 </div>
               </div>
             </div>
-            <div className="error-message">
-              <p className="chef-profile-error-msg">{msg}</p>
-            </div>
+            <div className="error-message"></div>
           </section>
         </div>
       ) : (
         <div className="profile-header-container">
           <section className="delivery-type-section">
             <h3>
-              Delivery type: <span> {userInfo?.deliveryType} </span>
+              Delivery type: <span> {chefData?.deliveryType} </span>
             </h3>
-            <p className="chef-profile-error-msg">{msg}</p>
           </section>
           <section className="profile-favorite-section">
             {user?._id !== undefined && (
@@ -112,6 +80,11 @@ const ProfileHeader = () => {
       )}
     </>
   );
+};
+
+ProfileHeader.propTypes = {
+  chefData: PropTypes.object,
+  setChefData: PropTypes.func.isRequired,
 };
 
 export default ProfileHeader;

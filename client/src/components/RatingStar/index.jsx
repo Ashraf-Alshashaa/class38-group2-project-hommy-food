@@ -3,18 +3,13 @@ import { useEffect } from "react";
 import PropTypes from "prop-types";
 import { AuthContext } from "../../contexts/authentication";
 import "./style.css";
-import useFetch from "../../hooks/useFetch";
-import PulseLoader from "react-spinners/PulseLoader";
-// import somethingWentWrong from "./something-went-wrong.png";
 
-const RateStar = ({ id }) => {
+const RateStar = ({ id, chefData, setChefData }) => {
   const [currentRateValue, setCurrentRateValue] = useState(0);
   const [previousRate, setPreviousRate] = useState(0);
   const [hoverValue, setHoverValue] = useState(undefined);
-  const [chefData, setChefData] = useState(null);
   const [msg, setMsg] = useState("");
   const { user } = useContext(AuthContext);
-  const { isLoading, performFetch } = useFetch(`/user/chef/${id}`, setChefData);
 
   const handleClick = (value) => {
     setPreviousRate(currentRateValue);
@@ -50,7 +45,8 @@ const RateStar = ({ id }) => {
             }
           );
           if (response.ok) {
-            await response.json();
+            const data = await response.json();
+            setChefData(data?.result);
             return;
           }
           throw new Error("Http Error");
@@ -61,18 +57,10 @@ const RateStar = ({ id }) => {
     }
   }, [currentRateValue]);
 
-  // Get chef data when the rating value changing
-  useEffect(() => {
-    if (!user || user?.id !== id) {
-      performFetch();
-    }
-  }, [currentRateValue]);
-
-  // Get chef data if there is a rate before and updating the current rate value
+  // Getting the previous user rate for the current chef
   useEffect(() => {
     if (chefData) {
-      const filterCustomer = chefData?.result?.customerRates;
-      const resultRate = filterCustomer.filter(
+      const resultRate = chefData?.customerRates.filter(
         (element) => element.customerId === user?._id
       );
       const filtered = resultRate.map((element) => element.rate);
@@ -83,23 +71,6 @@ const RateStar = ({ id }) => {
   const stars = Array(5).fill(0);
   return (
     <>
-      {isLoading && (
-        <div className="loading-gif">
-          <PulseLoader
-            color="#f9a01b"
-            size={20}
-            aria-label="Loading Spinner"
-            data-testid="loader"
-          />
-        </div>
-      )}
-      {/* {error && (
-        <div className="error">
-          <img src={somethingWentWrong} alt="something went wrong" />
-          <h1>Oops!</h1>
-          <h5>Something went wrong try again or refresh page</h5>
-        </div>
-      )} */}
       {(user?.isChef && user?._id === id) || user?._id === undefined ? (
         <></>
       ) : (
@@ -129,6 +100,8 @@ const RateStar = ({ id }) => {
 
 RateStar.propTypes = {
   id: PropTypes.string.isRequired,
+  setChefData: PropTypes.func.isRequired,
+  chefData: PropTypes.object,
 };
 
 export default RateStar;

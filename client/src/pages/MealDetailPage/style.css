@@ -1,0 +1,132 @@
+.meal-detail-page-container {
+  display: flex;
+  justify-content: center;
+}
+.meal-Detail-page {
+  width: 50rem;
+  height: 70vh;
+  margin: 3%;
+  padding: 5px;
+  display: flex;
+  border: 1px solid var(--darker-gray-color);
+  border-radius: 10px;
+  background-color: #fff;
+}
+.meal-page-image {
+  height: 100%;
+  width: 100%;
+}
+
+.meal-Detail-page img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px 0px 0px 5px !important;
+}
+.divide {
+  width: 40%;
+}
+.divide2 {
+  width: 60%;
+  border-radius: 0px 5px 5px 0px !important;
+  padding: 10px;
+}
+.meal-page-title {
+  height: 12%;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  border-bottom: 1px solid var(--dark-gray-color);
+}
+.meal-page-title h5 {
+  font-size: 2rem;
+}
+.meal-page-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  height: 10%;
+}
+.meal-page-info p {
+  color: var(--darker-gray-color);
+}
+.meal-page-Ingredients {
+  height: 15%;
+  padding: 5px;
+  border-bottom: 1px solid var(--dark-gray-color);
+  margin-top: 5px;
+}
+.meal-page-Ingredients p {
+  word-spacing: 5px;
+}
+.meal-page-description {
+  height: 50%;
+  margin: 5px;
+}
+.meal-page-price {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+  margin: 5px;
+  color: var(--primary-color);
+}
+.meal-page-price i:hover {
+  color: var(--primary-color);
+}
+.meal-detail-page-chip {
+  display: flex;
+  padding: 0 25px;
+  height: 40px;
+  font-size: 16px;
+  line-height: 50px;
+  border-radius: 25px;
+  background-color: #f1f1f1;
+}
+.fa-cart-shopping:hover {
+  color: var(--primary-color);
+}
+
+.meal-detail-page-chip img {
+  float: left;
+  margin: 0 10px 0 -25px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+@media only screen and (max-width: 600px) {
+  .meal-Detail-page {
+    margin: 15%;
+    flex-wrap: wrap;
+  }
+  .divide {
+    width: 100%;
+  }
+  .meal-Detail-page img {
+    border-radius: 5px !important;
+  }
+  .divide2 {
+    width: 100%;
+  }
+  .meal-page-Ingredients {
+    height: 10%;
+  }
+  .meal-page-description {
+    font-size: 3vw;
+    height: 40%;
+  }
+  .meal-page-price {
+    height: 5%;
+  }
+  .meal-page-title h5 {
+    font-size: 4vw;
+  }
+  .meal-page-Ingredients {
+    font-size: 3vw;
+  }
+  .meal-page-info {
+    font-size: 3vw;
+  }
+  .meal-page-price {
+    margin-top: 13%;
+    font-size: 3vw;
+  }
+}

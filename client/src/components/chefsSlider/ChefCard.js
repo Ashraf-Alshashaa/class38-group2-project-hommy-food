@@ -8,7 +8,7 @@ const ChefCard = ({ chefName, chefImg, chefRating, id }) => {
   return (
     <div>
       <Card className="p-0 overflow-hidden h-100 shadow">
-        <div className="overflow-hidden rounded p-0 bg-light">
+        <div className="overflow-hidden rounded p-0 bg-light top-10-chef-img-container center-children">
           <Card.Img variant="top" src={chefImg} />
         </div>
         <Card.Body className="top-chef-card-body-container text-center">

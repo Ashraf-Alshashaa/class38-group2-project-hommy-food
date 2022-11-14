@@ -12,9 +12,18 @@ export const AuthProvider = ({ children }) => {
     return token;
   });
 
+  //-----------------------
   // const { performFetch } = useFetch("user", setUser, token);
+  // console.log(user, "data");
+
+  // useEffect(() => {
+  //   if (token) {
+  //     performFetch();
+  //   }
+  // }, []);
+  //
   // const { data } = fetchUserData(token, url);
-  // console.log(data, "data");
+  //------------------------
 
   const url = `${process.env.BASE_SERVER_URL}/api/user`;
 
@@ -29,12 +38,6 @@ export const AuthProvider = ({ children }) => {
       }
     })();
   }, []);
-
-  // useEffect(() => {
-  //   performFetch();
-  // }, []);
-
-  // console.log(user, "user");
 
   const logout = () => {
     setToken(null);

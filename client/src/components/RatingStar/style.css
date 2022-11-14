@@ -28,3 +28,9 @@
 .mouse-out {
   color: gray;
 }
+
+.loading-gif {
+  width: fit-content;
+  margin: auto;
+  transform: translate(50%);
+}

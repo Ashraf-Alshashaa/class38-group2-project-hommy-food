@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import { AuthContext } from "../../contexts/authentication";
 import "./style.css";
 import useFetch from "../../hooks/useFetch";
+import PulseLoader from "react-spinners/PulseLoader";
+// import somethingWentWrong from "./something-went-wrong.png";
 
 const RateStar = ({ id }) => {
   const [currentRateValue, setCurrentRateValue] = useState(0);
@@ -12,7 +14,7 @@ const RateStar = ({ id }) => {
   const [chefData, setChefData] = useState(null);
   const [msg, setMsg] = useState("");
   const { user } = useContext(AuthContext);
-  const { performFetch } = useFetch(`/user/chef/${id}`, setChefData);
+  const { isLoading, performFetch } = useFetch(`/user/chef/${id}`, setChefData);
 
   const handleClick = (value) => {
     setPreviousRate(currentRateValue);
@@ -27,6 +29,7 @@ const RateStar = ({ id }) => {
     setHoverValue(undefined);
   };
 
+  // Adding a rate to the chef profile
   useEffect(() => {
     if (currentRateValue) {
       (async () => {
@@ -58,13 +61,14 @@ const RateStar = ({ id }) => {
     }
   }, [currentRateValue]);
 
-  // Get chef data
+  // Get chef data when the rating value changing
   useEffect(() => {
     if (!user || user?.id !== id) {
       performFetch();
     }
   }, [currentRateValue]);
 
+  // Get chef data if there is a rate before and updating the current rate value
   useEffect(() => {
     if (chefData) {
       const filterCustomer = chefData?.result?.customerRates;
@@ -79,6 +83,23 @@ const RateStar = ({ id }) => {
   const stars = Array(5).fill(0);
   return (
     <>
+      {isLoading && (
+        <div className="loading-gif">
+          <PulseLoader
+            color="#f9a01b"
+            size={20}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        </div>
+      )}
+      {/* {error && (
+        <div className="error">
+          <img src={somethingWentWrong} alt="something went wrong" />
+          <h1>Oops!</h1>
+          <h5>Something went wrong try again or refresh page</h5>
+        </div>
+      )} */}
       {(user?.isChef && user?._id === id) || user?._id === undefined ? (
         <></>
       ) : (

@@ -4,7 +4,7 @@ import "./style.css";
 import { AuthContext } from "../../contexts/authentication";
 import userImg from "../../../public/images/img_avatar.png";
 import CustomerEditForm from "../CustomerEditForm";
-import UploadImgWidget from "../UploadImgWidget";
+// import UploadImgWidget from "../UploadImgWidget";
 
 const CustomerInfoBox = () => {
   const [buttonPopup, setButtonPopup] = useState(false);
@@ -22,7 +22,7 @@ const CustomerInfoBox = () => {
             </h2>
             <div className="customer-img-container">
               <img className="customer-img" src={userImg} />
-              <UploadImgWidget />
+              {/* <UploadImgWidget /> */}
             </div>
             <div className="customer-info-container">
               <div>

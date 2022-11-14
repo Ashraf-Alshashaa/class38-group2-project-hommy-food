@@ -9,6 +9,14 @@ import PropTypes from "prop-types";
 const CustomerEdit = ({ trigger, userId, setTrigger }) => {
   const navigate = useNavigate();
   const [data, setData] = useState(null);
+  // const [userName, setUserName] = useState(null);
+  // const [firstName, setFirstName] = useState("");
+  // const [lastName, setLastName] = useState("");
+  // const [address, setAddress] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [phone, setPhone] = useState("");
+
   const [values, setValues] = useState({
     userName: "",
     firstName: "",
@@ -19,8 +27,8 @@ const CustomerEdit = ({ trigger, userId, setTrigger }) => {
     confirmPassword: "",
     phoneNumber: "",
   });
+  // const [updatedValues, setUpdatedValues] = useState({});
   const [msg, setMsg] = useState("");
-
   // Creating an array of input
   const inputs = [
     {
@@ -136,6 +144,28 @@ const CustomerEdit = ({ trigger, userId, setTrigger }) => {
 
   // update data for server
   useEffect(() => {
+    // if (values.userName.length > 0) {
+    //   setUserName(values.userName);
+    // }
+    // if (values.firstName.length > 0) {
+    //   setFirstName(values.firstName);
+    // }
+    // if (values.lastName.length > 0) {
+    //   setLastName(values.lastName);
+    // }
+    // if (values.address.length > 0) {
+    //   setAddress(values.address);
+    // }
+    // if (values.email.length > 0) {
+    //   setEmail(values.email);
+    // }
+    // if (values.password.length > 0) {
+    //   setPassword(values.password);
+    // }
+    // if (values.phoneNumber.length > 0) {
+    //   setPhone(values.phoneNumber);
+    // }
+    // setData();
     setData({
       userName: values.userName,
       firstName: values.firstName,
@@ -163,7 +193,9 @@ const CustomerEdit = ({ trigger, userId, setTrigger }) => {
           <button
             className="submit-btn"
             type="submit"
-            onClick={() => setTrigger(false)}
+            onClick={() => {
+              setTrigger(false);
+            }}
           >
             Submit
           </button>

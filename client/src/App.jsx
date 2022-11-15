@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import "./App.css";
 import SignUp from "./pages/SignUp";
 import CreateMeal from "./pages/CreateMeal";
+import CheckoutPage from "./pages/CheckoutPage";
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
         <Route path="/:chefId/my_meals" element={<h1>My meals</h1>} />
         <Route path="/results" element={<ResultPage />} />
         <Route path="/create_meal" element={<CreateMeal />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
       </Routes>
       <Footer />
     </>

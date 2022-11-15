@@ -166,7 +166,7 @@ export const updateUser = async (req, res) => {
   try {
     await User.findOneAndUpdate({ email: email }, req.body);
     const updatedUser = await User.find({ email: email });
-    res.status(200).json({ success: true, result: updatedUser });
+    res.status(200).json({ success: true, result: updatedUser[0] });
   } catch (error) {
     logError(error);
     res

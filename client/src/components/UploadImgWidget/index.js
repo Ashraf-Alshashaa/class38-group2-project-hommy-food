@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { openUploadWidget } from "../../util/Cloudinary/CloudinaryService";
 import "./style.css";
 
-export default function UploadImgWidget({ setImgUrl, folderName }) {
+export default function UploadImgWidget({ setImgUrl, folderName, className }) {
   const uploadImageWidget = () => {
     let myWidget = openUploadWidget(
       {
@@ -43,7 +43,7 @@ export default function UploadImgWidget({ setImgUrl, folderName }) {
   };
 
   return (
-    <p className="upload-img" onClick={uploadImageWidget}>
+    <p className={`${className} upload-img`} onClick={uploadImageWidget}>
       Upload Photo
     </p>
   );
@@ -51,4 +51,5 @@ export default function UploadImgWidget({ setImgUrl, folderName }) {
 UploadImgWidget.propTypes = {
   setImgUrl: PropTypes.func.isRequired,
   folderName: PropTypes.string.isRequired,
+  className: PropTypes.string.isRequired,
 };

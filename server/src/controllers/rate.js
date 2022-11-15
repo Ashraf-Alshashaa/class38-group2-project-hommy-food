@@ -64,8 +64,34 @@ export const postRate = async (req, res) => {
         }
       );
     }
-    const updatedChef = await User.findById(chefId);
-    res.status(200).json({ success: true, result: updatedChef });
+    const updatedChef = await User.aggregate([
+      {
+        $match: {
+          _id: new ObjectId(`${chefId}`),
+        },
+      },
+      {
+        $project: {
+          password: 0,
+          orderToPrepare: 0,
+          orderHistory: 0,
+          cart: 0,
+          favoriteChefs: 0,
+        },
+      },
+      {
+        $addFields: {
+          AvgCustomerRates: {
+            $avg: "$customerRates.rate",
+          },
+        },
+      },
+    ]);
+
+    res.status(200).json({
+      success: true,
+      result: updatedChef[0],
+    });
   } catch (error) {
     logError(error);
     res

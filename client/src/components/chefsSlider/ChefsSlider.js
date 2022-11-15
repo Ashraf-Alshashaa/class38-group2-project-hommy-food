@@ -64,7 +64,7 @@ const ChefsSlider = () => {
                   chefName={userName}
                   chefImg={photo ? photo : chefImg}
                   id={_id}
-                  chefRating={AvgCustomerRates?.toFixed()}
+                  chefRating={AvgCustomerRates}
                 />
               </SwiperSlide>
             );

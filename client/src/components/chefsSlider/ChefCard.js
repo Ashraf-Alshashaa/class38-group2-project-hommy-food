@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import RateOfChef from "../RateOfChef";
 
 const ChefCard = ({ chefName, chefImg, chefRating, id }) => {
   return (
@@ -15,7 +16,7 @@ const ChefCard = ({ chefName, chefImg, chefRating, id }) => {
           <Card.Title className="slider-chef-name display-14">
             {chefName}
           </Card.Title>
-          <h2>{chefRating}</h2>
+          <RateOfChef number={chefRating} />
         </Card.Body>
         <Button
           className="visit-chef-btn w-100 rounded-0 center-children"

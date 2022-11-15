@@ -26,5 +26,5 @@ app.use("/api/rate", rateRouter);
 app.use("/api/meals", mealRouter);
 app.use("/api/categories", categoryRouter);
 app.use("/api/cuisines", cuisineRouter);
-app.use("/api/customer/", shoppingCardRouter);
+app.use("/api/customer/shopping-cart", shoppingCardRouter);
 export default app;

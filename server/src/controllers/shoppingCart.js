@@ -10,7 +10,7 @@ export const addToShoppingCart = async (req, res) => {
       { $push: { cart: { mealId, quantity: 1 } } }
     );
     const updatedUser = await User.find({ email: email })
-      .populate("cart")
+      .populate({ path: "cart.mealId", select: "title image price quantity" })
       .exec();
     res.status(200).json({ success: true, result: updatedUser[0] });
   } catch (error) {
@@ -31,7 +31,7 @@ export const increaseQuantityOfItem = async (req, res) => {
       { arrayFilters: [{ "item.mealId": mealId }] }
     );
     const updatedUser = await User.find({ email: email })
-      .populate("cart")
+      .populate({ path: "cart.mealId", select: "title image price quantity" })
       .exec();
     res.status(200).json({ success: true, result: updatedUser[0] });
   } catch (error) {
@@ -52,7 +52,7 @@ export const decreaseQuantityOfItem = async (req, res) => {
       { arrayFilters: [{ "item.mealId": mealId }] }
     );
     const updatedUser = await User.find({ email: email })
-      .populate("cart")
+      .populate({ path: "cart.mealId", select: "title image price quantity" })
       .exec();
     res.status(200).json({ success: true, result: updatedUser[0] });
   } catch (error) {
@@ -73,7 +73,7 @@ export const deleteItemFromShoppingCart = async (req, res) => {
       { $pull: { cart: { mealId: mealId } } }
     );
     const updatedUser = await User.find({ email: email })
-      .populate("cart")
+      .populate({ path: "cart.mealId", select: "title image price quantity" })
       .exec();
     res.status(200).json({ success: true, result: updatedUser[0] });
   } catch (error) {

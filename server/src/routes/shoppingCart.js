@@ -11,30 +11,26 @@ import {
 const shoppingCardRouter = express.Router();
 
 shoppingCardRouter.patch(
-  "/shopping-cart/add-to-cart/:mealId",
+  "/add-to-cart/:mealId",
   authenticateToken,
   addToShoppingCart
 );
 shoppingCardRouter.patch(
-  "/shopping-cart/increase-quantity/:mealId",
+  "/increase-quantity/:mealId",
   authenticateToken,
   increaseQuantityOfItem
 );
 shoppingCardRouter.patch(
-  "/shopping-cart/decrease-quantity/:mealId",
+  "/decrease-quantity/:mealId",
   authenticateToken,
   decreaseQuantityOfItem
 );
 shoppingCardRouter.delete(
-  "/shopping-cart/delete/item/:mealId",
+  "/delete/item/:mealId",
   authenticateToken,
   deleteItemFromShoppingCart
 );
 
-shoppingCardRouter.delete(
-  "/shopping-cart/delete",
-  authenticateToken,
-  deleteShoppingCart
-);
+shoppingCardRouter.delete("/delete", authenticateToken, deleteShoppingCart);
 
 export default shoppingCardRouter;

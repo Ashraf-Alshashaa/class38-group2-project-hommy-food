@@ -1,10 +1,11 @@
-.signUp-form {
+.input-component {
   display: flex;
   flex-direction: column;
+  position: relative;
   width: 80%;
 }
 
-input {
+.input-component input {
   padding: 10px;
   margin-bottom: 5px;
   border: none;
@@ -12,14 +13,18 @@ input {
   font-size: 12px;
 }
 
-label {
+.input-component label {
   color: white;
   padding: 5px 0px 3px 0px;
   font-size: 14px;
   font-weight: 600;
 }
 
-span {
+.input-component span {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(100%, -30%);
   font-size: 12px;
   font-weight: 600;
   padding-bottom: 10px;

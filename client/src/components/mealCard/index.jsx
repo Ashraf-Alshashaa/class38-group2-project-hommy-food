@@ -2,33 +2,55 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import "./style.css";
-const MealCard = ({ id, image, title, quantity, chefName, price }) => {
+
+import DeliveryIcon from "./greenScooterDelivery.png";
+const MealCard = ({
+  id,
+  image,
+  title,
+  quantity,
+  chefName,
+  price,
+  delivery,
+  chefImage,
+  chefId,
+}) => {
   return (
     <>
       <div className=" result-meal card m-1">
         <Link className="image-Container" to={`/mealDetail/${id}`}>
           {" "}
-          <img
-            src={image}
-            className="card-img-top"
-            alt={title}
-            // onClick={() => navigate("/mealDetail", { replace: true })}
-          />
+          <img src={image} className="card-img-top" alt={title} />
+          <div className="meal-price-container">€ {price}</div>
         </Link>
         <div className="title">
           <h5>{title}</h5>
           <h6>{quantity} Left</h6>
         </div>
-        <div className="links">
-          <Link to="/chefProfile">Chef: {chefName}</Link>
-          <div className="meal-price-container">
-            <p className="meal-price ">€{price}</p>
+        <div className="delivery-icon">
+          <Link
+            style={{
+              textDecoration: "none",
+              color: "black",
+              fontSize: "1vw",
+            }}
+            to={`/profile/${chefId}`}
+          >
+            {" "}
+            <div className="chip">
+              <img src={chefImage} alt="Person" width="96" height="96" />
+              {chefName}
+            </div>
+          </Link>
+          <div className="chip">
+            <img src={DeliveryIcon} alt="Person" width="96" height="96" />
+            {delivery}
           </div>
-          <Link to="/">
+          <Link to="/shoppingCart">
             {" "}
             <i className="fa-solid fa-cart-shopping"></i>
           </Link>
-        </div>{" "}
+        </div>
       </div>
     </>
   );
@@ -36,13 +58,12 @@ const MealCard = ({ id, image, title, quantity, chefName, price }) => {
 MealCard.propTypes = {
   image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  chefImage: PropTypes.string,
   chefName: PropTypes.string,
-  ingredients: PropTypes.array,
+  chefId: PropTypes.string,
   quantity: PropTypes.number,
-  cuisine: PropTypes.string,
-  category: PropTypes.string,
   price: PropTypes.number,
-  description: PropTypes.string,
   id: PropTypes.string.isRequired,
+  delivery: PropTypes.string,
 };
 export default MealCard;

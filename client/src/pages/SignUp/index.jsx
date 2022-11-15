@@ -8,6 +8,7 @@ import { useEffect } from "react";
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const [msg, setMsg] = useState("");
   const [data, setData] = useState(null);
   const [values, setValues] = useState({
     userName: "",
@@ -16,7 +17,6 @@ const SignUp = () => {
     confirmPassword: "",
     isChef: "user",
   });
-  const [msg, setMsg] = useState("");
 
   // Creating an array of input
   const inputs = [
@@ -140,7 +140,7 @@ const SignUp = () => {
             </label>
           </div>
         </div>
-        <p>{msg}</p>
+        <p className="chef-profile-error-msg">{msg}</p>
         <button className="submit-btn">Submit</button>
         <Link className="link-btn" to="/login">
           <button className="back-btn">Back</button>

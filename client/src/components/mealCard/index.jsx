@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "./style.css";
 
 import DeliveryIcon from "./greenScooterDelivery.png";
+import ShoppingCart from "../ShoppingCart";
 const MealCard = ({
   id,
   image,
@@ -48,7 +49,8 @@ const MealCard = ({
           </div>
           <Link to="/shoppingCart">
             {" "}
-            <i className="fa-solid fa-cart-shopping"></i>
+            <ShoppingCart chefId={chefId} id={id} />
+            {/* <i className="fa-solid fa-cart-shopping"></i> */}
           </Link>
         </div>
       </div>

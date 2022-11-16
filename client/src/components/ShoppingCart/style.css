@@ -1,0 +1,17 @@
+.shopping-cart-btn-disable .fa-xl {
+  color: var(--dark-gray-color);
+}
+
+.shopping-cart-btn-enable .fx-x1 {
+  color: var(--secondary-color);
+}
+
+.shopping-cart-btn-enable,
+.shopping-cart-btn-disable {
+  border: none;
+  background: none;
+}
+
+.shopping-cart-btn-enable .fx-x1:hover {
+  color: var(--primary-color);
+}

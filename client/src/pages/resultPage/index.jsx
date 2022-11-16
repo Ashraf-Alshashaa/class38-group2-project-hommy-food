@@ -5,6 +5,7 @@ import useFetch from "../../hooks/useFetch";
 import sadChef from "./sadChef.jpg";
 import somethingWentWrong from "./something-went-wrong.png";
 import PulseLoader from "react-spinners/PulseLoader";
+import ChefAvatar from "../../components/mealCard/yellowchef.png";
 import "./style.css";
 
 export default function ResultPage() {
@@ -82,10 +83,12 @@ export default function ResultPage() {
             image={meal.image}
             title={meal.title}
             quantity={meal.quantity}
-            description={meal.description}
             price={meal.price}
             chefName={meal?.chefId?.userName}
             id={meal._id}
+            chefImage={meal.chefId?.photo ? meal.chefId?.photo : ChefAvatar}
+            delivery={meal.chefId?.deliveryType}
+            chefId={meal.chefId?._id}
           />
         ))}
       </div>

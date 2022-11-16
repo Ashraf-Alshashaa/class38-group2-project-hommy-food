@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/authentication";
 import "./style.css";
 import deliveryImg from "../../../public/images/delivery.png";
+import pickupImg from "../../../public/images/pickup1.jpg";
 import InputForm from "../../components/InputForm";
 
 const CheckoutPage = () => {
@@ -14,7 +15,7 @@ const CheckoutPage = () => {
     const name = e.target.name;
     setNewAddress({ ...newAddress, [name]: value });
   }; */
-  const deliverType = "delivery";
+  const deliverType = "pickup";
 
   return (
     <div className="checkout-page">
@@ -25,6 +26,9 @@ const CheckoutPage = () => {
             {" "}
             Your order is already ready for you to pickup in the address below.{" "}
           </h3>
+          <div className="pickup-image">
+            <img src={pickupImg} alt="pickup" />
+          </div>
           <h2>Chef Address</h2>
         </div>
       ) : (

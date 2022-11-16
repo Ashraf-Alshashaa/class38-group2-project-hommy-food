@@ -1,0 +1,15 @@
+.shopping-cart-page-container {
+  /* text-align: center;
+  background-color: blue; */
+}
+.shopping-cart-page-empty {
+  width: 50%;
+  height: 50%;
+  text-align: center;
+  position: relative;
+  left: 25%;
+}
+.shopping-cart-page-empty img {
+  width: 50%;
+  height: 50%;
+}

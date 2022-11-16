@@ -10,6 +10,7 @@ import SignUp from "./pages/SignUp";
 import CreateMeal from "./pages/CreateMeal";
 import MealDetailPage from "./pages/MealDetailPage";
 import ProfilePage from "./pages/ProfilePage";
+import OrdersHistoryPage from "./pages/OrdersHistoryPage";
 
 const App = () => {
   return (
@@ -21,7 +22,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/profile/:id" element={<ProfilePage />} />
         <Route path="/favorites" element={<h1>favorites page</h1>} />
-        <Route path="/myOrders" element={<h1>my orders page</h1>} />
+        <Route path="/myOrders" element={<OrdersHistoryPage />} />
         <Route path="/shoppingCart" element={<h1>shopping cart page</h1>} />
         <Route path="/aboutUs" element={<h1>about us page</h1>} />
         <Route path="/mealDetail/:id" element={<MealDetailPage />} />

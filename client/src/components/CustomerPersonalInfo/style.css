@@ -1,4 +1,4 @@
-.personal-info-container {
+.customer-personal-info-container {
   position: relative;
   display: flex;
   flex-direction: row;
@@ -18,7 +18,7 @@
   left: 0;
 }
 
-.image-container {
+.customer-image-container {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -51,7 +51,7 @@
   padding-top: 2px;
 }
 
-.profile-info-title {
+.customer-profile-info-title {
   position: absolute;
   top: -5%;
   right: 3%;
@@ -67,12 +67,12 @@
   background-color: #f0f0f0;
 }
 
-.info-container h3 {
+.customer-info-container h3 {
   font-size: 16px;
   font-weight: 500;
 }
 
-.info-container h2 {
+.customer-info-container h2 {
   font-weight: 500;
   color: var(--primary-color);
   padding-bottom: 10px;
@@ -84,7 +84,7 @@
   font-size: 12px;
 }
 
-.edit-profile-info {
+.edit-customer-profile-info {
   text-decoration: none;
   background: none;
   border: none;
@@ -94,13 +94,13 @@
   margin-left: 0;
 }
 
-.edit-profile-info h3 {
+.edit-customer-profile-info h3 {
   font-size: 12px;
   text-decoration: underline;
   color: blue;
 }
 
-.chef-profile-error-msg {
+.customer-profile-error-msg {
   color: red;
 }
 
@@ -112,14 +112,14 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .personal-info-container {
+  .customer-personal-info-container {
     flex-direction: column;
   }
-  .profile-info-title h2 {
+  .customer-profile-info-title h2 {
     font-size: 18px;
     padding: 0;
   }
-  .profile-info-title {
+  .customer-profile-info-title {
     display: flex;
     width: fit-content;
     top: -2.5%;

@@ -10,27 +10,12 @@ import { useEffect } from "react";
 const PersonalInfo = ({ id }) => {
   const [openModal, setOpenModal] = useState(false);
   const [msg, setMsg] = useState("");
-  const { user } = useContext(AuthContext);
   const [imgUrl, setImgUrl] = useState("");
-  const [chefInfo, setChefInfo] = useState(user);
-
-  const url = `${process.env.BASE_SERVER_URL}/api/user/chef/${id}`;
+  const [userData, setUserData] = useState(user);
+  const { user, setUser } = useContext(AuthContext);
   useEffect(() => {
-    (async () => {
-      try {
-        const response = await fetch(url);
-        if (response.ok) {
-          const data = await response.json();
-          setChefInfo(data.result);
-          return;
-        }
-        throw new Error("Http Error");
-      } catch (error) {
-        setMsg("something went wrong");
-      }
-    })();
+    setUserData(user);
   }, [user]);
-
   useEffect(() => {
     if (imgUrl) {
       (async () => {
@@ -48,7 +33,7 @@ const PersonalInfo = ({ id }) => {
             }
           );
           const res = await response.json();
-          setChefInfo(res?.result[0]);
+          setUser(res?.result);
         } catch (error) {
           setMsg("sorry something went wrong");
         }
@@ -58,12 +43,12 @@ const PersonalInfo = ({ id }) => {
 
   return (
     <>
-      <div className="personal-info-container">
-        <div className="image-container">
+      <div className="customer-personal-info-container">
+        <div className="customer-image-container">
           <div className="profile-image">
-            {chefInfo?.photo ? (
+            {user?.photo ? (
               <img
-                src={chefInfo?.photo}
+                src={user?.photo}
                 alt="user image"
                 className="user-profile-img"
               />
@@ -82,15 +67,15 @@ const PersonalInfo = ({ id }) => {
             </>
           )}
         </div>
-        <div className="info-container">
-          <div className="profile-info-title">
+        <div className="customer-info-container">
+          <div className="customer-profile-info-title">
             <h2>Personal information</h2>
           </div>
-          <h3>User name: {chefInfo?.userName}</h3>
-          {chefInfo?.fullName ? (
+          <h3>User name: {userData?.userName}</h3>
+          {userData?.fullName ? (
             <>
-              <h3>First name: {chefInfo?.fullName.first}</h3>
-              <h3>Last name: {chefInfo?.fullName.last}</h3>
+              <h3>First name: {userData?.fullName.first}</h3>
+              <h3>Last name: {userData?.fullName.last}</h3>
             </>
           ) : (
             <>
@@ -98,24 +83,24 @@ const PersonalInfo = ({ id }) => {
               <h3>Last name:</h3>
             </>
           )}
-          <h3>E-mail: {chefInfo?.email}</h3>
-          <h3>Address: {chefInfo?.address}</h3>
-          <h3>Phone number: {chefInfo?.phone}</h3>
-          {user?._id === id && (
+          <h3>E-mail: {userData?.email}</h3>
+          <h3>Address: {userData?.address}</h3>
+          <h3>Phone number: {userData?.phone}</h3>
+          {userData?._id === id && (
             <>
               <button
-                className="edit-profile-info"
+                className="edit-customer-profile-info"
                 onClick={() => setOpenModal(true)}
               >
                 <i className="fa-solid fa-pen" /> <h3>Edit profile</h3>
               </button>
-              <p className="chef-profile-error-msg">{msg}</p>
+              <p className="customer-profile-error-msg">{msg}</p>
             </>
           )}
         </div>
       </div>
-      <div className="personal-info-container">
-        <div className="info-container">
+      <div className="customer-personal-info-container">
+        <div className="customer-info-container">
           <div className="profile-last-orders-title">
             <h2>Last 5 orders</h2>
           </div>
@@ -125,7 +110,7 @@ const PersonalInfo = ({ id }) => {
         <div className="update-profile-popup-container">
           <EditFromPopUp
             setOpenModal={setOpenModal}
-            setChefInfo={setChefInfo}
+            setChefInfo={setUserData}
           />
         </div>
       ) : null}

@@ -6,6 +6,7 @@ import cuisineRouter from "./routes/cuisine.js";
 import mealRouter from "./routes/meal.js";
 import categoryRouter from "./routes/category.js";
 import rateRouter from "./routes/rate.js";
+import shoppingCardRouter from "./routes/shoppingCart.js";
 
 // Create an express server
 const app = express();
@@ -25,4 +26,5 @@ app.use("/api/rate", rateRouter);
 app.use("/api/meals", mealRouter);
 app.use("/api/categories", categoryRouter);
 app.use("/api/cuisines", cuisineRouter);
+app.use("/api/customer/shopping-cart", shoppingCardRouter);
 export default app;

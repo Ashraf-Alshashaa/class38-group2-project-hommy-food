@@ -1,9 +1,13 @@
-.shopping-cart-btn-disable .fa-xl {
+.shopping-cart-btn-disable .faa-xl {
   color: var(--dark-gray-color);
+  font-size: 20px;
+  padding-right: 5px;
 }
 
-.shopping-cart-btn-enable .fx-x1 {
+.shopping-cart-btn-enable .faa-xl {
   color: var(--secondary-color);
+  font-size: 20px;
+  padding-right: 5px;
 }
 
 .shopping-cart-btn-enable,
@@ -12,6 +16,16 @@
   background: none;
 }
 
-.shopping-cart-btn-enable .fx-x1:hover {
+.shopping-cart-btn-enable .faa-xl:hover {
   color: var(--primary-color);
+  transform: scale(0.94);
+}
+
+.shopping-cart-btn-disable .faa-xl:hover {
+  color: var(--dark-gray-color);
+  transform: scale(0.94);
+}
+
+.shopping-cart-error {
+  color: red;
 }

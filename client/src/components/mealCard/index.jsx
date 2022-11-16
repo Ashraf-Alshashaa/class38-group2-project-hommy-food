@@ -47,11 +47,12 @@ const MealCard = ({
             <img src={DeliveryIcon} alt="Person" width="96" height="96" />
             {delivery}
           </div>
-          <Link to="/shoppingCart">
-            {" "}
+          {/* <Link to="/shoppingCart"> */}
+          <>
             <ShoppingCart chefId={chefId} id={id} />
-            {/* <i className="fa-solid fa-cart-shopping"></i> */}
-          </Link>
+          </>
+          {/* <i className="fa-solid fa-cart-shopping"></i> */}
+          {/* </Link> */}
         </div>
       </div>
     </>

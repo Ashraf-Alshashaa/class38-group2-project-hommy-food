@@ -1,59 +1,68 @@
-import React, { useContext, useEffect } from "react";
-import { useState } from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { AuthContext } from "../../contexts/authentication";
 import "./style.css";
 
 const ShoppingCart = ({ id, chefId }) => {
-  const { setUser } = useContext(AuthContext);
-  const [addToCart] = useState("");
+  const { user, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    (async () => {
+  // console.log(user);
+
+  const findChef = user?.cart?.map((element) => element.mealId?.chefId);
+  const chefIdToString = findChef?.toString();
+
+  const handleClickCart = async () => {
+    if (chefId === user?._id) {
+      window.alert("you are a chef");
+    }
+    if (!chefIdToString || chefId === chefIdToString) {
       const token = localStorage.getItem("accessToken");
       try {
         const response = await fetch(
-          `${process.env.BASE_SERVER_URL}/add-to-cart/${id}`,
+          // `${process.env.BASE_SERVER_URL}/api/customer/shopping-cart/delete`,
+          `${process.env.BASE_SERVER_URL}/api/customer/shopping-cart/add-to-cart/${id}`,
           {
             method: "PATCH",
+            // method: "DELETE",
             headers: {
               "content-type": "application/json",
               Authorization: `Bearer ${token}`,
             },
-            body: JSON.stringify({ mealId: id }),
           }
         );
-        setUser(response.result);
+        const data = await response.json();
+        setUser(data.result);
       } catch (error) {
-        // console.log("sorry something went wrong");
-        // console.log(error.msg);
+        window.alert("sorry something went wrong");
       }
-    })();
-  }, []);
-
-  // const handleClickCart = () => {
-  //   if (!user) {
-  //     navigate("/login");
-  //   } else {
-  //     return;
-  //   }
-  // };
+    } else {
+      // <popup message Sorry you can't order from a different chef />
+      return;
+    }
+  };
 
   return (
     <div className="shopping-cart-container">
-      {chefId === addToCart ? (
-        <button className="shopping-cart-btn-disable">
-          <i className="fa-solid fa-cart-shopping fa-xl"></i>
-        </button>
+      {user ? (
+        <>
+          <button
+            className="shopping-cart-btn-enable"
+            onClick={handleClickCart}
+          >
+            <i className="fa-solid fa-cart-shopping faa-xl"></i>
+          </button>
+        </>
       ) : (
-        <button
-          className="shopping-cart-btn-enable"
-          onClick={() => navigate("/login")}
-        >
-          <i className="fa-solid fa-cart-shopping fa-xl"></i>
-        </button>
+        <>
+          <button
+            className="shopping-cart-btn-disable"
+            onClick={() => navigate("/login")}
+          >
+            <i className="fa-solid fa-cart-shopping faa-xl"></i>
+          </button>
+        </>
       )}
     </div>
   );

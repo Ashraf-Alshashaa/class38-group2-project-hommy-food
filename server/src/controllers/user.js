@@ -1,5 +1,5 @@
 import User, { validateUser } from "../models/User.js";
-import { logError, logInfo } from "../util/logging.js";
+import { logError } from "../util/logging.js";
 import validationErrorMessage from "../util/validationErrorMessage.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
@@ -161,24 +161,7 @@ export const login = async (req, res) => {
 export const updateUser = async (req, res) => {
   const email = req.user;
   try {
-    const chefAvg = await User.aggregate([
-      {
-        $match: {
-          email: req.user,
-        },
-      },
-      {
-        $project: {
-          AvgCustomerRates: {
-            $avg: "$customerRates.rate",
-          },
-          _id: 0,
-        },
-      },
-    ]);
-    logInfo(chefAvg[0]);
     await User.findOneAndUpdate({ email: email }, req.body);
-    // const updatedUser = await User.find({ email: email }, {});
     const updatedUser = await User.aggregate([
       {
         $match: {

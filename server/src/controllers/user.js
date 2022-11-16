@@ -47,7 +47,6 @@ export const getChef = async (req, res) => {
         },
       },
     ]);
-    logInfo(user[0]);
     res.status(200).json({ success: true, result: user[0] });
   } catch (error) {
     logError(error);
@@ -162,9 +161,42 @@ export const login = async (req, res) => {
 export const updateUser = async (req, res) => {
   const email = req.user;
   try {
+    const chefAvg = await User.aggregate([
+      {
+        $match: {
+          email: req.user,
+        },
+      },
+      {
+        $project: {
+          AvgCustomerRates: {
+            $avg: "$customerRates.rate",
+          },
+          _id: 0,
+        },
+      },
+    ]);
+    logInfo(chefAvg[0]);
     await User.findOneAndUpdate({ email: email }, req.body);
-    const updatedUser = await User.find({ email: email });
-    res.status(200).json({ success: true, result: updatedUser[0] });
+    // const updatedUser = await User.find({ email: email }, {});
+    const updatedUser = await User.aggregate([
+      {
+        $match: {
+          email: req.user,
+        },
+      },
+      {
+        $addFields: {
+          AvgCustomerRates: {
+            $avg: "$customerRates.rate",
+          },
+        },
+      },
+    ]);
+    res.status(200).json({
+      success: true,
+      result: updatedUser[0],
+    });
   } catch (error) {
     logError(error);
     res

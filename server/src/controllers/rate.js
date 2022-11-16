@@ -56,7 +56,7 @@ export const postRate = async (req, res) => {
       });
     } else {
       await User.updateOne(
-        { _id: chefId, "customerRates.customerId": `${userId}` },
+        { _id: chefId, "customerRates.customerId": `${Object(userId)}` },
         {
           $set: {
             "customerRates.$.rate": `${rate}`,
@@ -64,12 +64,75 @@ export const postRate = async (req, res) => {
         }
       );
     }
-    const updatedChef = await User.findById(chefId);
-    res.status(200).json({ success: true, result: updatedChef });
+    const updatedChef = await User.aggregate([
+      {
+        $match: {
+          _id: new ObjectId(`${chefId}`),
+        },
+      },
+      {
+        $project: {
+          password: 0,
+          orderToPrepare: 0,
+          orderHistory: 0,
+          cart: 0,
+          favoriteChefs: 0,
+        },
+      },
+      {
+        $addFields: {
+          AvgCustomerRates: {
+            $avg: "$customerRates.rate",
+          },
+        },
+      },
+    ]);
+
+    res.status(200).json({
+      success: true,
+      result: updatedChef[0],
+    });
   } catch (error) {
     logError(error);
     res
       .status(500)
       .json({ success: false, msg: "Unable to rate chef, try again later" });
+  }
+};
+
+export const getHighRatedTenChefs = async (req, res) => {
+  try {
+    const highRatedTenChefs = await User.aggregate([
+      {
+        $match: {
+          isChef: true,
+        },
+      },
+      {
+        $project: {
+          _id: 1,
+          AvgCustomerRates: {
+            $avg: "$customerRates.rate",
+          },
+          photo: 1,
+          userName: 1,
+        },
+      },
+      {
+        $sort: {
+          AvgCustomerRates: -1,
+        },
+      },
+      {
+        $limit: 10,
+      },
+    ]);
+    res.status(200).json({ success: true, result: highRatedTenChefs });
+  } catch (error) {
+    logError(error);
+    res.status(500).json({
+      success: false,
+      msg: "Unable to get hi chef rate, try again later",
+    });
   }
 };

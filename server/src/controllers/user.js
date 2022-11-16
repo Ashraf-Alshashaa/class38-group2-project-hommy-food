@@ -3,6 +3,9 @@ import { logError } from "../util/logging.js";
 import validationErrorMessage from "../util/validationErrorMessage.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+import mongoose from "mongoose";
+
+const ObjectId = mongoose.Types.ObjectId;
 
 export const getProfile = async (req, res) => {
   const email = req.user;
@@ -19,17 +22,32 @@ export const getProfile = async (req, res) => {
 
 export const getChef = async (req, res) => {
   const { id } = req.params;
-  const notAllow = {
-    password: false,
-    orderToPrepare: false,
-    orderHistory: false,
-    cart: false,
-    favoriteChefs: false,
-  };
 
   try {
-    const user = await User.findById(id, notAllow);
-    res.status(200).json({ success: true, result: user });
+    const user = await User.aggregate([
+      {
+        $match: {
+          _id: new ObjectId(`${id}`),
+        },
+      },
+      {
+        $project: {
+          password: 0,
+          orderToPrepare: 0,
+          orderHistory: 0,
+          cart: 0,
+          favoriteChefs: 0,
+        },
+      },
+      {
+        $addFields: {
+          AvgCustomerRates: {
+            $avg: "$customerRates.rate",
+          },
+        },
+      },
+    ]);
+    res.status(200).json({ success: true, result: user[0] });
   } catch (error) {
     logError(error);
     res
@@ -144,8 +162,24 @@ export const updateUser = async (req, res) => {
   const email = req.user;
   try {
     await User.findOneAndUpdate({ email: email }, req.body);
-    const updatedUser = await User.find({ email: email });
-    res.status(200).json({ success: true, result: updatedUser[0] });
+    const updatedUser = await User.aggregate([
+      {
+        $match: {
+          email: req.user,
+        },
+      },
+      {
+        $addFields: {
+          AvgCustomerRates: {
+            $avg: "$customerRates.rate",
+          },
+        },
+      },
+    ]);
+    res.status(200).json({
+      success: true,
+      result: updatedUser[0],
+    });
   } catch (error) {
     logError(error);
     res

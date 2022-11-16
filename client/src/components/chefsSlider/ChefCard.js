@@ -1,30 +1,33 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Card, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import RateOfChef from "../RateOfChef";
 
-const ChefCard = ({ chefName, chefCountry, chefImg, chefRatingImg }) => {
+const ChefCard = ({ chefName, chefImg, chefRating, id }) => {
   return (
     <div>
       <Card className="p-0 overflow-hidden h-100 shadow">
-        <div className="overflow-hidden rounded p-0 bg-light">
+        <div className="overflow-hidden rounded p-0 bg-light top-10-chef-img-container center-children">
           <Card.Img variant="top" src={chefImg} />
         </div>
         <Card.Body className="top-chef-card-body-container text-center">
           <Card.Title className="slider-chef-name display-14">
             {chefName}
           </Card.Title>
-          <Card.Title className="slider-chef-country display-16">
-            {chefCountry}
-          </Card.Title>
-          <Card.Img
-            variant="Body"
-            src={chefRatingImg}
-            style={{ width: "50px" }}
-          />
+          <RateOfChef number={chefRating} />
         </Card.Body>
-        <Button className="visit-chef-btn w-100 rounded-0" variant="success">
-          <p className="visit-chef-text">Visit the chef profile</p>
+        <Button
+          className="visit-chef-btn w-100 rounded-0 center-children"
+          variant="success"
+        >
+          <Link
+            to={`/profile/${id}`}
+            className="visit-chef-text center-children"
+          >
+            {chefName} profile
+          </Link>
         </Button>
       </Card>
     </div>
@@ -33,8 +36,8 @@ const ChefCard = ({ chefName, chefCountry, chefImg, chefRatingImg }) => {
 
 ChefCard.propTypes = {
   chefName: PropTypes.string.isRequired,
-  chefCountry: PropTypes.string.isRequired,
   chefImg: PropTypes.string.isRequired,
-  chefRatingImg: PropTypes.string.isRequired,
+  chefRating: PropTypes.number,
+  id: PropTypes.string.isRequired,
 };
 export default ChefCard;

@@ -57,14 +57,14 @@ const RateStar = ({ id, chefData, setChefData }) => {
 
   // Getting the previous user rate for the current chef
   useEffect(() => {
-    if (user) {
-      const resultRate = chefData?.customerRates.filter(
+    if (chefData) {
+      const resultRate = chefData?.customerRates?.filter(
         (element) => element.customerId === user?._id
       );
-      const filtered = resultRate.map((element) => element.rate);
+      const filtered = resultRate?.map((element) => element.rate);
       setCurrentRateValue(filtered[0]);
     }
-  }, [user]);
+  }, [user, chefData]);
 
   const stars = Array(5).fill(0);
   return (

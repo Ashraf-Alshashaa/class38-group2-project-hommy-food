@@ -26,7 +26,7 @@ const ChefCard = ({ chefName, chefImg, chefRating, id }) => {
             to={`/profile/${id}`}
             className="visit-chef-text center-children"
           >
-            Visit the chef profile
+            {chefName} profile
           </Link>
         </Button>
       </Card>

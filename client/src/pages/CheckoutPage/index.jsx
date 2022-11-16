@@ -1,34 +1,63 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../contexts/authentication";
 import "./style.css";
 import deliveryImg from "../../../public/images/delivery.png";
+import pickupImg from "../../../public/images/pickup.jpeg";
 import InputForm from "../../components/InputForm";
+import useFetch from "../../hooks/useFetch";
 
 const CheckoutPage = () => {
   const { user } = useContext(AuthContext);
   const [newAddress, setNewAddress] = useState();
   const [sendNewAddress, setSendNewAddress] = useState(false);
+  const [chef, setChef] = useState();
+  const chefId = user?.cart[0]?.mealId.chefId;
+  const { performFetch } = useFetch(`/user/chef/${chefId}`, (data) =>
+    setChef(data?.result)
+  );
+  useEffect(() => {
+    performFetch();
+  }, [user]);
 
-  /* const handleChange = (e) => {
-    const value = e.target.value;
-    const name = e.target.name;
-    setNewAddress({ ...newAddress, [name]: value });
-  }; */
-  const deliverType = "delivery";
+  const deliveryType = chef?.deliveryType;
 
   return (
     <div className="checkout-page">
-      <h1>Checkout</h1>
-      {deliverType === "pickup" ? (
+      <h1>Checkout Step</h1>
+      {deliveryType === "pickup" ? (
         <div className="checkout-pickup-option">
           <h3>
             {" "}
-            Your order is already ready for you to pickup in the address below.{" "}
+            Chef is waiting you. You can pick your order from the address below.{" "}
           </h3>
-          <div className="pickup-image">
-            <img src={deliveryImg} alt="pickup" />
+          <div className="customer-info-card">
+            <div className="delivery-img">
+              <div className="img-inner">
+                <div className="inner-skew">
+                  <img src={chef?.photo || pickupImg} alt="pickup" />
+                </div>
+              </div>
+            </div>
+            <div className="customer-existing-info-container">
+              <div className="contact-info-container">
+                <h3>Chef Contact</h3>
+                <p>
+                  <label>Name:</label>{" "}
+                  {`${chef?.fullName.first} ${chef?.fullName.last}`}
+                </p>
+                <p>
+                  <label>Phone Number:</label> {`${chef?.phone}`}
+                </p>
+                <p>
+                  <label>Email:</label> {`${chef?.email}`}
+                </p>
+              </div>
+              <div className="address-container">
+                <h3>Pickup Address</h3>
+                {chef?.address}
+              </div>
+            </div>
           </div>
-          <h2>Chef Address</h2>
         </div>
       ) : (
         <div className="checkout-delivery-option ">
@@ -103,17 +132,6 @@ const CheckoutPage = () => {
               required
               disabled={!sendNewAddress}
             />
-            {/*  <InputForm
-              className="address-input"
-              label="City*"
-              type="text"
-              placeholder="City Name"
-              name="city"
-              value={newAddress["city"]}
-              errorMessage="City is required field!"
-              onChange={handleChange}
-              required
-            /> */}
           </div>
         </div>
       )}

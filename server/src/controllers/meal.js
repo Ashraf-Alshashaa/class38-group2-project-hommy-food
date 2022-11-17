@@ -7,7 +7,7 @@ export const getMeals = async (req, res) => {
     const meals = await Meal.find()
       .populate({ path: "cuisine", select: "title" })
       .populate({ path: "category", select: "title" })
-      .populate({ path: "chefId", select: "userName deliveryType" })
+      .populate({ path: "chefId", select: "userName deliveryType photo" })
       .exec();
     res.status(200).json({ success: true, result: meals });
   } catch (error) {
@@ -57,7 +57,7 @@ export const getMeal = async (req, res) => {
     const meal = await Meal.findById(id)
       .populate({ path: "cuisine", select: "title" })
       .populate({ path: "category", select: "title" })
-      .populate({ path: "chefId", select: "userName deliveryType" })
+      .populate({ path: "chefId", select: "userName deliveryType photo" })
       .exec();
     res.status(200).json({ success: true, result: meal });
   } catch (error) {
@@ -107,7 +107,7 @@ export const searchMeals = async (req, res) => {
     })
       .populate({ path: "cuisine", select: "title" })
       .populate({ path: "category", select: "title" })
-      .populate({ path: "chefId", select: "userName deliveryType" })
+      .populate({ path: "chefId", select: "userName deliveryType photo" })
       .exec();
     res.status(200).json({ success: true, result: meals });
   } catch (error) {
@@ -128,7 +128,7 @@ export const filterMeals = async (req, res) => {
       })
         .populate({ path: "cuisine", select: "title" })
         .populate({ path: "category", select: "title" })
-        .populate({ path: "chefId", select: "userName deliveryType" })
+        .populate({ path: "chefId", select: "userName deliveryType photo" })
         .exec();
       res.status(200).json({ success: true, result: meals });
     }
@@ -138,7 +138,7 @@ export const filterMeals = async (req, res) => {
       })
         .populate({ path: "cuisine", select: "title" })
         .populate({ path: "category", select: "title" })
-        .populate({ path: "chefId", select: "userName deliveryType" })
+        .populate({ path: "chefId", select: "userName deliveryType photo" })
         .exec();
       res.status(200).json({ success: true, result: meals });
     }
@@ -156,7 +156,7 @@ export const getMealsByChefId = async (req, res) => {
     const meals = await Meal.find({ chefId: id })
       .populate({ path: "cuisine", select: "title" })
       .populate({ path: "category", select: "title" })
-      .populate({ path: "chefId", select: "userName deliveryType" })
+      .populate({ path: "chefId", select: "userName deliveryType photo" })
       .exec();
     res.status(200).json({ success: true, result: meals });
   } catch (error) {

@@ -1,31 +1,29 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { AuthContext } from "../../contexts/authentication";
+import ShoppingCartPopUp from "../ShoppingCartPopUp";
 import "./style.css";
 
 const ShoppingCart = ({ id, chefId }) => {
   const { user, setUser } = useContext(AuthContext);
+  const [closeModal, setCloseModal] = useState(false);
   const navigate = useNavigate();
-
-  // console.log(user);
 
   const findChef = user?.cart?.map((element) => element.mealId?.chefId);
   const chefIdToString = findChef?.toString();
 
-  const handleClickCart = async () => {
+  const handleCartClick = async () => {
     if (chefId === user?._id) {
-      window.alert("you are a chef");
+      return;
     }
     if (!chefIdToString || chefId === chefIdToString) {
       const token = localStorage.getItem("accessToken");
       try {
         const response = await fetch(
-          // `${process.env.BASE_SERVER_URL}/api/customer/shopping-cart/delete`,
           `${process.env.BASE_SERVER_URL}/api/customer/shopping-cart/add-to-cart/${id}`,
           {
             method: "PATCH",
-            // method: "DELETE",
             headers: {
               "content-type": "application/json",
               Authorization: `Bearer ${token}`,
@@ -38,8 +36,7 @@ const ShoppingCart = ({ id, chefId }) => {
         window.alert("sorry something went wrong");
       }
     } else {
-      // <popup message Sorry you can't order from a different chef />
-      return;
+      return setCloseModal(true);
     }
   };
 
@@ -49,7 +46,7 @@ const ShoppingCart = ({ id, chefId }) => {
         <>
           <button
             className="shopping-cart-btn-enable"
-            onClick={handleClickCart}
+            onClick={handleCartClick}
           >
             <i className="fa-solid fa-cart-shopping faa-xl"></i>
           </button>
@@ -64,6 +61,11 @@ const ShoppingCart = ({ id, chefId }) => {
           </button>
         </>
       )}
+      <>
+        {closeModal ? (
+          <ShoppingCartPopUp setCloseModal={setCloseModal} />
+        ) : null}
+      </>
     </div>
   );
 };

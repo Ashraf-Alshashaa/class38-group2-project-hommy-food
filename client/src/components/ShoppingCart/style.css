@@ -29,3 +29,13 @@
 .shopping-cart-error {
   color: red;
 }
+
+.profile-popup-container {
+  background-color: red;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 90%;
+  height: 90%;
+  z-index: 500;
+}

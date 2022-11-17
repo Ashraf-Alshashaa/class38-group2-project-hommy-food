@@ -87,7 +87,7 @@ const PersonalInfo = ({ id, chefData, setChefData }) => {
             </>
           )}
           <h3>e-mail: {chefData?.email}</h3>
-          <h3>Address: {chefData?.address.street}</h3>
+          <h3>Address: {chefData?.address}</h3>
           <h3>Phone number: {chefData?.phone}</h3>
           {user?._id === id && (
             <>

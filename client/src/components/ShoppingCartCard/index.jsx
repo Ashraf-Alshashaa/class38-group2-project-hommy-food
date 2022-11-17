@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import imageforStyle from "./jbq2pdytmaodjawkr1pe.jpg";
 import "./style.css";
-const ShoppingCartCard = ({ image, title, quantity, price }) => {
+const ShoppingCartCard = () => {
   return (
     <div className="product">
       <div className="product-image">

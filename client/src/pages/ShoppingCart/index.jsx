@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../contexts/authentication";
 import { Link } from "react-router-dom";
-import emptyShoppingCartImage from "./shoppingCart.gif";
+// import emptyShoppingCartImage from "./shoppingCart.gif";
 import "./style.css";
 import ShoppingCartCard from "../../components/ShoppingCartCard";
 const ShoppingCartPage = () => {
   const { user } = useContext(AuthContext);
-  console.log(user);
 
   return (
     <>

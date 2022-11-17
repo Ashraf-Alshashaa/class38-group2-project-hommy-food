@@ -39,3 +39,18 @@
   height: 90%;
   z-index: 500;
 }
+
+.shopping-cart-login-required {
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-30%);
+  z-index: 700;
+}
+
+.shopping-cart-login-required p {
+  color: red;
+  font-size: 14px;
+}

@@ -8,16 +8,16 @@ import "./style.css";
 const ShoppingCart = ({ id, chefId }) => {
   const { user, setUser } = useContext(AuthContext);
   const [closeModal, setCloseModal] = useState(false);
+  const [msg, setMsg] = useState("");
   const navigate = useNavigate();
 
-  const findChef = user?.cart?.map((element) => element.mealId?.chefId);
-  const chefIdToString = findChef?.toString();
+  const chefIdInCart = user?.cart[0]?.mealId?.chefId;
 
   const handleCartClick = async () => {
     if (chefId === user?._id) {
       return;
     }
-    if (!chefIdToString || chefId === chefIdToString) {
+    if (!chefIdInCart || chefId === chefIdInCart) {
       const token = localStorage.getItem("accessToken");
       try {
         const response = await fetch(
@@ -40,6 +40,13 @@ const ShoppingCart = ({ id, chefId }) => {
     }
   };
 
+  const handleRedirect = () => {
+    setTimeout(() => {
+      navigate("/login");
+    }, "3000");
+    return setMsg("Sorry! you need to login");
+  };
+
   return (
     <div className="shopping-cart-container">
       {user ? (
@@ -55,10 +62,13 @@ const ShoppingCart = ({ id, chefId }) => {
         <>
           <button
             className="shopping-cart-btn-disable"
-            onClick={() => navigate("/login")}
+            onClick={handleRedirect}
           >
             <i className="fa-solid fa-cart-shopping faa-xl"></i>
           </button>
+          <div className="shopping-cart-login-required">
+            <p>{msg}</p>
+          </div>
         </>
       )}
       <>

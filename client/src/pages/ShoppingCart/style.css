@@ -1,6 +1,12 @@
 .shopping-cart-page-container {
   /* text-align: center;
   background-color: blue; */
+  height: 100vh;
+  margin: 5%;
+}
+.header-shopping-cart-container {
+  display: flex;
+  justify-content: space-between;
 }
 .shopping-cart-page-empty {
   width: 50%;
@@ -12,4 +18,35 @@
 .shopping-cart-page-empty img {
   width: 50%;
   height: 50%;
+}
+.shopping-cart-page-image {
+  float: left;
+  width: 27.5%;
+}
+.shopping-cart-page-details {
+  float: left;
+  width: 22%;
+}
+.shopping-cart-page-price {
+  float: left;
+  width: 14%;
+}
+.shopping-cart-page-quantity {
+  float: left;
+  width: 15.5%;
+}
+.shopping-cart-page-removal {
+  float: left;
+  width: 9%;
+}
+.shopping-cart-page-line-price {
+  float: left;
+  width: 12%;
+  text-align: right;
+}
+.column-labels > label {
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--dark-gray-color);
+  font-weight: 600;
 }

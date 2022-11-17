@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const OrderDetailsCards = ({ setOpenOpenDetails, orderItems }) => {
+const OrderDetailsCards = ({ setOpenOpenDetails }) => {
   return (
     <div>
       <div className="order-history-card-container">

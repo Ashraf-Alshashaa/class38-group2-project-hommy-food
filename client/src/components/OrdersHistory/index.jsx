@@ -5,7 +5,6 @@ import "./style.css";
 
 const OrdersHistory = () => {
   const { user } = useContext(AuthContext);
-  console.log(user?.orderHistory);
   return (
     <div className="orders-history-container">
       <div>

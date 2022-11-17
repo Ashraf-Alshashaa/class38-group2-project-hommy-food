@@ -1,19 +1,19 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Dropdown from "../../components/Dropdown";
 import InputForm from "../../components/InputForm";
 import UploadImgWidget from "../../components/UploadImgWidget";
 import { AuthContext } from "../../contexts/authentication";
 import useFetch from "../../hooks/useFetch";
+import somethingWentWrong from "../../../public/images/something-went-wrong.png";
 import "./style.css";
 
-export default function CreateMeal() {
+export default function EditMeal() {
   const { user } = useContext(AuthContext);
-  const [isAvailable, setIsAvailable] = useState(false);
-  const [imgUrl, setImgUrl] = useState(
-    "https://res.cloudinary.com/dmykyluyo/image/upload/v1668194264/meal_photos/nezxr8lcizgsnr48y5mi.png"
-  );
-  const [data, setData] = useState({});
+  const { id } = useParams();
+  const [isAvailable, setIsAvailable] = useState(true);
+  const [meal, setMeal] = useState([]);
+  const [imgUrl, setImgUrl] = useState(null);
   const [categories, setCategories] = useState([]);
   const [cuisines, setCuisines] = useState(null);
   const navigate = useNavigate();
@@ -26,27 +26,38 @@ export default function CreateMeal() {
     "/categories",
     setCategories
   );
+  const { performFetch: performFetchMeal } = useFetch(
+    `/meals/meal_detail/${id}`,
+    (data) => setMeal(data?.result)
+  );
   useEffect(() => {
     performFetchCuisines();
     performFetchCategories();
+    performFetchMeal();
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const updatedMeal = imgUrl
+      ? {
+          ...meal,
+          image: imgUrl,
+          isAvailable,
+        }
+      : {
+          ...meal,
+          isAvailable,
+        };
     try {
       const response = await fetch(
-        `${process.env.BASE_SERVER_URL}/api/meals/create`,
+        `${process.env.BASE_SERVER_URL}/api/meals/update/${id}`,
         {
-          method: "POST",
+          method: "PATCH",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            ...data,
-            chefId: user?._id,
-            image: imgUrl,
-            isAvailable,
-          }),
+          body: JSON.stringify(updatedMeal),
         }
       );
       const result = await response.json();
@@ -62,17 +73,16 @@ export default function CreateMeal() {
   const handleChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
-    setData({ ...data, [name]: value });
+    setMeal({ ...meal, [name]: value });
   };
-  //console.log(msg);
-  return (
+  return meal?.chefId?._id === user?._id ? (
     <div className="create-meal-page">
-      <h1>Create Your Meal</h1>
+      <h1>Edit Your Meal</h1>
       <div className="create-meal-container">
         <div className="create-meal-page-left-side">
           <div className="img-upload-page">
             <div className="meal-img-container">
-              <img src={imgUrl} alt="meal image" />
+              <img src={imgUrl ? imgUrl : meal?.image} alt="meal image" />
             </div>
             <UploadImgWidget setImgUrl={setImgUrl} folderName="meal_photos" />
           </div>
@@ -84,7 +94,7 @@ export default function CreateMeal() {
             rows={5}
             placeholder="Write something about your meal..."
             name="description"
-            value={data["description"]}
+            value={meal?.description}
             onChange={handleChange}
             required
           />
@@ -95,19 +105,7 @@ export default function CreateMeal() {
                 <Link className="link-cancel-btn" to="/">
                   <button className="cancel-btn">Cancel</button>
                 </Link>
-                <button
-                  className="submit-btn"
-                  onClick={handleSubmit}
-                  disabled={
-                    !(
-                      data?.description &&
-                      data?.title &&
-                      data?.cuisine &&
-                      data?.category &&
-                      data?.price
-                    )
-                  }
-                >
+                <button className="submit-btn" onClick={handleSubmit}>
                   Submit
                 </button>
               </div>
@@ -126,7 +124,7 @@ export default function CreateMeal() {
             placeholder="Title of the meal"
             name="title"
             errorMessage="Title is required field!"
-            value={data["title"]}
+            value={meal?.title}
             onChange={handleChange}
             required
           />
@@ -136,7 +134,7 @@ export default function CreateMeal() {
             type="number"
             placeholder="Price of the meal"
             name="price"
-            value={data["price"]}
+            value={meal?.price}
             errorMessage="Price is required field!"
             onChange={handleChange}
             required
@@ -145,25 +143,29 @@ export default function CreateMeal() {
           <Dropdown
             data={categories?.result}
             displayText={
-              data.category
-                ? (categories?.result.filter(
-                    (elm) => elm._id === data.category
+              meal?.category
+                ? (categories?.result?.filter(
+                    (elm) =>
+                      elm._id === meal?.category?._id ||
+                      elm._id === meal?.category
                   ))[0].title
-                : "Select a category"
+                : meal?.category?.title
             }
-            onClick={(e) => setData({ ...data, category: e.target.id })}
+            onClick={(e) => setMeal({ ...meal, category: e.target.id })}
           />
           <label>Cuisine*</label>
           <Dropdown
             data={cuisines?.result}
             displayText={
-              data.cuisine
-                ? (cuisines?.result.filter(
-                    (elm) => elm._id === data.cuisine
+              meal?.cuisine
+                ? (cuisines?.result?.filter(
+                    (elm) =>
+                      elm._id === meal?.cuisine?._id ||
+                      elm._id === meal?.cuisine
                   ))[0].title
-                : "Select a cuisine"
+                : meal?.cuisine?.title
             }
-            onClick={(e) => setData({ ...data, cuisine: e.target.id })}
+            onClick={(e) => setMeal({ ...meal, cuisine: e.target.id })}
           />
           <InputForm
             className="meal-input"
@@ -171,7 +173,7 @@ export default function CreateMeal() {
             placeholder="tomato,cheese.."
             type="text"
             name="ingredients"
-            value={data["ingredients"]}
+            value={meal?.ingredients}
             onChange={handleChange}
           />
 
@@ -181,7 +183,8 @@ export default function CreateMeal() {
             type="checkbox"
             id="isAvailable"
             name="isAvailable"
-            value={isAvailable}
+            value={meal?.isAvailable}
+            checked={isAvailable}
             onChange={() => setIsAvailable(!isAvailable)}
           />
 
@@ -193,7 +196,7 @@ export default function CreateMeal() {
             type="number"
             placeholder="Available quantity of portions for today"
             name="quantity"
-            value={data["quantity"]}
+            value={meal?.quantity}
             onChange={handleChange}
           />
         </div>
@@ -204,19 +207,7 @@ export default function CreateMeal() {
             <Link className="link-cancel-btn" to="/">
               <button className="cancel-btn">Cancel</button>
             </Link>
-            <button
-              className="submit-btn"
-              onClick={handleSubmit}
-              disabled={
-                !(
-                  data?.description &&
-                  data?.title &&
-                  data?.cuisine &&
-                  data?.category &&
-                  data?.price
-                )
-              }
-            >
+            <button className="submit-btn" onClick={handleSubmit}>
               Submit
             </button>
           </div>
@@ -225,6 +216,14 @@ export default function CreateMeal() {
           </div>
         </>
       )}
+    </div>
+  ) : (
+    <div className="result-page-container">
+      <div className="error">
+        <img src={somethingWentWrong} alt="something went wrong" />
+        <h1>Oops!Unauthorized!</h1>
+        <h5>Sorry you can not edit this meal</h5>
+      </div>
     </div>
   );
 }

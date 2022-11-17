@@ -15,11 +15,11 @@ const Header = () => {
   const mobile = window.innerWidth < 1024;
 
   const navLinks = [
-    { href: "/profile", name: "Profile" },
+    { href: `/profile/${user?._id}`, name: "Profile" },
     {
       href: "/favorites",
       name: "My Favorite",
-      icon: <i className="fa-solid fa-heart fa-xl"></i>,
+      icon: <i className="fa-regular fa-heart nav-bar-heart"></i>,
     },
     { href: "/myOrders", name: "My Orders" },
     {

@@ -11,7 +11,7 @@ import { useEffect } from "react";
 const PersonalInfo = ({ id, chefData, setChefData }) => {
   const [openModal, setOpenModal] = useState(false);
   const [msg, setMsg] = useState("");
-  const { user } = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
   const [imgUrl, setImgUrl] = useState("");
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const PersonalInfo = ({ id, chefData, setChefData }) => {
             }
           );
           const res = await response.json();
-          setChefData(res?.result[0]);
+          setUser(res?.result);
         } catch (error) {
           setMsg("sorry something went wrong");
         }
@@ -46,7 +46,9 @@ const PersonalInfo = ({ id, chefData, setChefData }) => {
           <div className="profile-image">
             {chefData?.photo ? (
               <img
-                src={chefData?.photo}
+                src={
+                  user?._id === chefData?._id ? user?.photo : chefData?.photo
+                }
                 alt="user image"
                 className="user-profile-img"
               />
@@ -65,7 +67,7 @@ const PersonalInfo = ({ id, chefData, setChefData }) => {
             </>
           )}
           <div className="rated-star-comp">
-            <RateOfChef chefData={chefData?.AvgCustomerRates} />
+            <RateOfChef number={chefData?.AvgCustomerRates} />
           </div>
         </div>
         <div className="info-container">
@@ -85,7 +87,7 @@ const PersonalInfo = ({ id, chefData, setChefData }) => {
             </>
           )}
           <h3>e-mail: {chefData?.email}</h3>
-          <h3>Address: {chefData?.address}</h3>
+          <h3>Address: {chefData?.address.street}</h3>
           <h3>Phone number: {chefData?.phone}</h3>
           {user?._id === id && (
             <>

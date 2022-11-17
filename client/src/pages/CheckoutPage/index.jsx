@@ -18,7 +18,7 @@ const CheckoutPage = () => {
     setChef(data?.result)
   );
   useEffect(() => {
-    if (chefId) {
+    if (user) {
       performFetch();
     }
   }, [user]);
@@ -26,128 +26,148 @@ const CheckoutPage = () => {
   const deliveryType = chef?.deliveryType;
 
   return (
-    <div className="checkout-page">
-      <h1>Checkout Step</h1>
-      {deliveryType === "pickup" ? (
-        <div className="checkout-pickup-option">
-          <h3>
-            {" "}
-            Chef is waiting you. You can pick your order from the address below.{" "}
-          </h3>
-          <div className="customer-info-card">
-            <div className="delivery-img">
-              <div className="img-inner">
-                <div className="inner-skew">
-                  <img src={chef?.photo || pickupImg} alt="pickup" />
+    <>
+      {deliveryType === "pickup" && (
+        <div className="checkout-page">
+          <h1>Checkout Step</h1>
+          <div className="checkout-pickup-option">
+            <h3>
+              Chef is waiting you. You can pick your order from the address
+              below.
+            </h3>
+            <div className="customer-info-card">
+              <div className="delivery-img">
+                <div className="img-inner">
+                  <div className="inner-skew">
+                    <img src={chef?.photo || pickupImg} alt="pickup" />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="customer-existing-info-container">
-              <div className="contact-info-container">
-                <h3>Chef Contact</h3>
-                <p>
-                  <label>Name:</label>{" "}
-                  {`${chef?.fullName?.first} ${chef?.fullName?.last}`}
-                </p>
-                <p>
-                  <label>Phone Number:</label> {`${chef?.phone}`}
-                </p>
-                <p>
-                  <label>Email:</label> {`${chef?.email}`}
-                </p>
-              </div>
-              <div className="address-container">
-                <h3>Pickup Address</h3>
-                {chef?.address}
-              </div>
-            </div>
-          </div>
-        </div>
-      ) : (
-        <div className="checkout-delivery-option ">
-          <div className="customer-info-card">
-            <div className="delivery-img">
-              <div className="img-inner">
-                <div className="inner-skew">
-                  <img src={deliveryImg} alt="delivery" />
-                </div>
-              </div>
-            </div>
-            <div className="customer-existing-info-container">
-              <div className="contact-info-container">
-                <h3>Contact</h3>
-                <p>
-                  <label>Name:</label>{" "}
-                  {`${user?.fullName?.first} ${user?.fullName?.last}`}
-                </p>
-                <p>
-                  <label>Phone Number:</label> {`${user?.phone}`}
-                </p>
-                <p>
-                  <label>Email:</label> {`${user?.email}`}
-                </p>
-              </div>
-              <div className="address-container">
-                <h3>Address</h3>
-                {user?.address ? (
-                  <p>{`${user?.address}`}</p>
-                ) : (
+              <div className="customer-existing-info-container">
+                <div className="contact-info-container">
+                  <h3>Chef Contact</h3>
                   <p>
-                    Your address is still missing in your profile. Please fill
-                    the address form.
+                    <label>Name:</label>
+                    {`${chef?.fullName?.first} ${chef?.fullName?.last}`}
                   </p>
-                )}
+                  <p>
+                    <label>Phone Number:</label> {`${chef?.phone}`}
+                  </p>
+                  <p>
+                    <label>Email:</label> {`${chef?.email}`}
+                  </p>
+                </div>
+                <div className="address-container">
+                  <h3>Pickup Address</h3>
+                  {chef?.address}
+                </div>
               </div>
             </div>
           </div>
-          <div className="new-address-form">
-            <h4>
-              {user?.address ? (
-                <div className="new-address-check-box-container">
-                  <>
-                    <input
-                      className="toggle"
-                      type="checkbox"
-                      id="sendNewAddress"
-                      name="sendNewAddress"
-                      value={sendNewAddress}
-                      onChange={() => setSendNewAddress(!sendNewAddress)}
-                    />
-                    <label
-                      className="toggle-label"
-                      htmlFor="sendNewAddress"
-                    ></label>
-                  </>
-                  <p>I want my order to this address.</p>
-                </div>
-              ) : (
-                "You need to fill delivery address"
-              )}
-            </h4>
-            <InputForm
-              className="address-input"
-              label="Address*"
-              type="text"
-              placeholder="Delivery Address"
-              name="street"
-              errorMessage="Address is required field!"
-              value={newAddress}
-              onChange={(e) => setNewAddress(e.target.value)}
-              required
-              disabled={!sendNewAddress}
-            />
-          </div>
+          <button
+            className="continue-btn"
+            onClick={() =>
+              navigate("/results", { state: { newAddress }, replace: true })
+            }
+          >
+            To Payment
+            <i className="fa-solid fa-arrow-right payment-arrow-icon"></i>
+          </button>
         </div>
       )}
-      <button
-        className="continue-btn"
-        onClick={() =>
-          navigate("/myOrders", { state: { newAddress }, replace: true })
-        }
-      >
-        To Payment<i className="fa-solid fa-arrow-right payment-arrow-icon"></i>
-      </button>
-    </div>
+
+      {deliveryType === "delivery" && (
+        <div className="checkout-page">
+          <h1>Checkout Step</h1>
+          <div className="checkout-delivery-option ">
+            <div className="customer-info-card">
+              <div className="delivery-img">
+                <div className="img-inner">
+                  <div className="inner-skew">
+                    <img src={deliveryImg} alt="delivery" />
+                  </div>
+                </div>
+              </div>
+              <div className="customer-existing-info-container">
+                <div className="contact-info-container">
+                  <h3>Contact</h3>
+                  <p>
+                    <label>Name:</label>{" "}
+                    {`${user?.fullName?.first} ${user?.fullName?.last}`}
+                  </p>
+                  <p>
+                    <label>Phone Number:</label> {`${user?.phone}`}
+                  </p>
+                  <p>
+                    <label>Email:</label> {`${user?.email}`}
+                  </p>
+                </div>
+                <div className="address-container">
+                  <h3>Address</h3>
+                  {user?.address ? (
+                    <p>{`${user?.address}`}</p>
+                  ) : (
+                    <p>
+                      Your address is still missing in your profile. Please fill
+                      the address form.
+                    </p>
+                  )}
+                </div>
+              </div>
+            </div>
+            <div className="new-address-form">
+              <h4>
+                {user?.address ? (
+                  <div className="new-address-check-box-container">
+                    <>
+                      <input
+                        className="toggle"
+                        type="checkbox"
+                        id="sendNewAddress"
+                        name="sendNewAddress"
+                        value={sendNewAddress}
+                        onChange={() => setSendNewAddress(!sendNewAddress)}
+                      />
+                      <label
+                        className="toggle-label"
+                        htmlFor="sendNewAddress"
+                      ></label>
+                    </>
+                    <p>I want my order to this address.</p>
+                  </div>
+                ) : (
+                  "You need to fill delivery address"
+                )}
+              </h4>
+              <InputForm
+                className="address-input"
+                label="Address*"
+                type="text"
+                placeholder="Delivery Address"
+                name="street"
+                errorMessage="Address is required field!"
+                value={newAddress || ""}
+                onChange={(e) => setNewAddress(e.target.value)}
+                required
+                disabled={!sendNewAddress}
+              />
+            </div>
+          </div>
+          <button
+            className="continue-btn"
+            onClick={() =>
+              navigate("/checkout/payment", {
+                state: { newAddress, isCheckout: true },
+                replace: true,
+              })
+            }
+          >
+            To Payment
+            <i className="fa-solid fa-arrow-right payment-arrow-icon"></i>
+          </button>
+        </div>
+      )}
+    </>
   );
 };
 

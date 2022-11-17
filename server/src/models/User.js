@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
   },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  address: { street: String, city: String },
+  address: String,
   isChef: { type: Boolean, required: true },
   photo: String,
   phone: Number,
@@ -62,7 +62,7 @@ const userSchema = new mongoose.Schema({
     },
   ],
   cart: [
-    { mealId: { type: mongoose.ObjectId, ref: "Meal" }, quantity: Number },
+    { mealId: { type: mongoose.ObjectId, ref: "meals" }, quantity: Number },
   ],
   favoriteChefs: [String],
   deliveryType: {

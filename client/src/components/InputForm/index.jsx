@@ -14,7 +14,7 @@ const InputForm = (props) => {
   };
 
   return (
-    <div className={`signUp-form ${className}`}>
+    <div className={`input-component ${className}`}>
       {label && <label>{label}</label>}
 
       <input

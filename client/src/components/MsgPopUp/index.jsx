@@ -3,21 +3,21 @@ import { MsgPopupContext } from "../../contexts/msgPopup";
 import "./style.css";
 
 const MsgPopup = () => {
-  const { msg, setMsg } = useContext(MsgPopupContext);
+  const { popup, setPopup } = useContext(MsgPopupContext);
   useEffect(() => {
     const timer = setTimeout(() => {
-      setMsg({ ...msg, open: false });
+      setPopup({ ...popup, open: false });
     }, 3000);
     return () => clearTimeout(timer);
-  }, [msg]);
+  }, [popup]);
 
   return (
     <div
       className={
-        msg?.open ? `msg-box ${msg?.type}` : `msg-box ${msg?.type} hidden`
+        popup?.open ? `msg-box ${popup?.type}` : `msg-box ${popup?.type} hidden`
       }
     >
-      <h5 className="alert-text">{msg?.text}</h5>
+      <h5 className="alert-text">{popup?.text}</h5>
     </div>
   );
 };

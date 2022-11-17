@@ -8,7 +8,7 @@
   box-shadow: 0 0 15px 5px #ccc;
   top: 50px;
   right: 10px;
-  z-index: 5;
+  z-index: 700;
 }
 
 .error {

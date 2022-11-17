@@ -4,9 +4,9 @@ import PropTypes from "prop-types";
 export const MsgPopupContext = createContext();
 
 export const MsgPopupProvider = ({ children }) => {
-  const [msg, setMsg] = useState({ type: "", text: "", open: false });
+  const [popup, setPopup] = useState({ type: "", text: "", open: false });
   return (
-    <MsgPopupContext.Provider value={{ setMsg, msg }}>
+    <MsgPopupContext.Provider value={{ setPopup, popup }}>
       {children}
     </MsgPopupContext.Provider>
   );

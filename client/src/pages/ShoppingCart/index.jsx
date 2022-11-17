@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../contexts/authentication";
-import { Link } from "react-router-dom";
 // import emptyShoppingCartImage from "./shoppingCart.gif";
 import "./style.css";
 import ShoppingCartCard from "../../components/ShoppingCartCard";
@@ -24,10 +23,10 @@ const ShoppingCartPage = () => {
           <h1>Shopping Cart</h1>
 
           <div className="breadcrumb">
-            <Link to="/">HomePage</Link>
+            <button>Delete All</button>
           </div>
 
-          <span className="count">items in the cart</span>
+          <span className="count">{user?.cart?.length} items in the cart</span>
         </header>
         <div className="column-labels">
           <label className="shopping-cart-page-image">Image</label>

@@ -3,10 +3,26 @@
   background-color: blue; */
   height: 100vh;
   margin: 5%;
+  position: relative;
+  width: 85%;
+  border: 2px solid lightgray;
+  padding: 5%;
+  border-radius: 20px;
+  justify-content: space-around;
+  align-items: center;
+  margin: 5% auto;
 }
 .header-shopping-cart-container {
   display: flex;
-  justify-content: space-between;
+  gap: 10%;
+}
+.header-shopping-cart-container h1 {
+  position: absolute;
+  top: -5%;
+  right: 3%;
+  padding: 0 2%;
+  background-color: #f0f0f0;
+  color: var(--primary-color);
 }
 .shopping-cart-page-empty {
   width: 50%;

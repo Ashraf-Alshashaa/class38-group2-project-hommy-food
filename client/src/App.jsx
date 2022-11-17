@@ -10,11 +10,13 @@ import SignUp from "./pages/SignUp";
 import CreateMeal from "./pages/CreateMeal";
 import MealDetailPage from "./pages/MealDetailPage";
 import ProfilePage from "./pages/ProfilePage";
+import MsgPopup from "./components/MsgPopUp";
 
 const App = () => {
   return (
     <>
       <Header />
+      <MsgPopup />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<SignUp />} />

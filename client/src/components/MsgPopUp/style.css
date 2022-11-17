@@ -1,0 +1,26 @@
+.msg-box {
+  width: 30%;
+  height: fit-content;
+  margin: 20px auto;
+  padding: 5px;
+  position: absolute;
+  border-radius: 5px;
+  box-shadow: 0 0 15px 5px #ccc;
+  top: 50px;
+  right: 10px;
+  z-index: 5;
+}
+
+.error {
+  background-color: #f7a7a3;
+  border-left: 5px solid #8f130b;
+  color: #8f130b;
+}
+.success {
+  background-color: #a8f0c6;
+  border-left: 5px solid #258244;
+  color: #258244;
+}
+.hidden {
+  display: none;
+}

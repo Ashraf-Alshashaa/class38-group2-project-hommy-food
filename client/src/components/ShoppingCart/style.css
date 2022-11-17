@@ -1,0 +1,56 @@
+.shopping-cart-btn-disable .faa-xl {
+  color: var(--dark-gray-color);
+  font-size: 20px;
+  padding-right: 5px;
+}
+
+.shopping-cart-btn-enable .faa-xl {
+  color: var(--secondary-color);
+  font-size: 20px;
+  padding-right: 5px;
+}
+
+.shopping-cart-btn-enable,
+.shopping-cart-btn-disable {
+  border: none;
+  background: none;
+}
+
+.shopping-cart-btn-enable .faa-xl:hover {
+  color: var(--primary-color);
+  transform: scale(0.94);
+}
+
+.shopping-cart-btn-disable .faa-xl:hover {
+  color: var(--dark-gray-color);
+  transform: scale(0.94);
+}
+
+.shopping-cart-error {
+  color: red;
+}
+
+.profile-popup-container {
+  background-color: red;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 90%;
+  height: 90%;
+  z-index: 500;
+}
+
+.shopping-cart-login-required {
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-30%);
+  z-index: 700;
+}
+
+.shopping-cart-login-required p {
+  color: red;
+  font-size: 14px;
+}

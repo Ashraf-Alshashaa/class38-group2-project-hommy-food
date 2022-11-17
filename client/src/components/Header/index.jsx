@@ -15,7 +15,7 @@ const Header = () => {
   const mobile = window.innerWidth < 1024;
 
   const navLinks = [
-    { href: "/profile", name: "Profile" },
+    { href: `/profile/${user?._id}`, name: "Profile" },
     {
       href: "/favorites",
       name: "My Favorite",

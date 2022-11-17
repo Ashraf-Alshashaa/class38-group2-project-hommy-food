@@ -46,7 +46,7 @@ const Dropdown = ({ data, displayText, onClick }) => {
 Dropdown.propTypes = {
   onClick: PropTypes.func.isRequired,
   data: PropTypes.array,
-  displayText: PropTypes.string.isRequired,
+  displayText: PropTypes.string,
 };
 
 export default Dropdown;

@@ -5,18 +5,22 @@ import deliveryImg from "../../../public/images/delivery.png";
 import pickupImg from "../../../public/images/pickup.jpeg";
 import InputForm from "../../components/InputForm";
 import useFetch from "../../hooks/useFetch";
+import { useNavigate } from "react-router-dom";
 
 const CheckoutPage = () => {
   const { user } = useContext(AuthContext);
   const [newAddress, setNewAddress] = useState();
   const [sendNewAddress, setSendNewAddress] = useState(false);
   const [chef, setChef] = useState();
-  const chefId = user?.cart[0]?.mealId.chefId;
+  const navigate = useNavigate();
+  const chefId = user?.cart[0]?.mealId?.chefId;
   const { performFetch } = useFetch(`/user/chef/${chefId}`, (data) =>
     setChef(data?.result)
   );
   useEffect(() => {
-    performFetch();
+    if (chefId) {
+      performFetch();
+    }
   }, [user]);
 
   const deliveryType = chef?.deliveryType;
@@ -43,7 +47,7 @@ const CheckoutPage = () => {
                 <h3>Chef Contact</h3>
                 <p>
                   <label>Name:</label>{" "}
-                  {`${chef?.fullName.first} ${chef?.fullName.last}`}
+                  {`${chef?.fullName?.first} ${chef?.fullName?.last}`}
                 </p>
                 <p>
                   <label>Phone Number:</label> {`${chef?.phone}`}
@@ -74,7 +78,7 @@ const CheckoutPage = () => {
                 <h3>Contact</h3>
                 <p>
                   <label>Name:</label>{" "}
-                  {`${user?.fullName.first} ${user?.fullName.last}`}
+                  {`${user?.fullName?.first} ${user?.fullName?.last}`}
                 </p>
                 <p>
                   <label>Phone Number:</label> {`${user?.phone}`}
@@ -135,7 +139,12 @@ const CheckoutPage = () => {
           </div>
         </div>
       )}
-      <button className="continue-btn">
+      <button
+        className="continue-btn"
+        onClick={() =>
+          navigate("/myOrders", { state: { newAddress }, replace: true })
+        }
+      >
         To Payment<i className="fa-solid fa-arrow-right payment-arrow-icon"></i>
       </button>
     </div>

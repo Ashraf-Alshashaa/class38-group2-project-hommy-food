@@ -18,7 +18,7 @@ const MealCard = ({
 }) => {
   return (
     <>
-      <article className=" result-meal-card card m-1">
+      <article className=" result-meal-card card p-3 m-2">
         <div className="result">
           <h3>{title}</h3>
           <div className="delivery">{delivery}</div>

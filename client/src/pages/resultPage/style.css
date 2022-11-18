@@ -10,9 +10,9 @@
 
 .result-page .result-meals-card-container {
   display: flex !important;
-  width: fit-content;
-  margin: auto;
+  width: 100%;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .meals-not-found img {

@@ -1,32 +1,93 @@
 import React from "react";
-import PropTypes from "prop-types";
-import imageforStyle from "./jbq2pdytmaodjawkr1pe.jpg";
+import propTypes from "prop-types";
 import "./style.css";
-const ShoppingCartCard = () => {
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/authentication";
+import useFetch from "../../hooks/useFetch";
+const ShoppingCartCard = ({ image, title, price, quantity, mealId }) => {
+  const total = quantity * price;
+  const { setUser } = useContext(AuthContext);
+  // ____________________DecreaseQuantity_________________________
+  const { performFetch: performFetchDecreaseQuantity } = useFetch(
+    `/customer/shopping-cart/decrease-quantity/${mealId}`,
+    (data) => setUser(data?.result)
+  );
+  const handleDecreaseClick = () => {
+    const token = localStorage.getItem("accessToken");
+    performFetchDecreaseQuantity({
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  };
+  // ____________________IncreaseQuantity_________________________
+  const { performFetch: performFetchIncreaseQuantity } = useFetch(
+    `/customer/shopping-cart/increase-quantity/${mealId}`,
+    (data) => setUser(data?.result)
+  );
+  const handleIncreaseClick = () => {
+    const token = localStorage.getItem("accessToken");
+    performFetchIncreaseQuantity({
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  };
+  // ____________________RemoveOneMeal_________________________
+  const { performFetch: performFetchRemoveOne } = useFetch(
+    `/customer/shopping-cart/delete/item/${mealId}`,
+    (data) => setUser(data?.result)
+  );
+  const handleRemoveClick = () => {
+    const token = localStorage.getItem("accessToken");
+    performFetchRemoveOne({
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  };
   return (
-    <div className="product">
-      <div className="product-image">
-        <img src={imageforStyle} />
-      </div>
-      <div className="product-title">meat and vegs</div>
-      <div className="product-price">12.99</div>
-      <div className="product-quantity">
-        <button className="shopping-cart-btn">+</button>
-        <input type="text" />
-        <button className="shopping-cart-btn">-</button>
-      </div>
-      <div className="product-removal">
-        <button className="remove-product">Remove</button>
-      </div>
-      <div className="product-line-price">25.98</div>
-    </div>
+    <tbody>
+      <tr>
+        {/* <td>1</td> */}
+        <td>
+          <img src={image} alt={title} />
+        </td>
+        <td>{title}</td>
+        <td>{price}</td>
+        <td className="item-quantity">
+          <div className="increase-decrease">
+            <button className="shopping-cart-btn" onClick={handleIncreaseClick}>
+              +
+            </button>
+            <div className="show-quantity">{quantity}</div>
+            <button className="shopping-cart-btn" onClick={handleDecreaseClick}>
+              -
+            </button>
+          </div>
+        </td>
+        <td>
+          <button className="remove-product" onClick={handleRemoveClick}>
+            remove
+          </button>
+        </td>
+        <td>€ {total}</td>
+      </tr>
+    </tbody>
   );
 };
-ShoppingCartCard.PropTypes = {
-  image: PropTypes.string,
-  title: PropTypes.string,
-  quantity: PropTypes.number,
-  price: PropTypes.number,
-  id: PropTypes.string,
+ShoppingCartCard.propTypes = {
+  image: propTypes.string,
+  title: propTypes.string,
+  quantity: propTypes.number,
+  price: propTypes.number,
+  mealId: propTypes.string,
+  total: propTypes.string,
 };
 export default ShoppingCartCard;

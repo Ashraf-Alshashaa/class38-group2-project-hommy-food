@@ -13,7 +13,7 @@ export default function EditMeal() {
   const { user } = useContext(AuthContext);
   const { setPopup } = useContext(MsgPopupContext);
   const { id } = useParams();
-  const [isAvailable, setIsAvailable] = useState(true);
+  const [isAvailable, setIsAvailable] = useState(false);
   const [meal, setMeal] = useState([]);
   const [imgUrl, setImgUrl] = useState(null);
   const [categories, setCategories] = useState([]);
@@ -37,6 +37,11 @@ export default function EditMeal() {
     performFetchCategories();
     performFetchMeal();
   }, []);
+  useEffect(() => {
+    if (meal) {
+      setIsAvailable(meal?.isAvailable);
+    }
+  }, [meal]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

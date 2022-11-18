@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import PersonalInfo from "../../components/PersonalInfo";
 import ProfileHeader from "../../components/ProfileHeader";
 import RateStar from "../../components/RatingStar";
@@ -15,10 +15,14 @@ const ProfilePage = () => {
     setChefData(data?.result)
   );
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     performFetch();
   }, []);
+  if (!user && !chefData?.isChef) {
+    navigate("/", { replace: true });
+  }
   return (
     <>
       {user?._id !== id || !user || user?.isChef ? (

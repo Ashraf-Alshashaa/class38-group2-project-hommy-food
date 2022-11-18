@@ -5,15 +5,20 @@ import { AuthContext } from "../../contexts/authentication";
 import ShoppingCartPopUp from "../ShoppingCartPopUp";
 import "./style.css";
 import { MsgPopupContext } from "../../contexts/msgPopup";
+import useFetch from "../../hooks/useFetch";
 
 const ShoppingCart = ({ id, chefId }) => {
   const { user, setUser } = useContext(AuthContext);
   const { setPopup } = useContext(MsgPopupContext);
   const [closeModal, setCloseModal] = useState(false);
   const [msg, setMsg] = useState("");
+  const { performFetch } = useFetch(
+    `/customer/shopping-cart/add-to-cart/${id}`,
+    (data) => setUser(data?.result)
+  );
   const navigate = useNavigate();
 
-  const handleCartClick = async () => {
+  const handleCartClick = () => {
     const chefIdInCart = user?.cart[0]?.mealId?.chefId;
     const findMeal = user?.cart?.filter((meal) => meal.mealId._id === id);
     const totalQuantity = findMeal[0]?.mealId?.quantity;
@@ -24,27 +29,18 @@ const ShoppingCart = ({ id, chefId }) => {
     if (!chefIdInCart || chefId === chefIdInCart) {
       if (!orderedQuantity || totalQuantity > orderedQuantity) {
         const token = localStorage.getItem("accessToken");
-        try {
-          const response = await fetch(
-            `${process.env.BASE_SERVER_URL}/api/customer/shopping-cart/add-to-cart/${id}`,
-            {
-              method: "PATCH",
-              headers: {
-                "content-type": "application/json",
-                Authorization: `Bearer ${token}`,
-              },
-            }
-          );
-          const data = await response.json();
-          setUser(data.result);
-          setPopup({
-            type: "success",
-            text: "The meal added to cart",
-            open: true,
-          });
-        } catch (error) {
-          window.alert("sorry something went wrong");
-        }
+        performFetch({
+          method: "PATCH",
+          headers: {
+            "content-type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setPopup({
+          type: "success",
+          text: "The meal added to cart",
+          open: true,
+        });
       } else {
         setPopup({
           type: "error",

@@ -1,8 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { AuthContext } from "../../contexts/authentication";
-import ShoppingCartPopUp from "../ShoppingCartPopUp";
 import "./style.css";
 import { MsgPopupContext } from "../../contexts/msgPopup";
 import useFetch from "../../hooks/useFetch";
@@ -10,8 +9,6 @@ import useFetch from "../../hooks/useFetch";
 const ShoppingCart = ({ id, chefId }) => {
   const { user, setUser } = useContext(AuthContext);
   const { setPopup } = useContext(MsgPopupContext);
-  const [closeModal, setCloseModal] = useState(false);
-  const [msg, setMsg] = useState("");
   const { performFetch } = useFetch(
     `/customer/shopping-cart/add-to-cart/${id}`,
     (data) => setUser(data?.result)
@@ -49,7 +46,11 @@ const ShoppingCart = ({ id, chefId }) => {
         });
       }
     } else {
-      setCloseModal(true);
+      setPopup({
+        type: "error",
+        text: "Sorry! you can't order from a different chef",
+        open: true,
+      });
     }
   };
 
@@ -57,7 +58,11 @@ const ShoppingCart = ({ id, chefId }) => {
     setTimeout(() => {
       navigate("/login");
     }, "3000");
-    return setMsg("Sorry! you need to login");
+    return setPopup({
+      type: "error",
+      text: "Sorry! you need to login",
+      open: true,
+    });
   };
 
   return (
@@ -79,16 +84,8 @@ const ShoppingCart = ({ id, chefId }) => {
           >
             <i className="fa-solid fa-cart-shopping faa-xl"></i>
           </button>
-          <div className="shopping-cart-login-required">
-            <p>{msg}</p>
-          </div>
         </>
       )}
-      <>
-        {closeModal ? (
-          <ShoppingCartPopUp setCloseModal={setCloseModal} />
-        ) : null}
-      </>
     </div>
   );
 };

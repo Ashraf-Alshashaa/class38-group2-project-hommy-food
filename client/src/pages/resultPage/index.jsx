@@ -5,7 +5,7 @@ import useFetch from "../../hooks/useFetch";
 import sadChef from "./sadChef.jpg";
 import somethingWentWrong from "./something-went-wrong.png";
 import PulseLoader from "react-spinners/PulseLoader";
-import ChefAvatar from "../../components/mealCard/yellowchef.png";
+// import ChefAvatar from "../../components/mealCard/yellowchef.png";
 import "./style.css";
 
 export default function ResultPage() {
@@ -68,29 +68,31 @@ export default function ResultPage() {
   return (
     <div className="result-page-container">
       <div className="result-page">
-        {!data?.result?.length > 0 && (
-          <div className="meals-not-found">
-            <img src={sadChef} alt="sad chef" />
-            <h1>Oops!</h1>
-            <h5>
-              Sorry no meals found go back to <Link to="/">HomePage</Link>
-            </h5>
-          </div>
-        )}
-        {data?.result?.map((meal) => (
-          <MealCard
-            key={meal._id}
-            image={meal.image}
-            title={meal.title}
-            quantity={meal.quantity}
-            price={meal.price}
-            chefName={meal?.chefId?.userName}
-            id={meal._id}
-            chefImage={meal.chefId?.photo ? meal.chefId?.photo : ChefAvatar}
-            delivery={meal.chefId?.deliveryType}
-            chefId={meal.chefId?._id}
-          />
-        ))}
+        <section className="result-meals-card-container">
+          {!data?.result?.length > 0 && (
+            <div className="meals-not-found">
+              <img src={sadChef} alt="sad chef" />
+              <h1>Oops!</h1>
+              <h5>
+                Sorry no meals found go back to <Link to="/">HomePage</Link>
+              </h5>
+            </div>
+          )}
+          {data?.result?.map((meal) => (
+            <MealCard
+              key={meal._id}
+              image={meal.image}
+              title={meal.title}
+              quantity={meal.quantity}
+              price={meal.price}
+              chefName={meal?.chefId?.userName}
+              id={meal._id}
+              chefImage={meal.chefId?.photo ? meal.chefId?.photo : null}
+              delivery={meal.chefId?.deliveryType}
+              chefId={meal.chefId?._id}
+            />
+          ))}
+        </section>
       </div>
     </div>
   );

@@ -1,33 +1,8 @@
-.order-history-card-container {
-  width: 300px;
-  overflow: hidden;
-  box-shadow: -2px 15px 25px -7px;
-  margin: 10px;
+.order-details-card-container {
+  margin: 20px;
+  padding: 20px;
+  background-color: aliceblue;
 }
-
-.order-history-card-title {
-  border-bottom: 5px solid #13753b;
-}
-
-.order-history-card-title h3 {
-}
-
-.order-history-card-body {
-  padding: 10px;
-}
-.order-history-btn-container {
-  text-decoration: none;
-  color: white;
-  border: none;
-  width: 100%;
-}
-
-.order-history-btn {
-  width: 100%;
-  background-color: var(--secondary-color);
-  padding: 0;
-  margin: 0;
-}
-.order-history-btn:hover {
-  background-color: #13753b;
+.order-details-img {
+  width: 100px;
 }

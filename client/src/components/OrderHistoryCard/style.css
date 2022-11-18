@@ -1,8 +1,10 @@
 .order-history-card-container {
-  width: 300px;
+  width: 95%;
   overflow: hidden;
   box-shadow: -2px 15px 25px -7px;
   margin: 10px;
+  background-color: #13753b;
+  max-height: 800px;
 }
 
 .order-history-card-title {
@@ -12,6 +14,8 @@
 .order-history-card-body {
   padding: 10px;
 }
+
+/* Button Styling */
 .order-history-btn-container {
   text-decoration: none;
   color: white;

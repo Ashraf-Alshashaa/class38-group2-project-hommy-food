@@ -80,6 +80,16 @@ const EditFromPopUp = ({ setOpenModal, setChefInfo }) => {
           />
           <InputForm
             className="update-input-container"
+            name="password"
+            type="password"
+            placeholder={user.password}
+            label="User password"
+            // pattern="^[A-Za-z0-9]{3,10}$"
+            value={values["password"]}
+            onChange={onChange}
+          />
+          <InputForm
+            className="update-input-container"
             name="first"
             type="text"
             placeholder={user?.fullName?.first ? user?.fullName?.first : ""}

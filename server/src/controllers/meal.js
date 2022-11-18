@@ -104,6 +104,7 @@ export const searchMeals = async (req, res) => {
         { title: { $regex: query, $options: "i" } },
         { ingredients: { $regex: query, $options: "i" } },
       ],
+      isAvailable: true,
     })
       .populate({ path: "cuisine", select: "title" })
       .populate({ path: "category", select: "title" })
@@ -125,6 +126,7 @@ export const filterMeals = async (req, res) => {
     if (category) {
       const meals = await Meal.find({
         category: category,
+        isAvailable: true,
       })
         .populate({ path: "cuisine", select: "title" })
         .populate({ path: "category", select: "title" })
@@ -135,6 +137,7 @@ export const filterMeals = async (req, res) => {
     if (cuisine) {
       const meals = await Meal.find({
         cuisine: cuisine,
+        isAvailable: true,
       })
         .populate({ path: "cuisine", select: "title" })
         .populate({ path: "category", select: "title" })

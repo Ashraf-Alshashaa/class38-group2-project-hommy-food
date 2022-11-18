@@ -17,7 +17,7 @@
   display: flex;
   align-items: center;
   position: sticky;
-  background-color: var(--dark-gray-color);
+  background-color: rgb(245, 245, 245);
   box-shadow: 1px 1px 12px var(--secondary-color);
   z-index: 500;
 }
@@ -110,6 +110,14 @@ i {
   border: none;
 }
 
+.nav-bar-heart {
+  font-size: 25px;
+  color: var(--secondary-color);
+}
+.nav-bar-heart:hover {
+  color: var(--primary-color);
+}
+
 .logout-header-btn {
   margin-bottom: 15px;
 }
@@ -146,10 +154,6 @@ i {
     right: 11%;
     top: 65px;
     width: 200px;
-  }
-  .nav-links-visible:hover {
-    background-color: var(--secondary-color);
-    color: white;
   }
   .login-header-btn {
     width: 80px;

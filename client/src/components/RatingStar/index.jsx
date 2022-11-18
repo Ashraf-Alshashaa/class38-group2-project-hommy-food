@@ -10,6 +10,8 @@ const RateStar = ({ id, chefData, setChefData }) => {
   const [msg, setMsg] = useState("");
   const { user } = useContext(AuthContext);
 
+  // console.log(user);
+
   const handleClick = (value) => {
     setCurrentRateValue(value);
   };

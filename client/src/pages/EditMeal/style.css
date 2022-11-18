@@ -45,10 +45,13 @@
   resize: none;
   overflow: auto;
   padding: 5px;
-  color: var(--secondary-color);
+  color: var(--primary-color);
   width: 100%;
   border-radius: 5px;
   margin-bottom: 20px;
+}
+.description-label {
+  color: var(--primary-color) !important;
 }
 .buttons-container {
   display: flex;
@@ -67,9 +70,6 @@
   height: 45px;
   font-size: 1.1rem;
   color: var(--secondary-color);
-}
-.description-label {
-  color: var(--primary-color) !important;
 }
 
 .create-meal-page-right-side label {

@@ -11,13 +11,16 @@ const OrderDetailsCards = () => {
       </div>
       <div className="order-details-info">
         <div className="order-details-basic-info">
-          <p>Mail name:</p>
-          <p>Chef name:</p>
-          <p>Delivery type:</p>
+          <p>
+            <span style={{ color: "black", fontSize: "15px" }}>Mail name:</span>
+            Pizza
+          </p>
+          <p>Chef name: Sako</p>
+          <p>Delivery type: Drop point</p>
         </div>
         <div className="order-details-price-info">
-          <p>Quantity:</p>
-          <p>Price:</p>
+          <p>Quantity: 5</p>
+          <p>Price: 50$</p>
         </div>
       </div>
     </div>

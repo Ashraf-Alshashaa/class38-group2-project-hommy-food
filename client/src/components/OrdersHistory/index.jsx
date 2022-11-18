@@ -16,6 +16,7 @@ const OrdersHistory = () => {
           </div>;
         })} */}
         <OrdersHistoryCard />
+        <OrdersHistoryCard />
       </div>
     </div>
   );

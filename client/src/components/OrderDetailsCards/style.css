@@ -1,8 +1,23 @@
 .order-details-card-container {
-  margin: 20px;
-  padding: 20px;
-  background-color: aliceblue;
+  display: flex;
+  margin: 10px;
+  padding: 10px;
+  background-color: white;
+  box-shadow: 2px 2px 4px #888;
+  height: 13vh;
+}
+
+.order-details-img-container {
+  margin-right: 4rem;
+  max-width: 10%;
 }
 .order-details-img {
   width: 100px;
+}
+
+.order-details-basic-info {
+  margin-right: 30vh;
+}
+.order-details-info {
+  display: flex;
 }

@@ -1,10 +1,22 @@
 .order-history-card-container {
   width: 95%;
   overflow: hidden;
-  box-shadow: -2px 15px 25px -7px;
-  margin: 10px;
-  background-color: #13753b;
+  box-shadow: 4px 4px 12px -2px;
+  margin-bottom: 4vh;
+  background-color: white;
   max-height: 800px;
+}
+
+.order-date {
+  margin-top: 10px;
+  margin-left: 10px;
+  color: #13753b;
+}
+
+.order-price {
+  float: inline-end;
+  margin-right: 5rem;
+  color: #13753b;
 }
 
 .order-history-card-title {

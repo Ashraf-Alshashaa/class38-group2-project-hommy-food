@@ -10,8 +10,18 @@ const OrdersHistoryCard = () => {
           <h5>Chef name: {chefId}</h5>
           <h5>Delivery type: </h5>
           <h5>Total payment: </h5> */}
+      <h5 className="order-date">
+        Order date:{" "}
+        <span style={{ color: "black", fontSize: "15px" }}>
+          November 24, 2022
+        </span>
+      </h5>
       <OrdersDetailsCards />
       <OrdersDetailsCards />
+      <h5 className="order-price">
+        Total price:
+        <span style={{ color: "black", fontSize: "15px" }}>100$</span>
+      </h5>
     </div>
   );
 };

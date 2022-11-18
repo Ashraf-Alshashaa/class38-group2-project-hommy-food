@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import brush from "../../../public/images/brush.png";
 import "./style.css";
 
-import DeliveryIcon from "./greenScooterDelivery.png";
 import ShoppingCart from "../ShoppingCart";
 const MealCard = ({
   id,
@@ -18,43 +18,41 @@ const MealCard = ({
 }) => {
   return (
     <>
-      <div className=" result-meal card m-1">
-        <Link className="image-Container" to={`/mealDetail/${id}`}>
-          {" "}
-          <img src={image} className="card-img-top" alt={title} />
-          <div className="meal-price-container">€ {price}</div>
-        </Link>
-        <div className="title">
-          <h5>{title}</h5>
-          <h6>{quantity} Left</h6>
+      <article className=" result-meal-card card p-3 m-2">
+        <div className="result">
+          <h3>{title}</h3>
+          <div className="delivery">{delivery}</div>
         </div>
-        <div className="delivery-icon">
-          <Link
-            style={{
-              textDecoration: "none",
-              color: "black",
-              fontSize: "1vw",
-            }}
-            to={`/profile/${chefId}`}
-          >
-            {" "}
-            <div className="chip">
-              <img src={chefImage} alt="Person" width="96" height="96" />
-              {chefName}
-            </div>
+        <div className="result-meal-card-image">
+          <Link className="image-Container" to={`/mealDetail/${id}`}>
+            <img src={image} className="card-img-top" alt={title} />
           </Link>
-          <div className="chip">
-            <img src={DeliveryIcon} alt="Person" width="96" height="96" />
-            {delivery}
+        </div>
+        <div className="chef-container">
+          <div className="chef">
+            <Link to={`/profile/${chefId}`}>
+              <div className="chip">
+                {chefImage ? (
+                  <img src={chefImage} alt="Person" width="96" height="96" />
+                ) : (
+                  <i className="fa-solid fa-user"></i>
+                )}
+                {chefName}
+              </div>
+            </Link>
+            <h4>{quantity} Left</h4>
           </div>
-          {/* <Link to="/shoppingCart"> */}
+        </div>
+        <div className="order-type-container">
+          <div className="title">
+            <p className="price">€{price}</p>
+            <img src={brush} alt="brush" width="96" height="96" />
+          </div>
           <>
             <ShoppingCart chefId={chefId} id={id} />
           </>
-          {/* <i className="fa-solid fa-cart-shopping"></i> */}
-          {/* </Link> */}
         </div>
-      </div>
+      </article>
     </>
   );
 };

@@ -61,6 +61,27 @@ export const getChef = async (req, res) => {
   }
 };
 
+// export const getCustomer = async (req, res) => {
+//   const { id } = req.params;
+//   const notAllow = {
+//     password: false,
+//     orderToPrepare: false,
+//     orderHistory: false,
+//     cart: false,
+//     favoriteChefs: false,
+//   };
+
+//   try {
+//     const user = await User.findById(id, notAllow);
+//     res.status(200).json({ success: true, result: user });
+//   } catch (error) {
+//     logError(error);
+//     res
+//       .status(500)
+//       .json({ success: false, msg: "Unable to get chef, try again later" });
+//   }
+// };
+
 export const createUser = async (req, res) => {
   try {
     const user = req.body;

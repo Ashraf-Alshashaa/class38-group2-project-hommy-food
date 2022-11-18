@@ -75,6 +75,11 @@ i {
   border-radius: 0 0 10px 10px;
 }
 
+.nav-links-container .nav-links-visible:hover {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
 .nav-links-hidden {
   display: none;
 }
@@ -152,7 +157,7 @@ i {
   }
   .nav-links-container {
     right: 11%;
-    top: 65px;
+    top: 60px;
     width: 200px;
   }
   .login-header-btn {

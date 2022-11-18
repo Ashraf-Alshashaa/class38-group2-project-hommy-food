@@ -12,11 +12,9 @@ const CategoryListCards = () => {
   useEffect(() => {
     performFetch();
   }, []);
-
   const handleClick = (id) => {
     navigate(`/results?category=${id}`);
   };
-
   return (
     <div className="categories-Container">
       <div className="container">

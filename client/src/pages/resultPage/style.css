@@ -3,10 +3,16 @@
   min-height: 90vh;
 }
 .result-page {
+  display: flex;
+  justify-content: center;
+  margin: 4% auto;
+}
+
+.result-page .result-meals-card-container {
   display: flex !important;
+  width: 100%;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 3%;
 }
 
 .meals-not-found img {

@@ -5,8 +5,8 @@ import { useParams, Link } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import PulseLoader from "react-spinners/PulseLoader";
 import somethingWentWrong from "../resultPage/something-went-wrong.png";
-import DeliveryIcon from "../../components/mealCard/greenScooterDelivery.png";
-import ChefAvatar from "../../components/mealCard/yellowchef.png";
+// import DeliveryIcon from "../../components/mealCard/greenScooterDelivery.png";
+// import ChefAvatar from "../../components/mealCard/yellowchef.png";
 import "./style.css";
 const mealDetailPage = () => {
   let mealId = useParams();
@@ -75,7 +75,7 @@ const mealDetailPage = () => {
                     height="96"
                   />
                 ) : (
-                  <img src={ChefAvatar} alt="Person" width="96" height="96" />
+                  <img src={null} alt="Person" width="96" height="96" />
                 )}
                 {data?.result?.chefId?.userName}
               </div>
@@ -106,7 +106,7 @@ const mealDetailPage = () => {
           </div>
           <div className="meal-page-price">
             <div className="meal-detail-page-chip">
-              <img src={DeliveryIcon} alt="Person" width="96" height="96" />
+              {/* <img src={DeliveryIcon} alt="Person" width="96" height="96" /> */}
               pickup{data?.result?.delivery}
             </div>
             <p>
@@ -114,7 +114,6 @@ const mealDetailPage = () => {
               {data?.result?.price}
             </p>
             <Link to="/shoppingCart">
-              {" "}
               <i className="fa-solid fa-cart-shopping"></i>
             </Link>
           </div>

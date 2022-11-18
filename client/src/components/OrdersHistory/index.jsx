@@ -1,5 +1,6 @@
-import React, { useContext } from "react";
-import { AuthContext } from "../../contexts/authentication";
+import React from "react";
+// import React, { useContext } from "react";
+// import { AuthContext } from "../../contexts/authentication";
 import OrdersHistoryCard from "../OrderHistoryCard";
 import "./style.css";
 

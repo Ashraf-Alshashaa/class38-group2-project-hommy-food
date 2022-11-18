@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import chefImg from "../../../public/images/img_avatar.png";
 import "./style.css";
 
-const OrderDetailsCards = ({ setOpenOpenDetails }) => {
+const OrderDetailsCards = () => {
   return (
     <div className="order-details-card-container">
       <div className="order-details-img-container">

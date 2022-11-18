@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import "./style.css";
 import OrdersDetailsCards from "../../components/OrderDetailsCards";
 
-const OrdersHistoryCard = ({ chefId, createdAt, items }) => {
-  const [openOrderDetails, setOpenOpenDetails] = useState(false);
+const OrdersHistoryCard = () => {
   return (
     <div className="order-history-card-container">
       {/* <h5>Date: {createdAt} </h5>

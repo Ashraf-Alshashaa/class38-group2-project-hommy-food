@@ -60,10 +60,10 @@ const ShoppingCartPage = () => {
                 <tr>
                   <th>Image</th>
                   <th>Title</th>
-                  <th>price</th>
-                  <th>quantity</th>
-                  <th>remove</th>
-                  <th>total</th>
+                  <th>Price</th>
+                  <th>Quantity</th>
+                  <th>Remove</th>
+                  <th>Total</th>
                 </tr>
               </thead>
 

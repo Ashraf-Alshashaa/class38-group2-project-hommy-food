@@ -7,9 +7,11 @@ import { AuthContext } from "../../contexts/authentication";
 import useFetch from "../../hooks/useFetch";
 import somethingWentWrong from "../../../public/images/something-went-wrong.png";
 import "./style.css";
+import { MsgPopupContext } from "../../contexts/msgPopup";
 
 export default function EditMeal() {
   const { user } = useContext(AuthContext);
+  const { setPopup } = useContext(MsgPopupContext);
   const { id } = useParams();
   const [isAvailable, setIsAvailable] = useState(true);
   const [meal, setMeal] = useState([]);
@@ -17,7 +19,7 @@ export default function EditMeal() {
   const [categories, setCategories] = useState([]);
   const [cuisines, setCuisines] = useState(null);
   const navigate = useNavigate();
-  const [msg, setMsg] = useState("");
+
   const { performFetch: performFetchCuisines } = useFetch(
     "/cuisines",
     setCuisines
@@ -62,12 +64,21 @@ export default function EditMeal() {
       );
       const result = await response.json();
       if (result.success) {
-        navigate(`/${user._id}/my_meals`);
+        setPopup({
+          type: "success",
+          text: "Meal is updated successfully..",
+          open: true,
+        });
+        navigate(`/profile/${user._id}`);
       } else {
-        setMsg(result.msg);
+        setPopup({ type: "error", text: result?.msg, open: true });
       }
     } catch (error) {
-      setMsg("sorry something went wrong");
+      setPopup({
+        type: "error",
+        text: "sorry something went wrong",
+        open: true,
+      });
     }
   };
   const handleChange = (e) => {
@@ -94,7 +105,7 @@ export default function EditMeal() {
             rows={5}
             placeholder="Write something about your meal..."
             name="description"
-            value={meal?.description}
+            value={meal?.description || ""}
             onChange={handleChange}
             required
           />
@@ -109,9 +120,6 @@ export default function EditMeal() {
                   Submit
                 </button>
               </div>
-              <div className="submit-msg">
-                <p>{msg}</p>
-              </div>
             </>
           )}
         </div>
@@ -124,7 +132,7 @@ export default function EditMeal() {
             placeholder="Title of the meal"
             name="title"
             errorMessage="Title is required field!"
-            value={meal?.title}
+            value={meal?.title || ""}
             onChange={handleChange}
             required
           />
@@ -134,7 +142,7 @@ export default function EditMeal() {
             type="number"
             placeholder="Price of the meal"
             name="price"
-            value={meal?.price}
+            value={meal?.price || ""}
             errorMessage="Price is required field!"
             onChange={handleChange}
             required
@@ -173,7 +181,7 @@ export default function EditMeal() {
             placeholder="tomato,cheese.."
             type="text"
             name="ingredients"
-            value={meal?.ingredients}
+            value={meal?.ingredients || ""}
             onChange={handleChange}
           />
 
@@ -196,7 +204,7 @@ export default function EditMeal() {
             type="number"
             placeholder="Available quantity of portions for today"
             name="quantity"
-            value={meal?.quantity}
+            value={meal?.quantity || ""}
             onChange={handleChange}
           />
         </div>
@@ -210,9 +218,6 @@ export default function EditMeal() {
             <button className="submit-btn" onClick={handleSubmit}>
               Submit
             </button>
-          </div>
-          <div className="submit-msg">
-            <p>{msg}</p>
           </div>
         </>
       )}

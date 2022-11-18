@@ -21,7 +21,7 @@ const ProfilePage = () => {
   }, []);
   return (
     <>
-      {user?._id !== id || !user ? (
+      {user?._id !== id || !user || user?.isChef ? (
         <div className="chef-profile-page">
           <ProfileHeader chefData={chefData} setChefData={setChefData} />
           <PersonalInfo id={id} chefData={chefData} setChefData={setChefData} />

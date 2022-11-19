@@ -49,12 +49,12 @@ const mealDetailPage = () => {
   return (
     <div className="meal-detail-page-container">
       <div className="meal-Detail-page">
-        <div className="divide">
+        <section className="divide">
           <div className="meal-page-image">
             <img src={data?.result?.image} alt={data?.result?.title} />
           </div>
-        </div>
-        <div className="divide2">
+        </section>
+        <section className="divide2">
           <div className="meal-page-title">
             <h5>{data?.result?.title}</h5>
             <Link
@@ -117,7 +117,7 @@ const mealDetailPage = () => {
               <i className="fa-solid fa-cart-shopping"></i>
             </Link>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   );

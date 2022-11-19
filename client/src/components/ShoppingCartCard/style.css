@@ -1,0 +1,36 @@
+.shopping-cart-btn {
+  background-color: var(--secondary-color);
+  border-radius: 3px;
+  border: none;
+  color: var(--primary-color);
+}
+.shopping-cart-btn:hover {
+  background-color: var(--primary-color);
+}
+
+.remove-product {
+  border: 0;
+  padding: 4px 8px;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  font-size: 12px;
+  border-radius: 3px;
+}
+.remove-product:hover {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+.increase-decrease {
+  display: flex;
+}
+.show-quantity {
+  width: 16%;
+  background-color: #fff;
+  text-align: center;
+  border: 1px solid var(--light-gray-color);
+  padding: 5px;
+  border-radius: 2px;
+}
+.show-quantity:hover {
+  background-color: var(--light-gray-color);
+}

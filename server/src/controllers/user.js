@@ -133,12 +133,8 @@ export const login = async (req, res) => {
   }
 
   try {
-    const user = await User.findOne({ email: email })
-      .populate({
-        path: "cart.mealId",
-        select: "title image price quantity chefId",
-      })
-      .exec();
+    const user = await User.findOne({ email: email });
+
     if (user === null) {
       res
         .status(401)
@@ -154,7 +150,12 @@ export const login = async (req, res) => {
         const userData = await User.findOne(
           { email: email },
           { password: false }
-        );
+        )
+          .populate({
+            path: "cart.mealId",
+            select: "title image price quantity chefId",
+          })
+          .exec();
         res
           .status(201)
           .json({ success: true, user: userData, accessToken: accessToken });

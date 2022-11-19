@@ -136,6 +136,13 @@ const Header = () => {
       {desktop && (
         <ul className="cart-fav-container">
           {user ? favoritesAndCart : loginBtn}
+          <span
+            className={`shopping-cart-items-num center-children ${
+              !user && "cart-quantity-hidden"
+            }`}
+          >
+            {user?.cart?.length}
+          </span>
         </ul>
       )}
     </header>

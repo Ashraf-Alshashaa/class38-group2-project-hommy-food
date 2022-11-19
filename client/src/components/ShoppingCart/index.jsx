@@ -1,42 +1,56 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { AuthContext } from "../../contexts/authentication";
-import ShoppingCartPopUp from "../ShoppingCartPopUp";
 import "./style.css";
+import { MsgPopupContext } from "../../contexts/msgPopup";
+import useFetch from "../../hooks/useFetch";
 
 const ShoppingCart = ({ id, chefId }) => {
   const { user, setUser } = useContext(AuthContext);
-  const [closeModal, setCloseModal] = useState(false);
-  const [msg, setMsg] = useState("");
+  const { setPopup } = useContext(MsgPopupContext);
+  const { performFetch } = useFetch(
+    `/customer/shopping-cart/add-to-cart/${id}`,
+    (data) => setUser(data?.result)
+  );
   const navigate = useNavigate();
 
-  const chefIdInCart = user?.cart[0]?.mealId?.chefId;
-
-  const handleCartClick = async () => {
+  const handleCartClick = () => {
+    const chefIdInCart = user?.cart[0]?.mealId?.chefId;
+    const findMeal = user?.cart?.filter((meal) => meal.mealId._id === id);
+    const totalQuantity = findMeal[0]?.mealId?.quantity;
+    const orderedQuantity = findMeal[0]?.quantity;
     if (chefId === user?._id) {
       return;
     }
     if (!chefIdInCart || chefId === chefIdInCart) {
-      const token = localStorage.getItem("accessToken");
-      try {
-        const response = await fetch(
-          `${process.env.BASE_SERVER_URL}/api/customer/shopping-cart/add-to-cart/${id}`,
-          {
-            method: "PATCH",
-            headers: {
-              "content-type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        const data = await response.json();
-        setUser(data.result);
-      } catch (error) {
-        window.alert("sorry something went wrong");
+      if (!orderedQuantity || totalQuantity > orderedQuantity) {
+        const token = localStorage.getItem("accessToken");
+        performFetch({
+          method: "PATCH",
+          headers: {
+            "content-type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setPopup({
+          type: "success",
+          text: "The meal added to cart",
+          open: true,
+        });
+      } else {
+        setPopup({
+          type: "error",
+          text: "No more available quantity",
+          open: true,
+        });
       }
     } else {
-      return setCloseModal(true);
+      setPopup({
+        type: "error",
+        text: "Sorry! you can't order from a different chef",
+        open: true,
+      });
     }
   };
 
@@ -44,7 +58,11 @@ const ShoppingCart = ({ id, chefId }) => {
     setTimeout(() => {
       navigate("/login");
     }, "3000");
-    return setMsg("Sorry! you need to login");
+    return setPopup({
+      type: "error",
+      text: "Sorry! you need to login",
+      open: true,
+    });
   };
 
   return (
@@ -66,16 +84,8 @@ const ShoppingCart = ({ id, chefId }) => {
           >
             <i className="fa-solid fa-cart-shopping faa-xl"></i>
           </button>
-          <div className="shopping-cart-login-required">
-            <p>{msg}</p>
-          </div>
         </>
       )}
-      <>
-        {closeModal ? (
-          <ShoppingCartPopUp setCloseModal={setCloseModal} />
-        ) : null}
-      </>
     </div>
   );
 };

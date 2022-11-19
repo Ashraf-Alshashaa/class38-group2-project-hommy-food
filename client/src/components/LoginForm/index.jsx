@@ -25,7 +25,7 @@ const LoginForm = () => {
             const { user, accessToken } = response;
             localStorage.setItem("accessToken", `${accessToken}`);
             setUser(user);
-            user.isChef && navigate("/chefs/my-meals", { replace: true });
+            user.isChef && navigate(`/profile/${user?._id}`, { replace: true });
             !user.isChef && navigate("/", { replace: true });
           } else {
             setMsg(response.msg);

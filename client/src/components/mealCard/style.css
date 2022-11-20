@@ -43,9 +43,9 @@
 .order-type-container .title img {
   position: absolute;
   bottom: 0;
-  margin-bottom: 5px;
+  margin-bottom: 3px;
   left: 2%;
-  width: 22%;
+  width: 27%;
   height: auto;
 }
 
@@ -133,7 +133,7 @@
   margin-top: 10px;
   justify-content: space-between;
   height: 20%;
-  align-items: flex-end;
+  align-items: center;
 }
 
 .result-meal-card .result .delivery {

@@ -49,7 +49,7 @@ const MealCard = ({
             <img src={brush} alt="brush" width="96" height="96" />
           </div>
           <>
-            <ShoppingCart chefId={chefId} id={id} />
+            <ShoppingCart chefId={chefId} id={id} quantityLeft={quantity} />
           </>
         </div>
       </article>

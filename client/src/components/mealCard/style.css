@@ -11,10 +11,12 @@
   width: 85%;
   justify-content: space-between;
   align-items: center;
+  margin-top: 10%;
 }
 
 .result-meal-card .result h3 {
-  font-size: 22px;
+  margin: 0;
+  font-size: large;
   font-weight: 600;
   color: var(--primary-color);
 }

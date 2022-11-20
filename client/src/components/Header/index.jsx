@@ -6,6 +6,7 @@ import logo from "../../../public/images/logo.png";
 import "./style.css";
 import { AuthContext } from "../../contexts/authentication";
 import { useContext } from "react";
+import MsgPopup from "../MsgPopUp";
 
 const Header = () => {
   const { logout, user } = useContext(AuthContext);
@@ -145,6 +146,7 @@ const Header = () => {
           </span>
         </ul>
       )}
+      <MsgPopup />
     </header>
   );
 };

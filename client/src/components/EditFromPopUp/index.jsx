@@ -5,7 +5,7 @@ import InputForm from "../InputForm";
 import "./style.css";
 
 const EditFromPopUp = ({ setOpenModal, setChefInfo }) => {
-  const { user } = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
   const [data, setData] = useState(null);
   const [fullName, setFullName] = useState(user?.fullName);
   const [msg, setMsg] = useState("");
@@ -30,6 +30,7 @@ const EditFromPopUp = ({ setOpenModal, setChefInfo }) => {
       const result = await response.json();
       if (result.success) {
         setChefInfo(result?.result);
+        setUser(result?.result);
         setMsg("Your personal information was successfully updated");
         setTimeout(() => {
           setOpenModal(false);

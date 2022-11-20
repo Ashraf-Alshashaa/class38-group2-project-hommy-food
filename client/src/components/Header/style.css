@@ -40,12 +40,18 @@
   align-items: center;
 }
 
-.user-img-header {
+.user-img-header-container {
   height: 25px;
+  width: 25px;
   margin-right: 10px;
   padding: 0;
   border-radius: 50%;
   border: 1px solid var(--primary-color);
+  overflow: hidden;
+}
+
+.user-img-header {
+  height: 25px;
 }
 
 .user-name-header {

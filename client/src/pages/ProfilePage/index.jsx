@@ -8,6 +8,7 @@ import useFetch from "../../hooks/useFetch";
 import CustomerPersonalInfo from "../../components/CustomerPersonalInfo";
 import { AuthContext } from "../../contexts/authentication";
 import somethingWentWrong from "../../../public/images/something-went-wrong.png";
+import MealList from "../../components/MealList";
 
 const ProfilePage = () => {
   const { id } = useParams();
@@ -34,6 +35,7 @@ const ProfilePage = () => {
           <ProfileHeader chefData={chefData} setChefData={setChefData} />
           <PersonalInfo id={id} chefData={chefData} setChefData={setChefData} />
           <RateStar id={id} chefData={chefData} setChefData={setChefData} />
+          <MealList id={id} />
         </div>
       ) : (
         <CustomerPersonalInfo id={id} />
@@ -41,5 +43,4 @@ const ProfilePage = () => {
     </>
   );
 };
-
 export default ProfilePage;

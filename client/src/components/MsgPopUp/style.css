@@ -3,18 +3,19 @@
   height: fit-content;
   margin: 20px auto;
   padding: 5px;
-  position: absolute;
+  position: sticky;
   border-radius: 5px;
-  box-shadow: 0 0 15px 5px #ccc;
-  top: 50px;
+  top: 70px;
   right: 10px;
   z-index: 700;
 }
 
 .error {
-  background-color: #f7a7a3;
-  border-left: 5px solid #8f130b;
-  color: #8f130b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: red;
+  color: white;
 }
 .success {
   background-color: #a8f0c6;
@@ -22,5 +23,11 @@
   color: #258244;
 }
 .hidden {
-  display: none;
+  visibility: hidden;
+}
+
+.error .alert-text {
+  font-size: 16px;
+  color: white;
+  margin: 0;
 }

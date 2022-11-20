@@ -1,0 +1,52 @@
+.chef-profile-create-meal-container {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  width: 80%;
+  margin-top: 10%;
+  margin-bottom: 3%;
+}
+
+.chef-profile-create-meal-header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.chef-profile-meals-list {
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+
+.chef-profile-meals-list::after {
+  content: "";
+  width: 85%;
+  height: 0;
+  border: 1px solid lightgray;
+  align-self: flex-end;
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
+
+.meals-list-title {
+  font-weight: 500;
+  color: var(--primary-color);
+  padding: 0;
+  margin: 0;
+}
+
+.chef-profile-create-meal {
+  position: absolute;
+  margin-top: -2%;
+  right: 11%;
+}
+
+.chef-profile-create-meal a {
+  color: var(--secondary-color);
+}
+
+.chef-profile-create-meal .fa-light {
+  color: var(--secondary-color);
+  font-size: 20px;
+}

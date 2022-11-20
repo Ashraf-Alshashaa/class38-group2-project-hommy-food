@@ -73,6 +73,7 @@ const ShoppingCartPage = () => {
                   image={item.mealId.image}
                   title={item.mealId.title}
                   price={item.mealId.price}
+                  availableQuantity={item.mealId.quantity}
                   quantity={item.quantity}
                   mealId={item.mealId._id}
                 />

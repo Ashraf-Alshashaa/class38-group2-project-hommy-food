@@ -1,18 +1,30 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import propTypes from "prop-types";
 import "./style.css";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/authentication";
 import useFetch from "../../hooks/useFetch";
-const ShoppingCartCard = ({ image, title, price, quantity, mealId }) => {
+import { MsgPopupContext } from "../../contexts/msgPopup";
+const ShoppingCartCard = ({
+  image,
+  title,
+  price,
+  quantity,
+  mealId,
+  availableQuantity,
+}) => {
   const total = quantity * price;
   const { setUser } = useContext(AuthContext);
+  const { popup, setPopup } = useContext(MsgPopupContext);
+  const navigate = useNavigate();
   // ____________________DecreaseQuantity_________________________
   const { performFetch: performFetchDecreaseQuantity } = useFetch(
     `/customer/shopping-cart/decrease-quantity/${mealId}`,
     (data) => setUser(data?.result)
   );
   const handleDecreaseClick = () => {
+    setPopup({ type: "", text: "", open: false });
     const token = localStorage.getItem("accessToken");
     performFetchDecreaseQuantity({
       method: "PATCH",
@@ -28,6 +40,10 @@ const ShoppingCartCard = ({ image, title, price, quantity, mealId }) => {
     (data) => setUser(data?.result)
   );
   const handleIncreaseClick = () => {
+    if (quantity >= availableQuantity) {
+      setPopup({ type: "error", text: "No more meals available", open: true });
+      return;
+    }
     const token = localStorage.getItem("accessToken");
     performFetchIncreaseQuantity({
       method: "PATCH",
@@ -55,20 +71,37 @@ const ShoppingCartCard = ({ image, title, price, quantity, mealId }) => {
   return (
     <tbody>
       <tr>
-        {/* <td>1</td> */}
         <td>
-          <img src={image} alt={title} />
+          <img
+            src={image}
+            alt={title}
+            onClick={() => {
+              navigate(`/mealDetail/${mealId}`);
+            }}
+          />
         </td>
-        <td>{title}</td>
-        <td>{price}</td>
+        <td
+          onClick={() => {
+            navigate(`/mealDetail/${mealId}`);
+          }}
+        >
+          {title}
+        </td>
+        <td>€ {price} per meal</td>
         <td className="item-quantity">
           <div className="increase-decrease">
-            <button className="shopping-cart-btn" onClick={handleIncreaseClick}>
-              +
-            </button>
-            <div className="show-quantity">{quantity}</div>
             <button className="shopping-cart-btn" onClick={handleDecreaseClick}>
               -
+            </button>
+            <div className="show-quantity">{quantity}</div>
+            <button
+              className={
+                popup.text ? "shopping-cart-btn-disabled" : "shopping-cart-btn"
+              }
+              id={mealId}
+              onClick={handleIncreaseClick}
+            >
+              +
             </button>
           </div>
         </td>
@@ -89,5 +122,6 @@ ShoppingCartCard.propTypes = {
   price: propTypes.number,
   mealId: propTypes.string,
   total: propTypes.string,
+  availableQuantity: propTypes.number,
 };
 export default ShoppingCartCard;

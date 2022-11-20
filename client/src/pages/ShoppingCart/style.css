@@ -1,5 +1,4 @@
 .shopping-cart-page-container {
-  /* height: 100vh; */
   position: relative;
   width: 85%;
   border: 2px solid lightgray;
@@ -19,6 +18,7 @@
   padding: 0 2%;
   background-color: #f0f0f0;
   color: var(--primary-color);
+  font-size: 2rem;
 }
 .shopping-cart-page-empty {
   width: 50%;
@@ -38,6 +38,7 @@ table {
   width: 100%;
   overflow: auto;
   border: 1px solid #dddddd;
+  display: flex;
 }
 
 .header_fixed thead th {
@@ -46,12 +47,14 @@ table {
   background-color: var(--secondary-color);
   color: var(--primary-color);
   font-size: 15px;
+  text-align: center;
 }
 th,
 td {
   border-bottom: 1px solid #dddddd;
   padding: 10px 20px;
   font-size: 14px;
+  text-align: center;
 }
 
 td img {
@@ -107,7 +110,7 @@ td button {
   margin: 0%;
 }
 .shopping-cart-page-empty img {
-  width: 50%;
+  width: 60%;
 }
 .shopping-cart-page-empty h1 {
   font-size: 1.5vw;
@@ -126,19 +129,70 @@ td button {
 }
 .checkout-div {
   display: flex;
-  width: 35%;
-  height: 10%;
+  width: 35vw;
+  height: 5vh;
   margin-top: 10px;
   position: absolute;
-  left: 33%;
+  left: 30.5%;
 }
 .shopping-cart-checkout-btn:hover {
   background-color: var(--secondary-color);
   color: var(--primary-color);
 }
-@media only screen and (max-width: 900px) {
-  . {
-    width: 70%;
-    margin: 15%;
+
+@media only screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+  }
+
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: 0.8em;
+    text-align: center;
+    height: 8%;
+  }
+  .increase-decrease {
+    justify-content: center;
+  }
+  table td:last-child {
+    border-bottom: none;
+  }
+  .header-shopping-cart-container h1 {
+    font-size: 1rem;
+    position: absolute;
+    top: -2%;
+    right: 10%;
+    z-index: 2;
+  }
+  .checkout-div {
+    font-size: 0.8rem;
+  }
+  .shopping-cart-page-empty img {
+    width: 80%;
+  }
+  .shopping-cart-page-empty h1 {
+    font-size: 4vw;
+  }
+  .shopping-cart-page-empty h4 {
+    font-size: 3vw;
+  }
+  .shopping-cart-page-container {
+    height: 120vh;
+    margin-top: 10%;
   }
 }

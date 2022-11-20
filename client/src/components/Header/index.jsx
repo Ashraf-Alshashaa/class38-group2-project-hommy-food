@@ -94,7 +94,10 @@ const Header = () => {
 
   const logOutBtn = (
     <li
-      onClick={() => logout()}
+      onClick={() => {
+        logout();
+        navigate("./", { replace: true });
+      }}
       className={
         !displayNav
           ? "nav-links-hidden"

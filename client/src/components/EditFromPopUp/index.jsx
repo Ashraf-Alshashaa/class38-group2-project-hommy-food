@@ -2,13 +2,14 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../contexts/authentication";
 import PropTypes from "prop-types";
 import InputForm from "../InputForm";
+import { MsgPopupContext } from "../../contexts/msgPopup";
 import "./style.css";
 
 const EditFromPopUp = ({ setOpenModal, setChefInfo }) => {
   const { user } = useContext(AuthContext);
+  const { setPopup } = useContext(MsgPopupContext);
   const [data, setData] = useState(null);
   const [fullName, setFullName] = useState(user?.fullName);
-  const [msg, setMsg] = useState("");
   const [values, setValues] = useState({});
 
   const onChange = (e) => {
@@ -30,15 +31,25 @@ const EditFromPopUp = ({ setOpenModal, setChefInfo }) => {
       const result = await response.json();
       if (result.success) {
         setChefInfo(result?.result);
-        setMsg("Your personal information was successfully updated");
-        setTimeout(() => {
-          setOpenModal(false);
-        }, "1500");
+        setPopup({
+          type: "success",
+          text: "Your personal information was successfully updated",
+          open: true,
+        });
+        setOpenModal(false);
       } else {
-        setMsg(result.msg);
+        setPopup({
+          type: "error",
+          text: result.msg,
+          open: true,
+        });
       }
     } catch (error) {
-      setMsg("sorry something went wrong");
+      setPopup({
+        type: "error",
+        text: "sorry something went wrong",
+        open: true,
+      });
     }
   };
 
@@ -116,9 +127,6 @@ const EditFromPopUp = ({ setOpenModal, setChefInfo }) => {
             value={values["phone"]}
             onChange={onChange}
           />
-          <div className="popup-update-message">
-            <p className="chef-profile-error-msg">{msg}</p>
-          </div>
           <div className="submit-update-container">
             <button id="popup-back-btn" onClick={() => setOpenModal(false)}>
               Back

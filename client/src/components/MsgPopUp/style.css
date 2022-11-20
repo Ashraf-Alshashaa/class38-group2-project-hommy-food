@@ -15,12 +15,10 @@
 
 .error-popup {
   text-align: center;
-  /* justify-content: center; */
   background-color: rgba(255, 0, 0, 0.788);
 }
 .success-popup {
   text-align: center;
-  /* justify-content: center; */
   background-color: #4caf4fea;
 }
 .hidden {

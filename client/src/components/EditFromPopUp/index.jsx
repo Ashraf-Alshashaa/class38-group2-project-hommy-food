@@ -6,7 +6,6 @@ import { MsgPopupContext } from "../../contexts/msgPopup";
 import "./style.css";
 
 const EditFromPopUp = ({ setOpenModal, setChefInfo }) => {
-
   const { setPopup } = useContext(MsgPopupContext);
   const { user, setUser } = useContext(AuthContext);
 

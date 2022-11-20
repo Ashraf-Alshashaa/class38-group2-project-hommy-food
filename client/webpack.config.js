@@ -45,6 +45,7 @@ module.exports = {
       BASE_SERVER_URL: "",
       CLOUD_NAME: "",
       UPLOAD_PRESET: "",
+      STRIPE_PUBLIC_KEY: "",
     }),
   ],
   // To tell the dev server that everything should go back to index.html

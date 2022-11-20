@@ -11,10 +11,12 @@
   width: 85%;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 10%;
 }
 
 .result-meal-card .result h3 {
-  font-size: 28px;
+  margin: 0;
+  font-size: large;
   font-weight: 600;
   color: var(--primary-color);
 }
@@ -43,9 +45,9 @@
 .order-type-container .title img {
   position: absolute;
   bottom: 0;
-  margin-bottom: 5px;
+  margin-bottom: 3px;
   left: 2%;
-  width: 22%;
+  width: 27%;
   height: auto;
 }
 
@@ -133,7 +135,7 @@
   margin-top: 10px;
   justify-content: space-between;
   height: 20%;
-  align-items: flex-end;
+  align-items: center;
 }
 
 .result-meal-card .result .delivery {

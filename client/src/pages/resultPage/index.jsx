@@ -56,7 +56,7 @@ export default function ResultPage() {
   if (error) {
     return (
       <div className="result-page-container">
-        <div className="error">
+        <div className="went-wrong-msg">
           <img src={somethingWentWrong} alt="something went wrong" />
           <h1>Oops!</h1>
           <h5>Something went wrong try again or refresh page</h5>

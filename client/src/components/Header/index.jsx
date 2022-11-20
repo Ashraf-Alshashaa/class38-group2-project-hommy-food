@@ -6,6 +6,7 @@ import logo from "../../../public/images/logo.png";
 import "./style.css";
 import { AuthContext } from "../../contexts/authentication";
 import { useContext } from "react";
+import MsgPopup from "../MsgPopUp";
 
 const Header = () => {
   const { logout, user } = useContext(AuthContext);
@@ -94,7 +95,10 @@ const Header = () => {
 
   const logOutBtn = (
     <li
-      onClick={() => logout()}
+      onClick={() => {
+        logout();
+        navigate("./", { replace: true });
+      }}
       className={
         !displayNav
           ? "nav-links-hidden"
@@ -114,11 +118,13 @@ const Header = () => {
           onClick={() => desktop && setDisplayNav(!displayNav)}
           className={`user-info-container-header ${user && "cursor"}`}
         >
-          <img
-            src={user && user?.photo ? user.photo : defaultUserImg}
-            alt="user"
-            className="user-img-header"
-          />
+          <div className="user-img-header-container center-children">
+            <img
+              src={user && user?.photo ? user.photo : defaultUserImg}
+              alt="user"
+              className="user-img-header"
+            />
+          </div>
           <h5 className="user-name-header">Hello {user?.userName || "user"}</h5>
         </div>
       )}
@@ -145,6 +151,7 @@ const Header = () => {
           </span>
         </ul>
       )}
+      <MsgPopup />
     </header>
   );
 };

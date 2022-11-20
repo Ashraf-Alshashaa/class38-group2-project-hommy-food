@@ -13,14 +13,12 @@ import EditMeal from "./pages/EditMeal";
 import MealDetailPage from "./pages/MealDetailPage";
 import ProfilePage from "./pages/ProfilePage";
 import ShoppingCartPage from "./pages/ShoppingCart";
-import MsgPopup from "./components/MsgPopUp";
 import Payment from "./pages/Payment";
 
 const App = () => {
   return (
     <>
       <Header />
-      <MsgPopup />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<SignUp />} />

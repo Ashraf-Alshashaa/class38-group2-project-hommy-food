@@ -175,8 +175,15 @@ i {
   .user-info-container-header h5 {
     font-size: large;
   }
-  .user-img-header {
+
+  .user-img-header-container {
+    height: 40px;
+    width: 40px;
     margin-right: 20px;
+    border-radius: 50%;
+  }
+
+  .user-img-header {
     height: 40px;
   }
   .nav-links-container {

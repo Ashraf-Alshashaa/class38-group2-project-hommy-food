@@ -6,8 +6,10 @@ import { MsgPopupContext } from "../../contexts/msgPopup";
 import "./style.css";
 
 const EditFromPopUp = ({ setOpenModal, setChefInfo }) => {
-  const { user } = useContext(AuthContext);
+
   const { setPopup } = useContext(MsgPopupContext);
+  const { user, setUser } = useContext(AuthContext);
+
   const [data, setData] = useState(null);
   const [fullName, setFullName] = useState(user?.fullName);
   const [values, setValues] = useState({});
@@ -37,6 +39,7 @@ const EditFromPopUp = ({ setOpenModal, setChefInfo }) => {
           open: true,
         });
         setOpenModal(false);
+        setUser(result?.result);
       } else {
         setPopup({
           type: "error",

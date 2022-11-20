@@ -67,7 +67,10 @@ const CheckoutPage = () => {
           <button
             className="continue-btn"
             onClick={() =>
-              navigate("/results", { state: { newAddress }, replace: true })
+              navigate("/checkout/payment", {
+                state: { newAddress, isCheckout: true },
+                replace: true,
+              })
             }
           >
             To Payment

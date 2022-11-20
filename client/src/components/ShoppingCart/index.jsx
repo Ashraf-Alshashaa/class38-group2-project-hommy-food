@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { AuthContext } from "../../contexts/authentication";
 import "./style.css";
 import { MsgPopupContext } from "../../contexts/msgPopup";
 import useFetch from "../../hooks/useFetch";
 
-const ShoppingCart = ({ id, chefId }) => {
+const ShoppingCart = ({ id, chefId, quantityLeft }) => {
   const { user, setUser } = useContext(AuthContext);
   const { setPopup } = useContext(MsgPopupContext);
-  const { performFetch } = useFetch(
+  const { performFetch, isLoading, error } = useFetch(
     `/customer/shopping-cart/add-to-cart/${id}`,
     (data) => setUser(data?.result)
   );
@@ -18,13 +18,10 @@ const ShoppingCart = ({ id, chefId }) => {
   const handleCartClick = () => {
     const chefIdInCart = user?.cart[0]?.mealId?.chefId;
     const findMeal = user?.cart?.filter((meal) => meal.mealId._id === id);
-    const totalQuantity = findMeal[0]?.mealId?.quantity;
-    const orderedQuantity = findMeal[0]?.quantity;
-    if (chefId === user?._id) {
-      return;
-    }
+    const totalQuantity = quantityLeft;
+    const orderedQuantity = findMeal[0]?.quantity || 0;
     if (!chefIdInCart || chefId === chefIdInCart) {
-      if (!orderedQuantity || totalQuantity > orderedQuantity) {
+      if (totalQuantity > orderedQuantity) {
         const token = localStorage.getItem("accessToken");
         performFetch({
           method: "PATCH",
@@ -33,11 +30,13 @@ const ShoppingCart = ({ id, chefId }) => {
             Authorization: `Bearer ${token}`,
           },
         });
-        setPopup({
-          type: "success",
-          text: "The meal added to cart",
-          open: true,
-        });
+        if (!error && !isLoading) {
+          setPopup({
+            type: "success",
+            text: "The meal added to cart",
+            open: true,
+          });
+        }
       } else {
         setPopup({
           type: "error",
@@ -69,12 +68,27 @@ const ShoppingCart = ({ id, chefId }) => {
     <div className="shopping-cart-container">
       {user ? (
         <>
-          <button
-            className="shopping-cart-btn-enable"
-            onClick={handleCartClick}
-          >
-            <i className="fa-solid fa-cart-shopping faa-xl"></i>
-          </button>
+          {chefId === user?._id ? (
+            <>
+              <Link to={`/edit-meal/${id}`}>
+                <i className="fa-solid fa-pen">
+                  <p>Edit</p>
+                </i>
+              </Link>
+            </>
+          ) : (
+            <button
+              className={
+                isLoading
+                  ? "shopping-cart-btn-disable"
+                  : "shopping-cart-btn-enable"
+              }
+              onClick={handleCartClick}
+              disabled={isLoading}
+            >
+              <i className="fa-solid fa-cart-shopping faa-xl"></i>
+            </button>
+          )}
         </>
       ) : (
         <>
@@ -93,6 +107,7 @@ const ShoppingCart = ({ id, chefId }) => {
 ShoppingCart.propTypes = {
   id: PropTypes.string.isRequired,
   chefId: PropTypes.string,
+  quantityLeft: PropTypes.number,
 };
 
 export default ShoppingCart;

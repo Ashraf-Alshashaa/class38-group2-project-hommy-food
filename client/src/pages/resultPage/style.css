@@ -29,21 +29,22 @@
   margin-left: 40%;
   margin-top: 10%;
 }
-.error {
+.went-wrong-msg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 35%;
   margin-top: 8%;
   margin-left: 35%;
 }
-.error img {
-  margin-left: 40%;
-}
 
-.error h1 {
+.went-wrong-msg h1 {
   font-size: 1.5vw;
-  margin-left: 12%;
+  color: red;
 }
 
-.error h5 {
+.went-wrong-msg h5 {
   color: var(--darker-gray-color);
   font-size: 1.3vw;
   text-align: center;

@@ -13,6 +13,7 @@ import EditMeal from "./pages/EditMeal";
 import MealDetailPage from "./pages/MealDetailPage";
 import ProfilePage from "./pages/ProfilePage";
 import ShoppingCartPage from "./pages/ShoppingCart";
+import Payment from "./pages/Payment";
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
         <Route path="/:chefId/my_meals" element={<h1>My meals</h1>} />
         <Route path="/results" element={<ResultPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/checkout/payment" element={<Payment />} />
         <Route path="/create-meal" element={<CreateMeal />} />
         <Route path="/edit-meal/:id" element={<EditMeal />} />
       </Routes>

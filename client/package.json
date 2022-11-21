@@ -61,6 +61,7 @@
     "react-router-dom": "^6.0.2",
     "react-slick": "^0.29.0",
     "react-spinners": "^0.13.6",
+    "react-stripe-checkout": "^2.6.3",
     "slick-carousel": "^1.8.1",
     "swiper": "^8.4.4"
   }

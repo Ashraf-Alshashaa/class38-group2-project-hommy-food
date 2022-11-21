@@ -20,7 +20,7 @@ const MealCard = ({
     <>
       <article className=" result-meal-card card p-3 m-2">
         <div className="result">
-          <h3>{title}</h3>
+          <h3>{title?.length > 12 ? title.substring(0, 11) + "..." : title}</h3>
           <div className="delivery">{delivery}</div>
         </div>
         <div className="result-meal-card-image">
@@ -49,7 +49,7 @@ const MealCard = ({
             <img src={brush} alt="brush" width="96" height="96" />
           </div>
           <>
-            <ShoppingCart chefId={chefId} id={id} />
+            <ShoppingCart chefId={chefId} id={id} quantityLeft={quantity} />
           </>
         </div>
       </article>

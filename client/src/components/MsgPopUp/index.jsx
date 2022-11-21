@@ -14,7 +14,9 @@ const MsgPopup = () => {
   return (
     <div
       className={
-        popup?.open ? `msg-box ${popup?.type}` : `msg-box ${popup?.type} hidden`
+        popup?.open
+          ? `msg-box ${popup?.type}-popup`
+          : `msg-box ${popup?.type}-popup hidden`
       }
     >
       <h5 className="alert-text">{popup?.text}</h5>

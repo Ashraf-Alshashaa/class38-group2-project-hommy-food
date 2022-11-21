@@ -6,6 +6,14 @@
 }
 .shopping-cart-btn:hover {
   background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+
+.shopping-cart-btn-disabled {
+  background-color: var(--light-gray-color);
+  border-radius: 3px;
+  border: none;
+  color: var(--primary-color);
 }
 
 .remove-product {
@@ -22,6 +30,7 @@
 }
 .increase-decrease {
   display: flex;
+  justify-content: center;
 }
 .show-quantity {
   width: 16%;

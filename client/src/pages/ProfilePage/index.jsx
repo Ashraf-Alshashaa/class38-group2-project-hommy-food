@@ -1,12 +1,14 @@
 import React, { useState, useContext } from "react";
 import { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import PersonalInfo from "../../components/PersonalInfo";
 import ProfileHeader from "../../components/ProfileHeader";
 import RateStar from "../../components/RatingStar";
 import useFetch from "../../hooks/useFetch";
 import CustomerPersonalInfo from "../../components/CustomerPersonalInfo";
 import { AuthContext } from "../../contexts/authentication";
+import somethingWentWrong from "../../../public/images/something-went-wrong.png";
+import MealList from "../../components/MealList";
 
 const ProfilePage = () => {
   const { id } = useParams();
@@ -15,21 +17,25 @@ const ProfilePage = () => {
     setChefData(data?.result)
   );
   const { user } = useContext(AuthContext);
-  const navigate = useNavigate();
 
   useEffect(() => {
     performFetch();
   }, []);
-  if (!user && !chefData?.isChef) {
-    navigate("/", { replace: true });
-  }
+
   return (
     <>
-      {user?._id !== id || !user || user?.isChef ? (
+      {!user && !chefData?.isChef ? (
+        <div className="went-wrong-msg">
+          <img src={somethingWentWrong} alt="something went wrong" />
+          <h1>Oops!</h1>
+          <h3>Unauthorized!</h3>
+        </div>
+      ) : user?._id !== id || !user || user?.isChef ? (
         <div className="chef-profile-page">
           <ProfileHeader chefData={chefData} setChefData={setChefData} />
           <PersonalInfo id={id} chefData={chefData} setChefData={setChefData} />
           <RateStar id={id} chefData={chefData} setChefData={setChefData} />
+          <MealList id={id} />
         </div>
       ) : (
         <CustomerPersonalInfo id={id} />
@@ -37,5 +43,4 @@ const ProfilePage = () => {
     </>
   );
 };
-
 export default ProfilePage;

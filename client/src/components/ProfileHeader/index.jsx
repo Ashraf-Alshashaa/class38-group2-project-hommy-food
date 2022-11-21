@@ -5,10 +5,27 @@ import "./style.css";
 import useFetch from "../../hooks/useFetch";
 
 const ProfileHeader = ({ chefData, setChefData }) => {
-  const { user } = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
   const { performFetch } = useFetch("/user", (data) =>
     setChefData(data?.result)
   );
+
+  const { performFetch: performFetchAddChef } = useFetch(
+    "/user/favorite",
+    (data) => setUser(data?.result)
+  );
+
+  const handleOnClick = () => {
+    const token = localStorage.getItem("accessToken");
+    performFetchAddChef({
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ chefId: chefData?._id }),
+    });
+  };
 
   const onChange = async (e) => {
     const token = localStorage.getItem("accessToken");
@@ -72,7 +89,9 @@ const ProfileHeader = ({ chefData, setChefData }) => {
             {user?._id !== undefined && (
               <div className="profile-favorite-container">
                 <h3>Add to favorite</h3>
-                <i className="fa-solid fa-heart profile-fa-heart"></i>
+                <button onClick={handleOnClick}>
+                  <i className="fa-solid fa-heart profile-fa-heart"></i>
+                </button>
               </div>
             )}
           </section>

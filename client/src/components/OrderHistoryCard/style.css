@@ -1,0 +1,46 @@
+.order-history-card-container {
+  width: 95%;
+  overflow: hidden;
+  box-shadow: 4px 4px 12px -2px;
+  margin-bottom: 4vh;
+  background-color: white;
+  max-height: 800px;
+}
+
+.order-date {
+  margin-top: 10px;
+  margin-left: 10px;
+  color: #13753b;
+}
+
+.order-price {
+  float: inline-end;
+  margin-right: 5rem;
+  color: #13753b;
+}
+
+.order-history-card-title {
+  border-bottom: 5px solid #13753b;
+}
+
+.order-history-card-body {
+  padding: 10px;
+}
+
+/* Button Styling */
+.order-history-btn-container {
+  text-decoration: none;
+  color: white;
+  border: none;
+  width: 100%;
+}
+
+.order-history-btn {
+  width: 100%;
+  background-color: var(--secondary-color);
+  padding: 0;
+  margin: 0;
+}
+.order-history-btn:hover {
+  background-color: #13753b;
+}

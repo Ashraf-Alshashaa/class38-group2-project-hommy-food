@@ -30,5 +30,5 @@ app.use("/api/categories", categoryRouter);
 app.use("/api/cuisines", cuisineRouter);
 app.use("/api/customer/shopping-cart", shoppingCardRouter);
 app.use("/api/payment", paymentRouter);
-app.use("/api/favorite", favoritesRouter);
+app.use("/api/user/favorite", favoritesRouter);
 export default app;

@@ -3,8 +3,10 @@ import PropTypes from "prop-types";
 import { AuthContext } from "../../contexts/authentication";
 import "./style.css";
 import useFetch from "../../hooks/useFetch";
+import { useParams } from "react-router-dom";
 
 const ProfileHeader = ({ chefData, setChefData }) => {
+  const { id } = useParams();
   const { user, setUser } = useContext(AuthContext);
   const { performFetch } = useFetch("/user", (data) =>
     setChefData(data?.result)
@@ -38,6 +40,10 @@ const ProfileHeader = ({ chefData, setChefData }) => {
       body: JSON.stringify({ deliveryType: e.target.value }),
     });
   };
+
+  const findFavoriteChef = user?.favoriteChefs?.filter(
+    (chefId) => chefId == id
+  );
 
   return (
     <>
@@ -90,7 +96,13 @@ const ProfileHeader = ({ chefData, setChefData }) => {
               <div className="profile-favorite-container">
                 <h3>Add to favorite</h3>
                 <button onClick={handleOnClick}>
-                  <i className="fa-solid fa-heart profile-fa-heart"></i>
+                  <>
+                    {findFavoriteChef[0] ? (
+                      <i className="fa-solid fa-heart profile-fa-heart in-favorite"></i>
+                    ) : (
+                      <i className="fa-solid fa-heart profile-fa-heart not-in-favorite"></i>
+                    )}
+                  </>
                 </button>
               </div>
             )}

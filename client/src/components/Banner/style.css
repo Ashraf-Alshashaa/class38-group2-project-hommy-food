@@ -30,35 +30,25 @@
   left: 8%;
 }
 
-.slogan {
+.slogan-top {
   font-weight: 700;
   font-size: 27px;
   color: white;
   text-shadow: 1px 1px var(--secondary-color);
 }
 
-.slogan-eat {
+.slogan-middle {
   position: absolute;
   left: -5px;
   top: 18px;
-  font-size: 75px;
+  font-size: 30px;
   font-weight: 700;
   color: var(--secondary-color);
 }
 
-.slogan-light {
+.slogan-bottom {
   position: relative;
   left: 0;
-  top: 65px;
-  font-size: 26px;
-  font-weight: 700;
-  color: white;
-  text-shadow: 1px 1px var(--secondary-color);
-}
-
-.slogan-tasty {
-  position: relative;
-  left: 35%;
   top: 65px;
   font-size: 26px;
   font-weight: 700;
@@ -75,36 +65,26 @@
     height: 80%;
   }
   .slogan-section {
-    top: 8%;
-    left: 8%;
+    top: 15%;
+    width: 35%;
+    left: 3%;
   }
-  .slogan {
-    margin-left: -5px;
+  .slogan-top {
+    margin: 0;
     font-size: 27px;
     color: white;
     text-shadow: 1px 1px var(--secondary-color);
   }
-  .slogan-eat {
-    left: -10px;
-    top: 15px;
-    font-size: 75px;
+  .slogan-middle {
+    left: 0;
+    top: 42px;
+    line-height: 0.8;
+    font-size: 35px;
     color: var(--secondary-color);
   }
-
-  .slogan-light {
-    left: 65px;
-    top: 60px;
-    font-size: 24px;
-    color: white;
-    text-shadow: 1px 1px var(--secondary-color);
-  }
-
-  .slogan-tasty {
-    left: 65px;
-    top: 60px;
-    font-size: 24px;
-    color: white;
-    text-shadow: 1px 1px var(--secondary-color);
+  .slogan-bottom {
+    left: 0;
+    top: 80px;
   }
 }
 
@@ -117,32 +97,24 @@
     height: 80%;
   }
   .slogan-section {
-    top: 16%;
-    left: 5%;
+    top: 30%;
+    width: 50%;
+    left: 3%;
   }
-  .slogan {
-    font-size: 27px;
+  .slogan-top {
+    font-size: 25px;
     color: white;
     text-shadow: 1px 1px var(--secondary-color);
   }
-  .slogan-eat {
-    left: 55px;
-    top: 15px;
-    font-size: 75px;
+  .slogan-middle {
+    left: 60px;
+    top: 26px;
+    font-size: 35px;
     color: var(--secondary-color);
   }
-
-  .slogan-light {
-    left: 200px;
-    top: 2px;
-    font-size: 24px;
-    color: white;
-    text-shadow: 1px 1px var(--secondary-color);
-  }
-
-  .slogan-tasty {
-    left: 200px;
-    top: 2px;
+  .slogan-bottom {
+    left: 175px;
+    top: 27px;
     font-size: 24px;
     color: white;
     text-shadow: 1px 1px var(--secondary-color);
@@ -150,37 +122,29 @@
 }
 
 @media (min-width: 1024px) and (max-width: 1200px) {
-  .slogan-section {
-    top: 18%;
-    left: 10%;
-  }
   .banner-img {
     height: auto !important;
     min-width: 100%;
   }
-  .slogan {
-    font-size: 36px;
-    color: white;
-    text-shadow: 1px 1px var(--secondary-color);
+  .slogan-section {
+    top: 24%;
+    width: 35%;
+    left: 5%;
   }
-  .slogan-eat {
-    left: 85px;
-    top: 22px;
-    font-size: 95px;
-    color: var(--secondary-color);
-  }
-
-  .slogan-light {
-    left: 260px;
-    top: 2px;
+  .slogan-top {
     font-size: 30px;
     color: white;
     text-shadow: 1px 1px var(--secondary-color);
   }
-
-  .slogan-tasty {
-    left: 260px;
-    top: 2px;
+  .slogan-middle {
+    left: 81px;
+    top: 20px;
+    font-size: 38px;
+    color: var(--secondary-color);
+  }
+  .slogan-bottom {
+    left: 190px;
+    top: 14px;
     font-size: 30px;
     color: white;
     text-shadow: 1px 1px var(--secondary-color);
@@ -194,31 +158,23 @@
   }
   .slogan-section {
     left: 3%;
-    top: 8%;
+    width: 35%;
+    top: 22%;
   }
-  .slogan {
-    font-size: 45px;
-    color: white;
-    text-shadow: 1px 1px var(--secondary-color);
-  }
-  .slogan-eat {
-    left: 95px;
-    top: 18px;
-    font-size: 120px;
-    color: var(--secondary-color);
-  }
-
-  .slogan-light {
-    left: 320px;
-    top: 10px;
+  .slogan-top {
     font-size: 35px;
     color: white;
     text-shadow: 1px 1px var(--secondary-color);
   }
-
-  .slogan-tasty {
-    left: 320px;
-    top: 10px;
+  .slogan-middle {
+    left: 95px;
+    top: 22px;
+    font-size: 55px;
+    color: var(--secondary-color);
+  }
+  .slogan-bottom {
+    left: 283px;
+    top: 29px;
     font-size: 35px;
     color: white;
     text-shadow: 1px 1px var(--secondary-color);
@@ -233,12 +189,29 @@
     height: 60%;
     top: 20%;
   }
-  .slogan-light {
+  .slogan-section {
+    position: absolute;
+    width: 40%;
+    top: 15%;
+    left: 2%;
+  }
+  .slogan-top {
+    font-weight: 700;
+    font-size: 27px;
+    color: white;
+    text-shadow: 1px 1px var(--secondary-color);
+  }
+  .slogan-middle {
+    position: absolute;
+    left: 0;
+    top: 35px;
+    font-size: 30px;
+    line-height: 0.8;
+    font-weight: 700;
+    color: var(--secondary-color);
+  }
+  .slogan-bottom {
     left: 0;
     top: 50px;
-  }
-  .slogan-tasty {
-    left: 0;
-    top: 40px;
   }
 }

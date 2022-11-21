@@ -46,7 +46,7 @@ const ShoppingCartPage = () => {
                 className="shopping-cart-delete-btn"
                 onClick={deleteAllHandle}
               >
-                Delete All
+                Remove All
               </button>
             </div>
 

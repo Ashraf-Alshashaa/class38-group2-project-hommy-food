@@ -20,7 +20,7 @@ const ProfilePage = () => {
 
   useEffect(() => {
     performFetch();
-  }, []);
+  }, [id]);
 
   return (
     <>

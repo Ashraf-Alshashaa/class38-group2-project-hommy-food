@@ -51,5 +51,5 @@ export default function UploadImgWidget({ setImgUrl, folderName, className }) {
 UploadImgWidget.propTypes = {
   setImgUrl: PropTypes.func.isRequired,
   folderName: PropTypes.string.isRequired,
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
 };

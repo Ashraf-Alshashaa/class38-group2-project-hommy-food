@@ -27,7 +27,7 @@ const ProfileHeader = ({ chefData, setChefData }) => {
       {user?.isChef && user?._id === chefData?._id ? (
         <div className="profile-header-container">
           <section className="delivery-type-section">
-            <h3>Select your delivery type</h3>
+            <h3>Select your service type</h3>
             <div className="delivery-type-container">
               <div className="profile-inputs">
                 <div className="pick-up">
@@ -65,7 +65,7 @@ const ProfileHeader = ({ chefData, setChefData }) => {
         <div className="profile-header-container">
           <section className="delivery-type-section">
             <h3>
-              Delivery type: <span> {chefData?.deliveryType} </span>
+              Service type: <span> {chefData?.deliveryType} </span>
             </h3>
           </section>
           <section className="profile-favorite-section">

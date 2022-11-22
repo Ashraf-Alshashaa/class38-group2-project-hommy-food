@@ -14,6 +14,7 @@ import MealDetailPage from "./pages/MealDetailPage";
 import ProfilePage from "./pages/ProfilePage";
 import ShoppingCartPage from "./pages/ShoppingCart";
 import Payment from "./pages/Payment";
+import FavoritesPage from "./pages/FavoritesPage";
 
 const App = () => {
   return (
@@ -24,7 +25,6 @@ const App = () => {
         <Route path="/register" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile/:id" element={<ProfilePage />} />
-        <Route path="/favorites" element={<h1>favorites page</h1>} />
         <Route path="/myOrders" element={<h1>my orders page</h1>} />
         <Route path="/shoppingCart" element={<ShoppingCartPage />} />
         <Route path="/aboutUs" element={<h1>about us page</h1>} />
@@ -35,6 +35,7 @@ const App = () => {
         <Route path="/checkout/payment" element={<Payment />} />
         <Route path="/create-meal" element={<CreateMeal />} />
         <Route path="/edit-meal/:id" element={<EditMeal />} />
+        <Route path="/favorite-chefs" element={<FavoritesPage />} />
       </Routes>
       <Footer />
     </>

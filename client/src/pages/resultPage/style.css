@@ -1,6 +1,7 @@
 .result-page-container {
   width: 100%;
   min-height: 90vh;
+  animation: result-load 500ms ease-in;
 }
 .result-page {
   display: flex;
@@ -49,6 +50,18 @@
   font-size: 1.3vw;
   text-align: center;
 }
+
+@keyframes result-load {
+  0% {
+    transform: translateY(-10%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .result-page {
     width: 70%;

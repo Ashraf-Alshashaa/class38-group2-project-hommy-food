@@ -1,0 +1,79 @@
+.order-to-prepare-card-container {
+  width: 370px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  margin: 20px;
+}
+
+.order-to-prepare-info-container {
+  width: 100%;
+
+  font-size: small;
+}
+
+.order-to-prepare-info-header {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  border: 1px solid black;
+  padding: 5px;
+}
+.order-to-prepare-info-header p {
+  margin: 0;
+  padding: 0px;
+}
+
+.order-to-prepare-meals-titles {
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  height: 50px;
+  padding: 5px;
+}
+.order-to-prepare-meals-titles h6 {
+  margin: 0;
+}
+.order-to-prepare-more-details {
+  margin: 0;
+  margin-left: auto;
+  font-size: xx-small;
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 5px;
+  border-radius: 2px;
+}
+.order-to-prepare-price-status-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid black;
+  padding: 0 5px;
+}
+
+.order-to-prepare-price-status-container .dropdown {
+  width: 100px;
+  font-size: small;
+  padding: 0% !important;
+}
+
+.order-to-prepare-price-status-container .dropdown .category-list {
+  padding: 0px;
+  height: 30px;
+  margin: 0;
+}
+
+.order-to-prepare-price-status-container .dropdown,
+.fa-caret-down {
+  font-size: small;
+}
+
+.order-to-prepare-price-status-container h6 {
+  padding: 0;
+  margin: 0;
+  font-size: small;
+}

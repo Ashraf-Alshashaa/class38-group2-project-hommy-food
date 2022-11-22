@@ -1,0 +1,13 @@
+.order-to-prepare-page-container {
+  align-self: center;
+}
+
+.order-to-prepare-main {
+  display: flex;
+}
+.order-to-prepare-container {
+  margin: 0 20px;
+}
+.order-ready-container {
+  margin: 0 20px;
+}

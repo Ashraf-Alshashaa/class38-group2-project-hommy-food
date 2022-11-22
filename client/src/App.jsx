@@ -14,6 +14,7 @@ import MealDetailPage from "./pages/MealDetailPage";
 import ProfilePage from "./pages/ProfilePage";
 import ShoppingCartPage from "./pages/ShoppingCart";
 import Payment from "./pages/Payment";
+import OrderToPrepare from "./pages/OrderToPrepare";
 
 const App = () => {
   return (
@@ -35,6 +36,7 @@ const App = () => {
         <Route path="/checkout/payment" element={<Payment />} />
         <Route path="/create-meal" element={<CreateMeal />} />
         <Route path="/edit-meal/:id" element={<EditMeal />} />
+        <Route path="/order-to-prepare" element={<OrderToPrepare />} />
       </Routes>
       <Footer />
     </>

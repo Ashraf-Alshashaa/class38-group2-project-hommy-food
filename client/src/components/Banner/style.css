@@ -24,36 +24,23 @@
   top: 5%;
 }
 
-.slogan-section {
+.slogan {
   position: absolute;
-  top: 5%;
-  left: 8%;
+  top: 20%;
+  left: 3%;
+  width: 30%;
+  animation: slogan-load 500ms ease-in;
 }
 
-.slogan-top {
-  font-weight: 700;
-  font-size: 27px;
-  color: white;
-  text-shadow: 1px 1px var(--secondary-color);
-}
-
-.slogan-middle {
-  position: absolute;
-  left: -5px;
-  top: 18px;
-  font-size: 30px;
-  font-weight: 700;
-  color: var(--secondary-color);
-}
-
-.slogan-bottom {
-  position: relative;
-  left: 0;
-  top: 65px;
-  font-size: 26px;
-  font-weight: 700;
-  color: white;
-  text-shadow: 1px 1px var(--secondary-color);
+@keyframes slogan-load {
+  0% {
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 @media (min-width: 425px) and (max-width: 768px) {
@@ -62,29 +49,13 @@
     height: 100%;
   }
   .dishes-img {
-    height: 80%;
+    height: 70%;
+    top: 12%;
   }
-  .slogan-section {
-    top: 15%;
-    width: 35%;
-    left: 3%;
-  }
-  .slogan-top {
-    margin: 0;
-    font-size: 27px;
-    color: white;
-    text-shadow: 1px 1px var(--secondary-color);
-  }
-  .slogan-middle {
-    left: 0;
-    top: 42px;
-    line-height: 0.8;
-    font-size: 35px;
-    color: var(--secondary-color);
-  }
-  .slogan-bottom {
-    left: 0;
-    top: 80px;
+  .slogan {
+    top: 5%;
+    width: 45%;
+    left: 2%;
   }
 }
 
@@ -96,28 +67,8 @@
   .dishes-img {
     height: 80%;
   }
-  .slogan-section {
-    top: 30%;
-    width: 50%;
-    left: 3%;
-  }
-  .slogan-top {
-    font-size: 25px;
-    color: white;
-    text-shadow: 1px 1px var(--secondary-color);
-  }
-  .slogan-middle {
-    left: 60px;
-    top: 26px;
-    font-size: 35px;
-    color: var(--secondary-color);
-  }
-  .slogan-bottom {
-    left: 175px;
-    top: 27px;
-    font-size: 24px;
-    color: white;
-    text-shadow: 1px 1px var(--secondary-color);
+  .slogan {
+    top: 15%;
   }
 }
 
@@ -126,28 +77,10 @@
     height: auto !important;
     min-width: 100%;
   }
-  .slogan-section {
-    top: 24%;
+  .slogan {
+    top: 20%;
+    left: 3%;
     width: 35%;
-    left: 5%;
-  }
-  .slogan-top {
-    font-size: 30px;
-    color: white;
-    text-shadow: 1px 1px var(--secondary-color);
-  }
-  .slogan-middle {
-    left: 81px;
-    top: 20px;
-    font-size: 38px;
-    color: var(--secondary-color);
-  }
-  .slogan-bottom {
-    left: 190px;
-    top: 14px;
-    font-size: 30px;
-    color: white;
-    text-shadow: 1px 1px var(--secondary-color);
   }
 }
 
@@ -155,29 +88,6 @@
   .banner-img {
     height: auto !important;
     min-width: 100%;
-  }
-  .slogan-section {
-    left: 3%;
-    width: 35%;
-    top: 22%;
-  }
-  .slogan-top {
-    font-size: 35px;
-    color: white;
-    text-shadow: 1px 1px var(--secondary-color);
-  }
-  .slogan-middle {
-    left: 95px;
-    top: 22px;
-    font-size: 55px;
-    color: var(--secondary-color);
-  }
-  .slogan-bottom {
-    left: 283px;
-    top: 29px;
-    font-size: 35px;
-    color: white;
-    text-shadow: 1px 1px var(--secondary-color);
   }
 }
 @media (max-width: 425px) {
@@ -187,31 +97,10 @@
   }
   .dishes-img {
     height: 60%;
-    top: 20%;
+    top: 22%;
   }
-  .slogan-section {
-    position: absolute;
-    width: 40%;
-    top: 15%;
-    left: 2%;
-  }
-  .slogan-top {
-    font-weight: 700;
-    font-size: 27px;
-    color: white;
-    text-shadow: 1px 1px var(--secondary-color);
-  }
-  .slogan-middle {
-    position: absolute;
-    left: 0;
-    top: 35px;
-    font-size: 30px;
-    line-height: 0.8;
-    font-weight: 700;
-    color: var(--secondary-color);
-  }
-  .slogan-bottom {
-    left: 0;
-    top: 50px;
+  .slogan {
+    width: 45%;
+    top: 4%;
   }
 }

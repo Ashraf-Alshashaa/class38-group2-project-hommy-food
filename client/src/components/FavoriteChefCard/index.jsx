@@ -4,27 +4,71 @@ import useFetch from "../../hooks/useFetch";
 import "./style.css";
 import RateOfChef from "../RateOfChef";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/authentication";
 import { MsgPopupContext } from "../../contexts/msgPopup";
+import somethingWentWrong from "../../../public/images/something-went-wrong.png";
+import PulseLoader from "react-spinners/PulseLoader";
 
 const FavoriteChefCard = ({ id }) => {
   const [chef, setChef] = useState();
   const navigate = useNavigate();
+  const { setUser } = useContext(AuthContext);
   const { setPopup } = useContext(MsgPopupContext);
-  const { performFetch } = useFetch(`/user/chef/${id}`, (data) =>
-    setChef(data?.result)
+  const { performFetch, isLoading, error } = useFetch(
+    `/user/chef/${id}`,
+    (data) => setChef(data?.result)
   );
-  //console.log(id);
-  //console.log(chef, "chef");
+  const { performFetch: performFetchRemoveChef } = useFetch(
+    "/user/favorite",
+    (data) => setUser(data?.result)
+  );
+
   useEffect(() => {
     performFetch();
   }, []);
   const removeFavorite = () => {
+    const token = localStorage.getItem("accessToken");
+    performFetchRemoveChef({
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ chefId: id }),
+    });
     setPopup({
       type: "error",
-      text: `${id}Chef removed from favorite`,
+      text: `Chef ${chef?.userName} is removed from favorite`,
       open: true,
     });
   };
+
+  if (isLoading) {
+    return (
+      <div className="result-page-container">
+        <div className="loading-gif">
+          <PulseLoader
+            color="#f9a01b"
+            size={60}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="result-page-container">
+        <div className="went-wrong-msg">
+          <img src={somethingWentWrong} alt="something went wrong" />
+          <h1>Oops!</h1>
+          <h5>Something went wrong try again or refresh page</h5>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="favorite-chef-card-container">
       <i

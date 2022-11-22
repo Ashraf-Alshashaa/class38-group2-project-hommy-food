@@ -17,53 +17,30 @@
   min-height: 100%;
 }
 
-.dishes-img {
+.chef-img {
   position: absolute;
-  height: 90%;
-  right: 3%;
-  top: 5%;
-}
-
-.slogan-section {
-  position: absolute;
-  top: 5%;
-  left: 8%;
+  height: 100%;
+  right: 0;
+  top: 0;
 }
 
 .slogan {
-  font-weight: 700;
-  font-size: 27px;
-  color: white;
-  text-shadow: 1px 1px var(--secondary-color);
-}
-
-.slogan-eat {
   position: absolute;
-  left: -5px;
-  top: 18px;
-  font-size: 75px;
-  font-weight: 700;
-  color: var(--secondary-color);
+  top: 20%;
+  left: 3%;
+  width: 30%;
+  animation: slogan-load 500ms ease-in;
 }
 
-.slogan-light {
-  position: relative;
-  left: 0;
-  top: 65px;
-  font-size: 26px;
-  font-weight: 700;
-  color: white;
-  text-shadow: 1px 1px var(--secondary-color);
-}
-
-.slogan-tasty {
-  position: relative;
-  left: 35%;
-  top: 65px;
-  font-size: 26px;
-  font-weight: 700;
-  color: white;
-  text-shadow: 1px 1px var(--secondary-color);
+@keyframes slogan-load {
+  0% {
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 @media (min-width: 425px) and (max-width: 768px) {
@@ -71,40 +48,10 @@
     width: auto;
     height: 100%;
   }
-  .dishes-img {
-    height: 80%;
-  }
-  .slogan-section {
-    top: 8%;
-    left: 8%;
-  }
   .slogan {
-    margin-left: -5px;
-    font-size: 27px;
-    color: white;
-    text-shadow: 1px 1px var(--secondary-color);
-  }
-  .slogan-eat {
-    left: -10px;
-    top: 15px;
-    font-size: 75px;
-    color: var(--secondary-color);
-  }
-
-  .slogan-light {
-    left: 65px;
-    top: 60px;
-    font-size: 24px;
-    color: white;
-    text-shadow: 1px 1px var(--secondary-color);
-  }
-
-  .slogan-tasty {
-    left: 65px;
-    top: 60px;
-    font-size: 24px;
-    color: white;
-    text-shadow: 1px 1px var(--secondary-color);
+    top: 5%;
+    width: 45%;
+    left: 2%;
   }
 }
 
@@ -113,77 +60,20 @@
     height: auto !important;
     min-width: 100%;
   }
-  .dishes-img {
-    height: 80%;
-  }
-  .slogan-section {
-    top: 16%;
-    left: 5%;
-  }
   .slogan {
-    font-size: 27px;
-    color: white;
-    text-shadow: 1px 1px var(--secondary-color);
-  }
-  .slogan-eat {
-    left: 55px;
-    top: 15px;
-    font-size: 75px;
-    color: var(--secondary-color);
-  }
-
-  .slogan-light {
-    left: 200px;
-    top: 2px;
-    font-size: 24px;
-    color: white;
-    text-shadow: 1px 1px var(--secondary-color);
-  }
-
-  .slogan-tasty {
-    left: 200px;
-    top: 2px;
-    font-size: 24px;
-    color: white;
-    text-shadow: 1px 1px var(--secondary-color);
+    top: 15%;
   }
 }
 
 @media (min-width: 1024px) and (max-width: 1200px) {
-  .slogan-section {
-    top: 18%;
-    left: 10%;
-  }
   .banner-img {
     height: auto !important;
     min-width: 100%;
   }
   .slogan {
-    font-size: 36px;
-    color: white;
-    text-shadow: 1px 1px var(--secondary-color);
-  }
-  .slogan-eat {
-    left: 85px;
-    top: 22px;
-    font-size: 95px;
-    color: var(--secondary-color);
-  }
-
-  .slogan-light {
-    left: 260px;
-    top: 2px;
-    font-size: 30px;
-    color: white;
-    text-shadow: 1px 1px var(--secondary-color);
-  }
-
-  .slogan-tasty {
-    left: 260px;
-    top: 2px;
-    font-size: 30px;
-    color: white;
-    text-shadow: 1px 1px var(--secondary-color);
+    top: 20%;
+    left: 3%;
+    width: 35%;
   }
 }
 
@@ -192,53 +82,20 @@
     height: auto !important;
     min-width: 100%;
   }
-  .slogan-section {
-    left: 3%;
-    top: 8%;
-  }
-  .slogan {
-    font-size: 45px;
-    color: white;
-    text-shadow: 1px 1px var(--secondary-color);
-  }
-  .slogan-eat {
-    left: 95px;
-    top: 18px;
-    font-size: 120px;
-    color: var(--secondary-color);
-  }
-
-  .slogan-light {
-    left: 320px;
-    top: 10px;
-    font-size: 35px;
-    color: white;
-    text-shadow: 1px 1px var(--secondary-color);
-  }
-
-  .slogan-tasty {
-    left: 320px;
-    top: 10px;
-    font-size: 35px;
-    color: white;
-    text-shadow: 1px 1px var(--secondary-color);
-  }
 }
 @media (max-width: 425px) {
   .banner-img {
     width: auto;
     height: 100%;
   }
-  .dishes-img {
-    height: 60%;
+  .slogan {
+    width: 45%;
+    top: 2%;
+  }
+  .chef-img {
+    position: absolute;
+    height: 80%;
+    right: 0;
     top: 20%;
-  }
-  .slogan-light {
-    left: 0;
-    top: 50px;
-  }
-  .slogan-tasty {
-    left: 0;
-    top: 40px;
   }
 }

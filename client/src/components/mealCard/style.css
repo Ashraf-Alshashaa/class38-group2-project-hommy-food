@@ -1,6 +1,6 @@
 .result-meal-card {
   width: 300px;
-  background-color: #f0f0f0;
+  background-color: rgba(255, 255, 255, 0.3);
   box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
   cursor: default;
   align-items: center;

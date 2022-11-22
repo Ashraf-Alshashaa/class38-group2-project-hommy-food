@@ -8,7 +8,8 @@
 }
 
 .card {
-  cursor: pointer;
+  cursor: default;
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 .categories-Container {

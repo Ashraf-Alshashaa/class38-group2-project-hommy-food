@@ -3,34 +3,34 @@ import PropTypes from "prop-types";
 import "./style.css";
 import OrdersDetailsCards from "../../components/OrderDetailsCards";
 
-const OrdersHistoryCard = () => {
+const OrdersHistoryCard = ({ order }) => {
+  const { createdAt, deliveryType, items } = order;
+  const totalPricesOfMeal = items?.map((item) => item.quantity * item.price);
+  const getSum = (total, num) => total + num;
+  const totalPriceOfOrder = totalPricesOfMeal?.reduce(getSum, 0);
   return (
     <div className="order-history-card-container">
-      {/* <h5>Date: {createdAt} </h5>
-          <h5>Chef name: {chefId}</h5>
-          <h5>Delivery type: </h5>
-          <h5>Total payment: </h5> */}
       <h5 className="order-date">
-        Order date:{" "}
-        <span style={{ color: "black", fontSize: "15px" }}>
-          November 24, 2022
-        </span>
+        Order date:
+        <span className="order-date-value">{createdAt}</span>
       </h5>
-      <OrdersDetailsCards />
-      <OrdersDetailsCards />
+      {items?.map((item, index) => {
+        return (
+          <div key={index}>
+            {<OrdersDetailsCards item={item} deliveryType={deliveryType} />}
+          </div>
+        );
+      })}
       <h5 className="order-price">
         Total price:
-        <span style={{ color: "black", fontSize: "15px" }}>100$</span>
+        <span className="order-total-price-value">€{totalPriceOfOrder}</span>
       </h5>
     </div>
   );
 };
 
 OrdersHistoryCard.propTypes = {
-  title: PropTypes.string,
-  chefId: PropTypes.string,
-  createdAt: PropTypes.string,
-  items: PropTypes.array,
+  order: PropTypes.object,
 };
 
 export default OrdersHistoryCard;

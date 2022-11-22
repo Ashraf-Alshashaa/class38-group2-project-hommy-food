@@ -1,7 +1,7 @@
 .order-history-card-container {
   width: 95%;
   overflow: hidden;
-  box-shadow: 4px 4px 12px -2px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   margin-bottom: 4vh;
   background-color: white;
   max-height: 800px;
@@ -11,12 +11,25 @@
   margin-top: 10px;
   margin-left: 10px;
   color: #13753b;
+  font-size: 25px;
+}
+.order-date-value {
+  font-size: 20px;
+  margin-right: 3px;
+  color: black;
 }
 
 .order-price {
   float: inline-end;
-  margin-right: 5rem;
+  margin-right: 3rem;
   color: #13753b;
+  font-size: 25px;
+}
+
+.order-total-price-value {
+  font-size: 20px;
+  margin-right: 3px;
+  color: black;
 }
 
 .order-history-card-title {
@@ -43,4 +56,64 @@
 }
 .order-history-btn:hover {
   background-color: #13753b;
+}
+
+@media screen and (max-width: 1024px) {
+  .order-date {
+    font-size: 25px;
+  }
+  .order-date-value {
+    font-size: 20px;
+    margin-right: 3px;
+    color: black;
+  }
+  .order-price {
+    font-size: 25px;
+    margin-right: 2rem;
+  }
+  .order-total-price-value {
+    font-size: 20px;
+    margin-right: 3px;
+    color: black;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .order-date {
+    font-size: 20px;
+  }
+  .order-date-value {
+    font-size: 15px;
+    margin-right: 3px;
+    color: black;
+  }
+  .order-price {
+    font-size: 20px;
+    margin-right: 1rem;
+  }
+  .order-total-price-value {
+    font-size: 15px;
+    margin-right: 3px;
+    color: black;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .order-date {
+    font-size: 15px;
+  }
+  .order-date-value {
+    font-size: 10px;
+    margin-right: 3px;
+    color: black;
+  }
+  .order-price {
+    font-size: 15px;
+    margin-right: 1rem;
+  }
+  .order-total-price-value {
+    font-size: 10px;
+    margin-right: 3px;
+    color: black;
+  }
 }

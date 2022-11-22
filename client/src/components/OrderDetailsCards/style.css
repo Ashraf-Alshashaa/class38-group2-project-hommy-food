@@ -3,21 +3,84 @@
   margin: 10px;
   padding: 10px;
   background-color: white;
-  box-shadow: 2px 2px 4px #888;
-  height: 13vh;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .order-details-img-container {
-  margin-right: 4rem;
-  max-width: 10%;
+  margin-right: 20px;
 }
 .order-details-img {
   width: 100px;
 }
 
-.order-details-basic-info {
-  margin-right: 30vh;
-}
 .order-details-info {
   display: flex;
+  width: 100%;
+}
+.meal-info-titles {
+  color: var(--secondary-color);
+}
+.order-details-basic-info {
+  flex: 2;
+  font-size: 20px;
+}
+.order-details-price-info {
+  flex: 1;
+  font-size: 20px;
+}
+
+/*Responsive styling*/
+
+@media screen and (max-width: 1024px) {
+  .order-details-img {
+    width: 75px;
+  }
+  .order-details-basic-info {
+    font-size: 15px;
+  }
+  .order-details-basic-info span {
+    font-size: 15px;
+  }
+  .order-details-price-info {
+    font-size: 15px;
+  }
+  .order-details-price-info span {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .order-details-img {
+    width: 50px;
+  }
+  .order-details-basic-info {
+    font-size: 10px;
+  }
+  .order-details-basic-info span {
+    font-size: 10px;
+  }
+  .order-details-price-info {
+    font-size: 10px;
+  }
+  .order-details-price-info span {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .order-details-img {
+    width: 25px;
+  }
+  .order-details-basic-info {
+    font-size: 7px;
+  }
+  .order-details-basic-info span {
+    font-size: 7px;
+  }
+  .order-details-price-info {
+    font-size: 7px;
+  }
+  .order-details-price-info span {
+    font-size: 7px;
+  }
 }

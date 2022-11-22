@@ -1,26 +1,35 @@
 import React from "react";
 import PropTypes from "prop-types";
-import chefImg from "../../../public/images/img_avatar.png";
 import "./style.css";
 
-const OrderDetailsCards = () => {
+const OrderDetailsCards = ({ item, deliveryType }) => {
+  const { title, price, quantity, image, chefName } = item;
   return (
     <div className="order-details-card-container">
       <div className="order-details-img-container">
-        <img className="order-details-img" src={chefImg} />
+        <img className="order-details-img" src={image} />
       </div>
       <div className="order-details-info">
         <div className="order-details-basic-info">
           <p>
-            <span style={{ color: "black", fontSize: "15px" }}>Mail name:</span>
-            Pizza
+            <span className="meal-info-titles">Meal name:</span>
+            {title}
           </p>
-          <p>Chef name: Sako</p>
-          <p>Delivery type: Drop point</p>
+          <p>
+            <span className="meal-info-titles">Chef name:</span> {chefName}
+          </p>
+          <p>
+            <span className="meal-info-titles">Delivery type:</span>
+            {deliveryType}
+          </p>
         </div>
         <div className="order-details-price-info">
-          <p>Quantity: 5</p>
-          <p>Price: 50$</p>
+          <p>
+            <span className="meal-info-titles">Quantity:</span> {quantity}
+          </p>
+          <p>
+            <span className="meal-info-titles">Price:</span>€ {price}
+          </p>
         </div>
       </div>
     </div>
@@ -28,7 +37,7 @@ const OrderDetailsCards = () => {
 };
 
 OrderDetailsCards.propTypes = {
-  setOpenOpenDetails: PropTypes.bool,
-  orderItems: PropTypes.array,
+  item: PropTypes.object,
+  deliveryType: PropTypes.string,
 };
 export default OrderDetailsCards;

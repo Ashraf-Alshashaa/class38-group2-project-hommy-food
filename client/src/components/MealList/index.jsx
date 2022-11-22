@@ -37,7 +37,7 @@ const MealList = ({ id }) => {
             {chefMeals.map((meal) => {
               return (
                 <Link
-                  to={`/mealDetail/${meal._id}`}
+                  to={`/mealDetail/${meal?._id}`}
                   className="chef-meal-card-container"
                   key={meal?._id}
                 >

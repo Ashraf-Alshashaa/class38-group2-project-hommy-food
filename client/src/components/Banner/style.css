@@ -17,11 +17,11 @@
   min-height: 100%;
 }
 
-.dishes-img {
+.chef-img {
   position: absolute;
-  height: 90%;
-  right: 3%;
-  top: 5%;
+  height: 100%;
+  right: 0;
+  top: 0;
 }
 
 .slogan {
@@ -48,10 +48,6 @@
     width: auto;
     height: 100%;
   }
-  .dishes-img {
-    height: 70%;
-    top: 12%;
-  }
   .slogan {
     top: 5%;
     width: 45%;
@@ -63,9 +59,6 @@
   .banner-img {
     height: auto !important;
     min-width: 100%;
-  }
-  .dishes-img {
-    height: 80%;
   }
   .slogan {
     top: 15%;
@@ -95,12 +88,14 @@
     width: auto;
     height: 100%;
   }
-  .dishes-img {
-    height: 60%;
-    top: 22%;
-  }
   .slogan {
     width: 45%;
-    top: 4%;
+    top: 2%;
+  }
+  .chef-img {
+    position: absolute;
+    height: 80%;
+    right: 0;
+    top: 20%;
   }
 }

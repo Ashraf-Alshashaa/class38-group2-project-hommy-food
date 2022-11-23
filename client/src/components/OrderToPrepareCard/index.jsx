@@ -2,16 +2,18 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./style.css";
 import OrderToPreparePopup from "../OrderToPreparePopup";
+import useFetch from "../../hooks/useFetch";
+import { postOnAuthEndpoint } from "../../hooks/fetchOptions.js";
 
-const OrderToPrepareCard = ({ order }) => {
+const OrderToPrepareCard = ({ order, setUser }) => {
   const [openModal, setOpenModal] = useState(false);
   const { createdAt, deliveryType, totalPrice, items } = order;
+  const { performFetch } = useFetch("/orders/edit-status", (data) =>
+    setUser(data?.result)
+  );
   return (
     <article className="order-to-prepare-card-container">
-      <section
-        className="order-to-prepare-info-container"
-        onClick={() => setOpenModal(!openModal)}
-      >
+      <section className="order-to-prepare-info-container">
         <div className="order-to-prepare-info-header">
           <p>{deliveryType}</p>
           <p>date: {createdAt}</p>
@@ -24,20 +26,44 @@ const OrderToPrepareCard = ({ order }) => {
             )}
           </h6>
           <p
-            className="order-to-prepare-more-details"
+            className="order-to-prepare-more-details center-children"
             onClick={() => setOpenModal(!openModal)}
           >
             {" "}
-            more details
+            details
           </p>
         </div>
       </section>
       <div className="order-to-prepare-price-status-container">
         {order.status === "toPrepare" && (
-          <button className="order-to-prepare-status-btn">ready</button>
+          <button
+            className="order-to-prepare-status-btn"
+            onClick={() =>
+              performFetch(
+                postOnAuthEndpoint(
+                  { orderId: order._id, status: "ready" },
+                  "PATCH"
+                )
+              )
+            }
+          >
+            ready
+          </button>
         )}
         {order.status === "ready" && (
-          <button className="order-to-prepare-status-btn">complete</button>
+          <button
+            className="order-to-prepare-status-btn"
+            onClick={() =>
+              performFetch(
+                postOnAuthEndpoint(
+                  { orderId: order._id, status: "complete" },
+                  "PATCH"
+                )
+              )
+            }
+          >
+            complete
+          </button>
         )}
         {order.status === "complete" && <p>complete</p>}
 
@@ -56,5 +82,5 @@ export default OrderToPrepareCard;
 
 OrderToPrepareCard.propTypes = {
   order: PropTypes.object,
-  statusArr: PropTypes.array,
+  setUser: PropTypes.func,
 };

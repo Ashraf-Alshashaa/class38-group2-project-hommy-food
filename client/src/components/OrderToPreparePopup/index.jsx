@@ -4,7 +4,15 @@ import OrderToPrepareItem from "../OrderToPrepareItem";
 import "./style.css";
 
 const OrderToPreparePopup = ({ setOpenModal, order }) => {
-  const { items, customerName, deliveryAddress, deliveryType } = order;
+  const {
+    items,
+    customerName,
+    deliveryAddress,
+    deliveryType,
+    totalPrice,
+    phone,
+    email,
+  } = order;
   return (
     <div className="order-popup-container">
       <div className="order-popup-header">
@@ -22,6 +30,9 @@ const OrderToPreparePopup = ({ setOpenModal, order }) => {
           {deliveryType === "delivery" && (
             <p>delivery address: {deliveryAddress}</p>
           )}
+          <p>totalPrice: {totalPrice} €</p>
+          {phone && <p>phone: {phone}</p>}
+          <p>email: {email}</p>
         </article>
         <OrderToPrepareItem items={items} />
       </div>

@@ -7,10 +7,13 @@ const OrderToPrepareItem = ({ items }) => {
     "https://res.cloudinary.com/dmykyluyo/image/upload/v1668194264/meal_photos/nezxr8lcizgsnr48y5mi.png";
   return (
     <div className="order-items-container center-children">
-      {items.map(({ title, quantity }, idx) => (
+      {items.map(({ title, quantity, image }, idx) => (
         <div className="order-item-container" key={title + idx}>
           <div className="order-item-img-container">
-            <img className="order-item-img center-children" src={imgURL} />
+            <img
+              className="order-item-img center-children"
+              src={image || imgURL}
+            />
           </div>
           <div className="order-item-info-container">
             <h6>{title}</h6>

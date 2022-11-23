@@ -30,6 +30,12 @@ const PaymentPage = () => {
     setTypeOfPayment(e.target.value);
   };
 
+  const getDate = () => {
+    const date = Date.now();
+    const dateForm = new Date(date);
+    return dateForm;
+  };
+
   const totalPricesOfMeals = user?.cart?.map(
     (item) => item.quantity * item.mealId.price
   );
@@ -41,6 +47,38 @@ const PaymentPage = () => {
   const card = {
     name: user?.userName,
     price: totalPriceOfCart,
+  };
+
+  const setOrderToPrepare = () => {
+    (async () => {
+      const url = `${process.env.BASE_SERVER_URL}/api/orders/to-prepare/${user?.cart[0]?.mealId?.chefId}`;
+
+      await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify({
+          deliveryAddress: state.newAddress || user.address,
+          createdAt: getDate(),
+          deliveryType: state.deliveryType,
+          totalPrice: totalPriceOfCart,
+          status: "toPrepare",
+          customerName: user.userName,
+          phone: user.phone,
+          email: user.email,
+          items: user.cart.map(({ mealId, quantity }) => {
+            return {
+              title: mealId.title,
+              quantity: quantity,
+              price: mealId.price,
+              image: mealId.image,
+            };
+          }),
+        }),
+      });
+    })();
   };
 
   const updateQuantity = () => {
@@ -76,6 +114,7 @@ const PaymentPage = () => {
 
   const completeOrder = () => {
     updateQuantity();
+    setOrderToPrepare();
     cleanShoppingCart();
     navigate("/my-orders", { replace: true });
   };

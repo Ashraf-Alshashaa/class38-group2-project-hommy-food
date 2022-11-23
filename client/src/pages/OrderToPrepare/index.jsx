@@ -1,183 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import OrderToPrepareCard from "../../components/OrderToPrepareCard";
+import { AuthContext } from "../../contexts/authentication";
 import "./style.css";
 
 const OrderToPrepare = () => {
-  const statusArr = ["to prepare", "ready", "complete"];
-  const orderToPrepare = [
-    {
-      orderId: "String",
-      deliveryAddress: "van kaksksa",
-      createdAt: "11-20-02929",
-      deliveryType: "delivery",
-      totalPrice: 50,
-      status: "toPrepare",
-      customerName: "Llskoc asmc",
-      items: [
-        {
-          title: "Sarma",
-          quantity: 2,
-          mealPrice: 20,
-        },
-        {
-          title: "macjj",
-          quantity: 2,
-          mealPrice: 20,
-        },
-        {
-          title: "Saksoka",
-          quantity: 2,
-          mealPrice: 20,
-        },
-      ],
-    },
-    {
-      orderId: "String",
-      deliveryAddress: "van kaksksa",
-      createdAt: "11-20-02929",
-      deliveryType: "delivery",
-      totalPrice: 50,
-      status: "toPrepare",
-      customerName: "Llskoc asmc",
-      items: [
-        {
-          title: "Sarma",
-          quantity: 2,
-          mealPrice: 20,
-        },
-        {
-          title: "macjj",
-          quantity: 2,
-          mealPrice: 20,
-        },
-        {
-          title: "Saksoka",
-          quantity: 2,
-          mealPrice: 20,
-        },
-      ],
-    },
-    {
-      orderId: "String",
-      deliveryAddress: "van kaksksa",
-      createdAt: "11-20-02929",
-      deliveryType: "delivery",
-      totalPrice: 50,
-      status: "toPrepare",
-      customerName: "Llskoc asmc",
-      items: [
-        {
-          title: "Sarma",
-          quantity: 2,
-          mealPrice: 20,
-        },
-        {
-          title: "macjj",
-          quantity: 2,
-          mealPrice: 20,
-        },
-        {
-          title: "Saksoka",
-          quantity: 2,
-          mealPrice: 20,
-        },
-      ],
-    },
-    {
-      orderId: "String",
-      deliveryAddress: "String",
-      deliveryType: "pickup",
-      totalPrice: 50,
-      createdAt: "Date",
-      status: "ready",
-      customerName: "Llskoc asmc",
-      items: [
-        {
-          title: "String",
-          quantity: 2,
-          mealPrice: 20,
-        },
-      ],
-    },
-    {
-      orderId: "String",
-      deliveryAddress: "String",
-      deliveryType: "pickup",
-      totalPrice: 50,
-      createdAt: "Date",
-      status: "ready",
-      customerName: "Llskoc asmc",
-      items: [
-        {
-          title: "String",
-          quantity: 2,
-          mealPrice: 20,
-        },
-      ],
-    },
-    {
-      orderId: "String",
-      deliveryAddress: "String",
-      deliveryType: "pickup",
-      totalPrice: 50,
-      createdAt: "Date",
-      status: "ready",
-      customerName: "Llskoc asmc",
-      items: [
-        {
-          title: "String",
-          quantity: 2,
-          mealPrice: 20,
-        },
-      ],
-    },
-    {
-      orderId: "String",
-      deliveryAddress: "String",
-      deliveryType: "pickup",
-      totalPrice: 50,
-      createdAt: "Date",
-      status: "complete",
-      customerName: "Llskoc asmc",
-      items: [
-        {
-          title: "String",
-          quantity: 2,
-          mealPrice: 20,
-        },
-      ],
-    },
-    {
-      orderId: "String",
-      deliveryAddress: "String",
-      deliveryType: "pickup",
-      totalPrice: 50,
-      createdAt: "Date",
-      status: "complete",
-      customerName: "Llskoc asmc",
-      items: [
-        {
-          title: "String",
-          quantity: 2,
-          mealPrice: 20,
-        },
-      ],
-    },
-  ];
-
+  const statusArr = ["toPrepare", "ready", "complete"];
+  const { user, setUser } = useContext(AuthContext);
+  //console.log(user);
   return (
     <div className="order-to-prepare-page-container">
       <main className="order-to-prepare-main">
         <section className="order-to-prepare-section">
           <h2 className="order-to-prepare-title">to prepare</h2>
           <div className="order-to-prepare-container">
-            {orderToPrepare.map(
-              (order, idx) =>
+            {user?.orderToPrepare.map(
+              (order) =>
                 order.status === "toPrepare" && (
                   <OrderToPrepareCard
                     order={order}
-                    key={order.orderId + idx}
+                    key={order._id}
                     statusArr={statusArr}
+                    setUser={setUser}
                   />
                 )
             )}
@@ -188,13 +31,14 @@ const OrderToPrepare = () => {
           <h2 className="order-to-prepare-title">ready</h2>
 
           <div className="order-ready-container">
-            {orderToPrepare.map(
-              (order, idx) =>
+            {user?.orderToPrepare.map(
+              (order) =>
                 order.status === "ready" && (
                   <OrderToPrepareCard
                     order={order}
-                    key={order.orderId + idx}
+                    key={order._id}
                     statusArr={statusArr}
+                    setUser={setUser}
                   />
                 )
             )}
@@ -204,12 +48,12 @@ const OrderToPrepare = () => {
       <section className="order-complete-section">
         <h2 className="order-to-prepare-title">complete</h2>
         <div className="order-complete-container">
-          {orderToPrepare.map(
-            (order, idx) =>
+          {user?.orderToPrepare.map(
+            (order) =>
               order.status === "complete" && (
                 <OrderToPrepareCard
                   order={order}
-                  key={order.orderId + idx}
+                  key={order._id}
                   statusArr={statusArr}
                 />
               )

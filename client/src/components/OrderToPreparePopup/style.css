@@ -2,11 +2,11 @@
   margin: auto;
   position: fixed;
   width: 50vw;
-  height: 40vh;
-  background-color: white;
+  height: 50vh;
+  background-color: whitesmoke;
   color: black;
   z-index: 100;
-  top: 30vh;
+  top: 25vh;
   right: 25vw;
   border-radius: 10px;
 }
@@ -29,6 +29,7 @@
   height: 25px;
   border-radius: 50%;
 }
+.order-popup-close-btn,
 .order-popup-close-x {
   padding: 0;
   margin: 0;

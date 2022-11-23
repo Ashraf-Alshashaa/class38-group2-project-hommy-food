@@ -32,15 +32,21 @@ const userSchema = new mongoose.Schema({
       customerId: String,
       deliveryAddress: String,
       createdAt: Date,
+      deliveryType: String,
+      totalPrice: Number,
+      customerName: String,
+      phone: Number,
+      email: String,
       status: {
         type: String,
-        enum: ["ready to pickup", "delivered", "completed"],
+        enum: ["toPrepare", "ready", "completed"],
       },
       items: [
         {
           title: String,
           quantity: Number,
           customerName: String,
+          image: String,
         },
       ],
     },

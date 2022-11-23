@@ -53,18 +53,18 @@
 
 .customer-profile-info-title {
   position: absolute;
-  top: -5%;
+  top: -20px;
   right: 3%;
   padding: 0 2%;
-  background-color: #f0f0f0;
+  background-color: #e9e3e3;
 }
 
 .profile-last-orders-title {
   position: absolute;
-  top: -5%;
+  top: -20px;
   right: 3%;
   padding: 0 2%;
-  background-color: #f0f0f0;
+  background-color: #e9e3e3;
 }
 
 .customer-info-container h3 {

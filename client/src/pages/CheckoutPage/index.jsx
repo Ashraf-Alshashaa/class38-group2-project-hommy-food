@@ -83,7 +83,11 @@ const CheckoutPage = () => {
             className="continue-btn"
             onClick={() =>
               navigate("/checkout/payment", {
-                state: { newAddress, isCheckout: true },
+                state: {
+                  newAddress,
+                  isCheckout: true,
+                  deliveryType: deliveryType,
+                },
                 replace: true,
               })
             }
@@ -175,7 +179,11 @@ const CheckoutPage = () => {
             className="continue-btn"
             onClick={() =>
               navigate("/checkout/payment", {
-                state: { newAddress, isCheckout: true },
+                state: {
+                  newAddress,
+                  isCheckout: true,
+                  deliveryType: deliveryType,
+                },
                 replace: true,
               })
             }

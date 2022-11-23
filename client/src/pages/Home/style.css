@@ -1,18 +1,18 @@
 .home-search-container {
   width: 100%;
   position: absolute;
-  top: 40%;
+  top: 320px;
 }
 
-@media only screen and (max-width: 820px) {
+@media only screen and (max-width: 1024px) {
   .home-search-container {
-    top: 35%;
+    top: 300px;
+    width: 100%;
   }
 }
 
 @media only screen and (max-width: 600px) {
   .home-search-container {
-    top: 45%;
     width: 90%;
     margin-left: 5%;
     display: flex;

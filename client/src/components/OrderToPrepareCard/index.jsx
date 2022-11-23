@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import Dropdown from "../Dropdown";
 import "./style.css";
 import OrderToPreparePopup from "../OrderToPreparePopup";
 
-const OrderToPrepareCard = ({ order, statusArr }) => {
-  const [status, setStatus] = useState();
+const OrderToPrepareCard = ({ order }) => {
   const [openModal, setOpenModal] = useState(false);
   const { createdAt, deliveryType, totalPrice, items } = order;
   return (
@@ -35,20 +33,14 @@ const OrderToPrepareCard = ({ order, statusArr }) => {
         </div>
       </section>
       <div className="order-to-prepare-price-status-container">
-        {order.status !== "complete" && (
-          <Dropdown
-            data={statusArr.map((item) => {
-              return {
-                title: item,
-                _id: item,
-              };
-            })}
-            displayText={status ? status : "status"}
-            onClick={(e) => {
-              setStatus(e.target.id);
-            }}
-          />
+        {order.status === "toPrepare" && (
+          <button className="order-to-prepare-status-btn">ready</button>
         )}
+        {order.status === "ready" && (
+          <button className="order-to-prepare-status-btn">complete</button>
+        )}
+        {order.status === "complete" && <p>complete</p>}
+
         <h6>price: {totalPrice} €</h6>
       </div>
       {openModal && (

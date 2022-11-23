@@ -22,7 +22,7 @@ const ChefsSlider = () => {
     performFetch();
   }, []);
   return (
-    <div className="container py-4 px-4 justify-content-center ">
+    <div className="container my-5 justify-content-center ">
       <h5 className="chefs-slider-header text-center">Top 10 rating chefs</h5>
       <Swiper
         freeMode={true}
@@ -38,7 +38,7 @@ const ChefsSlider = () => {
             spaceBetween: 10,
           },
           480: {
-            slidesPerView: 2,
+            slidesPerView: 1,
             spaceBetween: 10,
           },
           768: {

@@ -12,16 +12,30 @@
   background-color: var(--secondary-color);
   border: none;
 }
-
+.cuisine-buttons {
+  width: 8vw;
+  color: black;
+  height: 30px;
+}
 .btn-primary:hover {
   background-color: var(--primary-color) !important;
+}
+
+.other-cuisine-btn {
+  height: 30px;
+}
+
+.menu-trigger {
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
 .menu-trigger button {
   overflow: hidden;
   cursor: pointer;
   background-color: var(--primary-color);
-  color: var(--secondary-color);
+  color: whitesmoke;
   border: none;
   width: 14vw;
 }

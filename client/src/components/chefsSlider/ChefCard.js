@@ -12,8 +12,8 @@ const ChefCard = ({ chefName, chefImg, chefRating, id }) => {
         <div className="overflow-hidden rounded p-0 bg-light top-10-chef-img-container center-children">
           <Card.Img variant="top" src={chefImg} />
         </div>
-        <Card.Body className="top-chef-card-body-container text-center">
-          <Card.Title className="slider-chef-name display-14">
+        <Card.Body className="top-chef-card-body-container text-center py-2">
+          <Card.Title className="slider-chef-name center-children">
             {chefName}
           </Card.Title>
           <RateOfChef number={chefRating} />

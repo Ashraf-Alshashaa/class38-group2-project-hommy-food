@@ -14,6 +14,7 @@ import MealDetailPage from "./pages/MealDetailPage";
 import ProfilePage from "./pages/ProfilePage";
 import ShoppingCartPage from "./pages/ShoppingCart";
 import Payment from "./pages/Payment";
+import AboutUsPage from "./pages/AboutUsPage";
 
 const App = () => {
   return (
@@ -27,7 +28,7 @@ const App = () => {
         <Route path="/favorites" element={<h1>favorites page</h1>} />
         <Route path="/myOrders" element={<h1>my orders page</h1>} />
         <Route path="/shoppingCart" element={<ShoppingCartPage />} />
-        <Route path="/aboutUs" element={<h1>about us page</h1>} />
+        <Route path="/aboutUs" element={<AboutUsPage />} />
         <Route path="/mealDetail/:id" element={<MealDetailPage />} />
         <Route path="/:chefId/my_meals" element={<h1>My meals</h1>} />
         <Route path="/results" element={<ResultPage />} />

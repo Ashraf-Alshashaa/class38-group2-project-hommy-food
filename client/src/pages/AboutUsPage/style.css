@@ -1,0 +1,159 @@
+.about-us-page-container {
+  width: 100%;
+  height: 100%;
+}
+
+.about-us-page-image-section {
+  background-size: cover;
+  background-position: center;
+  min-height: 50vh;
+  width: 100%;
+  position: relative;
+}
+.about-us-page-read {
+  position: absolute;
+  top: 7%;
+  left: 5%;
+  color: antiquewhite;
+  width: 60%;
+}
+.about-us-page-read p {
+  font-size: 1.2vw;
+}
+.about-us-order-now-btn {
+  display: flex;
+  position: absolute;
+  top: 45%;
+  left: 35%;
+  width: 20vw;
+  gap: 20px;
+  height: 7vh;
+}
+.about-us-order-now-btn > button {
+  width: 50vw;
+  border-radius: 2px;
+  border: none;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 1vw;
+}
+.about-us-order-now-btn > button:hover {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+
+.container-ourTeam {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin-bottom: 5%;
+}
+.heading-our-team {
+  margin: 2%;
+  text-align: center;
+  font-weight: 600;
+  font-size: 2.5vw;
+}
+/* feedback from styling  */
+.give-us-feedback h3 {
+  text-align: center;
+}
+.contact-us {
+  margin: 0 5%;
+}
+.contact-us h3 {
+  text-align: center;
+}
+.about-us-page-feedback {
+  display: flex;
+  justify-content: center;
+  gap: 15%;
+  background-color: #282525;
+  color: #bcb4b4;
+  padding-top: 2rem;
+}
+.contact-info p {
+  max-width: 200px;
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 1rem;
+}
+.contact-info {
+  padding: 2rem;
+  background-color: #1e1e1e;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  color: #bcb4b4;
+}
+.contact-info i {
+  color: white;
+  background-color: #363636;
+  padding: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+.cp-text {
+  color: var(--darker-gray-color);
+  background-color: #363636;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+@media only screen and (max-width: 900px) {
+  .about-us-page-read p {
+    font-size: 1.8vw;
+  }
+  .about-us-order-now-btn {
+    position: absolute;
+    width: 40vw;
+  }
+  .about-us-order-now-btn button {
+    font-size: 1.8vw;
+  }
+  .about-us-page-feedback {
+    flex-wrap: wrap;
+  }
+  .give-us-feedback {
+    padding: 5%;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .about-us-order-now-btn {
+    position: absolute;
+    top: 25%;
+    left: 35%;
+    width: 35vw;
+    gap: 20px;
+    height: 4vh;
+  }
+  .about-us-page-image-section {
+    min-height: 30vh;
+  }
+  .about-us-order-now-btn button {
+    font-size: 2vw;
+  }
+  .about-us-page-read p {
+    font-size: 1.8vw;
+  }
+  .heading-our-team {
+    font-size: 2rem !important ;
+  }
+  .about-us-page-feedback {
+    flex-wrap: wrap;
+  }
+  .give-us-feedback {
+    padding: 5%;
+  }
+}

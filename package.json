@@ -51,6 +51,7 @@
     "husky": "^7.0.0"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.9.1",
     "concurrently": "^6.4.0"
   }
 }

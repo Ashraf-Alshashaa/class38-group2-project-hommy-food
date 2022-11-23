@@ -52,42 +52,37 @@ const PaymentPage = () => {
 
   const setOrderToPrepare = () => {
     (async () => {
-      const url = `${process.env.BASE_SERVER_URL}/api/orders/to-prepare/${user?.cart[0]?.mealId?.chefId}`;
-
-      await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-        body: JSON.stringify({
-          deliveryAddress: state.newAddress || user.address,
-          createdAt: getDate(),
-          deliveryType: state.deliveryType,
-          totalPrice: totalPriceOfCart,
-          status: "toPrepare",
-          customerName: user.userName,
-          phone: user.phone,
-          email: user.email,
-          items: user.cart.map(({ mealId, quantity }) => {
-            return {
-              title: mealId.title,
-              quantity: quantity,
-              price: mealId.price,
-              image: mealId.image,
-            };
-          }),
-        }),
-      });
+      await fetch(
+        `${process.env.BASE_SERVER_URL}/api/orders/to-prepare/${user?.cart[0]?.mealId?.chefId}`,
+        postOnAuthEndpoint(
+          {
+            deliveryAddress: state.newAddress || user.address,
+            createdAt: getDate(),
+            deliveryType: state.deliveryType,
+            totalPrice: totalPriceOfCart,
+            status: "toPrepare",
+            customerName: user.userName,
+            phone: user.phone,
+            email: user.email,
+            items: user.cart.map(({ mealId, quantity }) => {
+              return {
+                title: mealId.title,
+                quantity: quantity,
+                price: mealId.price,
+                image: mealId.image,
+              };
+            }),
+          },
+          "POST"
+        )
+      );
     })();
   };
 
   const setOrderHistory = () => {
     (async () => {
-      const url = `${process.env.BASE_SERVER_URL}/api/orders/history`;
-
       await fetch(
-        url,
+        `${process.env.BASE_SERVER_URL}/api/orders/history`,
         postOnAuthEndpoint(
           {
             chefName: user?.cart[0]?.chefName,
@@ -113,27 +108,17 @@ const PaymentPage = () => {
       const quantity = item.mealId.quantity - item.quantity;
       await fetch(
         `${process.env.BASE_SERVER_URL}/api/meals/update/${item.mealId._id}`,
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ quantity }),
-        }
+        postOnAuthEndpoint({ quantity }, "PATCH")
       );
     });
   };
 
   const cleanShoppingCart = () => {
     (async () => {
-      const response = await fetch(`${process.env.BASE_SERVER_URL}/api/user`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-        body: JSON.stringify({ cart: [] }),
-      });
+      const response = await fetch(
+        `${process.env.BASE_SERVER_URL}/api/user`,
+        postOnAuthEndpoint({ cart: [] }, "PATCH")
+      );
       const data = await response.json();
       setUser(data.result);
     })();

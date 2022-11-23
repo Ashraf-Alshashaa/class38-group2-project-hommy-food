@@ -1,6 +1,6 @@
 import User from "../models/User.js";
 import Meal from "../models/Meal.js";
-import { logError, logInfo } from "../util/logging.js";
+import { logError } from "../util/logging.js";
 
 export const addToShoppingCart = async (req, res) => {
   const email = req.user;
@@ -10,9 +10,6 @@ export const addToShoppingCart = async (req, res) => {
   const chefId = meal.chefId;
   const chef = await User.findById(chefId);
   const chefName = chef.userName;
-
-  logInfo(chefName);
-  logInfo(meal);
 
   const user = await User.find({ email: email });
   const isMealInTheCart = user[0]?.cart?.some(

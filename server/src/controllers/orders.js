@@ -24,16 +24,19 @@ export const createOrderToPrepare = async (req, res) => {
 };
 
 export const createOrderHistory = async (req, res) => {
-  const { id } = req.params;
+  const email = req.user;
 
   try {
-    await User.findByIdAndUpdate(id, {
-      $push: {
-        orderHistory: req.body,
-      },
-    });
+    await User.findOneAndUpdate(
+      { email: email },
+      {
+        $push: {
+          orderHistory: req.body,
+        },
+      }
+    );
 
-    const updatedUser = await User.findById(id);
+    const updatedUser = await User.findOne({ email: email });
     res.status(200).json({ success: true, result: updatedUser });
   } catch (error) {
     logError(error);

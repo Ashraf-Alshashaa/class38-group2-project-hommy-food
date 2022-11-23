@@ -9,6 +9,7 @@ import cash from "../../../public/images/cash_money_icon.png";
 import paymentCard from "../../../public/images/payment_card_icon.png";
 import euro from "../../../public/images/euro_icon.png";
 import StripeCheckout from "react-stripe-checkout";
+import { postOnAuthEndpoint } from "../../hooks/fetchOptions.js";
 
 import "./style.css";
 
@@ -51,33 +52,54 @@ const PaymentPage = () => {
 
   const setOrderToPrepare = () => {
     (async () => {
-      const url = `${process.env.BASE_SERVER_URL}/api/orders/to-prepare/${user?.cart[0]?.mealId?.chefId}`;
+      await fetch(
+        `${process.env.BASE_SERVER_URL}/api/orders/to-prepare/${user?.cart[0]?.mealId?.chefId}`,
+        postOnAuthEndpoint(
+          {
+            deliveryAddress: state.newAddress || user.address,
+            createdAt: getDate(),
+            deliveryType: state.deliveryType,
+            totalPrice: totalPriceOfCart,
+            status: "toPrepare",
+            customerName: user.userName,
+            phone: user.phone,
+            email: user.email,
+            items: user.cart.map(({ mealId, quantity }) => {
+              return {
+                title: mealId.title,
+                quantity: quantity,
+                price: mealId.price,
+                image: mealId.image,
+              };
+            }),
+          },
+          "POST"
+        )
+      );
+    })();
+  };
 
-      await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-        body: JSON.stringify({
-          deliveryAddress: state.newAddress || user.address,
-          createdAt: getDate(),
-          deliveryType: state.deliveryType,
-          totalPrice: totalPriceOfCart,
-          status: "toPrepare",
-          customerName: user.userName,
-          phone: user.phone,
-          email: user.email,
-          items: user.cart.map(({ mealId, quantity }) => {
-            return {
-              title: mealId.title,
-              quantity: quantity,
-              price: mealId.price,
-              image: mealId.image,
-            };
-          }),
-        }),
-      });
+  const setOrderHistory = () => {
+    (async () => {
+      await fetch(
+        `${process.env.BASE_SERVER_URL}/api/orders/history`,
+        postOnAuthEndpoint(
+          {
+            chefName: user?.cart[0]?.chefName,
+            createdAt: getDate(),
+            deliveryType: state.deliveryType,
+            items: user.cart.map(({ mealId, quantity }) => {
+              return {
+                title: mealId.title,
+                quantity: quantity,
+                price: mealId.price,
+                image: mealId.image,
+              };
+            }),
+          },
+          "POST"
+        )
+      );
     })();
   };
 
@@ -86,27 +108,17 @@ const PaymentPage = () => {
       const quantity = item.mealId.quantity - item.quantity;
       await fetch(
         `${process.env.BASE_SERVER_URL}/api/meals/update/${item.mealId._id}`,
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ quantity }),
-        }
+        postOnAuthEndpoint({ quantity }, "PATCH")
       );
     });
   };
 
   const cleanShoppingCart = () => {
     (async () => {
-      const response = await fetch(`${process.env.BASE_SERVER_URL}/api/user`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-        body: JSON.stringify({ cart: [] }),
-      });
+      const response = await fetch(
+        `${process.env.BASE_SERVER_URL}/api/user`,
+        postOnAuthEndpoint({ cart: [] }, "PATCH")
+      );
       const data = await response.json();
       setUser(data.result);
     })();
@@ -115,6 +127,7 @@ const PaymentPage = () => {
   const completeOrder = () => {
     updateQuantity();
     setOrderToPrepare();
+    setOrderHistory();
     cleanShoppingCart();
     navigate("/my-orders", { replace: true });
   };
@@ -122,6 +135,11 @@ const PaymentPage = () => {
   const url = `${process.env.BASE_SERVER_URL}/api/payment`;
 
   const makePayment = (token) => {
+    setPopup({
+      type: "success",
+      text: "please wait",
+      open: true,
+    });
     (async () => {
       try {
         const response = await fetch(url, {
@@ -137,9 +155,13 @@ const PaymentPage = () => {
         });
         const { status } = response;
         if (status === 200) {
-          // todo: send order to history
           const data = await response.json();
           setUser(data.result);
+          setPopup({
+            type: "success",
+            text: "Success payment",
+            open: true,
+          });
           completeOrder();
         } else {
           setPopup({

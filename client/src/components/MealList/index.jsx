@@ -36,15 +36,14 @@ const MealList = ({ id }) => {
           <div className="chef-meal-cards-list">
             {chefMeals.map((meal) => {
               return (
-                <Link
-                  to={`/mealDetail/${meal?._id}`}
-                  className="chef-meal-card-container"
-                  key={meal?._id}
-                >
+                <div className="chef-meal-card-container" key={meal?._id}>
                   <div className="chef-meal-card">
-                    <div className="chef-meal-card-image-container">
+                    <Link
+                      to={`/mealDetail/${meal?._id}`}
+                      className="chef-meal-card-image-container"
+                    >
                       <img src={`${meal?.image}`} alt={meal?.title} />
-                    </div>
+                    </Link>
                     <div className="chef-meal-card-description-container">
                       <div className="chef-meal-card-container-top">
                         <h3 className="chef-meal-card-title">{meal?.title}</h3>
@@ -78,7 +77,7 @@ const MealList = ({ id }) => {
                       </div>
                     </div>
                   </div>
-                </Link>
+                </div>
               );
             })}
           </div>

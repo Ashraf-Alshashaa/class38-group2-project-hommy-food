@@ -15,8 +15,7 @@
   height: 550px;
   border: 2px solid lightgray;
   padding: 5% 0;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
+  border-radius: 20px;
   justify-content: space-around;
   align-items: center;
   margin: 20px auto;
@@ -31,25 +30,24 @@
 }
 
 .chef-profile-meal-list ::-webkit-scrollbar {
-  background-color: darkgray;
   width: 10px;
 }
 
 .chef-profile-meal-list ::-webkit-scrollbar-track {
-  background-color: darkgray;
+  background-color: #e9e3e3;
   margin-block: 20px;
 }
 
 .chef-profile-meal-list ::-webkit-scrollbar-thumb {
   background-color: var(--secondary-color);
-  border: 2px solid darkgray;
+  border: 2px solid #e9e3e3;
   border-radius: 20px;
   margin-block: 50px;
 }
 
 .chef-profile-meals-list {
   position: absolute;
-  background-color: #f0f0f0;
+  background-color: #e9e3e3;
   top: -20px;
   left: 50px;
 }
@@ -78,6 +76,7 @@
   overflow: hidden;
   flex-direction: row;
   text-decoration: none;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .chef-profile-create-meal {
@@ -103,7 +102,7 @@
 
 .chef-meal-card-image-container {
   display: flex;
-  width: 250px;
+  width: 210px;
   height: 100%;
   overflow: hidden;
   border-bottom-right-radius: 20px;
@@ -175,7 +174,7 @@
 .chef-meal-card-category,
 .chef-meal-card-delivery,
 .chef-meal-card-Available {
-  color: var(--primary-color);
+  color: black;
   display: flex;
   font-size: 14px;
   font-weight: 600;
@@ -188,7 +187,7 @@
 .chef-meal-card-qty p,
 .chef-meal-card-price p,
 .chef-meal-card-Available p {
-  color: var(--secondary-color);
+  color: black;
   font-size: 14px;
   font-weight: 500;
   padding-left: 5px;

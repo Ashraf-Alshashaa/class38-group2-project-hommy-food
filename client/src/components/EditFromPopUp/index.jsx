@@ -8,7 +8,6 @@ import "./style.css";
 const EditFromPopUp = ({ setOpenModal, setChefInfo }) => {
   const { setPopup } = useContext(MsgPopupContext);
   const { user, setUser } = useContext(AuthContext);
-
   const [data, setData] = useState(null);
   const [fullName, setFullName] = useState(user?.fullName);
   const [values, setValues] = useState({});
@@ -97,7 +96,7 @@ const EditFromPopUp = ({ setOpenModal, setChefInfo }) => {
             type="text"
             placeholder={user?.fullName?.first ? user?.fullName?.first : ""}
             label="First name"
-            value={values["first"]}
+            value={values["first"] || ""}
             onChange={(e) =>
               setFullName({ ...fullName, first: e.target.value })
             }
@@ -108,7 +107,7 @@ const EditFromPopUp = ({ setOpenModal, setChefInfo }) => {
             type="text"
             placeholder={user?.fullName?.last ? user?.fullName?.last : ""}
             label="Last Name"
-            value={values["last"]}
+            value={values["last"] || ""}
             onChange={(e) => setFullName({ ...fullName, last: e.target.value })}
           />
           <InputForm
@@ -117,7 +116,7 @@ const EditFromPopUp = ({ setOpenModal, setChefInfo }) => {
             type="text"
             placeholder={user.address}
             label="Address"
-            value={values["address"]}
+            value={values["address"] || ""}
             onChange={onChange}
           />
           <InputForm
@@ -126,14 +125,20 @@ const EditFromPopUp = ({ setOpenModal, setChefInfo }) => {
             type="text"
             placeholder={user.phone}
             label="Phone number"
-            value={values["phone"]}
+            value={values["phone"] || ""}
             onChange={onChange}
           />
           <div className="submit-update-container">
-            <button id="popup-back-btn" onClick={() => setOpenModal(false)}>
+            <button
+              id="popup-back-btn"
+              type="button"
+              onClick={() => setOpenModal(false)}
+            >
               Back
             </button>
-            <button id="popup-close-btn">Submit</button>
+            <button id="popup-close-btn" type="submit">
+              Submit
+            </button>
           </div>
         </form>
       </div>

@@ -2,95 +2,170 @@
   display: flex;
   justify-content: center;
 }
+
 .meal-Detail-page {
   width: 50rem;
-  height: 70vh;
+  height: fit-content;
   margin: 3%;
-  padding: 5px;
   display: flex;
-  border: 1px solid var(--darker-gray-color);
-  border-radius: 10px;
-  background-color: #fff;
-}
-.meal-page-image {
-  height: 100%;
-  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid lightgray;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-.meal-Detail-page img {
-  width: 100%;
-  height: 100%;
-  border-radius: 5px 0px 0px 5px !important;
-}
-.divide {
-  width: 40%;
-}
-.divide2 {
-  width: 60%;
-  border-radius: 0px 5px 5px 0px !important;
-  padding: 10px;
-}
 .meal-page-title {
   height: 12%;
   display: flex;
   justify-content: space-between;
-  padding: 5px;
-  border-bottom: 1px solid var(--dark-gray-color);
+  padding: 30px;
+  margin-bottom: 30px;
 }
+
 .meal-page-title h5 {
   font-size: 2rem;
+  color: var(--primary-color);
 }
+
+.divider {
+  width: 1px;
+  height: 375px;
+  background-color: darkgray;
+  z-index: 5;
+}
+
+.meal-detail-page-children {
+  display: flex;
+  width: 100%;
+  height: 70%;
+  margin: auto;
+  justify-content: space-around;
+  padding: 0 20px 20px 20px;
+}
+
+.right-side-container {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  height: 100%;
+}
+
+.meal-page-image {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  border: 1px solid darkgray;
+}
+
+.meal-page-image img {
+  width: 100%;
+}
+
+.meal-Detail-page .meal-details-page-chef-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50% !important;
+  border: 1px solid var(--primary-color);
+}
+
+.chef-details-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.left-side-container {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  height: 100%;
+}
+
+.left-side-container .delivery-type {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--secondary-color);
+}
+
+.meal-detail-page-chip {
+  display: flex;
+  align-items: center;
+}
+
+.left-side-container .chef-name {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+}
+
 .meal-page-info {
   display: flex;
   justify-content: space-between;
   padding: 5px;
   height: 10%;
+  margin-top: 15px;
 }
+
+.meal-page-info .details {
+  display: flex;
+  flex-direction: column;
+  font-size: 15px;
+  color: black;
+}
+
 .meal-page-info p {
+  font-size: 14px;
+  padding-top: 5px;
   color: var(--darker-gray-color);
 }
+
 .meal-page-Ingredients {
   height: 15%;
   padding: 5px;
-  border-bottom: 1px solid var(--dark-gray-color);
   margin-top: 5px;
 }
+
 .meal-page-Ingredients p {
   word-spacing: 5px;
 }
+
 .meal-page-description {
   height: 50%;
   margin: 5px;
+  overflow-y: scroll;
 }
+
 .meal-page-price {
   display: flex;
   justify-content: space-between;
-  font-size: 1rem;
+  font-size: 20px;
+  font-weight: 600;
   margin: 5px;
   color: var(--primary-color);
+  align-items: center;
 }
+
+.meal-page-price p {
+  margin-bottom: 0px;
+}
+
 .meal-page-price i:hover {
   color: var(--primary-color);
 }
-.meal-detail-page-chip {
-  display: flex;
-  padding: 0 25px;
-  height: 40px;
-  font-size: 16px;
-  line-height: 50px;
-  border-radius: 25px;
-  background-color: #f1f1f1;
-}
+
 .fa-cart-shopping:hover {
   color: var(--primary-color);
 }
 
-.meal-detail-page-chip img {
+.meal-detail-page-chip .meal-details-page-chef-image {
   float: left;
-  margin: 0 10px 0 -25px;
-  height: 40px;
+  margin-right: 10px;
   width: 40px;
-  border-radius: 50%;
 }
 @media only screen and (max-width: 600px) {
   .meal-Detail-page {

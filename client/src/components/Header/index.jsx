@@ -84,6 +84,17 @@ const Header = () => {
       )
   );
 
+  const orderToPrepare = (
+    <Link
+      to={"/order-to-prepare"}
+      className={
+        !displayNav ? "nav-links-hidden" : "nav-links-visible center-children"
+      }
+    >
+      to prepare
+    </Link>
+  );
+
   const loginBtn = (
     <button
       className="login-header-btn cursor center-children"
@@ -136,6 +147,7 @@ const Header = () => {
       )}
       {mobile && !user && loginBtn}
       <ul className="nav-links-container">
+        {user?.isChef && orderToPrepare}
         {desktop ? navLinksItemsDesktop : navLinksItemsMobile}
         {logOutBtn}
       </ul>

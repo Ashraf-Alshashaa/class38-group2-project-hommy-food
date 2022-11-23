@@ -9,7 +9,7 @@ import { authenticateToken } from "../controllers/user.js";
 const ordersRouter = express.Router();
 
 ordersRouter.post("/to-prepare/:id", authenticateToken, createOrderToPrepare);
-ordersRouter.post("/history/:id", authenticateToken, createOrderHistory);
+ordersRouter.post("/history", authenticateToken, createOrderHistory);
 ordersRouter.patch("/edit-status", authenticateToken, editStatus);
 
 export default ordersRouter;

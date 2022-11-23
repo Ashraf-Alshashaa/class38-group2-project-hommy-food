@@ -9,6 +9,7 @@ import cash from "../../../public/images/cash_money_icon.png";
 import paymentCard from "../../../public/images/payment_card_icon.png";
 import euro from "../../../public/images/euro_icon.png";
 import StripeCheckout from "react-stripe-checkout";
+import { postOnAuthEndpoint } from "../../hooks/fetchOptions.js";
 
 import "./style.css";
 
@@ -81,6 +82,32 @@ const PaymentPage = () => {
     })();
   };
 
+  const setOrderHistory = () => {
+    (async () => {
+      const url = `${process.env.BASE_SERVER_URL}/api/orders/history`;
+
+      await fetch(
+        url,
+        postOnAuthEndpoint(
+          {
+            chefName: user?.cart[0]?.chefName,
+            createdAt: getDate(),
+            deliveryType: state.deliveryType,
+            items: user.cart.map(({ mealId, quantity }) => {
+              return {
+                title: mealId.title,
+                quantity: quantity,
+                price: mealId.price,
+                image: mealId.image,
+              };
+            }),
+          },
+          "POST"
+        )
+      );
+    })();
+  };
+
   const updateQuantity = () => {
     user?.cart?.forEach(async (item) => {
       const quantity = item.mealId.quantity - item.quantity;
@@ -115,6 +142,7 @@ const PaymentPage = () => {
   const completeOrder = () => {
     updateQuantity();
     setOrderToPrepare();
+    setOrderHistory();
     cleanShoppingCart();
     navigate("/my-orders", { replace: true });
   };
@@ -122,6 +150,11 @@ const PaymentPage = () => {
   const url = `${process.env.BASE_SERVER_URL}/api/payment`;
 
   const makePayment = (token) => {
+    setPopup({
+      type: "success",
+      text: "please wait",
+      open: true,
+    });
     (async () => {
       try {
         const response = await fetch(url, {
@@ -137,9 +170,13 @@ const PaymentPage = () => {
         });
         const { status } = response;
         if (status === 200) {
-          // todo: send order to history
           const data = await response.json();
           setUser(data.result);
+          setPopup({
+            type: "success",
+            text: "Success payment",
+            open: true,
+          });
           completeOrder();
         } else {
           setPopup({

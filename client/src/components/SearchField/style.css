@@ -57,7 +57,7 @@ i {
   .search-container {
     width: 100%;
     transform: translate(0);
-    margin-bottom: -20px;
+    margin-bottom: 10px;
     margin-top: -60px;
   }
   .btn.btn-search {

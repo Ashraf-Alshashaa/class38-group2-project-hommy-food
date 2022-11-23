@@ -18,7 +18,7 @@ const Header = () => {
   const navLinks = [
     { href: `/profile/${user?._id}`, name: "Profile" },
     {
-      href: "/favorites",
+      href: "/favorite-chefs",
       name: "My Favorite",
       icon: <i className="fa-regular fa-heart nav-bar-heart"></i>,
     },

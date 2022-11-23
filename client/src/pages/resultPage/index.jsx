@@ -5,7 +5,6 @@ import useFetch from "../../hooks/useFetch";
 import sadChef from "./sadChef.jpg";
 import somethingWentWrong from "./something-went-wrong.png";
 import PulseLoader from "react-spinners/PulseLoader";
-// import ChefAvatar from "../../components/mealCard/yellowchef.png";
 import "./style.css";
 
 export default function ResultPage() {

@@ -9,6 +9,7 @@ import rateRouter from "./routes/rate.js";
 import shoppingCardRouter from "./routes/shoppingCart.js";
 import paymentRouter from "./routes/payment.js";
 import ordersRouter from "./routes/orders.js";
+import favoritesRouter from "./routes/favorites.js";
 
 // Create an express server
 const app = express();
@@ -31,5 +32,5 @@ app.use("/api/cuisines", cuisineRouter);
 app.use("/api/customer/shopping-cart", shoppingCardRouter);
 app.use("/api/payment", paymentRouter);
 app.use("/api/orders", ordersRouter);
-
+app.use("/api/user/favorite", favoritesRouter);
 export default app;

@@ -8,8 +8,14 @@
   width: 40%;
   height: 400px;
   padding: 20px;
+  position: relative;
 }
-
+.complete-payment-container h4 {
+  position: absolute;
+  top: -15px;
+  background-color: #e9e3e3;
+  padding: 0 10px;
+}
 .payment-type-container {
   display: flex;
   justify-content: space-evenly;

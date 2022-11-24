@@ -14,11 +14,11 @@
 
 .orders-history-title {
   position: absolute;
-  top: -3%;
+  top: -25px;
   right: 3%;
   padding: 0 2%;
   background-color: #e9e3e3;
-  color: #13753b;
+  color: var(--primary-color);
 }
 
 .orders-history-card-container {

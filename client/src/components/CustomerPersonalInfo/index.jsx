@@ -1,11 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../contexts/authentication";
 import PropTypes from "prop-types";
 import avatar from "../../../public/images/img_avatar.png";
 import "./style.css";
 import EditFromPopUp from "../EditFromPopUp";
 import UploadImgWidget from "../UploadImgWidget";
-import { useEffect } from "react";
+import OrdersHistoryCard from "../OrderHistoryCard";
 
 const PersonalInfo = ({ id }) => {
   const [openModal, setOpenModal] = useState(false);
@@ -13,6 +13,7 @@ const PersonalInfo = ({ id }) => {
   const [imgUrl, setImgUrl] = useState("");
   const [userData, setUserData] = useState(user);
   const { user, setUser } = useContext(AuthContext);
+
   useEffect(() => {
     setUserData(user);
   }, [user]);
@@ -41,6 +42,7 @@ const PersonalInfo = ({ id }) => {
     }
   }, [imgUrl]);
 
+  const lastThreeOrders = user.orderHistory.slice(-3);
   return (
     <>
       <div className="customer-personal-info-container">
@@ -100,9 +102,18 @@ const PersonalInfo = ({ id }) => {
         </div>
       </div>
       <div className="customer-personal-info-container">
-        <div className="customer-info-container">
+        <div className="customer-order-history-container">
           <div className="profile-last-orders-title">
-            <h2>Last 5 orders</h2>
+            <h2>Last 3 orders</h2>
+          </div>
+          <div className="customer-orders-history">
+            {lastThreeOrders?.reverse().map((order, index) => {
+              return (
+                <div key={index}>
+                  <OrdersHistoryCard order={order} />
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

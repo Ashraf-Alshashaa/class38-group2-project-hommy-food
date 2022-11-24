@@ -32,23 +32,30 @@ const userSchema = new mongoose.Schema({
       customerId: String,
       deliveryAddress: String,
       createdAt: Date,
+      deliveryType: String,
+      totalPrice: Number,
+      customerName: String,
+      phone: Number,
+      email: String,
       status: {
         type: String,
-        enum: ["ready to pickup", "delivered", "completed"],
+        enum: ["toPrepare", "ready", "completed"],
       },
       items: [
         {
           title: String,
           quantity: Number,
           customerName: String,
+          image: String,
         },
       ],
     },
   ],
   orderHistory: [
     {
-      chefId: mongoose.ObjectId, // Do we really need this. Check later.
-      deliveryAddress: String,
+      chefId: mongoose.ObjectId,
+      chefName: String,
+      deliveryType: String,
       createdAt: Date,
       items: [
         {
@@ -56,13 +63,16 @@ const userSchema = new mongoose.Schema({
           price: Number,
           quantity: Number,
           image: String,
-          chefName: String,
         },
       ],
     },
   ],
   cart: [
-    { mealId: { type: mongoose.ObjectId, ref: "meals" }, quantity: Number },
+    {
+      mealId: { type: mongoose.ObjectId, ref: "meals" },
+      quantity: Number,
+      chefName: String,
+    },
   ],
   favoriteChefs: [String],
   deliveryType: {

@@ -61,15 +61,15 @@
   z-index: 10;
 }
 
-.fa-cart-shopping,
-.fa-house,
-.fa-share {
+.footer-shopping-cart-icon .fa-cart-shopping,
+.footer-home-icon .fa-house,
+.footer-share-icon .fa-share {
   color: var(--secondary-color);
 }
 
-.fa-cart-shopping:hover,
-.fa-house:hover,
-.fa-share:hover {
+.footer-shopping-cart-icon .fa-cart-shopping:hover,
+.footer-home-icon .fa-house:hover,
+.footer-share-icon .fa-share:hover {
   color: white;
 }
 
@@ -115,7 +115,7 @@
     height: 35px;
     font-size: 12px;
   }
-  .fa-cart-shopping,
+  .fa-cart-shopping-footer,
   .fa-house,
   .fa-share {
     font-size: 24px;

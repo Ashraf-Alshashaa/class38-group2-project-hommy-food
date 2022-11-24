@@ -147,6 +147,10 @@ i {
   color: var(--primary-color);
 }
 
+.fa-xl {
+  color: var(--secondary-color);
+}
+
 .logout-header-btn {
   margin-bottom: 15px;
 }

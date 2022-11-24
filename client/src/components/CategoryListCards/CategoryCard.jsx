@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 
 const CategoryCard = ({ image, title, onClick }) => {
   return (
-    <div className="col-md-3" onClick={onClick}>
-      <div className="card">
+    <div className="col-md-3 m-0 p-0" onClick={onClick}>
+      <div className="card m-1 p-0 category-card ">
         <img className="card-img-top" src={image} alt={title} />
         <div className="card-body">
           <h5 className="card-title">{title}</h5>

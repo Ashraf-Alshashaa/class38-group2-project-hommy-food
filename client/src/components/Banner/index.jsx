@@ -1,6 +1,7 @@
 import React from "react";
-import dishes from "../../../public/images/Dishes.png";
+import chefImage from "../../../public/images/hommy-chef.png";
 import banner from "../../../public/images/wood.png";
+import slogan from "../../../public/images/new-slogan-01.png";
 import "./style.css";
 
 const Banner = () => {
@@ -8,12 +9,9 @@ const Banner = () => {
     <div className="hero-section">
       <div className="banner-container">
         <img src={banner} alt="banner img" className="banner-img" />
-        <img src={dishes} alt="banner img" className="dishes-img" />
-        <div className="slogan-section">
-          <h3 className="slogan">Do not</h3>
-          <h3 className="slogan-eat">Eat</h3>
-          <h3 className="slogan-light">light</h3>
-          <h3 className="slogan-tasty">tasty</h3>
+        <img src={chefImage} alt="banner img" className="chef-img" />
+        <div className="slogan-container">
+          <img src={slogan} alt="slogan img" className="slogan" />
         </div>
       </div>
     </div>

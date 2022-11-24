@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
-import fetchUserData from "../hooks/useFetchUser";
 import PropTypes from "prop-types";
+import useFetch from "../hooks/useFetch";
 
 export const AuthContext = createContext();
 
@@ -10,19 +10,20 @@ export const AuthProvider = ({ children }) => {
     const token = localStorage.getItem("accessToken");
     return token;
   });
-
-  const url = `${process.env.BASE_SERVER_URL}/api/user`;
+  const { performFetch, isLoading, error } = useFetch("/user", (data) =>
+    setUser(data?.user)
+  );
 
   useEffect(() => {
-    (async () => {
-      if (token) {
-        const userData = await fetchUserData(token, url);
-        if (userData.success) {
-          const { user } = userData;
-          setUser(user);
-        }
-      }
-    })();
+    if (token) {
+      performFetch({
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+    }
   }, []);
 
   const logout = () => {
@@ -37,6 +38,8 @@ export const AuthProvider = ({ children }) => {
         user: user,
         logout: logout,
         setUser: setUser,
+        isLoading,
+        error,
       }}
     >
       {children}

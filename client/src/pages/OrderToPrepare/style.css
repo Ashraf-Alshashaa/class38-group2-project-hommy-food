@@ -1,0 +1,67 @@
+.order-to-prepare-page-container {
+  align-self: center;
+}
+
+.order-to-prepare-container,
+.order-ready-container,
+.order-complete-container {
+  overflow: scroll;
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.order-to-prepare-container::-webkit-scrollbar,
+.order-ready-container::-webkit-scrollbar,
+.order-complete-container::-webkit-scrollbar {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  display: none;
+}
+
+.order-to-prepare-main {
+  display: flex;
+  height: 50vh;
+}
+
+.order-to-prepare-section,
+.order-ready-section,
+.order-complete-section {
+  border: 2px solid var(--primary-color);
+  margin: 15px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.order-to-prepare-title {
+  position: absolute;
+  top: -12px;
+  background-color: #e9e3e3;
+  padding: 0 10px;
+  font-size: large;
+}
+
+.order-to-prepare-container,
+.order-ready-container {
+  height: 44vh;
+}
+.order-to-prepare-section {
+  border-radius: 25px 0 0 0;
+  width: 410px;
+}
+.order-ready-section {
+  border-radius: 0 25px 0 0;
+  width: 410px;
+}
+
+.order-complete-section {
+  height: 25vh;
+  border-radius: 0 0 25px 25px;
+  width: 850px;
+}
+.order-complete-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 100%;
+}

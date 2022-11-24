@@ -12,6 +12,10 @@
   justify-content: space-evenly;
   width: 1000px;
 }
+.create-meal-page h1 {
+  color: var(--primary-color);
+  margin-bottom: 30px;
+}
 
 .create-meal-page-left-side {
   display: flex;

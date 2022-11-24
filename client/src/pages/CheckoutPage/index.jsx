@@ -6,9 +6,10 @@ import pickupImg from "../../../public/images/pickup.jpeg";
 import InputForm from "../../components/InputForm";
 import useFetch from "../../hooks/useFetch";
 import { useNavigate } from "react-router-dom";
+import PulseLoader from "react-spinners/PulseLoader";
 
 const CheckoutPage = () => {
-  const { user } = useContext(AuthContext);
+  const { user, isLoading } = useContext(AuthContext);
   const [newAddress, setNewAddress] = useState();
   const [sendNewAddress, setSendNewAddress] = useState(false);
   const [chef, setChef] = useState();
@@ -24,6 +25,20 @@ const CheckoutPage = () => {
   }, [user]);
 
   const deliveryType = chef?.deliveryType;
+  if (isLoading) {
+    return (
+      <div className="result-page-container">
+        <div className="loading-gif">
+          <PulseLoader
+            color="#f9a01b"
+            size={60}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -32,7 +47,7 @@ const CheckoutPage = () => {
           <h1>Checkout Step</h1>
           <div className="checkout-pickup-option">
             <h3>
-              Chef is waiting you. You can pick your order from the address
+              Chef is waiting for you. You can pick your order from the address
               below.
             </h3>
             <div className="customer-info-card">
@@ -68,7 +83,11 @@ const CheckoutPage = () => {
             className="continue-btn"
             onClick={() =>
               navigate("/checkout/payment", {
-                state: { newAddress, isCheckout: true },
+                state: {
+                  newAddress,
+                  isCheckout: true,
+                  deliveryType: deliveryType,
+                },
                 replace: true,
               })
             }
@@ -160,7 +179,11 @@ const CheckoutPage = () => {
             className="continue-btn"
             onClick={() =>
               navigate("/checkout/payment", {
-                state: { newAddress, isCheckout: true },
+                state: {
+                  newAddress,
+                  isCheckout: true,
+                  deliveryType: deliveryType,
+                },
                 replace: true,
               })
             }

@@ -1,9 +1,16 @@
 import User from "../models/User.js";
+import Meal from "../models/Meal.js";
 import { logError } from "../util/logging.js";
 
 export const addToShoppingCart = async (req, res) => {
   const email = req.user;
   const { mealId } = req.params;
+
+  const meal = await Meal.findById(mealId);
+  const chefId = meal.chefId;
+  const chef = await User.findById(chefId);
+  const chefName = chef.userName;
+
   const user = await User.find({ email: email });
   const isMealInTheCart = user[0]?.cart?.some(
     (item) => item.mealId._id.toString() === mealId
@@ -33,7 +40,7 @@ export const addToShoppingCart = async (req, res) => {
     try {
       await User.findOneAndUpdate(
         { email: email },
-        { $push: { cart: { mealId, quantity: 1 } } }
+        { $push: { cart: { mealId, quantity: 1, chefName } } }
       );
       const updatedUser = await User.find({ email: email })
         .populate({

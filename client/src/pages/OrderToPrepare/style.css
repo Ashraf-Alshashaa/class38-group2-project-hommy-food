@@ -126,3 +126,10 @@
     margin: 0;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .order-to-prepare-page-container {
+    width: 95%;
+    margin: 20px 0;
+  }
+}

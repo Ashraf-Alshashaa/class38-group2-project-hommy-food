@@ -11,9 +11,9 @@ const OurTeamCard = ({
   motivation,
 }) => {
   return (
-    <div className="card">
-      <img src={image} alt="Person" className="card__image" />
-      <p className="card__name">{Name}</p>
+    <div className="our-team-card">
+      <img src={image} alt="Person" className="our-team-card-image" />
+      <p className="our-team-card-name">{Name}</p>
       <ul className="social-icons">
         <li>
           <a href={instagram}>

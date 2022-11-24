@@ -25,3 +25,10 @@
   width: 70%;
   margin: 20px;
 }
+
+.no-orders-title-container {
+  color: var(--primary-color);
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}

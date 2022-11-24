@@ -11,7 +11,7 @@ const OrdersHistory = () => {
         <div className="customer-personal-info-container">
           <div className="customer-order-history-container">
             <div className="profile-last-orders-title">
-              <h2>Recent orders</h2>
+              <h2>My orders</h2>
             </div>
             <div className="customer-orders-history">
               {user?.orderHistory.reverse().map((order, index) => {

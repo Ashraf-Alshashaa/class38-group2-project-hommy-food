@@ -5,6 +5,7 @@
   margin-bottom: 4vh;
   background-color: white;
   max-height: 800px;
+  border-radius: 25px;
 }
 
 .order-date {

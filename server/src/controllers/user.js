@@ -10,12 +10,7 @@ const ObjectId = mongoose.Types.ObjectId;
 export const getProfile = async (req, res) => {
   const email = req.user;
   try {
-    const user = await User.findOne({ email: email }, { password: false })
-      .populate({
-        path: "cart.mealId",
-        select: "title image price quantity chefId",
-      })
-      .exec();
+    const user = await User.findOne({ email: email }, { password: false });
     res.status(200).json({ success: true, user: user });
   } catch (error) {
     logError(error);
@@ -150,12 +145,7 @@ export const login = async (req, res) => {
         const userData = await User.findOne(
           { email: email },
           { password: false }
-        )
-          .populate({
-            path: "cart.mealId",
-            select: "title image price quantity chefId",
-          })
-          .exec();
+        );
         res
           .status(201)
           .json({ success: true, user: userData, accessToken: accessToken });

@@ -20,14 +20,9 @@ export const addToShoppingCart = async (req, res) => {
       await User.findOneAndUpdate(
         { email: email },
         { $inc: { "cart.$[item].quantity": 1 } },
-        { arrayFilters: [{ "item.mealId": mealId }] }
+        { arrayFilters: [{ "item.mealId._id": mealId }] }
       );
-      const updatedUser = await User.find({ email: email })
-        .populate({
-          path: "cart.mealId",
-          select: "title image price quantity chefId",
-        })
-        .exec();
+      const updatedUser = await User.find({ email: email });
       res.status(200).json({ success: true, result: updatedUser[0] });
     } catch (error) {
       logError(error);
@@ -40,14 +35,24 @@ export const addToShoppingCart = async (req, res) => {
     try {
       await User.findOneAndUpdate(
         { email: email },
-        { $push: { cart: { mealId, quantity: 1, chefName } } }
+        {
+          $push: {
+            cart: {
+              mealId: {
+                _id: meal._id,
+                title: meal.title,
+                price: meal.price,
+                quantity: meal.quantity,
+                image: meal.image,
+                chefId: meal.chefId,
+              },
+              quantity: 1,
+              chefName,
+            },
+          },
+        }
       );
-      const updatedUser = await User.find({ email: email })
-        .populate({
-          path: "cart.mealId",
-          select: "title image price quantity chefId",
-        })
-        .exec();
+      const updatedUser = await User.find({ email: email });
       res.status(200).json({ success: true, result: updatedUser[0] });
     } catch (error) {
       logError(error);
@@ -65,14 +70,9 @@ export const increaseQuantityOfItem = async (req, res) => {
     await User.findOneAndUpdate(
       { email: email },
       { $inc: { "cart.$[item].quantity": 1 } },
-      { arrayFilters: [{ "item.mealId": mealId }] }
+      { arrayFilters: [{ "item.mealId._id": mealId }] }
     );
-    const updatedUser = await User.find({ email: email })
-      .populate({
-        path: "cart.mealId",
-        select: "title image price quantity chefId",
-      })
-      .exec();
+    const updatedUser = await User.find({ email: email });
     res.status(200).json({ success: true, result: updatedUser[0] });
   } catch (error) {
     logError(error);
@@ -93,14 +93,9 @@ export const decreaseQuantityOfItem = async (req, res) => {
     try {
       await User.findOneAndUpdate(
         { email: email },
-        { $pull: { cart: { mealId: mealId } } }
+        { $pull: { cart: { "mealId._id": mealId } } }
       );
-      const updatedUser = await User.find({ email: email })
-        .populate({
-          path: "cart.mealId",
-          select: "title image price quantity chefId",
-        })
-        .exec();
+      const updatedUser = await User.find({ email: email });
       res.status(200).json({ success: true, result: updatedUser[0] });
     } catch (error) {
       logError(error);
@@ -114,14 +109,9 @@ export const decreaseQuantityOfItem = async (req, res) => {
       await User.findOneAndUpdate(
         { email: email },
         { $inc: { "cart.$[item].quantity": -1 } },
-        { arrayFilters: [{ "item.mealId": mealId }] }
+        { arrayFilters: [{ "item.mealId._id": mealId }] }
       );
-      const updatedUser = await User.find({ email: email })
-        .populate({
-          path: "cart.mealId",
-          select: "title image price quantity chefId",
-        })
-        .exec();
+      const updatedUser = await User.find({ email: email });
       res.status(200).json({ success: true, result: updatedUser[0] });
     } catch (error) {
       logError(error);
@@ -139,14 +129,9 @@ export const deleteItemFromShoppingCart = async (req, res) => {
   try {
     await User.findOneAndUpdate(
       { email: email },
-      { $pull: { cart: { mealId: mealId } } }
+      { $pull: { cart: { "mealId._id": mealId } } }
     );
-    const updatedUser = await User.find({ email: email })
-      .populate({
-        path: "cart.mealId",
-        select: "title image price quantity chefId",
-      })
-      .exec();
+    const updatedUser = await User.find({ email: email });
     res.status(200).json({ success: true, result: updatedUser[0] });
   } catch (error) {
     logError(error);

@@ -8,9 +8,9 @@ const OrdersHistory = () => {
   const { user } = useContext(AuthContext);
   return (
     <div className="orders-history-container">
-      <h1 className="orders-history-title">My orders history</h1>
+      <h1 className="orders-history-title">My orders</h1>
       <div className="orders-history-card-container">
-        {user?.orderHistory.map((order, index) => {
+        {user?.orderHistory.reverse().map((order, index) => {
           return (
             <div key={index}>
               <OrdersHistoryCard order={order} />

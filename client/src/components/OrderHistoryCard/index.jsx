@@ -29,7 +29,7 @@ const OrdersHistoryCard = ({ order }) => {
           </div>
         );
       })}
-      <h5 className="order-price">
+      <h5 className="order-history-price">
         Total price:
         <span className="order-total-price-value">
           &nbsp;&nbsp; € {totalPriceOfOrder}

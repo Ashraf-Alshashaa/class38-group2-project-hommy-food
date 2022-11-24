@@ -101,22 +101,25 @@ const PersonalInfo = ({ id }) => {
           )}
         </div>
       </div>
-      <div className="customer-personal-info-container">
-        <div className="customer-order-history-container">
-          <div className="profile-last-orders-title">
-            <h2>Last 3 orders</h2>
-          </div>
-          <div className="customer-orders-history">
-            {lastThreeOrders?.reverse().map((order, index) => {
-              return (
-                <div key={index}>
-                  <OrdersHistoryCard order={order} />
-                </div>
-              );
-            })}
+      {lastThreeOrders.length !== 0 && (
+        <div className="customer-personal-info-container">
+          <div className="customer-order-history-container">
+            <div className="profile-last-orders-title">
+              <h2>Recent orders</h2>
+            </div>
+            <div className="customer-orders-history">
+              {lastThreeOrders?.reverse().map((order, index) => {
+                return (
+                  <div key={index}>
+                    <OrdersHistoryCard order={order} />
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
-      </div>
+      )}
+
       {openModal ? (
         <div className="update-profile-popup-container">
           <EditFromPopUp

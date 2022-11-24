@@ -124,11 +124,16 @@ const PaymentPage = () => {
     })();
   };
 
-  const completeOrder = () => {
+  const completeOrder = (online) => {
     updateQuantity();
     setOrderToPrepare();
     setOrderHistory();
     cleanShoppingCart();
+    setPopup({
+      type: "success",
+      text: `${online ? "Success payment" : "order is completed"}`,
+      open: true,
+    });
     navigate("/my-orders", { replace: true });
   };
 
@@ -157,12 +162,7 @@ const PaymentPage = () => {
         if (status === 200) {
           const data = await response.json();
           setUser(data.result);
-          setPopup({
-            type: "success",
-            text: "Success payment",
-            open: true,
-          });
-          completeOrder();
+          completeOrder(true);
         } else {
           setPopup({
             type: "error",
@@ -213,7 +213,7 @@ const PaymentPage = () => {
         {typeOfPayment === "cash" ? (
           <button
             className="link-my-orders-payment-page"
-            onClick={completeOrder}
+            onClick={() => completeOrder(false)}
           >
             complete order
           </button>

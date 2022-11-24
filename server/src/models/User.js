@@ -69,7 +69,14 @@ const userSchema = new mongoose.Schema({
   ],
   cart: [
     {
-      mealId: { type: mongoose.ObjectId, ref: "meals" },
+      mealId: {
+        _id: mongoose.ObjectId,
+        title: String,
+        price: Number,
+        quantity: Number,
+        image: String,
+        chefId: mongoose.ObjectId,
+      },
       quantity: Number,
       chefName: String,
     },

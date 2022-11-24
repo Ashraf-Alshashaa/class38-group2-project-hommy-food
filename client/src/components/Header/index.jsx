@@ -22,7 +22,7 @@ const Header = () => {
       name: "My Favorite",
       icon: <i className="fa-regular fa-heart nav-bar-heart"></i>,
     },
-    { href: "/myOrders", name: "My Orders" },
+    { href: "/my-orders", name: "My Orders" },
     {
       href: "/shoppingCart",
       name: "Shopping Cart",

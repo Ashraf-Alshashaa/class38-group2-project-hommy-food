@@ -13,6 +13,7 @@ import EditMeal from "./pages/EditMeal";
 import MealDetailPage from "./pages/MealDetailPage";
 import ProfilePage from "./pages/ProfilePage";
 import ShoppingCartPage from "./pages/ShoppingCart";
+import OrdersHistoryPage from "./pages/OrdersHistoryPage";
 import Payment from "./pages/Payment";
 import OrderToPrepare from "./pages/OrderToPrepare";
 import FavoritesPage from "./pages/FavoritesPage";
@@ -26,8 +27,8 @@ const App = () => {
         <Route path="/register" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile/:id" element={<ProfilePage />} />
-        <Route path="/myOrders" element={<h1>my orders page</h1>} />
         <Route path="/shoppingCart" element={<ShoppingCartPage />} />
+        <Route path="/my-orders" element={<OrdersHistoryPage />} />
         <Route path="/aboutUs" element={<h1>about us page</h1>} />
         <Route path="/mealDetail/:id" element={<MealDetailPage />} />
         <Route path="/:chefId/my_meals" element={<h1>My meals</h1>} />

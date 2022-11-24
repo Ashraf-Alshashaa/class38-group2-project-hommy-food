@@ -56,18 +56,14 @@ const mealDetailPage = () => {
           <aside className="left-side-container">
             <div className="chef-details-container">
               <Link to={`/profile/${meal?.chefId?._id}`} className="chef-name">
-                <div className="meal-detail-page-chip">
+                <div className="meal-detail-page-chip-image center-children">
                   {meal?.chefId?.photo ? (
-                    <img
-                      src={meal?.chefId?.photo}
-                      alt="Person"
-                      className="meal-details-page-chef-image"
-                    />
+                    <img src={meal?.chefId?.photo} alt="Person" />
                   ) : (
                     <img src={null} alt="Person" />
                   )}
-                  {meal?.chefId?.userName}
                 </div>
+                {meal?.chefId?.userName}
               </Link>
               <h5 className="delivery-type">{meal?.chefId?.deliveryType}</h5>
             </div>
@@ -88,6 +84,14 @@ const mealDetailPage = () => {
                 {meal?.description}
               </p>
             </div>
+            <div className="meal-page-price">
+              <p>€{meal?.price}</p>
+              <ShoppingCart
+                id={mealId}
+                chefId={meal?.chefId?._id}
+                quantityLeft={meal?.quantity}
+              />
+            </div>
           </aside>
           <aside className="right-side-container">
             <div className="meal-page-image">
@@ -98,14 +102,6 @@ const mealDetailPage = () => {
                 <strong>Ingredients: </strong>
                 {meal?.ingredients}
               </p>
-            </div>
-            <div className="meal-page-price">
-              <p>€{meal?.price}</p>
-              <ShoppingCart
-                id={mealId}
-                chefId={meal?.chefId?._id}
-                quantityLeft={meal?.quantity}
-              />
             </div>
           </aside>
         </div>

@@ -84,12 +84,22 @@
   color: var(--secondary-color);
 }
 
-.meal-detail-page-chip {
-  display: flex;
-  align-items: center;
+.meal-detail-page-chip-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--primary-color);
+  margin-right: 10px;
+  overflow: hidden;
+}
+
+.meal-detail-page-chip-image img {
+  height: 100%;
 }
 
 .left-side-container .chef-name {
+  display: flex;
+  align-items: center;
   color: var(--primary-color);
   text-decoration: none;
   font-size: 16px;
@@ -120,7 +130,7 @@
 .meal-page-Ingredients {
   height: 15%;
   padding: 5px;
-  margin-top: 5px;
+  margin-top: 20px;
 }
 
 .meal-page-Ingredients p {
@@ -155,15 +165,21 @@
   color: var(--primary-color);
 }
 
-.meal-detail-page-chip .meal-details-page-chef-image {
-  float: left;
-  margin-right: 10px;
-  width: 40px;
-}
 @media only screen and (max-width: 600px) {
   .meal-Detail-page {
-    margin: 15%;
-    flex-wrap: wrap;
+    width: 90%;
+    margin: 40px 0;
+  }
+  .meal-detail-page-children {
+    flex-direction: column;
+    align-items: center;
+  }
+  .left-side-container {
+    order: 1;
+    width: 100%;
+  }
+  .right-side-container {
+    width: 100%;
   }
   .divide {
     width: 100%;

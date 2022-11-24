@@ -78,3 +78,15 @@
   margin: 0;
   font-size: small;
 }
+
+@media screen and (max-width: 1024px) {
+  .order-to-prepare-card-container {
+    width: 320px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .order-to-prepare-card-container {
+    width: 300px;
+  }
+}

@@ -8,7 +8,6 @@ import "./style.css";
 const EditFromPopUp = ({ setOpenModal, setChefInfo }) => {
   const { setPopup } = useContext(MsgPopupContext);
   const { user, setUser } = useContext(AuthContext);
-
   const [data, setData] = useState(null);
   const [fullName, setFullName] = useState(user?.fullName);
   const [values, setValues] = useState({});
@@ -117,23 +116,30 @@ const EditFromPopUp = ({ setOpenModal, setChefInfo }) => {
             type="text"
             placeholder={user.address}
             label="Address"
-            value={values["address"]}
+            value={values["address"] || ""}
             onChange={onChange}
           />
           <InputForm
             className="update-input-container"
             name="phone"
             type="text"
+            pattern="^[0-9]{9,10}$"
             placeholder={user.phone}
             label="Phone number"
-            value={values["phone"]}
+            value={values["phone"] || ""}
             onChange={onChange}
           />
           <div className="submit-update-container">
-            <button id="popup-back-btn" onClick={() => setOpenModal(false)}>
+            <button
+              id="popup-back-btn"
+              type="button"
+              onClick={() => setOpenModal(false)}
+            >
               Back
             </button>
-            <button id="popup-close-btn">Submit</button>
+            <button id="popup-close-btn" type="submit">
+              Submit
+            </button>
           </div>
         </form>
       </div>

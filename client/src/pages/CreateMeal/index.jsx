@@ -15,6 +15,7 @@ export default function CreateMeal() {
     "https://res.cloudinary.com/dmykyluyo/image/upload/v1668194264/meal_photos/nezxr8lcizgsnr48y5mi.png"
   );
   const [data, setData] = useState({});
+  const [inputLength, setInputLength] = useState(0);
   const [categories, setCategories] = useState([]);
   const [cuisines, setCuisines] = useState(null);
   const navigate = useNavigate();
@@ -65,6 +66,11 @@ export default function CreateMeal() {
       });
     }
   };
+
+  const handleDescriptionLength = (e) => {
+    setInputLength(e.target.value.length);
+  };
+
   const handleChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
@@ -82,7 +88,7 @@ export default function CreateMeal() {
             <UploadImgWidget setImgUrl={setImgUrl} folderName="meal_photos" />
           </div>
           <label htmlFor="description" className="description-label">
-            Meal Description*
+            Meal Description
           </label>
           <textarea
             className="meal-description"
@@ -90,10 +96,13 @@ export default function CreateMeal() {
             placeholder="Write something about your meal..."
             name="description"
             value={data["description"] || ""}
-            onChange={handleChange}
+            onChange={(e) => {
+              handleChange(e);
+              handleDescriptionLength(e);
+            }}
             required
           />
-
+          <p className="create-meal-input-length">{inputLength} / 150</p>
           {window.innerWidth > 600 && (
             <>
               <div className="buttons-container">

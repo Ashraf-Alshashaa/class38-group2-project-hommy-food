@@ -5,10 +5,12 @@ import "./style.css";
 const MsgPopup = () => {
   const { popup, setPopup } = useContext(MsgPopupContext);
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setPopup({ ...popup, open: false });
-    }, 3000);
-    return () => clearTimeout(timer);
+    if (popup.open) {
+      const timer = setTimeout(() => {
+        setPopup({ ...popup, open: false });
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
   }, [popup]);
 
   return (

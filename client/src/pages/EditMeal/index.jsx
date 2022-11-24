@@ -14,6 +14,7 @@ export default function EditMeal() {
   const { setPopup } = useContext(MsgPopupContext);
   const { id } = useParams();
   const [isAvailable, setIsAvailable] = useState(false);
+  const [inputLength, setInputLength] = useState(0);
   const [meal, setMeal] = useState([]);
   const [imgUrl, setImgUrl] = useState(null);
   const [categories, setCategories] = useState([]);
@@ -86,6 +87,9 @@ export default function EditMeal() {
       });
     }
   };
+  const handleDescriptionLength = (e) => {
+    setInputLength(e.target.value.length);
+  };
   const handleChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
@@ -103,17 +107,22 @@ export default function EditMeal() {
             <UploadImgWidget setImgUrl={setImgUrl} folderName="meal_photos" />
           </div>
           <label htmlFor="description" className="description-label">
-            Meal Description*
+            Meal Description
           </label>
           <textarea
             className="meal-description"
             rows={5}
+            maxLength="150"
             placeholder="Write something about your meal..."
             name="description"
             value={meal?.description || ""}
-            onChange={handleChange}
+            onChange={(e) => {
+              handleChange(e);
+              handleDescriptionLength(e);
+            }}
             required
           />
+          <p className="edit-meal-input-length">{inputLength} / 150</p>
 
           {window.innerWidth > 600 && (
             <>

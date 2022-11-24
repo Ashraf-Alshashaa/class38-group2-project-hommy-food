@@ -5,17 +5,17 @@ import { useParams, Link } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import PulseLoader from "react-spinners/PulseLoader";
 import somethingWentWrong from "../resultPage/something-went-wrong.png";
-// import DeliveryIcon from "../../components/mealCard/greenScooterDelivery.png";
-// import ChefAvatar from "../../components/mealCard/yellowchef.png";
 import "./style.css";
-const mealDetailPage = () => {
-  let mealId = useParams();
+import ShoppingCart from "../../components/ShoppingCart";
 
-  const [data, setData] = useState([]);
+const mealDetailPage = () => {
+  const { mealId } = useParams();
+  const [meal, setMeal] = useState([]);
   const { performFetch, isLoading, error } = useFetch(
-    `/meals/meal_detail/${mealId.id}`,
-    setData
+    `/meals/meal_detail/${mealId}`,
+    (data) => setMeal(data?.result)
   );
+
   useEffect(() => {
     performFetch();
   }, []);
@@ -48,77 +48,64 @@ const mealDetailPage = () => {
 
   return (
     <div className="meal-detail-page-container">
-      <div className="meal-Detail-page">
-        <section className="divide">
-          <div className="meal-page-image">
-            <img src={data?.result?.image} alt={data?.result?.title} />
-          </div>
+      <article className="meal-Detail-page">
+        <section className="meal-page-title">
+          <h5>{meal?.title}</h5>
         </section>
-        <section className="divide2">
-          <div className="meal-page-title">
-            <h5>{data?.result?.title}</h5>
-            <Link
-              to={`/profile/${data?.result?.chefId?._id}`}
-              style={{
-                textDecoration: "none",
-                color: "black",
-                fontSize: "1vw",
-              }}
-            >
-              {" "}
-              <div className="meal-detail-page-chip">
-                {data?.result?.chefId?.photo ? (
-                  <img
-                    src={data?.result?.chefId?.photo}
-                    alt="Person"
-                    width="96"
-                    height="96"
-                  />
-                ) : (
-                  <img src={null} alt="Person" width="96" height="96" />
-                )}
-                {data?.result?.chefId?.userName}
-              </div>
-            </Link>
-          </div>
-          <div className="meal-page-info">
-            <div>
-              Quantity<p> {data?.result?.quantity}</p>
+        <div className="meal-detail-page-children">
+          <aside className="left-side-container">
+            <div className="chef-details-container">
+              <Link to={`/profile/${meal?.chefId?._id}`} className="chef-name">
+                <div className="meal-detail-page-chip-image center-children">
+                  {meal?.chefId?.photo ? (
+                    <img src={meal?.chefId?.photo} alt="Person" />
+                  ) : (
+                    <img src={null} alt="Person" />
+                  )}
+                </div>
+                {meal?.chefId?.userName}
+              </Link>
+              <h5 className="delivery-type">{meal?.chefId?.deliveryType}</h5>
             </div>
-            <div>
-              Cuisine <p> {data?.result?.cuisine.title}</p>
+            <div className="meal-page-info">
+              <h5 className="details">
+                Quantity<p> {meal?.quantity}</p>
+              </h5>
+              <h5 className="details">
+                Cuisine <p> {meal?.cuisine?.title}</p>
+              </h5>
+              <h5 className="details">
+                Category <p> {meal?.category?.title}</p>
+              </h5>
             </div>
-            <div>
-              Category <p> {data?.result?.category.title}</p>{" "}
+            <div className="meal-page-description">
+              <p>
+                <strong>Description: </strong>
+                {meal?.description}
+              </p>
             </div>
-          </div>
-          <div className="meal-page-Ingredients">
-            <p>
-              <strong>Ingredients: </strong>
-              {data?.result?.ingredients}{" "}
-            </p>
-          </div>
-          <div className="meal-page-description">
-            <p>
-              <strong>Description: </strong>
-              {data?.result?.description}
-            </p>
-          </div>
-          <div className="meal-page-price">
-            <div className="meal-detail-page-chip">
-              {/* <img src={DeliveryIcon} alt="Person" width="96" height="96" /> */}
-              pickup{data?.result?.delivery}
+            <div className="meal-page-price">
+              <p>€{meal?.price}</p>
+              <ShoppingCart
+                id={mealId}
+                chefId={meal?.chefId?._id}
+                quantityLeft={meal?.quantity}
+              />
             </div>
-            <p>
-              <strong>€: </strong>
-              {data?.result?.price}
-            </p>
-            <Link to="/shoppingCart">
-              <i className="fa-solid fa-cart-shopping"></i>
-            </Link>
-          </div>
-        </section>
-      </div>
+          </aside>
+          <aside className="right-side-container">
+            <div className="meal-page-image">
+              <img src={meal?.image} alt={meal?.title} />
+            </div>
+            <div className="meal-page-Ingredients">
+              <p>
+                <strong>Ingredients: </strong>
+                {meal?.ingredients}
+              </p>
+            </div>
+          </aside>
+        </div>
+      </article>
     </div>
   );
 };

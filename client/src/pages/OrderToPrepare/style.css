@@ -65,6 +65,21 @@
   justify-content: space-evenly;
   width: 100%;
 }
+@media screen and (max-width: 1024px) {
+  .order-to-prepare-main {
+    width: auto;
+  }
+  .order-to-prepare-section,
+  .order-ready-section {
+    min-width: 47%;
+  }
+  .order-to-prepare-page-container {
+    width: 90%;
+  }
+  .order-complete-section {
+    width: 98%;
+  }
+}
 
 @media screen and (max-width: 820px) {
   .order-to-prepare-page-container {

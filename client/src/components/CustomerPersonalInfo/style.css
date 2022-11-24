@@ -127,7 +127,7 @@
     right: 0;
     padding: 0 3%;
     left: 5%;
-    background-color: #f0f0f0;
+    background-color: #e9e3e3;
   }
   .profile-last-orders-title {
     display: flex;
@@ -136,6 +136,6 @@
     right: 0;
     padding: 0 3%;
     left: 0;
-    background-color: #f0f0f0;
+    background-color: #e9e3e3;
   }
 }

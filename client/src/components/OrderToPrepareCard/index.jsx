@@ -16,7 +16,7 @@ const OrderToPrepareCard = ({ order, setUser }) => {
       <section className="order-to-prepare-info-container">
         <div className="order-to-prepare-info-header">
           <p>{deliveryType}</p>
-          <p>date: {createdAt}</p>
+          <p>date: {Date(createdAt).toString().slice(0, 21)}</p>
         </div>
         <div className="order-to-prepare-meals-titles">
           <h6>

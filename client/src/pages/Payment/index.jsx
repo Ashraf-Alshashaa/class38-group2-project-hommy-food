@@ -124,11 +124,16 @@ const PaymentPage = () => {
     })();
   };
 
-  const completeOrder = () => {
+  const completeOrder = (online) => {
     updateQuantity();
     setOrderToPrepare();
     setOrderHistory();
     cleanShoppingCart();
+    setPopup({
+      type: "success",
+      text: `${online ? "Success payment" : "order is completed"}`,
+      open: true,
+    });
     navigate("/my-orders", { replace: true });
   };
 
@@ -157,12 +162,7 @@ const PaymentPage = () => {
         if (status === 200) {
           const data = await response.json();
           setUser(data.result);
-          setPopup({
-            type: "success",
-            text: "Success payment",
-            open: true,
-          });
-          completeOrder();
+          completeOrder(true);
         } else {
           setPopup({
             type: "error",
@@ -179,7 +179,9 @@ const PaymentPage = () => {
   return (
     <main className="payment-page center-children">
       <div className="complete-payment-container">
-        <h4>Choose the payment method</h4>
+        <h4>payment</h4>
+        <h5>choose your payment method</h5>
+        <h6>total price € {totalPriceOfCart}</h6>
         <div className="payment-type-container">
           <label className={!radioChecked ? "focus" : "notFocus"}>
             <input
@@ -211,7 +213,7 @@ const PaymentPage = () => {
         {typeOfPayment === "cash" ? (
           <button
             className="link-my-orders-payment-page"
-            onClick={completeOrder}
+            onClick={() => completeOrder(false)}
           >
             complete order
           </button>
@@ -221,6 +223,7 @@ const PaymentPage = () => {
             token={(token) => makePayment(token)}
             name={`The total amount ${totalPriceOfCart} Є`}
             price={totalPriceOfCart}
+            className="stripe-checkout-btn"
           >
             <button className="link-my-orders-payment-page">
               complete order

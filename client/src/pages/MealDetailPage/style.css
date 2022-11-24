@@ -29,13 +29,6 @@
   color: var(--primary-color);
 }
 
-.divider {
-  width: 1px;
-  height: 375px;
-  background-color: darkgray;
-  z-index: 5;
-}
-
 .meal-detail-page-children {
   display: flex;
   width: 100%;

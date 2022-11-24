@@ -89,7 +89,6 @@ const mealDetailPage = () => {
               </p>
             </div>
           </aside>
-          <div className="divider"></div>
           <aside className="right-side-container">
             <div className="meal-page-image">
               <img src={meal?.image} alt={meal?.title} />

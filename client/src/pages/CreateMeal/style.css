@@ -6,6 +6,7 @@
   max-width: 1200px;
   margin: 10px auto;
 }
+
 .create-meal-container {
   display: flex;
   align-items: flex-start;
@@ -16,19 +17,32 @@
 .create-meal-page-left-side {
   display: flex;
   flex-direction: column;
+  position: relative;
   align-items: center;
   justify-content: space-around;
   width: 40%;
 }
+
+.create-meal-input-length {
+  color: var(--secondary-color);
+  font-size: 14px;
+  position: absolute;
+  bottom: 10%;
+  font-weight: 600;
+  right: 5px;
+}
+
 .create-meal-page-right-side {
   padding: 30px;
   width: 40%;
   background-color: var(--primary-color);
   border-radius: 10px;
 }
+
 .img-upload-page {
   width: 100%;
 }
+
 .meal-img-container {
   display: flex;
   justify-content: center;
@@ -37,9 +51,11 @@
   width: 70%;
   margin-left: 15%;
 }
+
 .meal-img-container img {
   width: 100%;
 }
+
 .meal-description {
   border: 2px solid var(--secondary-color);
   resize: none;
@@ -50,6 +66,7 @@
   border-radius: 5px;
   margin-bottom: 20px;
 }
+
 .buttons-container {
   display: flex;
   align-items: center;
@@ -68,8 +85,10 @@
   font-size: 1.1rem;
   color: var(--secondary-color);
 }
+
 .description-label {
   color: var(--primary-color) !important;
+  font-weight: 600;
 }
 
 .create-meal-page-right-side label {
@@ -78,6 +97,7 @@
   font-size: 16px;
   font-weight: 600;
 }
+
 .cancel-btn,
 .submit-btn {
   width: 80%;
@@ -94,6 +114,7 @@
   font-size: 16px;
   color: #f2f2f2;
 }
+
 .link-cancel-btn {
   text-decoration: none;
   display: flex;
@@ -112,6 +133,7 @@
 .submit-btn:hover {
   transform: scale(0.95);
 }
+
 .submit-btn:disabled {
   opacity: 0.5;
 }

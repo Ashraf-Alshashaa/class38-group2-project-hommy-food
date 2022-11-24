@@ -96,7 +96,7 @@ const EditFromPopUp = ({ setOpenModal, setChefInfo }) => {
             type="text"
             placeholder={user?.fullName?.first ? user?.fullName?.first : ""}
             label="First name"
-            value={values["first"] || ""}
+            value={values["first"]}
             onChange={(e) =>
               setFullName({ ...fullName, first: e.target.value })
             }
@@ -107,7 +107,7 @@ const EditFromPopUp = ({ setOpenModal, setChefInfo }) => {
             type="text"
             placeholder={user?.fullName?.last ? user?.fullName?.last : ""}
             label="Last Name"
-            value={values["last"] || ""}
+            value={values["last"]}
             onChange={(e) => setFullName({ ...fullName, last: e.target.value })}
           />
           <InputForm
@@ -123,6 +123,7 @@ const EditFromPopUp = ({ setOpenModal, setChefInfo }) => {
             className="update-input-container"
             name="phone"
             type="text"
+            pattern="^[0-9]{9,10}$"
             placeholder={user.phone}
             label="Phone number"
             value={values["phone"] || ""}

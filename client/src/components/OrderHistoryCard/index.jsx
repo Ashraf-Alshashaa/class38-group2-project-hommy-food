@@ -12,7 +12,9 @@ const OrdersHistoryCard = ({ order }) => {
     <div className="order-history-card-container">
       <h5 className="order-date">
         Order date:
-        <span className="order-date-value"> &nbsp;&nbsp;{createdAt}</span>
+        <span className="order-date-value">
+          &nbsp;&nbsp;{new Date(createdAt).toString().slice(0, 21)}
+        </span>
       </h5>
       {items?.map((item, index) => {
         return (

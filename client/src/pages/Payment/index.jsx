@@ -180,6 +180,8 @@ const PaymentPage = () => {
     <main className="payment-page center-children">
       <div className="complete-payment-container">
         <h4>payment</h4>
+        <h5>choose your payment method</h5>
+        <h6>total price € {totalPriceOfCart}</h6>
         <div className="payment-type-container">
           <label className={!radioChecked ? "focus" : "notFocus"}>
             <input

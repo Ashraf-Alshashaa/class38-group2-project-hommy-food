@@ -7,10 +7,11 @@ import RateOfChef from "../RateOfChef";
 import EditFromPopUp from "../EditFromPopUp";
 import UploadImgWidget from "../UploadImgWidget";
 import { useEffect } from "react";
+import { MsgPopupContext } from "../../contexts/msgPopup";
 
 const PersonalInfo = ({ id, chefData, setChefData }) => {
   const [openModal, setOpenModal] = useState(false);
-  const [msg, setMsg] = useState("");
+  const { setPopup } = useContext(MsgPopupContext);
   const { user, setUser } = useContext(AuthContext);
   const [imgUrl, setImgUrl] = useState("");
 
@@ -33,12 +34,15 @@ const PersonalInfo = ({ id, chefData, setChefData }) => {
           const res = await response.json();
           setUser(res?.result);
         } catch (error) {
-          setMsg("sorry something went wrong");
+          setPopup({
+            type: "error",
+            text: "sorry something went wrong",
+            open: true,
+          });
         }
       })();
     }
   }, [imgUrl]);
-
   return (
     <>
       <div className="personal-info-container">
@@ -63,7 +67,6 @@ const PersonalInfo = ({ id, chefData, setChefData }) => {
                 setImgUrl={setImgUrl}
                 className="upload-profile-image"
               />
-              <p className="chef-profile-error-msg">{msg}</p>
             </>
           )}
           <div className="rated-star-comp">
@@ -97,7 +100,6 @@ const PersonalInfo = ({ id, chefData, setChefData }) => {
               >
                 <i className="fa-solid fa-pen" /> <h3>Edit profile</h3>
               </button>
-              <p className="chef-profile-error-msg">{msg}</p>
             </>
           )}
         </div>

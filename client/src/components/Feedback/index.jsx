@@ -10,10 +10,10 @@ const Feedback = () => {
     e.preventDefault();
     try {
       emailjs.sendForm(
-        process.env.SERVICE_ID,
-        process.env.TEMPLATE_ID,
+        "service_rzyvb24",
+        "template_pq8aobc",
         form.current,
-        process.env.PUBLIC_KEY
+        "rcjWcgpiNJxrtGtdL"
       );
       setPopup({
         type: "success",

@@ -5,7 +5,7 @@
   align-items: center;
   border: 2px solid gray;
   border-radius: 30px;
-  width: 40%;
+  width: 500px;
   height: 400px;
   padding: 20px;
   position: relative;
@@ -76,4 +76,19 @@
 .cash-icon {
   height: 25px;
   margin-right: 0px;
+}
+
+@media screen and (max-width: 1024px) {
+  .complete-payment-container {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .complete-payment-container {
+    width: 80%;
+  }
+  .complete-payment-container h5 {
+    font-size: medium;
+  }
 }

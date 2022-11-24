@@ -223,6 +223,7 @@ const PaymentPage = () => {
             token={(token) => makePayment(token)}
             name={`The total amount ${totalPriceOfCart} Є`}
             price={totalPriceOfCart}
+            className="stripe-checkout-btn"
           >
             <button className="link-my-orders-payment-page">
               complete order

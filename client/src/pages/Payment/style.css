@@ -35,6 +35,10 @@
   transition: calc(0.3s);
 }
 
+.stripe-checkout-btn {
+  border: none;
+}
+
 .payment-type-container label input {
   margin-right: 10px;
   display: none;
@@ -57,6 +61,7 @@
   border-radius: 5px;
   color: white;
   transition: calc(0.7s);
+  border: none;
 }
 .payment-link:hover,
 .link-my-orders-payment-page:hover {

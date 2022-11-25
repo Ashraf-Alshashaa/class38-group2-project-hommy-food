@@ -10,6 +10,7 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [msg, setMsg] = useState("");
   const [onClick, setOnClick] = useState(false);
+  const [typePassword, setTypePassword] = useState("password");
 
   const navigate = useNavigate();
   const { setUser } = useContext(AuthContext);
@@ -50,13 +51,27 @@ const LoginForm = () => {
             onChange={(e) => setEmail(e.target.value)}
             className="logIn-input"
           />
-          <input
-            type="password"
-            value={password}
-            placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
-            className="logIn-input"
-          />
+          <div className="password-input">
+            <input
+              type={typePassword}
+              value={password}
+              placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
+              className="logIn-input"
+            />
+            <i
+              className={
+                typePassword === "text"
+                  ? "fa-regular fa-eye-slash"
+                  : "fa-regular fa-eye"
+              }
+              onClick={() =>
+                typePassword === "password"
+                  ? setTypePassword("text")
+                  : setTypePassword("password")
+              }
+            ></i>
+          </div>
         </div>
       </form>
       <div className="msg-container">

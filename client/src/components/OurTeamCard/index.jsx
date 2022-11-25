@@ -22,7 +22,7 @@ const OurTeamCard = ({
         </li>
         <li>
           <a href={twitter}>
-            <i className="fa-brands fa-twitter"></i>
+            <i className="fa-brands fa-facebook"></i>
           </a>
         </li>
         <li>

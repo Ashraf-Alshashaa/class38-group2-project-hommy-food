@@ -28,7 +28,7 @@ const Header = () => {
       name: "Shopping Cart",
       icon: <i className="fa-solid fa-cart-shopping fa-xl"></i>,
     },
-    { href: "/aboutUs", name: "About us" },
+    { href: "/about-us", name: "About us" },
   ];
 
   useEffect(() => {

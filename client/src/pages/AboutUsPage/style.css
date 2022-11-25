@@ -37,6 +37,7 @@
   color: var(--primary-color);
   font-weight: 600;
   font-size: 1vw;
+  padding: 5px;
 }
 .about-us-order-now-btn > button:hover {
   background-color: var(--primary-color);

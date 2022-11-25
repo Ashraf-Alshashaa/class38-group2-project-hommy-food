@@ -1,0 +1,83 @@
+.our-team-card {
+  background-color: var(--light-gray-color);
+  height: 20rem;
+  border-radius: 5px;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.7);
+  color: black;
+  width: 17rem;
+}
+
+.our-team-card-name {
+  margin-top: 8px;
+  font-size: 1.5em;
+}
+
+.our-team-card-image {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  border: 3px solid #272133;
+  margin-top: 10px;
+  box-shadow: 0 10px 50px rgb(248, 141, 20);
+}
+
+.social-icons {
+  padding: 0;
+  list-style: none;
+  margin: 3%;
+}
+
+.social-icons li {
+  display: inline-block;
+  margin: 0.1em;
+  position: relative;
+  font-size: 1em;
+}
+
+.social-icons i {
+  color: black;
+  position: absolute;
+  top: 0.95em;
+  left: 0.96em;
+  transition: all 265ms ease-out;
+}
+
+.social-icons a {
+  display: inline-block;
+}
+
+.social-icons a:before {
+  transform: scale(1);
+  -ms-transform: scale(1);
+  -webkit-transform: scale(1);
+  content: " ";
+  width: 45px;
+  height: 45px;
+  border-radius: 100%;
+  display: block;
+  background: linear-gradient(45deg, #f9ab10, #f3bb2e);
+  transition: all 265ms ease-out;
+}
+
+.social-icons a:hover:before {
+  transform: scale(0);
+  transition: all 265ms ease-in;
+}
+
+.social-icons a:hover i {
+  transform: scale(2.2);
+  -ms-transform: scale(2.2);
+  -webkit-transform: scale(2.2);
+  color: #f9ab10;
+  background: -webkit-linear-gradient(45deg, #f9ab10, #e47d08);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 265ms ease-in;
+}
+
+.our-team-motivation {
+  font-size: 0.7rem;
+  text-align: center;
+  padding: 0 0.5rem;
+}

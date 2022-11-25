@@ -34,7 +34,7 @@ const CuisineListButtons = () => {
         <div className="cuisine">
           {cuisineButton?.map((cuisine) => (
             <button
-              className="btn btn-primary "
+              className="btn btn-primary cuisine-buttons"
               key={cuisine._id}
               onClick={() => {
                 navigate(`/results?cuisine=${cuisine?._id}`);
@@ -50,7 +50,7 @@ const CuisineListButtons = () => {
               onClick={() => {
                 setOpen(!open);
               }}
-              className="btn btn-primary d-flex justify-content-evenly align-items-center"
+              className="btn btn-primary d-flex justify-content-evenly align-items-center other-cuisine-btn m-0"
             >
               Other Cuisines <i className="fa fa-caret-down dropdown-icon" />
             </button>

@@ -3,12 +3,27 @@
   width: 80%;
 }
 
-.row {
-  row-gap: 10px;
+.card {
+  cursor: default;
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
-.card {
+.category-card {
   cursor: pointer;
+  transition: calc(0.5s);
+}
+
+.category-card:hover {
+  transform: scale(1.04);
+  background-color: whitesmoke;
+}
+
+.card-title {
+  font-size: large;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
 }
 
 .categories-Container {

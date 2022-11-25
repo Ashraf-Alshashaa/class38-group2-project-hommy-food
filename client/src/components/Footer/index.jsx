@@ -11,13 +11,13 @@ const Footer = () => {
         </Link>
       </button>
       <div className="footer-nav">
-        <Link className="footer-shopping-cart-icon" to="/">
+        <Link className="footer-shopping-cart-icon" to="/shoppingCart">
           <i className="fa-solid fa-cart-shopping"></i>
         </Link>
         <Link className="footer-home-icon" to="/">
           <i className="fa-solid fa-house"></i>
         </Link>
-        <Link className="footer-share-icon" to="/favorites">
+        <Link className="footer-share-icon" to="/checkout">
           <i className="fa-solid fa-share"></i>
         </Link>
       </div>

@@ -11,25 +11,15 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-evenly;
-  width: 1000px;
+  max-width: 1000px;
 }
 
 .create-meal-page-left-side {
   display: flex;
   flex-direction: column;
-  position: relative;
   align-items: center;
   justify-content: space-around;
   width: 40%;
-}
-
-.create-meal-input-length {
-  color: var(--secondary-color);
-  font-size: 14px;
-  position: absolute;
-  bottom: 10%;
-  font-weight: 600;
-  right: 5px;
 }
 
 .create-meal-page-right-side {
@@ -55,6 +45,10 @@
 .meal-img-container img {
   width: 100%;
 }
+.description-and-character {
+  width: 100%;
+  position: relative;
+}
 
 .meal-description {
   border: 2px solid var(--secondary-color);
@@ -65,6 +59,15 @@
   width: 100%;
   border-radius: 5px;
   margin-bottom: 20px;
+}
+
+.create-meal-input-length {
+  color: var(--secondary-color);
+  font-size: 14px;
+  position: absolute;
+  bottom: -15px;
+  font-weight: 600;
+  right: 5px;
 }
 
 .buttons-container {
@@ -191,6 +194,9 @@
     align-items: center;
     justify-content: center;
     min-width: 100%;
+  }
+  .create-meal-container {
+    max-width: 800px;
   }
 }
 

@@ -94,8 +94,7 @@
   }
   .chef-img {
     position: absolute;
-    height: 80%;
+    height: 100%;
     right: 0;
-    top: 20%;
   }
 }

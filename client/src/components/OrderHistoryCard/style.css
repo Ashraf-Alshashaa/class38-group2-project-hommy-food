@@ -19,7 +19,7 @@
   color: black;
 }
 
-.order-price {
+.order-history-price {
   float: inline-end;
   margin-right: 3rem;
   color: #13753b;
@@ -67,7 +67,7 @@
     margin-right: 3px;
     color: black;
   }
-  .order-price {
+  .order-history-price {
     font-size: 25px;
     margin-right: 2rem;
   }
@@ -87,7 +87,7 @@
     margin-right: 3px;
     color: black;
   }
-  .order-price {
+  .order-history-price {
     font-size: 20px;
     margin-right: 1rem;
   }
@@ -107,7 +107,7 @@
     margin-right: 3px;
     color: black;
   }
-  .order-price {
+  .order-history-price {
     font-size: 15px;
     margin-right: 1rem;
   }

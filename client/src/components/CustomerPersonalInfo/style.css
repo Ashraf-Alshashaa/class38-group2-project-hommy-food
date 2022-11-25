@@ -65,6 +65,11 @@
   right: 3%;
   padding: 0 2%;
   background-color: #e9e3e3;
+  color: var(--primary-color);
+}
+
+.customer-order-history-container {
+  width: 60%;
 }
 
 .customer-info-container h3 {

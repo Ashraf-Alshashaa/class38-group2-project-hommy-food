@@ -90,23 +90,25 @@ export default function CreateMeal() {
           <label htmlFor="description" className="description-label">
             Meal Description
           </label>
-          <textarea
-            className="meal-description"
-            rows={5}
-            placeholder="Write something about your meal..."
-            name="description"
-            value={data["description"] || ""}
-            onChange={(e) => {
-              handleChange(e);
-              handleDescriptionLength(e);
-            }}
-            required
-          />
-          <p className="create-meal-input-length">{inputLength} / 150</p>
+          <div className="description-and-character">
+            <textarea
+              className="meal-description"
+              rows={5}
+              placeholder="Write something about your meal..."
+              name="description"
+              value={data["description"] || ""}
+              onChange={(e) => {
+                handleChange(e);
+                handleDescriptionLength(e);
+              }}
+              required
+            />
+            <p className="create-meal-input-length">{inputLength} / 150</p>
+          </div>
           {window.innerWidth > 600 && (
             <>
               <div className="buttons-container">
-                <Link className="link-cancel-btn" to="/">
+                <Link className="link-cancel-btn" to={-1}>
                   <button className="cancel-btn">Cancel</button>
                 </Link>
                 <button
@@ -212,7 +214,7 @@ export default function CreateMeal() {
       {window.innerWidth < 600 && (
         <>
           <div className="buttons-container">
-            <Link className="link-cancel-btn" to="/">
+            <Link className="link-cancel-btn" to={-1}>
               <button className="cancel-btn">Cancel</button>
             </Link>
             <button

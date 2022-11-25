@@ -9,6 +9,11 @@ import { Link } from "react-router-dom";
 const ShoppingCartPage = () => {
   const { user, setUser } = useContext(AuthContext);
 
+  const totalPricesOfMeals = user?.cart?.map(
+    (item) => item.quantity * item.mealId.price
+  );
+  const getSum = (total, num) => total + num;
+  const totalPriceOfCart = totalPricesOfMeals?.reduce(getSum, 0);
   // _________________Delete All______________________
   const { performFetch: performFetchDeleteAll } = useFetch(
     "/customer/shopping-cart/delete",
@@ -51,7 +56,15 @@ const ShoppingCartPage = () => {
             </div>
 
             <span className="shopping-cart-count">
-              {user?.cart?.length} items in the cart
+              You have{" "}
+              <span className="shopping-cart-count-color">
+                {user?.cart?.length}
+              </span>{" "}
+              {user?.cart?.length == 1 ? (
+                <>item in the cart</>
+              ) : (
+                <>items in the cart</>
+              )}
             </span>
           </div>
           <div className="header_fixed">
@@ -81,9 +94,15 @@ const ShoppingCartPage = () => {
             </table>
           </div>
           <div className="checkout-div">
+            <Link className="shopping-cart-continue-shopping-btn" to="/">
+              Continue shopping
+            </Link>
             <Link className="shopping-cart-checkout-btn" to="/checkout">
               CheckOut
             </Link>
+            <h3 className="shopping-cart-page-total-qty-price">
+              Total: €{totalPriceOfCart}
+            </h3>
           </div>
         </div>
       </>

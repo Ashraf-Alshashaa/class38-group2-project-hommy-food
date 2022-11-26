@@ -19,7 +19,7 @@ const AboutUsPage = () => {
             HommyFood app is the perfect companion for selling
             homemade food online. This app allow you to set up an account, make
             schedules, secure payments, add photos, set prices, and receive
-            ratings`;
+            ratings `;
   return (
     <div className="about-us-page">
       <div className="about-us-page-container">

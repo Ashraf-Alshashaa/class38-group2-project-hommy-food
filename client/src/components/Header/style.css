@@ -139,6 +139,10 @@ i {
   color: #f2f2f2;
 }
 
+.shopping-cart-items-num:hover {
+  color: #f2f2f2;
+}
+
 .nav-bar-heart {
   font-size: 25px;
   color: var(--secondary-color);

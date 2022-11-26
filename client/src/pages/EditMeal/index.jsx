@@ -8,9 +8,10 @@ import useFetch from "../../hooks/useFetch";
 import somethingWentWrong from "../../../public/images/something-went-wrong.png";
 import "./style.css";
 import { MsgPopupContext } from "../../contexts/msgPopup";
+import PulseLoader from "react-spinners/PulseLoader";
 
 export default function EditMeal() {
-  const { user } = useContext(AuthContext);
+  const { user, isLoading } = useContext(AuthContext);
   const { setPopup } = useContext(MsgPopupContext);
   const { id } = useParams();
   const [isAvailable, setIsAvailable] = useState(false);
@@ -29,7 +30,7 @@ export default function EditMeal() {
     "/categories",
     setCategories
   );
-  const { performFetch: performFetchMeal } = useFetch(
+  const { performFetch: performFetchMeal, isLoading: isLoadingMeal } = useFetch(
     `/meals/meal_detail/${id}`,
     (data) => setMeal(data?.result)
   );
@@ -95,6 +96,22 @@ export default function EditMeal() {
     const name = e.target.name;
     setMeal({ ...meal, [name]: value });
   };
+
+  if (isLoading || isLoadingMeal) {
+    return (
+      <div className="result-page-container">
+        <div className="loading-gif">
+          <PulseLoader
+            color="#f9a01b"
+            size={60}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        </div>
+      </div>
+    );
+  }
+
   return meal?.chefId?._id === user?._id ? (
     <div className="create-meal-page">
       <h1>Edit Your Meal</h1>
@@ -109,25 +126,26 @@ export default function EditMeal() {
           <label htmlFor="description" className="description-label">
             Meal Description
           </label>
-          <textarea
-            className="meal-description"
-            rows={5}
-            maxLength="150"
-            placeholder="Write something about your meal..."
-            name="description"
-            value={meal?.description || ""}
-            onChange={(e) => {
-              handleChange(e);
-              handleDescriptionLength(e);
-            }}
-            required
-          />
-          <p className="edit-meal-input-length">{inputLength} / 150</p>
-
+          <div className="description-and-character">
+            <textarea
+              className="meal-description"
+              rows={5}
+              maxLength="150"
+              placeholder="Write something about your meal..."
+              name="description"
+              value={meal?.description || ""}
+              onChange={(e) => {
+                handleChange(e);
+                handleDescriptionLength(e);
+              }}
+              required
+            />
+            <p className="edit-meal-input-length">{inputLength} / 150</p>
+          </div>
           {window.innerWidth > 600 && (
             <>
               <div className="buttons-container">
-                <Link className="link-cancel-btn" to="/">
+                <Link className="link-cancel-btn" to={-1}>
                   <button className="cancel-btn">Cancel</button>
                 </Link>
                 <button className="submit-btn" onClick={handleSubmit}>
@@ -226,7 +244,7 @@ export default function EditMeal() {
       {window.innerWidth < 600 && (
         <>
           <div className="buttons-container">
-            <Link className="link-cancel-btn" to="/">
+            <Link className="link-cancel-btn" to={-1}>
               <button className="cancel-btn">Cancel</button>
             </Link>
             <button className="submit-btn" onClick={handleSubmit}>

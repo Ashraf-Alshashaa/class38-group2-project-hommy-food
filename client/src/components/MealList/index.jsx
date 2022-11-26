@@ -17,7 +17,7 @@ const MealList = ({ id }) => {
 
   useEffect(() => {
     performFetch();
-  }, []);
+  }, [id]);
 
   return (
     <div className="chef-profile-create-meal-container">

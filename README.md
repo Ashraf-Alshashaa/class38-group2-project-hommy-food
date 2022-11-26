@@ -81,7 +81,7 @@ client
         └── Header
         └── InputForm
         └── LoginForm
-        └── MealCard
+        └── mealCard
         └── MealList
         └── MsgPopUp
         └── OrderDetailsCards

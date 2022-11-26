@@ -160,8 +160,6 @@ const PaymentPage = () => {
         });
         const { status } = response;
         if (status === 200) {
-          const data = await response.json();
-          setUser(data.result);
           completeOrder(true);
         } else {
           setPopup({

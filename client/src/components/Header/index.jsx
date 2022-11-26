@@ -154,13 +154,14 @@ const Header = () => {
       {desktop && (
         <ul className="cart-fav-container">
           {user ? favoritesAndCart : loginBtn}
-          <span
+          <Link
+            to={"/shoppingCart"}
             className={`shopping-cart-items-num center-children ${
               !user && "cart-quantity-hidden"
             }`}
           >
             {user?.cart?.length}
-          </span>
+          </Link>
         </ul>
       )}
       <MsgPopup />

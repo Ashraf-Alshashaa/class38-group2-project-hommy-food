@@ -51,3 +51,12 @@
 .order-to-prepare-customer-info p {
   margin: 0;
 }
+
+@media screen and (max-width: 600px) {
+  .order-popup-container {
+    width: 100vw;
+    height: 95vh;
+    top: 5vh;
+    right: 0vw;
+  }
+}

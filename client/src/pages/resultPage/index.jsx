@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import MealCard from "../../components/mealCard";
+import MealCard from "../../components/MealCard";
 import useFetch from "../../hooks/useFetch";
 import sadChef from "./sadChef.jpg";
 import somethingWentWrong from "./something-went-wrong.png";

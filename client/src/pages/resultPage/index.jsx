@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import MealCard from "../../components/mealCard";
 import useFetch from "../../hooks/useFetch";
-import sadChef from "./sadChef.jpg";
-import somethingWentWrong from "./something-went-wrong.png";
+import sadChef from "../../../public/images/Sad-chef.png";
+import somethingWentWrong from "../../../public/images/something-went-wrong.png";
 import PulseLoader from "react-spinners/PulseLoader";
 import "./style.css";
 

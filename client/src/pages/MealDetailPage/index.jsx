@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import PulseLoader from "react-spinners/PulseLoader";
-import somethingWentWrong from "../resultPage/something-went-wrong.png";
+import somethingWentWrong from "../../../public/images/something-went-wrong.png";
 import "./style.css";
 import ShoppingCart from "../../components/ShoppingCart";
 

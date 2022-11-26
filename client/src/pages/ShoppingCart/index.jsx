@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../contexts/authentication";
-import emptyShoppingCartImage from "./Outline-gif-cart.gif";
+import emptyShoppingCartImage from "../../../public/images/Outline-gif-cart.gif";
 import "./style.css";
 import ShoppingCartCard from "../../components/ShoppingCartCard";
 import useFetch from "../../hooks/useFetch";

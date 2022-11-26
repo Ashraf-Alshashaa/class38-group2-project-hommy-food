@@ -24,12 +24,12 @@ The guest user can have overview about our app also but with a limited permissio
 
 ## 3. Link and Preview
 
-![App view](./src/image/Laptop-and-mobile.jpg)
+![App view](./client/public/images/Laptop-and-mobile.jpg)
 Project link is available at [Hommy food App](https://hyf-c38-grou-last-work--94cjrp.herokuapp.com/)
 
 ### Color guide
 
-![App color guide](./src/image/Project-color.jpg)
+![App color guide](./client/public/images/Project-color.jpg)
 
 ## 4. Setup
 

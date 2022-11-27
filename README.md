@@ -240,9 +240,3 @@ For more information on how these work together including the automatic deployme
 - `cloudinary` || To help us store and host images for our app. See [docs](https://cloudinary.com/documentation/media_library_widget)
 - `stripe` || To allow our app online payment by using the third party payment process. See [docs](https://stripe.com/en-nl)
 
-## 8. Nice to have
-
-- [ ] Customer comments in the chef page.
-- [ ] Video about the chef.
-- [ ] Chef biography.
-- [ ] Extra filtering in result page.

@@ -94,15 +94,19 @@ const ShoppingCartPage = () => {
             </table>
           </div>
           <div className="checkout-div">
-            <Link className="shopping-cart-continue-shopping-btn" to="/">
-              Continue shopping
-            </Link>
-            <Link className="shopping-cart-checkout-btn" to="/checkout">
-              CheckOut
-            </Link>
-            <h3 className="shopping-cart-page-total-qty-price">
-              Total: €{totalPriceOfCart}
-            </h3>
+            <div className="checkout-button-part-cart">
+              <Link className="shopping-cart-continue-shopping-btn" to="/">
+                Continue shopping
+              </Link>
+              <Link className="shopping-cart-checkout-btn" to="/checkout">
+                CheckOut
+              </Link>
+            </div>
+            <div className="total-price-title-div">
+              <h3 className="shopping-cart-page-total-qty-price">
+                Total: €{totalPriceOfCart}
+              </h3>
+            </div>
           </div>
         </div>
       </>

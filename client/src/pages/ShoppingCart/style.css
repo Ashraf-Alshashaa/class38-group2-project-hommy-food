@@ -208,9 +208,6 @@ td button {
   }
 }
 @media only screen and (max-width: 600px) {
-  .header_fixed {
-    height: 75%;
-  }
   table {
     border: 0;
   }
@@ -257,6 +254,7 @@ td button {
   }
   .checkout-button-part-cart {
     margin-top: 20px;
+    margin-bottom: 20px;
     width: 100%;
   }
   .shopping-cart-continue-shopping-btn {
@@ -280,7 +278,7 @@ td button {
   .shopping-cart-page-container {
     display: flex;
     flex-direction: column;
-    height: 120vh;
+    height: 80vh;
     margin-top: 10%;
     justify-content: space-evenly;
   }

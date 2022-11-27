@@ -2,7 +2,7 @@
 
 ## 1. Description
 
-This app helps the freelance chefs to post them meals and sale them online.
+This app helps the freelance chefs to post their meals and sale them online.
 Our registered clients can order the meals they want or choosing a specific chef to order from according to his rate or cuisine.
 The guest user can have overview about our app also but with a limited permissions.
 
@@ -25,7 +25,7 @@ The guest user can have overview about our app also but with a limited permissio
 ## 3. Link and Preview
 
 ![App view](./client/public/images/Laptop-and-mobile.jpg)
-Project link is available at [Hommy food App](https://hyf-c38-grou-last-work--94cjrp.herokuapp.com/)
+Project link is available at [Hommy food App](https://c38-group2.herokuapp.com/)
 
 ### Color guide
 
@@ -203,7 +203,8 @@ README.md
 - `models` || all of our `mongoose` models will be placed here
 - `routes` || code to match up the API with our controllers
 - `util` || any utility functions that can be used anywhere on the server side
-- `index.js` || the start point of the server
+- `index.js` || the start point of the server.
+- `app.js` || creates express server and attaches the routes.
 
 ## 7. Stack / external libraries
 
@@ -226,8 +227,11 @@ For more information on how these work together including the automatic deployme
 - `jest` || To run our tests and coverage. See [docs](https://jestjs.io/)
 - `jest-fetch-mock` || To mock out the backend for our testing purposes. See [docs](https://github.com/jefflau/jest-fetch-mock#readme)
 - `prop-types` || To type-check our components. See [docs](https://github.com/facebook/prop-types)
-- `emailjs` || To help us creating contact form without using backend code. See [docs](https://www.emailjs.com/docs/tutorial/overview/)
+- `cloudinary` || To help us upload images and save the url of it in database. See [docs](https://cloudinary.com/documentation/media_library_widget)
+- `emailjs` || It help us creating contact form without using backend code. See [docs](https://www.emailjs.com/docs/tutorial/overview/)
 - `bootstrap` || To help us styling our app. See [docs](https://getbootstrap.com/docs/5.2/getting-started/introduction/)
+- `react-stripe-checkout` || To connect our frontend payment data to the backend. See [docs](https://www.npmjs.com/package/react-stripe-checkout)
+- `swiper` || It simpilize our touch slider for mobile version. see [docs](https://www.npmjs.com/package/swiper)
 
 ### 7.3 Server-side libraries
 
@@ -237,6 +241,7 @@ For more information on how these work together including the automatic deployme
 - `mongodb-memory-server` || To mock out our database in our backend tests. See [docs](https://github.com/nodkz/mongodb-memory-server)
 - `cors` || To open up our API. See [docs](https://github.com/expressjs/cors#readme)
 - `mongoose` || To add schemas to our database. See [docs](https://mongoosejs.com/)
-- `cloudinary` || To help us store and host images for our app. See [docs](https://cloudinary.com/documentation/media_library_widget)
 - `stripe` || To allow our app online payment by using the third party payment process. See [docs](https://stripe.com/en-nl)
-
+- `bcrypt` || Helping us hashing the passwords. see [docs](https://www.npmjs.com/package/bcrypt)
+- `dotenv` || To Store configuration in the environment separate. see [dosc](https://www.npmjs.com/package/dotenv)
+- `jsonwebtoken` || To share security information between two parties (client and server). see [docs](https://www.npmjs.com/package/jsonwebtoken)

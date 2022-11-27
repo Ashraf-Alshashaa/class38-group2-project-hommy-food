@@ -23,15 +23,8 @@ const AboutUsPage = () => {
   return (
     <div className="about-us-page">
       <div className="about-us-page-container">
-        <div
-          className="about-us-page-image-section"
-          style={{
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center",
-            backgroundImage: `url(${coverImg})`,
-          }}
-        >
+        <div className="about-us-page-image-section">
+          <img src={coverImg} alt="about-us" />
           <div className="about-us-page-read">
             <h1>About Us</h1>
             <p>{readMore ? text : `${text.substring(0, 453)}`}</p>

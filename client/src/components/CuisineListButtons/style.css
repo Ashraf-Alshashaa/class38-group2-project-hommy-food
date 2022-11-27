@@ -16,6 +16,7 @@
   width: 8vw;
   color: black;
   height: 30px;
+  padding: 0;
 }
 .btn-primary:hover {
   background-color: var(--primary-color) !important;

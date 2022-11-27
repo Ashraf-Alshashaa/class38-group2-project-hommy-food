@@ -75,18 +75,40 @@
 }
 
 @media screen and (max-width: 480px) {
+  .order-details-card-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .order-details-img-container {
+    margin: 0%;
+    width: 80%;
+    height: 60px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
   .order-details-img {
-    width: 40px;
-    height: 20px;
+    width: 100%;
   }
   .order-details-basic-info {
+    display: flex;
+    flex-direction: row !important;
+
     font-size: 5px;
+  }
+
+  .order-details-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
   }
   .order-details-basic-info span {
     font-size: 6px;
   }
   .order-details-price-info {
+    display: flex;
     font-size: 5px;
+    flex-direction: row;
   }
   .order-details-price-info span {
     font-size: 6px;

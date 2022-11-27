@@ -7,7 +7,7 @@ const OrderDetailsCards = ({ item, deliveryType, chefName }) => {
   const { title, price, quantity, image } = item;
   return (
     <div className="order-details-card-container">
-      <div className="order-details-img-container">
+      <div className="order-details-img-container center-children">
         <img
           className="order-details-img"
           src={image}

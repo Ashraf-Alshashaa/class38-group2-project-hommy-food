@@ -9,18 +9,34 @@ import CustomerPersonalInfo from "../../components/CustomerPersonalInfo";
 import { AuthContext } from "../../contexts/authentication";
 import somethingWentWrong from "../../../public/images/something-went-wrong.png";
 import MealList from "../../components/MealList";
+import PulseLoader from "react-spinners/PulseLoader";
 
 const ProfilePage = () => {
   const { id } = useParams();
   const [chefData, setChefData] = useState();
-  const { performFetch } = useFetch(`/user/chef/${id}`, (data) =>
-    setChefData(data?.result)
+  const { performFetch, isLoading: isLoadingChef } = useFetch(
+    `/user/chef/${id}`,
+    (data) => setChefData(data?.result)
   );
-  const { user } = useContext(AuthContext);
+  const { user, isLoading } = useContext(AuthContext);
 
   useEffect(() => {
     performFetch();
   }, [id, user]);
+  if (isLoading || isLoadingChef) {
+    return (
+      <div className="result-page-container">
+        <div className="loading-gif">
+          <PulseLoader
+            color="#f9a01b"
+            size={60}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>

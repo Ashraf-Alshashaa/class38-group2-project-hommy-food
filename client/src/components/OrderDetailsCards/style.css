@@ -108,9 +108,11 @@
   .order-details-price-info {
     display: flex;
     font-size: 5px;
-    flex-direction: row;
+    min-width: 100%;
+    justify-content: space-evenly;
   }
   .order-details-price-info span {
     font-size: 6px;
+    margin-left: auto;
   }
 }

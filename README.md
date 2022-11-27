@@ -177,32 +177,33 @@ README.md
 
 ### 6.1 Client structure
 
-- `public` || public facing client code
-- `__tests__` || any `jest` tests for specific components will be in a `__tests__` folder on the same level
-- `__testUtils__` || any code that is only being used in the tests is put in the `__testUtils__` folder to separate that away from the rest of the code
-- `components` || all of our shared components that are used over multiple pages
-- `hooks` || all of our custom hooks
-- `pages` || the page components of our app, any routing will go between these components
-- `pages/components` || components used specifically on those pages
-- `util` || any utility functions that can be used anywhere on the client side
-- `index.jsx` || the start point of the client
+- `public` || public facing client code.
+- `__tests__` || any `jest` tests for specific components will be in a `__tests__` folder on the same level.
+- `__testUtils__` || any code that is only being used in the tests is put in the .`__testUtils__` folder to separate that away from the rest of the code.
+- `components` || all of our shared components that are used over multiple pages.
+- `hooks` || all of our custom hooks.
+- `pages` || the page components of our app, any routing will go between these components.
+- `pages/components` || components used specifically on those pages.
+- `util` || any utility functions that can be used anywhere on the client side.
+- `index.jsx` || the start point of the client with providers.
+- `app.jsx` || storing the app routes.
 
 ### 6.2 Cypress structure
 
-- `fixtures` || any data/files that `cypress` needs can be placed here
-- `integration` || all of our tests are in here, separated in folders based on the pages in our app
-- `plugins` || any plugins for our `cypress` configuration can be placed here
-- `support` || custom commands and other support files for `cypress` can be placed here
+- `fixtures` || any data/files that `cypress` needs can be placed here.
+- `integration` || all of our tests are in here, separated in folders based on the pages in our app.
+- `plugins` || any plugins for our `cypress` configuration can be placed here.
+- `support` || custom commands and other support files for `cypress` can be placed here.
 
 ### 6.3 Server structure
 
-- `__tests__` || any `jest` tests for the api endpoints as that is our testing strategy for the backend
-- `__testUtils__` || any code that is only being used in the tests is put in the `__testUtils__` folder to separate that away from the rest of the code
-- `controllers` || all of our controller functions that interact with the database
-- `db` || all of our configuration for the database
-- `models` || all of our `mongoose` models will be placed here
-- `routes` || code to match up the API with our controllers
-- `util` || any utility functions that can be used anywhere on the server side
+- `__tests__` || any `jest` tests for the api endpoints as that is our testing strategy for the backend.
+- `__testUtils__` || any code that is only being used in the tests is put in the `__testUtils__` folder to separate that away from the rest of the code.
+- `controllers` || all of our controller functions that interact with the database.
+- `db` || all of our configuration for the database.
+- `models` || all of our `mongoose` models will be placed here.
+- `routes` || code to match up the API with our controllers.
+- `util` || any utility functions that can be used anywhere on the server side.
 - `index.js` || the start point of the server.
 - `app.js` || creates express server and attaches the routes.
 

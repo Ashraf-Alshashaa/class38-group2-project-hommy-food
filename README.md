@@ -49,13 +49,13 @@ To run the app in dev mode you can run the following command in the main directo
 
 ## 5. Built with
 
-- ![React](https://camo.githubusercontent.com/67a01fa7cf337616274f39c070a11638f2e65720e414ef55b8dd3f9c2a803b2a/68747470733a2f2f696d672e736869656c64732e696f2f7374617469632f76313f7374796c653d666f722d7468652d6261646765266d6573736167653d526561637426636f6c6f723d323232323232266c6f676f3d5265616374266c6f676f436f6c6f723d363144414642266c6162656c3d)
-- ![Mongoose](https://camo.githubusercontent.com/eb3676422a9e186ce18237e6c1ffee703068f7850c2a513b9a261f33ee335ed6/68747470733a2f2f696d672e736869656c64732e696f2f7374617469632f76313f7374796c653d666f722d7468652d6261646765266d6573736167653d4d6f6e676f444226636f6c6f723d343741323438266c6f676f3d4d6f6e676f4442266c6f676f436f6c6f723d464646464646266c6162656c3d)
-- ![css3](https://camo.githubusercontent.com/e6b67b27998fca3bccf4c0ee479fc8f9de09d91f389cccfbe6cb1e29c10cfbd7/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f637373332d2532333135373242362e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d63737333266c6f676f436f6c6f723d7768697465)
-- <img src="https://github.com/richnologies/richnologies/raw/master/stripe_partner_badge_community_blurple.png" width="150" />
-- ![Express](https://camo.githubusercontent.com/0a95585d6b3a07028298a45d60b85a1331358bc336549d64dbbc27977f1495f3/68747470733a2f2f696d672e736869656c64732e696f2f7374617469632f76313f7374796c653d666f722d7468652d6261646765266d6573736167653d4578707265737326636f6c6f723d303030303030266c6f676f3d45787072657373266c6f676f436f6c6f723d464646464646266c6162656c3d)
-- <img src="https://camo.githubusercontent.com/451061eb9714c2135705a1ad757017cc943627ca474d8a20e78209214469bf72/68747470733a2f2f6437756d7169637069373236332e636c6f756466726f6e742e6e65742f696d672f70726f647563742f65306364363161372d316336352d343561302d393765652d3737363364646335313533612f39383834313664302d323562632d346264322d623864622d6633343764306131393335642e706e67" width="140">
-- ![Nodejs](https://camo.githubusercontent.com/faec9d89bd2c7d47b91d988dcd0f27011c27e8191d45836cfa36bf2b3c2a92bd/68747470733a2f2f696d672e736869656c64732e696f2f7374617469632f76313f7374796c653d666f722d7468652d6261646765266d6573736167653d4e6f64652e6a7326636f6c6f723d333339393333266c6f676f3d4e6f64652e6a73266c6f676f436f6c6f723d464646464646266c6162656c3d)
+![React](https://camo.githubusercontent.com/67a01fa7cf337616274f39c070a11638f2e65720e414ef55b8dd3f9c2a803b2a/68747470733a2f2f696d672e736869656c64732e696f2f7374617469632f76313f7374796c653d666f722d7468652d6261646765266d6573736167653d526561637426636f6c6f723d323232323232266c6f676f3d5265616374266c6f676f436f6c6f723d363144414642266c6162656c3d)
+![Mongoose](https://camo.githubusercontent.com/eb3676422a9e186ce18237e6c1ffee703068f7850c2a513b9a261f33ee335ed6/68747470733a2f2f696d672e736869656c64732e696f2f7374617469632f76313f7374796c653d666f722d7468652d6261646765266d6573736167653d4d6f6e676f444226636f6c6f723d343741323438266c6f676f3d4d6f6e676f4442266c6f676f436f6c6f723d464646464646266c6162656c3d)
+<img src="https://camo.githubusercontent.com/e6b67b27998fca3bccf4c0ee479fc8f9de09d91f389cccfbe6cb1e29c10cfbd7/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f637373332d2532333135373242362e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d63737333266c6f676f436f6c6f723d7768697465" alt="css" width="100" height="28" />
+<img src="https://github.com/richnologies/richnologies/raw/master/stripe_partner_badge_community_blurple.png" alt="stripe" width="150" />
+![Express](https://camo.githubusercontent.com/0a95585d6b3a07028298a45d60b85a1331358bc336549d64dbbc27977f1495f3/68747470733a2f2f696d672e736869656c64732e696f2f7374617469632f76313f7374796c653d666f722d7468652d6261646765266d6573736167653d4578707265737326636f6c6f723d303030303030266c6f676f3d45787072657373266c6f676f436f6c6f723d464646464646266c6162656c3d)
+<img src="https://i.ibb.co/bHS8SqH/Cloudinary.jpg" alt="cloudinary" width="109" >
+![Nodejs](https://camo.githubusercontent.com/faec9d89bd2c7d47b91d988dcd0f27011c27e8191d45836cfa36bf2b3c2a92bd/68747470733a2f2f696d672e736869656c64732e696f2f7374617469632f76313f7374796c653d666f722d7468652d6261646765266d6573736167653d4e6f64652e6a7326636f6c6f723d333339393333266c6f676f3d4e6f64652e6a73266c6f676f436f6c6f723d464646464646266c6162656c3d)
 
 ## 6. Code structure
 
@@ -175,7 +175,72 @@ server
 README.md
 ```
 
-## 7. Nice to have
+### 6.1 Client structure
+
+- `public` || public facing client code
+- `__tests__` || any `jest` tests for specific components will be in a `__tests__` folder on the same level
+- `__testUtils__` || any code that is only being used in the tests is put in the `__testUtils__` folder to separate that away from the rest of the code
+- `components` || all of our shared components that are used over multiple pages
+- `hooks` || all of our custom hooks
+- `pages` || the page components of our app, any routing will go between these components
+- `pages/components` || components used specifically on those pages
+- `util` || any utility functions that can be used anywhere on the client side
+- `index.jsx` || the start point of the client
+
+### 6.2 Cypress structure
+
+- `fixtures` || any data/files that `cypress` needs can be placed here
+- `integration` || all of our tests are in here, separated in folders based on the pages in our app
+- `plugins` || any plugins for our `cypress` configuration can be placed here
+- `support` || custom commands and other support files for `cypress` can be placed here
+
+### 6.3 Server structure
+
+- `__tests__` || any `jest` tests for the api endpoints as that is our testing strategy for the backend
+- `__testUtils__` || any code that is only being used in the tests is put in the `__testUtils__` folder to separate that away from the rest of the code
+- `controllers` || all of our controller functions that interact with the database
+- `db` || all of our configuration for the database
+- `models` || all of our `mongoose` models will be placed here
+- `routes` || code to match up the API with our controllers
+- `util` || any utility functions that can be used anywhere on the server side
+- `index.js` || the start point of the server
+
+## 7. Stack / external libraries
+
+The base stack of the app is a MERN stack (Mongoose, Express, React, Node). Next to that we make use of the following extras:
+
+### 7.1 Configuration libraries
+
+- `dotenv` || To load the .env variables into the process environment. See [docs](https://www.npmjs.com/package/dotenv)
+- `webpack` / `html-webpack-plugin` || To bundle our React app and create a static app to host. See [docs](https://webpack.js.org/)
+- `husky` || To run our tests and linter before committing. See [docs](https://typicode.github.io/husky/#/)
+- `eslint` || To check our code. We have different configurations for frontend and backend. You can check out the configuration in the `.eslintrc.(c)js` files in the respective `client` and `server` folders. See [docs](https://eslint.org/)
+- `prettier` || To automatically format our code. See [docs](https://prettier.io/)
+- `concurrently` || To run commands in parallel. See [docs](https://github.com/open-cli-tools/concurrently#readme)
+
+For more information on how these work together including the automatic deployment to heroku, have a look at our detailed [DEV](./DEV.md) file.
+
+### 7.2 Client-side libraries
+
+- `@testing-library/*` || We use React Testing Library to write all of our tests. See [docs](https://testing-library.com/docs/react-testing-library/intro/)
+- `jest` || To run our tests and coverage. See [docs](https://jestjs.io/)
+- `jest-fetch-mock` || To mock out the backend for our testing purposes. See [docs](https://github.com/jefflau/jest-fetch-mock#readme)
+- `prop-types` || To type-check our components. See [docs](https://github.com/facebook/prop-types)
+- `emailjs` || To help us creating contact form without using backend code. See [docs](https://www.emailjs.com/docs/tutorial/overview/)
+- `bootstrap` || To help us styling our app. See [docs](https://getbootstrap.com/docs/5.2/getting-started/introduction/)
+
+### 7.3 Server-side libraries
+
+- `nodemon` || To automatically restart the server when in development mode. See [docs](https://nodemon.io/)
+- `jest` || To run our tests and coverage. See [docs](https://jestjs.io/)
+- `supertest` || To more easily test our endpoints. See [docs](https://github.com/visionmedia/supertest#readme)
+- `mongodb-memory-server` || To mock out our database in our backend tests. See [docs](https://github.com/nodkz/mongodb-memory-server)
+- `cors` || To open up our API. See [docs](https://github.com/expressjs/cors#readme)
+- `mongoose` || To add schemas to our database. See [docs](https://mongoosejs.com/)
+- `cloudinary` || To help us store and host images for our app. See [docs](https://cloudinary.com/documentation/media_library_widget)
+- `stripe` || To allow our app online payment by using the third party payment process. See [docs](https://stripe.com/en-nl)
+
+## 8. Nice to have
 
 - [ ] Customer comments in the chef page.
 - [ ] Video about the chef.

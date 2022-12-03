@@ -109,7 +109,7 @@ export const authenticateToken = async (req, res, next) => {
     req.user = user;
     next();
   } catch (error) {
-    return res.sendStatus(403);
+    return res.sendStatus(400);
   }
 };
 

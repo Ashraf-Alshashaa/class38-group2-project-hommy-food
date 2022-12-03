@@ -57,7 +57,7 @@ const ShoppingCart = ({ id, chefId, quantityLeft }) => {
     setTimeout(() => {
       navigate("/login");
     }, "3000");
-    return setPopup({
+    setPopup({
       type: "error",
       text: "Sorry! you need to login",
       open: true,
